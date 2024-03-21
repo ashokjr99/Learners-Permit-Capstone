@@ -17,11 +17,7 @@ const app = express();
 const cors = require("cors");
 
 //? Import controller/s
-const {
-  userController,
-  messageController,
-  roomController,
-} = require("./controllers/index");
+const { userController } = require("./controllers/index");
 
 //? Import validation middleware
 const validateSession = require("./middleware/validate-session");
@@ -48,8 +44,6 @@ app.use(express.urlencoded({ extended: true }));
 //? Using the controllers
 app.use("/user", userController);
 app.use(validateSession);
-app.use("/room", roomController);
-app.use("/message", messageController);
 
 //? Initial spin up of the Express server
 app.listen(PORT, () => {
