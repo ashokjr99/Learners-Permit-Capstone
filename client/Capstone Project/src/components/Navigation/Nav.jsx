@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import HeaderImage from "../assets/Rainbow_Vice.png"
 
 const Nav = () => {
   let location = useLocation();
@@ -8,6 +9,7 @@ const Nav = () => {
 
   return (
     <div style={{ display: "flex", gap: "1em", justifyContent: "center" }}>
+      <img src={HeaderImage} style={{height: "8em", position: "fixed", left:"1em"}} />
       <Link to="/home">
         <button
           style={{
