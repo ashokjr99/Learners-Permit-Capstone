@@ -35,16 +35,16 @@ const Auth = (props) => {
   const handleSignup = async () => {
     try {
       const response = await (
-        await fetch("http://localhost:8080/user/signup", {
+        await fetch("http://localhost:8081/user/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            firstName: firstName,
-            lastName: lastName,
+            FirstName: firstName,
+            LastName: lastName,
             email: email,
-            password: password,
+            Password: password,
           }),
         })
       ).json();
@@ -57,7 +57,7 @@ const Auth = (props) => {
   const handleLogin = async () => {
     try {
       const response = await (
-        await fetch("http://localhost:8080/user/signin", {
+        await fetch("http://localhost:8081/user/signin", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
