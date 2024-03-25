@@ -1,8 +1,7 @@
 //? Allows us to have sub routes in express
 const router = require("express").Router();
 
-//? Importing our User Table
-const User = require("../models/user_model");
+const User = "";
 
 //? Importing bycrypt
 const bcrypt = require("bcryptjs");
