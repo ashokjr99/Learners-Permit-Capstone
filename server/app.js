@@ -4,14 +4,12 @@ require("dotenv").config();
 //? Importing Express
 const express = require("express");
 
-//? Importing Mongoose
-const mongoose = require("mongoose");
-
-//? Connection string URL variable from .env file
-const MONGODB = process.env.MONGO_DB_URL + process.env.DB_NAME;
-
 //? Assign Express
 const app = express();
+
+//? Importing db.js
+const db = require("./db");
+db();
 
 //? cors
 const cors = require("cors");
@@ -21,12 +19,6 @@ const { userController } = require("./controllers/index");
 
 //? Import validation middleware
 const validateSession = require("./middleware/validate-session");
-
-//? Connection middleware, connecting to DB
-mongoose.connect(MONGODB);
-
-//? Storing the connection status
-const db = mongoose.connection;
 
 //? Assigning a variable from .env, with fallback port of 8080
 //* || - OR/DEFAULT operator
