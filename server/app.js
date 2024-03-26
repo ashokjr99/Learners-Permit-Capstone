@@ -7,10 +7,6 @@ const express = require("express");
 //? Assign Express
 const app = express();
 
-//? Importing db.js
-const db = require("./db");
-db();
-
 //? cors
 const cors = require("cors");
 

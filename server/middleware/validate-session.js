@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const User = "";
+const prisma = require("../db");
 
 const validateSession = async (req, res, next) => {
   // Middleware still has access to the request, response, and requires the next() function to move passed it
@@ -24,7 +24,12 @@ const validateSession = async (req, res, next) => {
     console.log(decoded);
 
     //? Find user in our db
-    const user = await User.findById(decoded.id);
+    const user = await prisma.users.findUnique({
+      where: {
+        id: decoded.id,
+        // from decoded object above on line 24
+      },
+    });
 
     //? Check if user exists in db
     if (!user) throw new Error("User not found");
