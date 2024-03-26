@@ -3,6 +3,9 @@ const router = require("express").Router();
 
 const User = "";
 
+//? Importing prisma db
+const db = require("../db");
+
 //? Importing bycrypt
 const bcrypt = require("bcryptjs");
 
