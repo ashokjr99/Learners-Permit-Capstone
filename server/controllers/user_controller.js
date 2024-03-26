@@ -4,13 +4,17 @@ const mysql = require('mysql2/promise');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// Create a MySQL connection pool
-const pool = mysql.createPool({
-  host: 'gomotherrucker.com',
-  user: 'gomot1_upright_student',
-  password: 'lNsqF@5pyChg',
-  database: 'gomot1_drive_tracker',
-});
+const User = "";
+
+//? Importing prisma db
+const db = require("../db");
+
+//? Importing bycrypt
+const bcrypt = require("bcryptjs");
+
+//? Importing jsonwebtoken
+const jwt = require("jsonwebtoken");
+
 
 // signup for a new user
 router.post("/signup", async (req, res) => {
