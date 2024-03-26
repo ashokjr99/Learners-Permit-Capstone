@@ -1,14 +1,6 @@
-const mySql = require("mysql2/promise");
+const { PrismaClient } = require("@prisma/client");
 
-const connectToDb = async () => {
-  try {
-    const connection = await mySql.createConnection(process.env.MYSQL_URL);
-    // initial connection to the mysql db
-    console.log("connecting to db");
-    return connection;
-  } catch (err) {
-    console.log(err);
-  }
-};
+const prisma = new PrismaClient();
+// use `prisma` in your application to read and write data in your DB
 
-module.exports = connectToDb;
+module.exports = prisma;
