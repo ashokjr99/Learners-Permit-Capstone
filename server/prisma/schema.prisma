@@ -13,4 +13,19 @@ model users {
   LastName  String @db.VarChar(45)
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password  String @db.VarChar(255)
+  stats stats[]
+  // one to many relationship
+}
+
+model stats {
+  id        Int       @id @default(autoincrement())
+  userId    Int       
+  mileage   Int
+  timestamp DateTime? @default(now()) @db.Timestamp(0)
+  weather   String    @db.VarChar(45)
+  from      String    @db.VarChar(45)
+  to        String    @db.VarChar(45)
+  practiced String    @db.VarChar(45)
+  user      users     @relation(fields: [userId], references: [id])
+  // referenced users' id
 }
