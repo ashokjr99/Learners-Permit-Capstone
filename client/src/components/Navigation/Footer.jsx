@@ -8,15 +8,9 @@ const Footer = () => {
 
   return (
     <div style={{ display: "flex", gap: "1em", justifyContent: "center" }}>
-      <Link to="/home">
-          Home
-      </Link>
-      <Link to="/about">
-        About
-      </Link>
-      <Link to="/contact_us">
-        Contact
-      </Link>
+      <Link to="/home">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/contact_us">Contact</Link>
     </div>
   );
 };

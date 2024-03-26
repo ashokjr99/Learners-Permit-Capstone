@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import {
   Nav,
@@ -11,7 +11,7 @@ import {
   About,
   Contact,
   Footer,
-} from "./components/"
+} from "./components/";
 
 import "./App.css";
 
