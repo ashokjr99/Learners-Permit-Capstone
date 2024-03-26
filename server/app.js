@@ -11,7 +11,7 @@ const app = express();
 const cors = require("cors");
 
 //? Import controller/s
-const { userController } = require("./controllers/index");
+const { userController, statsController } = require("./controllers/index");
 
 //? Import validation middleware
 const validateSession = require("./middleware/validate-session");
@@ -32,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 //? Using the controllers
 app.use("/user", userController);
 app.use(validateSession);
+app.use("/stats", statsController);
 
 //? Initial spin up of the Express server
 app.listen(PORT, () => {

@@ -33,7 +33,7 @@ const validateSession = async (req, res, next) => {
 
     //? Check if user exists in db
     if (!user) throw new Error("User not found");
-
+    console.log(user);
     req.user = user;
 
     return next();
