@@ -60,7 +60,7 @@ router.get("/all", async (req, res) => {
 });
 
 //? edit stats
-router.put("/edit", async (req, res) => {
+router.post("/edit", async (req, res) => {
   try {
     const updateStat = await prisma.stats.update({
       where: {
