@@ -37,35 +37,40 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// //? Logging in a user
-// router.post("/login", async (req, res) => {
-//   try {
-//     let { email, password } = req.body;
+//? Logging in a user
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-//     const user = await User.findOne({ email: email });
+    const user = await prisma.users.findUnique({
+      where: {
+        email: email,
+      },
+    });
 
-//     if (!user) throw new Error("User not found");
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
 
-//     let passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = await bcrypt.compare(password, user.Password);
 
-//     if (!passwordMatch) throw new Error("Invalid Details");
+    if (!passwordMatch) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
 
-//     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-//       expiresIn: 60 * 60 * 24,
-//     });
-//     console.log("user.js", token);
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: 60 * 60 * 24, // Token expires in 24 hours
+    });
 
-//     res.status(200).json({
-//       Msg: "User Signed In!",
-//       User: user,
-//       Token: token,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json({
-//       Error: err,
-//     });
-//   }
-// });
+    res.status(200).json({
+      message: "User logged in successfully",
+      user: user,
+      token: token,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 module.exports = router;
