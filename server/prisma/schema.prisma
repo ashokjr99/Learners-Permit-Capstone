@@ -30,8 +30,3 @@ model stats {
   user      users     @relation(fields: [userId], references: [id])
   // referenced users' id
 }
-
-model stats {
-  id  Int   @id @default(autoincrement())
-  miles Int
-}

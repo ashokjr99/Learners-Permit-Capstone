@@ -33,4 +33,32 @@ router.post("/post", async (req, res) => {
   }
 });
 
+function mySelect ( searchKey, searchValue, replaceKey, replaceValue ) {
+  const theSelect = {
+    where: {
+      searchKey: searchValue
+    },
+    data: { replaceKey: replaceValue }
+  }
+  return theSelect;
+
+}
+
+router.post("/edit", async (req, res) => {
+  try {
+    let searchKey = req.body.searchKey;
+    let searchValue = req.body.searchVale;
+    let replaceKey = req.body.replacementKey;
+    let replaceValue = red.body.replacementValue;
+
+    const user = await prisma.stats.update( mySelect( searchKey, searchValue, replaceKey, replaceValue) )
+ 
+    res.status(200).json({
+      Updated: "RECORD",
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;
