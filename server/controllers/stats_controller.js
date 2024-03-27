@@ -10,6 +10,8 @@ const bcrypt = require("bcryptjs");
 //? Importing jsonwebtoken
 const jwt = require("jsonwebtoken");
 
+// sdfdsfsdf
+
 //? posting a stat
 //! add validation to routes through using a library or manually
 router.post("/post", async (req, res) => {
