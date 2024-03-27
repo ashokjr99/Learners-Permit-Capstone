@@ -30,6 +30,29 @@ router.post("/post", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    res.status(500).json({
+      Error: err,
+    });
+  }
+});
+
+router.get("/stats/:userId", async (req, res) => {
+  const userId = parseInt(req.params.userId);
+
+  try {
+    const userStats = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { stats: true },
+    });
+
+    if (!userStats) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    console.log(userStats.stats);
+    res.json(userStats.stats);
+  } catch (error) {
+    console.log("Error fetching stats:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
