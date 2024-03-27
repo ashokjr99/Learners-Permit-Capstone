@@ -33,25 +33,31 @@ router.post("/post", async (req, res) => {
   }
 });
 
-function mySelect ( searchKey, searchValue, replaceKey, replaceValue ) {
-  var objStr = "{ \"where\": { \"" + searchKey + "\": \"" + searchValue + "\" },";  // Creates the string to update the database 
-  objStr = objStr + " \"data\": { \"" + replaceKey + "\": \"" + replaceValue + "\" }}"; 
-  var newObj = JSON.parse( objStr );  // Converts string into json.obj
-  return newObj
+//// function mySelect ( searchKey, searchValue, replaceKey, replaceValue ) {
+////   var objStr = "{ \"where\": { \"" + searchKey + "\": \"" + searchValue + "\" },";  // Creates the string to update the database 
+////   objStr = objStr + " \"data\": { \"" + replaceKey + "\": \"" + replaceValue + "\" }}"; 
+////   var newObj = JSON.parse( objStr );  // Converts string into json.obj
+////   return newObj
 
-}
+//// }
 
-router.post("/edit", async (req, res) => {
+router.put('/edit/:id', async (req, res) => {
   try {
-    let searchKey = req.body.searchKey;
-    let searchValue = req.body.searchVale;
-    let replaceKey = req.body.replacementKey;
-    let replaceValue = red.body.replacementValue;
+    const updateStat = await prisma.user.update({
+      where: {
+        id: req.params.id,
+      },
+      data: {
+        mileage: req.body.mileage,  
+        weather: req.body.weather,  
+        from: req.body.from,     
+        to: req.body.to,       
+        practiced: req.body.practiced,
+      },
+    })
 
-    const user = await prisma.stats.update( mySelect( searchKey, searchValue, replaceKey, replaceValue) )
- 
     res.status(200).json({
-      Updated: "RECORD",
+      Updated: updateStat,
     });
   } catch (err) {
     console.log(err);
