@@ -84,4 +84,27 @@ router.put("/edit", async (req, res) => {
   }
 });
 
+//? Define delete endpoint for deleting stats by ID
+router.delete("/delete/:statId", async (req, res) => {
+  const statId = parseInt(req.params.statId);
+  // make into valid session later
+
+  try {
+    // Use Prisma's delete method to delete the stats
+    const deletedStat = await prisma.stats.delete({
+      where: { id: statId },
+    });
+
+    // Send a success message in the response
+    res.status(200).json({
+      message: "Stats deleted successfully",
+      deletedStat: deletedStat,
+    });
+  } catch (error) {
+    // Handle errors and send an error response
+    console.log("Error deleting stats:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 module.exports = router;
