@@ -1,0 +1,166 @@
+{
+  "info": {
+    "_postman_id": "6eab6aa3-4599-4c2d-9da2-2d10d04e143a",
+    "name": "CapstoneProject",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32378248"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "create new user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"first\": \"Benny\",\r\n\"last\": \"John\",\r\n\"email\": \"bj6933367679932434334@gmail.com\",\r\n\"password\": \"sdsddssdsdsd\"\r\n\r\n\r\n\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8081/user/signup",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["user", "signup"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logging in as a current user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"email\": \"bj6933367679932434334@gmail.com\",\r\n\"password\": \"sdsddssdsdsd\"\r\n\r\n\r\n\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8081/user/login",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["user", "login"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "stats",
+      "item": [
+        {
+          "name": "post a stat",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"mileage\": 100,\r\n\"weather\": \"rainy\",\r\n\"from\": \"LA\",\r\n\"to\":  \"San Fran\",     \r\n\"practiced\": \"parking and interstate driving\"\r\n\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8081/stats/post",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["stats", "post"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "edit a stat",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"mileage\": 100,\r\n\"weather\": \"rainy\",\r\n\"from\": \"LA\",\r\n\"to\":  \"San Fran\",     \r\n\"practiced\": \"parking and interstate driving\"\r\n\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8081/stats/edit",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["stats", "edit"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all stats",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8081/stats/all/10",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["stats", "all", "10"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcxMTU3NzYwMywiZXhwIjoxNzExNjY0MDAzfQ.lrt1MEQPgKjDHCxyacnhmYfK6Xq_4HlXWcsDM26UDBc",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    }
+  ]
+}
