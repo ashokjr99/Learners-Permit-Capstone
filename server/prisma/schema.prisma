@@ -14,3 +14,8 @@ model users {
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password  String @db.VarChar(255)
 }
+
+model stats {
+  id  Int   @id @default(autoincrement())
+  miles Int
+}
