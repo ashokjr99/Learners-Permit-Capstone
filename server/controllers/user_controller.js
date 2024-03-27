@@ -40,28 +40,20 @@ router.post("/signup", async (req, res) => {
 // //? Logging in a user
 // router.post("/login", async (req, res) => {
 //   try {
-//     const [rows, fields] = await pool.execute(
-//       "SELECT * FROM users WHERE email = ?",
-//       [req.body.email]
-//     );
+//     let { email, password } = req.body;
 
-//     if (rows.length === 0) {
-//       throw new Error("User not found");
-//     }
+//     const user = await User.findOne({ email: email });
 
-//     const user = rows[0];
-//     const passwordMatch = await bcrypt.compare(
-//       req.body.password,
-//       user.password
-//     );
+//     if (!user) throw new Error("User not found");
 
-//     if (!passwordMatch) {
-//       throw new Error("Invalid Details");
-//     }
+//     let passwordMatch = await bcrypt.compare(password, user.password);
 
-//     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+//     if (!passwordMatch) throw new Error("Invalid Details");
+
+//     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
 //       expiresIn: 60 * 60 * 24,
 //     });
+//     console.log("user.js", token);
 
 //     res.status(200).json({
 //       Msg: "User Signed In!",
@@ -71,7 +63,7 @@ router.post("/signup", async (req, res) => {
 //   } catch (err) {
 //     console.log(err);
 //     res.status(500).json({
-//       Error: err.message,
+//       Error: err,
 //     });
 //   }
 // });
