@@ -36,6 +36,27 @@ router.post("/post", async (req, res) => {
   }
 });
 
+//? get all stats
+router.get("/all/:userId", async (req, res) => {
+  const userId = parseInt(req.params.userId);
+
+  try {
+    const userStats = await prisma.users.findUnique({
+      where: { id: userId },
+      select: { stats: true },
+    });
+
+    if (!userStats) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    console.log(userStats.stats);
+    res.json(userStats.stats);
+  } catch (error) {
+    console.log("Error fetching stats:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 //? Function used in edit
 function mySelect(searchKey, searchValue, replaceKey, replaceValue) {
   var objStr = '{ "where": { "' + searchKey + '": "' + searchValue + '" },'; // Creates the string to update the database
@@ -62,27 +83,6 @@ router.post("/edit", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-  }
-});
-
-//? get all stats
-router.get("/all/:userId", async (req, res) => {
-  const userId = parseInt(req.params.userId);
-
-  try {
-    const userStats = await prisma.users.findUnique({
-      where: { id: userId },
-      select: { stats: true },
-    });
-
-    if (!userStats) {
-      return res.status(404).json({ error: "User not found" });
-    }
-    console.log(userStats.stats);
-    res.json(userStats.stats);
-  } catch (error) {
-    console.log("Error fetching stats:", error);
-    res.status(500).json({ error: "Internal server error" });
   }
 });
 
