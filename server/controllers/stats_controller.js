@@ -33,11 +33,11 @@ router.post("/post", async (req, res) => {
   }
 });
 
-router.get("/stats/:userId", async (req, res) => {
+router.get("/all/:userId", async (req, res) => {
   const userId = parseInt(req.params.userId);
 
   try {
-    const userStats = await prisma.user.findUnique({
+    const userStats = await prisma.users.findUnique({
       where: { id: userId },
       select: { stats: true },
     });
