@@ -39,8 +39,8 @@ router.post("/post", async (req, res) => {
 });
 
 //? get all stats
-router.get("/all/:userId", async (req, res) => {
-  const userId = parseInt(req.params.userId);
+router.get("/all", async (req, res) => {
+  const userId = parseInt(req.user.id);
 
   try {
     const userStats = await prisma.users.findUnique({
@@ -59,29 +59,25 @@ router.get("/all/:userId", async (req, res) => {
   }
 });
 
-//? Function used in edit
-function mySelect(searchKey, searchValue, replaceKey, replaceValue) {
-  var objStr = '{ "where": { "' + searchKey + '": "' + searchValue + '" },'; // Creates the string to update the database
-  objStr =
-    objStr + ' "data": { "' + replaceKey + '": "' + replaceValue + '" }}';
-  var newObj = JSON.parse(objStr); // Converts string into json.obj
-  return newObj;
-}
-
 //? edit stats
-router.post("/edit", async (req, res) => {
+router.put("/edit", async (req, res) => {
   try {
-    let searchKey = req.body.searchKey;
-    let searchValue = req.body.searchVale;
-    let replaceKey = req.body.replacementKey;
-    let replaceValue = red.body.replacementValue;
-
-    const user = await prisma.stats.update(
-      mySelect(searchKey, searchValue, replaceKey, replaceValue)
-    );
+    const updateStat = await prisma.stats.update({
+      where: {
+        id: req.stats.id,
+        userId: req.user.id,
+      },
+      data: {
+        mileage: req.body.mileage,
+        weather: req.body.weather,
+        from: req.body.from,
+        to: req.body.to,
+        practiced: req.body.practiced,
+      },
+    });
 
     res.status(200).json({
-      Updated: "RECORD",
+      Updated: updateStat,
     });
   } catch (err) {
     console.log(err);
