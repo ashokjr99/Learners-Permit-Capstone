@@ -34,13 +34,10 @@ router.post("/post", async (req, res) => {
 });
 
 function mySelect ( searchKey, searchValue, replaceKey, replaceValue ) {
-  const theSelect = {
-    where: {
-      searchKey: searchValue
-    },
-    data: { replaceKey: replaceValue }
-  }
-  return theSelect;
+  var objStr = "{ \"where\": { \"" + searchKey + "\": \"" + searchValue + "\" },";  // Creates the string to update the database 
+  objStr = objStr + " \"data\": { \"" + replaceKey + "\": \"" + replaceValue + "\" }}"; 
+  var newObj = JSON.parse( objStr );  // Converts string into json.obj
+  return newObj
 
 }
 

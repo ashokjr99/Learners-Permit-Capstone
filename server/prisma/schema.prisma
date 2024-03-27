@@ -30,3 +30,4 @@ model stats {
   user      users     @relation(fields: [userId], references: [id])
   // referenced users' id
 }
+
