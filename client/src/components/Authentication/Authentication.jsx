@@ -2,13 +2,13 @@ import Signup from "./Signup_Parent";
 import Login from "./Login";
 
 import { useState } from "react";
+import Signup_Child from "./Signup_Child";
 
 const Auth = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("")
 
   const handleChange = (state, value) => {
     switch (state) {
@@ -17,9 +17,6 @@ const Auth = (props) => {
         break;
       case "last":
         setLastName(value);
-        break;
-      case "username":
-        setUsername(value);
         break;
       case "email":
         setEmail(value);
@@ -78,7 +75,7 @@ const Auth = (props) => {
 
   return (
     <>
-      <Signup handleSignup={handleSignup} handleChange={handleChange} />
+      <Signup_Child handleSignup={handleSignup} handleChange={handleChange} />
       <Login handleLogin={handleLogin} handleChange={handleChange} />
     </>
   );
