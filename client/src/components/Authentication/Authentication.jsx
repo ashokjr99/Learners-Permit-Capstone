@@ -66,8 +66,8 @@ const Auth = (props) => {
         })
       ).json();
       console.log(response.user);
-      props.updateToken(response.Token);
-      props.setUserId(response.User._id);
+      props.updateToken(response.token);
+      props.setUserId(response.user.id);
     } catch (err) {
       console.log(err);
     }
