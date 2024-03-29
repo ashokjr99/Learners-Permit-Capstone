@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import HeaderImage from "../assets/Rainbow_Vice.png";
 
+
 const Nav = () => {
   let location = useLocation();
   console.log(location);
@@ -48,16 +49,6 @@ const Nav = () => {
           }}
         >
           Signup
-        </button>
-      </Link>
-      <Link to="/signup_child">
-        <button
-          style={{
-            background:
-              location.pathname.includes("/signup_child") && backgroundColor,
-          }}
-        >
-          Create Child Account
         </button>
       </Link>
     </div>

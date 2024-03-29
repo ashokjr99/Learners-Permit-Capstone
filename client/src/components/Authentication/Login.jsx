@@ -13,7 +13,6 @@ const Login = ({ handleChange, handleLogin }) => {
           Log In!
         </button>
       </form>
-      {console.log("I am a login")}
     </div>
   );
 };

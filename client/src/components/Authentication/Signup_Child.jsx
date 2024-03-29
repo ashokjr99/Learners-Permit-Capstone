@@ -4,10 +4,10 @@ const Signup_Child = ({ handleChange, handleSignup }) => {
   return (
     <div>
       <form style={{ display: "flex", flexDirection: "column" }}>
-        <h2>Signup</h2>
-        <label>FirstName</label>
+        <h2>Sign Up!</h2>
+        <label>First Name</label>
         <input onChange={(e) => handleChange("first", e.target.value)} />
-        <label>LastName</label>
+        <label>Last Name</label>
         <input onChange={(e) => handleChange("last", e.target.value)} />
         <label>Email</label>
         <input onChange={(e) => handleChange("email", e.target.value)} />
@@ -17,7 +17,6 @@ const Signup_Child = ({ handleChange, handleSignup }) => {
           Sign Up!
         </button>
       </form>
-      {console.log("I am an Signup")}
     </div>
   );
 };
