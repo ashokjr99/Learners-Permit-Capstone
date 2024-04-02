@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Login from "./Login";
-import Signup_Child from "./Signup_Child";
+import Signup_Parent from "./Signup_Parent";
 
 const Auth = (props) => {
   const [firstName, setFirstName] = useState("");
@@ -75,7 +75,7 @@ const Auth = (props) => {
 
   return (
     <>
-      <Signup_Child handleSignup={handleSignup} handleChange={handleChange} />
+      <Signup_Parent handleSignup={handleSignup} handleChange={handleChange} />
       <Login handleLogin={handleLogin} handleChange={handleChange} />
     </>
   );

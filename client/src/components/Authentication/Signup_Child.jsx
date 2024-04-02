@@ -1,6 +1,54 @@
 import React from 'react'
+import { useState } from 'react';
 
-const Signup_Child = ({ handleChange, handleSignup }) => {
+const Signup_Child = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChange = (state, value) => {
+    switch (state) {
+      case "first":
+        setFirstName(value);
+        break;
+      case "last":
+        setLastName(value);
+        break;
+      case "email":
+        setEmail(value);
+        break;
+      case "password":
+        setPassword(value);
+        break;
+      default:
+        console.log("Something went wrong");
+    }
+  };
+
+  const handleChildSignup = async () => {
+    try {
+      const response = await (
+        await fetch("http://localhost:8081/user/signup_child", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            first: firstName,
+            last: lastName,
+            email: email,
+            password: password,
+            parentId: 1,
+          }),
+        })
+      ).json();
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <form style={{ display: "flex", flexDirection: "column" }}>
@@ -13,7 +61,7 @@ const Signup_Child = ({ handleChange, handleSignup }) => {
         <input onChange={(e) => handleChange("email", e.target.value)} />
         <label>Password</label>
         <input onChange={(e) => handleChange("password", e.target.value)} />
-        <button style={{ margin: "1em" }} type="button" onClick={handleSignup}>
+        <button style={{ margin: "1em" }} type="button" onClick={handleChildSignup}>
           Sign Up!
         </button>
       </form>

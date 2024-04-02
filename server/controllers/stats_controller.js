@@ -19,7 +19,8 @@ router.post("/post", async (req, res) => {
     const stats = await prisma.stats.create({
       data: {
         userId: req.user.id,
-        mileage: req.body.mileage,
+        hours: req.body.hours,
+        vehicle_type: req.body.vehicle_type,
         weather: req.body.weather,
         from: req.body.from,
         to: req.body.to,
@@ -68,7 +69,8 @@ router.post("/edit", async (req, res) => {
         userId: req.user.id,
       },
       data: {
-        mileage: req.body.mileage,
+        hours: req.body.hours,
+        vehicle_type: req.body.vehicle_type,
         weather: req.body.weather,
         from: req.body.from,
         to: req.body.to,

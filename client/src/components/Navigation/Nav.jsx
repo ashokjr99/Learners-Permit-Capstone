@@ -32,23 +32,22 @@ const Nav = () => {
           About
         </button>
       </Link>
-      <Link to="/login">
+      <Link to="/stats">
         <button
           style={{
-            background: location.pathname.includes("/login") && backgroundColor,
+            background: location.pathname.includes("/stats") && backgroundColor,
           }}
         >
-          Login
+          View Stats
         </button>
       </Link>
-      <Link to="/signup">
+      <Link to="/signup_child">
         <button
           style={{
-            background:
-              location.pathname.includes("/signup") && backgroundColor,
+            background: location.pathname.includes("/signup_child") && backgroundColor,
           }}
         >
-          Signup
+          Create Child Account
         </button>
       </Link>
     </div>
