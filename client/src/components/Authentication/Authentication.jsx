@@ -44,7 +44,7 @@ const Auth = (props) => {
           }),
         })
       ).json();
-      console.log(response)
+      console.log(response);
       props.updateToken(response.Token);
     } catch (err) {
       console.log(err);

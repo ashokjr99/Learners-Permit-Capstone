@@ -44,7 +44,6 @@ function App() {
     <>
       {!sessionToken ? (
         <>
-        <Nav updateToken={updateToken} userId={userId} setUserId={setUserId} />
         <Home />
         <Auth updateToken={updateToken} userId={userId} setUserId={setUserId} />
         </>
@@ -69,34 +68,12 @@ function App() {
           <Route path="/contact_us" element={<Contact />} />
         </Routes>
       </header>
+      <div>
+        <button onClick={clearToken}>Logout!</button>
+      </div>
         </>
       )}
     </>
-    // <div className="App">
-    //   <div>
-    //     <Nav />
-    //   </div>
-      // <header className="App-header">
-      //   <Routes>
-      //     <Route path="/" element={<Navigate to="/auth" />} />
-      //     <Route path="/home" element={<Home />} />
-      //     <Route path="/auth" element={<Auth />} />
-
-      //     <Route path="/login" element={<Login />} />
-      //     <Route path="/signup" element={<Signup_Child />} />
-
-      //     <Route path="/landing_page" element={<Stats_Landing_Page />} />
-      //     <Route path="/enter_stats" element={<Enter_Stats />} />
-      //     <Route path="/stats" element={<Check_Stats />} />
-
-      //     <Route path="/about" element={<About />} />
-      //     <Route path="/contact_us" element={<Contact />} />
-      //   </Routes>
-      // </header>
-    //   <footer>
-    //     <Footer />
-    //   </footer>
-    // </div>
   );
 }
 

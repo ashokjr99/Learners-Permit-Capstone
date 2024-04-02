@@ -14,8 +14,37 @@ const jwt = require("jsonwebtoken");
 //! add validation to routes through using a library or manually
 router.post("/signup", async (req, res) => {
   try {
+    const user = await prisma.parents.create({
+      data: {
+        FirstName: req.body.first,
+        LastName: req.body.last,
+        email: req.body.email,
+        Password: bcrypt.hashSync(req.body.password, 12),
+      },
+    });
+
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: 60 * 60 * 24,
+    });
+
+    res.status(200).json({
+      Mgs: "Success! User created!",
+      User: user,
+      Token: token,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      Error: err,
+    });
+  }
+});
+
+router.post("/signup_child", async (req, res) => {
+  try {
     const user = await prisma.users.create({
       data: {
+        
         FirstName: req.body.first,
         LastName: req.body.last,
         email: req.body.email,

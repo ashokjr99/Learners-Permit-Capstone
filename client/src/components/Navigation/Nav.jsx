@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import HeaderImage from "../assets/Rainbow_Vice.png";
+import HeaderImage from "../assets/DriveTime.png";
 
 
 const Nav = () => {
