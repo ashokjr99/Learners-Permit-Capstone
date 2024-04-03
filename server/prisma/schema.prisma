@@ -9,24 +9,34 @@ datasource db {
 
 model users {
   id        Int    @id @default(autoincrement())
+  parentId  Int
   FirstName String @db.VarChar(45)
   LastName  String @db.VarChar(45)
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password  String @db.VarChar(255)
 
-  stats stats[]
-  // one to many relationship
+  @@index([parentId], map: "users_parentId_fkey")
 }
 
 model stats {
-  id        Int       @id @default(autoincrement())
-  userId    Int
-  mileage   Int
-  timestamp DateTime? @default(now()) @db.Timestamp(0)
-  weather   String    @db.VarChar(45)
-  from      String    @db.VarChar(45)
-  to        String    @db.VarChar(45)
-  practiced String    @db.VarChar(45)
-  user      users     @relation(fields: [userId], references: [id])
-  // referenced users' id
+  id           Int       @id @default(autoincrement())
+  userId       Int
+  hours        Int
+  timestamp    DateTime? @default(now()) @db.Timestamp(0)
+  vehicle_type String    @db.VarChar(45)
+  day          Boolean
+  weather      String    @db.VarChar(45)
+  from         String    @db.VarChar(45)
+  to           String    @db.VarChar(45)
+  practiced    String    @db.VarChar(45)
+
+  @@index([userId], map: "stats_userId_fkey")
+}
+
+model parents {
+  id        Int    @id @default(autoincrement())
+  FirstName String @db.VarChar(45)
+  LastName  String @db.VarChar(45)
+  email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
+  Password  String @db.VarChar(255)
 }
