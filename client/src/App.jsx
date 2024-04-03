@@ -18,7 +18,8 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <div>
+      <Check_Stats></Check_Stats>
+      {/* <div>
         <Nav />
       </div>
       <header className="App-header">
@@ -39,7 +40,7 @@ function App() {
       </header>
       <footer>
         <Footer />
-      </footer>
+      </footer> */}
     </div>
   );
 }
