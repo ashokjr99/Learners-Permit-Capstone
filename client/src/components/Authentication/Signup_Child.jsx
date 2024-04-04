@@ -8,6 +8,8 @@ const Signup_Child = (props) => {
   const [password, setPassword] = useState("");
   const [parentId, setParentId] = useState("");
 
+console.log(props)
+
   const handleChange = (state, value) => {
     switch (state) {
       case "first":
@@ -39,7 +41,7 @@ const Signup_Child = (props) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            parentId: 1,
+            parentId: parseInt(props.user.id),
             first: firstName,
             last: lastName,
             email: email,
