@@ -72,6 +72,7 @@ router.put("/edit", async (req, res) => {
       },
       data: {
         hours: req.body.hours,
+        vehicle_type: req.body.vehicle_type,
         weather: req.body.weather,
         from: req.body.from,
         to: req.body.to,

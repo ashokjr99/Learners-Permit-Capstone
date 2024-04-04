@@ -58,7 +58,7 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
+          Authorization: `Bearer ${localStorage.getItem("ChildToken")}`,
         },
         body: JSON.stringify(statsData),
       });
