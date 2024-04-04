@@ -1,14 +1,13 @@
-import Signup from "./Signup_Parent";
-import Login from "./Login";
-
 import { useState } from "react";
+
+import Login from "./Login";
+import Signup_Child from "./Signup_Child";
 
 const Auth = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("")
 
   const handleChange = (state, value) => {
     switch (state) {
@@ -17,9 +16,6 @@ const Auth = (props) => {
         break;
       case "last":
         setLastName(value);
-        break;
-      case "username":
-        setUsername(value);
         break;
       case "email":
         setEmail(value);
@@ -41,13 +37,14 @@ const Auth = (props) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            FirstName: firstName,
-            LastName: lastName,
+            first: firstName,
+            last: lastName,
             email: email,
-            Password: password,
+            password: password,
           }),
         })
       ).json();
+      console.log(response)
       props.updateToken(response.Token);
     } catch (err) {
       console.log(err);
@@ -57,7 +54,7 @@ const Auth = (props) => {
   const handleLogin = async () => {
     try {
       const response = await (
-        await fetch("http://localhost:8081/user/signin", {
+        await fetch("http://localhost:8081/user/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -68,9 +65,9 @@ const Auth = (props) => {
           }),
         })
       ).json();
-
-      props.updateToken(response.Token);
-      props.setUserId(response.User._id);
+      console.log(response.user);
+      props.updateToken(response.token);
+      props.setUserId(response.user.id);
     } catch (err) {
       console.log(err);
     }
@@ -78,7 +75,7 @@ const Auth = (props) => {
 
   return (
     <>
-      <Signup handleSignup={handleSignup} handleChange={handleChange} />
+      <Signup_Child handleSignup={handleSignup} handleChange={handleChange} />
       <Login handleLogin={handleLogin} handleChange={handleChange} />
     </>
   );

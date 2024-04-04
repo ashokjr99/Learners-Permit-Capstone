@@ -19,11 +19,13 @@ router.post("/post", async (req, res) => {
     const stats = await prisma.stats.create({
       data: {
         userId: req.user.id,
-        mileage: req.body.mileage,
+        hours: req.body.hours,
+        day: req.body.day,
         weather: req.body.weather,
         from: req.body.from,
         to: req.body.to,
         practiced: req.body.practiced,
+        vehicle_type: req.body.vehicle_type,
       },
     });
 
@@ -60,15 +62,16 @@ router.get("/all", async (req, res) => {
 });
 
 //? edit stats
-router.post("/edit", async (req, res) => {
+router.put("/edit", async (req, res) => {
   try {
+
     const updateStat = await prisma.stats.update({
       where: {
         id: req.stats.id,
         userId: req.user.id,
       },
       data: {
-        mileage: req.body.mileage,
+        hours: req.body.hours,
         weather: req.body.weather,
         from: req.body.from,
         to: req.body.to,
@@ -78,16 +81,16 @@ router.post("/edit", async (req, res) => {
 
     res.status(200).json({
       Updated: updateStat,
+      Updated: updateStat,
     });
   } catch (err) {
     console.log(err);
   }
 });
 
-//? Define delete endpoint for deleting stats by ID
+// Define delete endpoint for deleting stats by ID
 router.delete("/delete/:statId", async (req, res) => {
   const statId = parseInt(req.params.statId);
-  // make into valid session later
 
   try {
     // Use Prisma's delete method to delete the stats
@@ -106,5 +109,7 @@ router.delete("/delete/:statId", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+
 
 module.exports = router;
