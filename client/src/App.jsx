@@ -60,6 +60,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup_Child />} />
 
+
           <Route path="/enter_stats" element={<Enter_Stats />} />
           <Route path="/stats" element={<Check_Stats />} />
 
