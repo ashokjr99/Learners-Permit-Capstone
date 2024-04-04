@@ -97,7 +97,7 @@ function App() {
       {childToken && !sessionToken && (
         <>
           <div>
-            <Child_Nav />
+            <Child_Nav userId={userId}/>
           </div>
           <header className="App-header">
             <Routes>
