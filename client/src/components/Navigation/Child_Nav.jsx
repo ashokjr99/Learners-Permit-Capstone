@@ -40,7 +40,7 @@ const Child_Nav = () => {
             View Stats
           </button>
         </Link>
-        <Link to="/signup_child">
+        <Link to="/enter_stats">
           <button
             style={{
               background: location.pathname.includes("/enter_stats") && backgroundColor,
