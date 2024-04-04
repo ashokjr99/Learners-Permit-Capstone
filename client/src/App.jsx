@@ -48,6 +48,12 @@ function App() {
     setSessionToken("");
   };
 
+  const clearChildToken = () => {
+    console.log("Token Cleared");
+    localStorage.removeItem("ChildToken");
+    setChildToken("");
+  };
+
   return (
     <>
       {!sessionToken && !childToken && (
@@ -109,7 +115,7 @@ function App() {
             </Routes>
           </header>
           <div>
-            <button onClick={clearToken}>Logout!</button>
+            <button onClick={clearChildToken}>Logout!</button>
           </div>
         </>
       )}
