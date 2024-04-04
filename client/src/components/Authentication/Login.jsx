@@ -1,5 +1,4 @@
 import React from 'react'
-import Auth from './Authentication';
 
 const Login = ({ handleChange, handleLogin }) => {
   return (

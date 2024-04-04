@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
-const Signup_Child = (props) => {
+const Signup_Child = ({userId}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [parentId, setParentId] = useState("");
 
-console.log(props)
+console.log(userId)
 
   const handleChange = (state, value) => {
     switch (state) {
@@ -32,8 +32,7 @@ console.log(props)
     }
   };
 
-  const handleChildSignup = async (props) => {
-    console.log(props)
+  const handleChildSignup = async () => {
     try {
       const response = await (
         await fetch("http://localhost:8081/user/signup_child", {
@@ -42,7 +41,7 @@ console.log(props)
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            parentId: 1,
+            parentId: userId,
             first: firstName,
             last: lastName,
             email: email,
