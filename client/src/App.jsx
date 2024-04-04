@@ -79,7 +79,7 @@ function App() {
               <Route path="/home" element={<Home />} />
 
               <Route path="/login" element={<Login />} />
-              <Route path="/signup_child" element={<Signup_Child />} />
+              <Route path="/signup_child" element={<Signup_Child userId={userId}/>} />
 
               <Route path="/landing_page" element={<Stats_Landing_Page />} />
               <Route path="/enter_stats" element={<Enter_Stats />} />
@@ -97,7 +97,7 @@ function App() {
       {childToken && !sessionToken && (
         <>
           <div>
-            <Child_Nav />
+            <Child_Nav userId={userId}/>
           </div>
           <header className="App-header">
             <Routes>

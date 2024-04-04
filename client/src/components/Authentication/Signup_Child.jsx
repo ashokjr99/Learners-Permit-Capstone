@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
-const Signup_Child = (props) => {
+const Signup_Child = ({userId}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [parentId, setParentId] = useState("");
 
-console.log(props)
+console.log(userId)
 
   const handleChange = (state, value) => {
     switch (state) {
@@ -41,7 +41,7 @@ console.log(props)
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            parentId: parseInt(props.user.id),
+            parentId: userId,
             first: firstName,
             last: lastName,
             email: email,
