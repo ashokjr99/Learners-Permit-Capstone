@@ -32,7 +32,8 @@ console.log(props)
     }
   };
 
-  const handleChildSignup = async () => {
+  const handleChildSignup = async (props) => {
+    console.log(props)
     try {
       const response = await (
         await fetch("http://localhost:8081/user/signup_child", {
@@ -41,7 +42,7 @@ console.log(props)
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            parentId: parseInt(props.user.id),
+            parentId: 1,
             first: firstName,
             last: lastName,
             email: email,
