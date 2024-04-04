@@ -21,11 +21,11 @@ router.post("/post", async (req, res) => {
         userId: req.user.id,
         hours: req.body.hours,
         day: req.body.day,
-        vehicle_type: req.body.vehicle_type,
         weather: req.body.weather,
         from: req.body.from,
         to: req.body.to,
         practiced: req.body.practiced,
+        vehicle_type: req.body.vehicle_type,
       },
     });
 
