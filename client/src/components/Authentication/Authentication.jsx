@@ -51,27 +51,6 @@ const Auth = (props) => {
     }
   };
 
-  // const handleLogin = async () => {
-  //   try {
-  //     const response = await (
-  //       await fetch("http://localhost:8081/user/login", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({
-  //           email: email,
-  //           password: password,
-  //         }),
-  //       })
-  //     ).json();
-  //     console.log(response.user);
-  //     props.updateToken(response.token);
-  //     props.setUserId(response.user.id);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
   const handleLogin = async () => {
     try {
       // Fetch from the parent account login route

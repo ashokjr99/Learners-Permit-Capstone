@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import {
   Nav,
+  Child_Nav,
   Login,
   Signup_Child,
   Stats_Landing_Page,
@@ -88,7 +89,9 @@ function App() {
       )}
       {childToken && !sessionToken && (
         <>
-          <div>{/* <Nav /> */}</div>
+          <div>
+            <Child_Nav />
+          </div>
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
