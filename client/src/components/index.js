@@ -1,4 +1,5 @@
 import Nav from "./Navigation/Nav";
+import Child_Nav from "./Navigation/Child_Nav";
 import Login from "./Authentication/Login";
 import Signup_Parent from "./Authentication/Signup_Parent";
 import Stats_Landing_Page from "./Stats/Stats_Landing_Page";
@@ -13,6 +14,7 @@ import Auth from "./Authentication/Authentication"
 
 export {
   Nav,
+  Child_Nav,
   Login,
   Signup_Child,
   Signup_Parent,
