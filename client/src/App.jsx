@@ -5,7 +5,7 @@ import {
   Login,
   Signup_Child,
   Signup_Parent,
-  Home,
+  Dashboard,
   Enter_Stats,
   Check_Stats,
   About,
@@ -18,13 +18,14 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <div>
+      <Dashboard />
+      {/* <div>
         <Nav />
       </div>
       <header className="App-header">
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Navigate to="/Dashboard" />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup_Parent />} />
           <Route path="/signup_child" element={<Signup_Child />} />
@@ -36,7 +37,7 @@ function App() {
       </header>
       <footer>
         <Footer />
-      </footer>
+      </footer> */}
     </div>
   );
 }
