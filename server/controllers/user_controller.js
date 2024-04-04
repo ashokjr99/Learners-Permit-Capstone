@@ -85,7 +85,7 @@ router.post("/signup_child", async (req, res) => {
         email: req.body.email,
         Password: bcrypt.hashSync(req.body.password, 12),
         // Need to work on figuring out the parentId and how to grab it from the logged in parent
-        parentId: req.body.parentId,
+        parentId: parentId,
       },
     });
 
