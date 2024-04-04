@@ -24,7 +24,10 @@ model stats {
   hours        Int
   timestamp    DateTime? @default(now()) @db.Timestamp(0)
   vehicle_type String    @db.VarChar(45)
+<<<<<<< HEAD
   night        Boolean
+=======
+>>>>>>> 9bc63de3d4159b99570d80360851be37c559d392
   day          Boolean
   weather      String    @db.VarChar(45)
   from         String    @db.VarChar(45)

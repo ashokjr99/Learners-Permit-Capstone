@@ -39,7 +39,10 @@ const Auth = (props) => {
           body: JSON.stringify({
             first: firstName,
             last: lastName,
+            first: firstName,
+            last: lastName,
             email: email,
+            password: password,
             password: password,
           }),
         })

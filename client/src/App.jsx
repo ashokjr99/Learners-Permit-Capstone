@@ -5,7 +5,6 @@ import {
   Child_Nav,
   Login,
   Signup_Child,
-  Stats_Landing_Page,
   Home,
   Enter_Stats,
   Check_Stats,
@@ -19,7 +18,10 @@ import "./App.css";
 
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
+<<<<<<< HEAD
   const [childToken, setChildToken] = useState(false);
+=======
+>>>>>>> 9bc63de3d4159b99570d80360851be37c559d392
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
@@ -35,12 +37,15 @@ function App() {
     setSessionToken(token);
   };
 
+<<<<<<< HEAD
   const updateChildToken = (token) => {
     console.log("Token Updated", token);
     localStorage.setItem("ChildToken", token);
     setChildToken(token);
   };
 
+=======
+>>>>>>> 9bc63de3d4159b99570d80360851be37c559d392
   // Clears the Token in the local storage so a new user can sign on.
   const clearToken = () => {
     console.log("Token Cleared");
@@ -48,6 +53,7 @@ function App() {
     setSessionToken("");
   };
 
+<<<<<<< HEAD
   const clearChildToken = () => {
     console.log("Token Cleared");
     localStorage.removeItem("ChildToken");
@@ -76,10 +82,30 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<Home />} />
+=======
+  return (
+    <>
+      {!sessionToken ? (
+        <>
+        <Nav updateToken={updateToken} userId={userId} setUserId={setUserId} />
+        <Home />
+        <Auth updateToken={updateToken} userId={userId} setUserId={setUserId} />
+        </>
+      ) : (
+        <>
+          <div>
+          <Nav />
+          </div>
+          <header className="App-header">
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
+>>>>>>> 9bc63de3d4159b99570d80360851be37c559d392
 
               <Route path="/login" element={<Login />} />
               <Route path="/signup_child" element={<Signup_Child />} />
 
+<<<<<<< HEAD
               <Route path="/landing_page" element={<Stats_Landing_Page />} />
               <Route path="/enter_stats" element={<Enter_Stats />} />
               <Route path="/stats" element={<Check_Stats />} />
@@ -120,6 +146,44 @@ function App() {
         </>
       )}
     </>
+=======
+
+          <Route path="/enter_stats" element={<Enter_Stats />} />
+          <Route path="/stats" element={<Check_Stats />} />
+
+          <Route path="/about" element={<About />} />
+          <Route path="/contact_us" element={<Contact />} />
+        </Routes>
+      </header>
+        </>
+      )}
+    </>
+    // <div className="App">
+    //   <div>
+    //     <Nav />
+    //   </div>
+      // <header className="App-header">
+      //   <Routes>
+      //     <Route path="/" element={<Navigate to="/auth" />} />
+      //     <Route path="/home" element={<Home />} />
+      //     <Route path="/auth" element={<Auth />} />
+
+      //     <Route path="/login" element={<Login />} />
+      //     <Route path="/signup" element={<Signup_Child />} />
+
+      //     <Route path="/landing_page" element={<Stats_Landing_Page />} />
+      //     <Route path="/enter_stats" element={<Enter_Stats />} />
+      //     <Route path="/stats" element={<Check_Stats />} />
+
+      //     <Route path="/about" element={<About />} />
+      //     <Route path="/contact_us" element={<Contact />} />
+      //   </Routes>
+      // </header>
+    //   <footer>
+    //     <Footer />
+    //   </footer>
+    // </div>
+>>>>>>> 9bc63de3d4159b99570d80360851be37c559d392
   );
 }
 
