@@ -71,6 +71,7 @@ const Auth = (props) => {
         console.log("Parent account login successful:", parentData);
         props.updateToken(parentData.token);
         props.setUserId(parentData.user.id);
+        console.log("UPDATED USER ID" + parentData.user.id);
         return; // Exit the function if parent login was successful
       }
   
