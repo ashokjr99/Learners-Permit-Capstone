@@ -39,11 +39,8 @@ const Auth = (props) => {
           body: JSON.stringify({
             first: firstName,
             last: lastName,
-            first: firstName,
-            last: lastName,
             email: email,
-            password: password,
-            password: password,
+            password: password,        
           }),
         })
       ).json();
@@ -74,6 +71,7 @@ const Auth = (props) => {
         console.log("Parent account login successful:", parentData);
         props.updateToken(parentData.token);
         props.setUserId(parentData.user.id);
+        console.log("UPDATED USER ID" + parentData.user.id);
         return; // Exit the function if parent login was successful
       }
   
