@@ -64,7 +64,6 @@ router.get("/all", async (req, res) => {
 //? edit stats
 router.put("/edit", async (req, res) => {
   try {
-
     const updateStat = await prisma.stats.update({
       where: {
         id: req.stats.id,
@@ -110,7 +109,5 @@ router.delete("/delete/:statId", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
-
-
 
 module.exports = router;

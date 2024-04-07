@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Signup_Parent = ({ handleChange, handleSignup }) => {
   return (
@@ -21,4 +21,4 @@ const Signup_Parent = ({ handleChange, handleSignup }) => {
   );
 };
 
-export default Signup_Parent
+export default Signup_Parent;

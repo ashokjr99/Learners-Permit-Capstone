@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Login = ({ handleChange, handleLogin }) => {
   return (
@@ -17,4 +17,4 @@ const Login = ({ handleChange, handleLogin }) => {
   );
 };
 
-export default Login
+export default Login;

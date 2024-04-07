@@ -40,7 +40,7 @@ const Auth = (props) => {
             first: firstName,
             last: lastName,
             email: email,
-            password: password,        
+            password: password,
           }),
         })
       ).json();
@@ -64,7 +64,7 @@ const Auth = (props) => {
           password: password,
         }),
       });
-  
+
       // Check if the parent account login was successful
       if (parentResponse.ok) {
         const parentData = await parentResponse.json();
@@ -74,19 +74,22 @@ const Auth = (props) => {
         console.log("UPDATED USER ID" + parentData.user.id);
         return; // Exit the function if parent login was successful
       }
-  
+
       // Fetch from the child account login route
-      const childResponse = await fetch("http://localhost:8081/user/login_child", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      });
-  
+      const childResponse = await fetch(
+        "http://localhost:8081/user/login_child",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        }
+      );
+
       // Check if the child account login was successful
       if (childResponse.ok) {
         const childData = await childResponse.json();
@@ -95,9 +98,9 @@ const Auth = (props) => {
         props.setUserId(childData.user.id);
         return; // Exit the function if child login was successful
       }
-  
+
       // Handle case where neither parent nor child login was successful
-      throw new Error('Failed to login. Please check your credentials.');
+      throw new Error("Failed to login. Please check your credentials.");
     } catch (err) {
       console.log(err);
       // Handle error, show error message to the user, etc.

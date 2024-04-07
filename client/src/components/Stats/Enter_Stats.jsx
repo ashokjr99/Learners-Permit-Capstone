@@ -25,13 +25,7 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
     "Freezing Rain",
   ];
 
-  const vehicleTypes = [
-    "Sedan",
-    "Truck",
-    "Van",
-    "SUV",
-    "Motorcycle",
-  ];
+  const vehicleTypes = ["Sedan", "Truck", "Van", "SUV", "Motorcycle"];
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -43,7 +37,7 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-        try {
+    try {
       const statsData = {
         hours: parseInt(hours),
         day: true,

@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import HeaderImage from "../assets/DriveTime.png";
 
-
 const Nav = () => {
   let location = useLocation();
   console.log(location);
@@ -44,7 +43,8 @@ const Nav = () => {
       <Link to="/signup_child">
         <button
           style={{
-            background: location.pathname.includes("/signup_child") && backgroundColor,
+            background:
+              location.pathname.includes("/signup_child") && backgroundColor,
           }}
         >
           Create Child Account
