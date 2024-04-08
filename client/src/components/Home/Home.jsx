@@ -4,10 +4,10 @@ import HeroImage from "../assets/rainbow-drive-time 2.png";
 const Home = () => {
   return (
     <>
-      <header>
+      <div>
         <h1>Welcome to</h1>
-        <img src={HeroImage} style={{ marginTop: "-15em", marginBottom: "-15em", backgroundColor: "" }} />
-      </header>
+        <img src={HeroImage} style={{ backgroundColor: "" }} />
+      </div>
       <div>
         <p style={{marginBottom: "5em"}}>
           Parents please create your account here. Once you are signed up and

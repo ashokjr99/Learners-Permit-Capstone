@@ -14,10 +14,10 @@ const Nav = () => {
         src={HeaderImage}
         style={{ height: "8em", position: "fixed", left: "1em" }}
       />
-      <Link to="/home">
+      <Link to="/home2">
         <button
           style={{
-            background: location.pathname.includes("/home") && backgroundColor,
+            background: location.pathname.includes("/home2") && backgroundColor,
           }}
         >
           Home

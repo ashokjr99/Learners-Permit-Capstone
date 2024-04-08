@@ -7,7 +7,9 @@ import {
   Signup_Child,
   Signup_Parent,
   Stats_Landing_Page,
-  Home,
+  Home,  
+  Home2,  
+  Home3,  
   Enter_Stats,
   Check_Stats,
   About,
@@ -75,8 +77,8 @@ function App() {
           </div>
           <header className="App-header">
             <Routes>
-              <Route path="/" element={<Navigate to="/home" />} />
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Navigate to="/home2" />} />
+              <Route path="/home2" element={<Home />} />
 
               <Route path="/login" element={<Login />} />
               <Route path="/signup_child" element={<Signup_Child userId={userId}/>} />
@@ -101,8 +103,8 @@ function App() {
           </div>
           <header className="App-header">
             <Routes>
-              <Route path="/" element={<Navigate to="/home" />} />
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Navigate to="/home3" />} />
+              <Route path="/home3" element={<Home />} />
 
               <Route path="/login" element={<Login />} />
               <Route path="/signup_child" element={<Signup_Child userId={userId}/>} />
