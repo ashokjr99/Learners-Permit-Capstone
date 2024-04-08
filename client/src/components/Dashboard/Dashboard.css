@@ -1,0 +1,14 @@
+button {
+    border-radius: 10px;
+    width: 100px;
+    margin-top: 20px;
+    margin-left: 15px;
+ }
+ 
+ .margin-l-p {
+    margin-left: 5%;
+ }
+ 
+ .margin-r-p {
+    margin-right: 10%;
+ }
