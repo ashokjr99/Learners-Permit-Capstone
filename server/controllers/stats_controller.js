@@ -98,8 +98,39 @@ router.get("/all", async (req, res) => {
     if (!userStats) {
       return res.status(404).json({ error: "User not found" });
     }
+    // console.log(userStats);
 
-    res.status(200).json(userStats);
+    let totalHours = 0;
+    let totalDrives = userStats.length;
+
+    // capturing total amounts of each weather
+    let pieChartData = {
+      snowy: 0,
+      rainy: 0,
+      clear: 0,
+    };
+
+    // add 1 to each post for the specific weather
+    userStats.forEach((obj) => {
+      totalHours += obj.hours;
+      if (obj.weather.toLowerCase() === "snowy") {
+        pieChartData.snowy++;
+      }
+      if (obj.weather.toLowerCase() === "rainy") {
+        pieChartData.rainy++;
+      } else if (obj.weather.toLowerCase() === "clear") {
+        pieChartData.clear++;
+      }
+    });
+
+    // console.log(totalDrives, "drives");
+    // console.log(totalHours, "hours");
+
+    res.status(200).json({
+      userStats,
+      summaryData: { totalDrives, totalHours },
+      pieChartData,
+    });
   } catch (error) {
     console.log("Error fetching stats:", error);
     res.status(500).json({ error: "Internal server error" });

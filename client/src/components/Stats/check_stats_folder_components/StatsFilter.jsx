@@ -1,15 +1,9 @@
-import React, { useState } from "react";
-import FilterHolder from "./FilterHolder";
+import React from "react";
 
-const StatsList = () => {
-  const [results, setResults] = useState([]);
-
-  console.log(setResults);
-
+const StatsList = ({ results }) => {
+  // prop results passed from check_stats
   return (
     <div>
-      <FilterHolder setResults={setResults}></FilterHolder>
-
       {results.map((obj) => (
         // filter through results so that they display into the tags below
         <li key={obj.id}>
