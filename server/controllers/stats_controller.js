@@ -10,17 +10,25 @@ const bcrypt = require("bcryptjs");
 //? Importing jsonwebtoken
 const jwt = require("jsonwebtoken");
 
-// sdfdsfsdf
+let validWeather = ["Rainy", "Snowy", "Clear"];
 
 //? posting a stat
 //! add validation to routes through using a library or manually
 router.post("/post", async (req, res) => {
   try {
+    if (!validWeather.includes(req.body.weather)) {
+      // disposing of requests that do not have validWeather options
+      res.status(400).send("does not work");
+      return;
+    }
+
     const stats = await prisma.stats.create({
       data: {
         userId: req.user.id,
         hours: req.body.hours,
         day: req.body.day,
+        vehicle_type: req.body.vehicle_type,
+
         weather: req.body.weather,
         from: req.body.from,
         to: req.body.to,
@@ -45,16 +53,86 @@ router.get("/all", async (req, res) => {
   const userId = parseInt(req.user.id);
 
   try {
-    const userStats = await prisma.users.findUnique({
-      where: { id: userId },
-      select: { stats: true },
+    //? logic for filtering out the endDate and startDate
+    const filters = {};
+    // set an array to hold the endDate or the startDate if needed
+    console.log(req.query);
+    if ("endDate" in req.query || "startDate" in req.query) {
+      // if the endDate or the startDate are the only selections in the query...
+      filters.timestamp = {};
+      if ("endDate" in req.query) {
+        // if endDate only...
+        filters.timestamp.lte = new Date(req.query.endDate);
+      }
+      if ("startDate" in req.query) {
+        // if startDate only...
+        filters.timestamp.gte = new Date(req.query.startDate);
+      }
+    }
+
+    //? logic for filtering out the day and night
+    // takes front end code and matches it with the query/request
+    if ("time" in req.query) {
+      if (req.query.time === "Day") {
+        filters.day = true;
+      } else if (req.query.time === "Night") {
+        filters.day = false;
+      }
+    }
+
+    //? logic for filtering out by weather type
+    if ("weather" in req.query && validWeather.includes(req.query.weather)) {
+      // if "weather" is in the fetch "../all?weather=.. and includes valid weather types."
+      filters.weather = req.query.weather;
+    }
+
+    // console.log(filters, "this is filters");
+
+    const userStats = await prisma.stats.findMany({
+      where: {
+        userId: userId,
+
+        ...filters,
+        // makes the filters findable and pluckable
+      },
     });
 
     if (!userStats) {
       return res.status(404).json({ error: "User not found" });
     }
-    console.log(userStats.stats);
-    res.json(userStats.stats);
+    // console.log(userStats);
+
+    let totalHours = 0;
+    let totalDrives = userStats.length;
+
+    // capturing total amounts of each weather
+    let pieChartData = {
+      snowy: 0,
+      rainy: 0,
+      clear: 0,
+    };
+
+    // add 1 to each post for the specific weather
+    userStats.forEach((obj) => {
+      totalHours += obj.hours;
+      if (obj.weather.toLowerCase() === "snowy") {
+        pieChartData.snowy++;
+      }
+      if (obj.weather.toLowerCase() === "rainy") {
+        pieChartData.rainy++;
+      } else if (obj.weather.toLowerCase() === "clear") {
+        pieChartData.clear++;
+      }
+    });
+
+    // console.log(totalDrives, "drives");
+    // console.log(totalHours, "hours");
+
+    res.status(200).json({
+      userStats,
+      summaryData: { totalDrives, totalHours },
+      pieChartData,
+    });
   } catch (error) {
     console.log("Error fetching stats:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -109,5 +187,40 @@ router.delete("/delete/:statId", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+<<<<<<< HEAD
+//// function mySelect ( searchKey, searchValue, replaceKey, replaceValue ) {
+////   var objStr = "{ \"where\": { \"" + searchKey + "\": \"" + searchValue + "\" },";  // Creates the string to update the database 
+////   objStr = objStr + " \"data\": { \"" + replaceKey + "\": \"" + replaceValue + "\" }}"; 
+////   var newObj = JSON.parse( objStr );  // Converts string into json.obj
+////   return newObj
+
+//// }
+
+router.put('/edit/:id', async (req, res) => {
+  try {
+    const updateStat = await prisma.user.update({
+      where: {
+        id: req.params.id,
+      },
+      data: {
+        mileage: req.body.mileage,  
+        weather: req.body.weather,  
+        from: req.body.from,     
+        to: req.body.to,       
+        practiced: req.body.practiced,
+      },
+    })
+
+    res.status(200).json({
+      Updated: updateStat,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+=======
+
+>>>>>>> 6c38dd24f4979397c4ef8d32a79beb0eaddea28d
 
 module.exports = router;

@@ -108,8 +108,16 @@ const Auth = (props) => {
   };
   return (
     <>
-      <Signup_Parent handleSignup={handleSignup} handleChange={handleChange} />
-      <Login handleLogin={handleLogin} handleChange={handleChange} />
+      <div
+        className="authentication"
+        style={{ display: "flex", flexDirection: "row", padding: "2em", justifyContent: "center" }}
+      >
+        <Signup_Parent
+          handleSignup={handleSignup}
+          handleChange={handleChange}
+        />
+        <Login handleLogin={handleLogin} handleChange={handleChange} />
+      </div>
     </>
   );
 };

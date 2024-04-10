@@ -1,8 +1,12 @@
 import React from "react";
 
+import Collapsible from 'react-collapsible';
+
 const Signup_Parent = ({ handleChange, handleSignup }) => {
   return (
-    <div>
+    <div className='parent-signup' style={{padding: "2em"}}>
+      <button>
+      <Collapsible trigger={'Singup'} triggerWhenOpen={'Close'}>
       <form style={{ display: "flex", flexDirection: "column" }}>
         <h2>Sign Up!</h2>
         <label>First Name</label>
@@ -17,6 +21,8 @@ const Signup_Parent = ({ handleChange, handleSignup }) => {
           Sign Up!
         </button>
       </form>
+      </Collapsible>
+      </button>
     </div>
   );
 };

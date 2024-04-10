@@ -16,6 +16,8 @@ router.post("/signup", async (req, res) => {
   try {
     const user = await prisma.parents.create({
       data: {
+        parentId: 1,
+        //! change later
         FirstName: req.body.first,
         LastName: req.body.last,
         email: req.body.email,

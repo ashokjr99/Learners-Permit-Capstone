@@ -47,6 +47,15 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
         to,
         practiced,
       };
+  
+  const sendNotification = async (e) => {
+    e.preventDefault();
+    try {
+      console.log(first)
+    } catch (err) {
+      console.log("There appears to have been an error sending a notification." + err)
+    }
+  }    
 
       const response = await fetch("http://localhost:8081/stats/post", {
         method: "POST",
