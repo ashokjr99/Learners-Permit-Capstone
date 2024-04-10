@@ -119,7 +119,6 @@ function App() {
 
               <Route path="/login" element={<Login />} />
 
-              <Route path="/landing_page" element={<Stats_Landing_Page />} />
               <Route path="/enter_stats" element={<Enter_Stats userId={userId}/>} />
               <Route path="/stats" element={<Check_Stats />} />
 
