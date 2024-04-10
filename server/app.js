@@ -11,7 +11,7 @@ const app = express();
 const cors = require("cors");
 
 //? Import controller/s
-const { userController, statsController } = require("./controllers/index");
+const { userController, statsController, parentController } = require("./controllers/index");
 
 //? Import validation middleware
 const validateSession = require("./middleware/validate-session");

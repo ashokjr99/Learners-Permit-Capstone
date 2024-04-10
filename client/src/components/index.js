@@ -1,4 +1,5 @@
 import Nav from "./Navigation/Nav";
+import Child_Nav from "./Navigation/Child_Nav";
 import Login from "./Authentication/Login";
 import Signup_Parent from "./Authentication/Signup_Parent";
 import Signup_Child from "./Authentication/Signup_Child";
@@ -8,9 +9,11 @@ import Check_Stats from "./Stats/Check_Stats";
 import About from "./Brochure/About";
 import Contact from "./Brochure/Contact";
 import Footer from "./Navigation/Footer";
+import Auth from "./Authentication/Authentication"
 
 export {
   Nav,
+  Child_Nav,
   Login,
   Signup_Child,
   Signup_Parent,
@@ -20,4 +23,5 @@ export {
   About,
   Contact,
   Footer,
+  Auth,
 };

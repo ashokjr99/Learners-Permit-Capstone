@@ -10,11 +10,13 @@ datasource db {
 model users {
   // one to many relationship
   id        Int    @id @default(autoincrement())
-  parentId   Int 
+
+  parentId  Int
   FirstName String @db.VarChar(45)
   LastName  String @db.VarChar(45)
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password  String @db.VarChar(255)
+
   stats stats[]
   parent   parents  @relation(fields: [parentId], references: [id])
 }
@@ -32,6 +34,19 @@ model stats {
   practiced String    @db.VarChar(45)
   user      users     @relation(fields: [userId], references: [id])
   // referenced users' id
+
+
+  @@index([parentId], map: "users_parentId_fkey")
+}
+
+
+model parents {
+  id        Int    @id @default(autoincrement())
+  FirstName String @db.VarChar(45)
+  LastName  String @db.VarChar(45)
+  email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
+  Password  String @db.VarChar(255)
+
 }
 
 
