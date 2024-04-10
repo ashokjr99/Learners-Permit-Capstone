@@ -5,8 +5,11 @@ import {
   Child_Nav,
   Login,
   Signup_Child,
+
+
   Signup_Parent,
   Stats_Landing_Page,
+
   Home,
   Enter_Stats,
   Check_Stats,
@@ -121,6 +124,7 @@ function App() {
         </>
       )}
     </>
+
   );
 }
 
