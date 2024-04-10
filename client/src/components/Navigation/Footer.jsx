@@ -4,13 +4,13 @@ import { Link, useLocation } from "react-router-dom";
 const Footer = () => {
   let location = useLocation();
   console.log(location);
-  let backgroundColor = "darkblue";
+  let text = "#C1C8E4";
 
   return (
-    <div style={{ display: "flex", gap: "1em", justifyContent: "center" }}>
-      <Link to="/home">Home</Link>
-      <Link to="/about">About</Link>
-      <Link to="/contact_us">Contact</Link>
+    <div style={{ display: "flex", gap: "1em", justifyContent: "center"}}>
+      <Link to="/home" style={{color:text}}>Home</Link>
+      <Link to="/about" style={{color:text}}>About</Link>
+      <Link to="/contact_us" style={{color:text}}>Contact</Link>
     </div>
   );
 };

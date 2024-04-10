@@ -4,14 +4,6 @@ const router = require("express").Router();
 //? Importing prisma db
 const prisma = require("../db");
 
-//? Importing bycrypt
-const bcrypt = require("bcryptjs");
-
-//? Importing jsonwebtoken
-const jwt = require("jsonwebtoken");
-
-// sdfdsfsdf
-
 //? posting a stat
 //! add validation to routes through using a library or manually
 router.post("/post", async (req, res) => {
