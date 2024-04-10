@@ -6,7 +6,7 @@ import {
   Login,
   Signup_Child,
   Signup_Parent,
-  Home,
+  Dashboard,
   Home2,
   Home3,
   Enter_Stats,
