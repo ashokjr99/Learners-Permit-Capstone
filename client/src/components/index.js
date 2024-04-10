@@ -2,7 +2,6 @@ import Nav from "./Navigation/Nav";
 import Child_Nav from "./Navigation/Child_Nav";
 import Login from "./Authentication/Login";
 import Signup_Parent from "./Authentication/Signup_Parent";
-import Stats_Landing_Page from "./Stats/Stats_Landing_Page";
 import Signup_Child from "./Authentication/Signup_Child";
 import Home from "./Home/Home";
 import Home2 from "./Home/Home2";
