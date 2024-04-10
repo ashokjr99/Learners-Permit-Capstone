@@ -189,6 +189,4 @@ router.delete("/delete/:statId", async (req, res) => {
   }
 });
 
-
-
 module.exports = router;
