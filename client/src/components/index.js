@@ -4,6 +4,8 @@ import Login from "./Authentication/Login";
 import Signup_Parent from "./Authentication/Signup_Parent";
 import Signup_Child from "./Authentication/Signup_Child";
 import Home from "./Home/Home";
+import Home2 from "./Home/Home2";
+import Home3 from "./Home/Home3";
 import Enter_Stats from "./Stats/Enter_Stats";
 import Check_Stats from "./Stats/Check_Stats";
 import About from "./Brochure/About";
@@ -17,7 +19,10 @@ export {
   Login,
   Signup_Child,
   Signup_Parent,
-  Home,
+  Stats_Landing_Page,
+  Home,  
+  Home2,  
+  Home3,  
   Enter_Stats,
   Check_Stats,
   About,
