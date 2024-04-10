@@ -11,7 +11,7 @@ import Check_Stats from "./Stats/Check_Stats";
 import About from "./Brochure/About";
 import Contact from "./Brochure/Contact";
 import Footer from "./Navigation/Footer";
-import Auth from "./Authentication/Authentication"
+import Auth from "./Authentication/Authentication";
 
 export {
   Nav,
