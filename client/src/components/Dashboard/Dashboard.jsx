@@ -7,6 +7,7 @@ const Dashboard = () => {
     <div>
        <div className="w3-sidebar w3-light-grey w3-bar-block" style={{width:"20%"}}>
            <h3 className="w3-bar-item">Menu</h3>
+           <input type="text" placeholder="Search.."/>
            <button>Summary</button>
            <button>button 2</button>
            <button>button 3</button>
