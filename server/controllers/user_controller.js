@@ -10,7 +10,9 @@ const bcrypt = require("bcryptjs");
 //? Importing jsonwebtoken
 const jwt = require("jsonwebtoken");
 
-router.post("/signup_child", async (req, res) => {
+const validateSession = require("../middleware/validate-session")
+
+router.post("/signup_child", validateSession, async (req, res) => {
   try {
     // checks for parent, as they are the only ones who can sign up children
     if (req.user.type === "parent") {
