@@ -10,11 +10,12 @@ require("dotenv").config();
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
+  // service: "gmail",
   port: 465, // or 587 for STARTTLS
   secure: true, // true for 465, false for other ports
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
   },
 });
 
@@ -23,38 +24,46 @@ const transporter = nodemailer.createTransport({
 router.post(
   "/forgot-password",
   async (req, res) => {
-
     try {
       const { email } = req.body;
 
-      const user = await prisma.users.findUnique({
+      // Find the user by email
+      const parentUser = await prisma.parents.findUnique({
         where: {
           email: email,
         },
       });
 
+      // Check if the user exists
+      if (!parentUser) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      // Configure the email options
       const mailOptions = {
         from: "drivetimetracker@gmail.com",
-        to: user.email,
-        subject: "Test Email",
+        to: parentUser.email, // Use user.email to send the email to the user's email address
+        subject: "Password Reset",
         text: "This is a test email from Nodemailer.",
       };
-      
+
+      // Send the email
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           console.log("Error occurred:", error);
+          res.status(500).json({ error: "Failed to send email" });
         } else {
           console.log("Email sent:", info.response);
+          res.status(200).json({ message: "Password reset email sent" });
         }
       });
-
-      await transporter.sendMail(mailOptions);
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: "Internal server error" });
     }
   }
 );
+
 
 // Route for handling password reset from the link
 router.post("/reset-password", async (req, res) => {
