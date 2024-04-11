@@ -9,8 +9,8 @@ datasource db {
 
 model users {
   // one to many relationship
-  id        Int    @id @default(autoincrement())
-  parentId  Int
+  id   String @id @default(uuid())
+  parentId  String
   FirstName String @db.VarChar(45)
   LastName  String @db.VarChar(45)
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
@@ -22,7 +22,7 @@ model users {
 
 model stats {
   id        Int       @id @default(autoincrement())
-  userId    Int
+  userId    String
   hours     Int
   timestamp DateTime? @default(now()) @db.Timestamp(0)
   vehicle_type String @db.VarChar(45)
@@ -31,18 +31,18 @@ model stats {
   from      String    @db.VarChar(45)
   to        String    @db.VarChar(45)
   practiced String    @db.VarChar(45)
+  user users @relation(fields: [userId], references: [id])
   parent_approval   Boolean
   @@index([userId], map: "stats_userId_fkey")
 }
 
 model parents {
-  id        Int    @id @default(autoincrement())
+  id   String @id @default(uuid())
   FirstName String @db.VarChar(45)
   LastName  String @db.VarChar(45)
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password  String @db.VarChar(255)
-  user      users     @relation(fields: [userId], references: [id])
-  // referenced users' id
+  ManagedUsers  users[]
 
 }
 

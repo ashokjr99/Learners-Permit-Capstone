@@ -58,6 +58,7 @@ function App() {
   };
 
   return (
+    // <Check_Stats />
     <>
       {!sessionToken && !childToken && (
         <>
@@ -89,7 +90,6 @@ function App() {
                 element={<Signup_Child userId={userId} />}
               />
 
-
               <Route path="/enter_stats" element={<Enter_Stats />} />
 
               <Route path="/stats" element={<Check_Stats />} />
@@ -119,7 +119,11 @@ function App() {
 
               <Route path="/login" element={<Login />} />
 
-              <Route path="/enter_stats" element={<Enter_Stats userId={userId}/>} />
+              <Route
+                path="/enter_stats"
+                element={<Enter_Stats userId={userId} />}
+              />
+
               <Route path="/stats" element={<Check_Stats />} />
 
               <Route path="/about" element={<About />} />

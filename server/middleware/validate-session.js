@@ -24,6 +24,7 @@ const validateSession = async (req, res, next) => {
     console.log(decoded);
 
     //? Find user in our db
+
     const user = await prisma.users.findUnique({
       where: {
         id: decoded.id,
@@ -31,10 +32,24 @@ const validateSession = async (req, res, next) => {
       },
     });
 
-    //? Check if user exists in db
-    if (!user) throw new Error("User not found");
-    console.log(user);
-    req.user = user;
+    //? checks parent if no user validation needed
+    if (!user) {
+      const parent = await prisma.parents.findUnique({
+        where: {
+          id: decoded.id,
+        },
+      });
+      if (!parent) {
+        throw new Error("Parent not found");
+      }
+      req.user = parent;
+      req.user.type = "parent";
+    } else {
+      req.user = user;
+      req.user.type = "child";
+    }
+
+    console.log(req.user);
 
     return next();
   } catch (err) {

@@ -33,7 +33,7 @@ const Check_Stats = () => {
           `http://localhost:8081/stats/all?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
           {
             headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEyNjE2MzIwLCJleHAiOjE3MTI3MDI3MjB9.vSemwbl9TuhJZowh4I3YFcwqELFSw-001EDHFQaBong`,
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEyNzk0NTY5LCJleHAiOjE3MTI4ODA5Njl9.a_UG9ltbtjp0JBeNNA-Ws72Q8B6fn4jTh_arOaYZ4lg`,
             },
             // headers: {
             //   Authorization: `Bearer  ${localStorage.getItem("MyToken")}`,
@@ -85,6 +85,7 @@ const Check_Stats = () => {
       </PDFDownloadLink>
 
       <StatsFilter results={results} />
+      {/* stats_filter houses all of the data that is filtered through */}
       <SummaryHeader hours={hours} drives={drives} />
       <ChartsHolder
         weatherDrivesTotalForEach={weatherDrivesTotalForEach}

@@ -32,6 +32,8 @@ router.post("/post", async (req, res) => {
         to: req.body.to,
         practiced: req.body.practiced,
         vehicle_type: req.body.vehicle_type,
+
+        parent_approval: false,
       },
     });
 
@@ -140,7 +142,6 @@ router.get("/all", async (req, res) => {
 //? edit stats
 router.put("/edit", async (req, res) => {
   try {
-
     const updateStat = await prisma.stats.update({
       where: {
         id: req.stats.id,

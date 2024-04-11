@@ -6,7 +6,6 @@ const Signup_Child = ({userId}) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [parentId, setParentId] = useState("");
 
 console.log(userId)
 
@@ -23,9 +22,6 @@ console.log(userId)
         break;
       case "password":
         setPassword(value);
-        break;
-      case "parentId":
-        setParentId(props.id);
         break;
       default:
         console.log("Something went wrong");
@@ -56,8 +52,6 @@ console.log(userId)
   };
 
   return (
-    <>
-      {!parentId ? (
         <>
           <div style={{display:"flex", flex:"column", justifyContent:"center"}}>
             <form style={{ display: "flex", flexDirection: "column" }}>
@@ -82,14 +76,6 @@ console.log(userId)
             </form>
           </div>
         </>
-      ) : (
-        <>
-          <div>
-            <p>Child Account Created!</p>
-          </div>
-        </>
-      )}
-    </>
   );
 };
 
