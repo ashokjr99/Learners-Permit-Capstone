@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
-const Signup_Child = ({userId}) => {
+const Signup_Child = ({ userId }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [parentId, setParentId] = useState("");
 
-console.log(userId)
+  console.log(userId);
 
   const handleChange = (state, value) => {
     switch (state) {
@@ -38,7 +38,7 @@ console.log(userId)
         await fetch("http://localhost:8081/user/signup_child", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            Authorization: `Bearer  ${localStorage.getItem("MyToken")}`,
           },
           body: JSON.stringify({
             parentId: userId,

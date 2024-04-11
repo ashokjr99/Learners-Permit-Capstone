@@ -31,6 +31,7 @@ const validateSession = async (req, res, next) => {
         // from decoded object above on line 24
       },
     });
+    console.log({ user });
 
     //? checks parent if no user validation needed
     if (!user) {
@@ -39,6 +40,7 @@ const validateSession = async (req, res, next) => {
           id: decoded.id,
         },
       });
+      console.log({ parent });
       if (!parent) {
         throw new Error("Parent not found");
       }

@@ -52,7 +52,7 @@ router.post("/post", async (req, res) => {
 
 //? get all stats
 router.get("/all", async (req, res) => {
-  const userId = parseInt(req.user.id);
+  const userId = req.user.id;
 
   try {
     //? logic for filtering out the endDate and startDate

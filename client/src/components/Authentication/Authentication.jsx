@@ -31,7 +31,7 @@ const Auth = (props) => {
   const handleSignup = async () => {
     try {
       const response = await (
-        await fetch("http://localhost:8081/user/signup", {
+        await fetch("http://localhost:8081/parent/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -77,7 +77,7 @@ const Auth = (props) => {
 
       // Fetch from the child account login route
       const childResponse = await fetch(
-        "http://localhost:8081/user/login_child",
+        "http://localhost:8081/parent/login_child",
         {
           method: "POST",
           headers: {
@@ -110,7 +110,12 @@ const Auth = (props) => {
     <>
       <div
         className="authentication"
-        style={{ display: "flex", flexDirection: "row", padding: "2em", justifyContent: "center" }}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "2em",
+          justifyContent: "center",
+        }}
       >
         <Signup_Parent
           handleSignup={handleSignup}

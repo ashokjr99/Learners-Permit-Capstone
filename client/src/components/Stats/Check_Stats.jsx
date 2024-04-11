@@ -33,7 +33,7 @@ const Check_Stats = () => {
           `http://localhost:8081/stats/all?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
           {
             headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEyNzk0NTY5LCJleHAiOjE3MTI4ODA5Njl9.a_UG9ltbtjp0JBeNNA-Ws72Q8B6fn4jTh_arOaYZ4lg`,
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2MzE1NDEwLTgyZmMtNGU1Mi1hYzYzLThhYjk1NTcyMWU3YSIsImlhdCI6MTcxMjg3NjMxMCwiZXhwIjoxNzEyOTYyNzEwfQ.ItGI_mfV8TJuvxJZUQoKKIo69D773J9usfWhnx8J88Q`,
             },
             // headers: {
             //   Authorization: `Bearer  ${localStorage.getItem("MyToken")}`,

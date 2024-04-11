@@ -9,8 +9,8 @@ datasource db {
 
 model users {
   // one to many relationship
-  id        Int    @id @default(autoincrement())
-  parentId  Int
+  id        String   @id @default(uuid())
+  parentId  String
   FirstName String @db.VarChar(45)
   LastName  String @db.VarChar(45)
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
@@ -22,7 +22,7 @@ model users {
 
 model stats {
   id        Int       @id @default(autoincrement())
-  userId    Int
+  userId    String
   hours   Int
   timestamp DateTime? @default(now()) @db.Timestamp(0)
   vehicle_type String @db.VarChar(45)
@@ -38,7 +38,7 @@ model stats {
 }
 
 model parents {
-  id        Int    @id @default(autoincrement())
+  id        String    @id @default(uuid())
   FirstName String @db.VarChar(45)
   LastName  String @db.VarChar(45)
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
