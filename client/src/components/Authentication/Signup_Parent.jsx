@@ -17,7 +17,7 @@ const Signup_Parent = ({ handleChange, handleSignup }) => {
         <input onChange={(e) => handleChange("email", e.target.value)} />
         <label>Password</label>
         <input onChange={(e) => handleChange("password", e.target.value)} />
-        <button style={{ margin: "1em" }} type="button" onClick={handleSignup}>
+        <button style={{ margin: "1em", width: "9em" }} type="button" onClick={handleSignup}>
           Sign Up!
         </button>
       </form>

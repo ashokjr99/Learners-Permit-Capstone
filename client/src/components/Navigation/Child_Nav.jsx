@@ -8,15 +8,15 @@ const Child_Nav = () => {
     let backgroundColor = "darkblue";
   
     return (
-      <div style={{ display: "flex", gap: "1em", justifyContent: "center" }}>
+      <div className="w3-sidebar w3-light-grey w3-bar-block" style={{width:"20%"}}>
         <img
           src={HeaderImage}
-          style={{ height: "8em", position: "fixed", left: "1em" }}
+          style={{ height: "8em", left: "1em" }}
         />
-        <Link to="/home">
+        <Link to="/dashboard">
           <button
             style={{
-              background: location.pathname.includes("/home") && backgroundColor,
+              background: location.pathname.includes("/dashboard") && backgroundColor,
             }}
           >
             Home

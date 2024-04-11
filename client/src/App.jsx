@@ -110,6 +110,7 @@ function App() {
         <>
           <div>
             <Child_Nav userId={userId} />
+            <Dashboard />
           </div>
           <header className="App-header">
             <Routes>
