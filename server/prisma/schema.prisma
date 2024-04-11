@@ -34,7 +34,7 @@ model stats {
   user            users     @relation(fields: [userId], references: [id])
   parent_approval Boolean
 
-  @@index([parentId], map: "users_parentId_fkey")
+  @@index([userId], map: "stats_userId_fkey")
 }
 
 model parents {
