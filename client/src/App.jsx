@@ -24,6 +24,7 @@ function App() {
   const [sessionToken, setSessionToken] = useState(false);
   const [childToken, setChildToken] = useState(false);
   const [userId, setUserId] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("MyToken")) {
@@ -49,12 +50,14 @@ function App() {
     console.log("Token Cleared");
     localStorage.removeItem("MyToken");
     setSessionToken("");
+    navigate("/");
   };
 
   const clearChildToken = () => {
     console.log("Token Cleared");
     localStorage.removeItem("ChildToken");
     setChildToken("");
+    navigate("/");
   };
 
   return (
