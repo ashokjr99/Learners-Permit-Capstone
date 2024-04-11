@@ -11,7 +11,11 @@ const app = express();
 const cors = require("cors");
 
 //? Import controller/s
-const { userController, statsController, parentController } = require("./controllers/index");
+const {
+  userController,
+  statsController,
+  parentController,
+} = require("./controllers/index");
 
 //? Import validation middleware
 const validateSession = require("./middleware/validate-session");
@@ -30,8 +34,10 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 //? Using the controllers
-app.use("/user", userController);
+app.use("/parent", parentController);
 app.use(validateSession);
+// user needs token from the parent signup
+app.use("/user", userController);
 app.use("/stats", statsController);
 
 //? Initial spin up of the Express server

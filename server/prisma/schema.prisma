@@ -32,6 +32,7 @@ model stats {
   to        String    @db.VarChar(45)
   practiced String    @db.VarChar(45)
   user      users     @relation(fields: [userId], references: [id])
+  parent_approval Boolean 
 
   @@index([userId], map: "stats_userId_fkey")
 }
