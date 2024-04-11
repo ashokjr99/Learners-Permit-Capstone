@@ -188,14 +188,7 @@ router.delete("/delete/:statId", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-//// function mySelect ( searchKey, searchValue, replaceKey, replaceValue ) {
-////   var objStr = "{ \"where\": { \"" + searchKey + "\": \"" + searchValue + "\" },";  // Creates the string to update the database 
-////   objStr = objStr + " \"data\": { \"" + replaceKey + "\": \"" + replaceValue + "\" }}"; 
-////   var newObj = JSON.parse( objStr );  // Converts string into json.obj
-////   return newObj
 
-//// }
 
 router.put('/edit/:id', async (req, res) => {
   try {
@@ -219,8 +212,5 @@ router.put('/edit/:id', async (req, res) => {
     console.log(err);
   }
 });
-=======
-
->>>>>>> 6c38dd24f4979397c4ef8d32a79beb0eaddea28d
 
 module.exports = router;

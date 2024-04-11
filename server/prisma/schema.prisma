@@ -9,60 +9,34 @@ datasource db {
 
 model users {
   // one to many relationship
-  id        Int    @id @default(autoincrement())
-<<<<<<< HEAD
-=======
+  id Int @id @default(autoincrement())
 
->>>>>>> 6c38dd24f4979397c4ef8d32a79beb0eaddea28d
   parentId  Int
   FirstName String @db.VarChar(45)
   LastName  String @db.VarChar(45)
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password  String @db.VarChar(255)
 
-<<<<<<< HEAD
-  @@index([parentId], map: "users_parentId_fkey")
-=======
-  stats stats[]
-  parent   parents  @relation(fields: [parentId], references: [id])
->>>>>>> 6c38dd24f4979397c4ef8d32a79beb0eaddea28d
+  stats  stats[]
+  parent parents @relation(fields: [parentId], references: [id])
 }
 
 model stats {
-  id        Int       @id @default(autoincrement())
-  userId    Int
-<<<<<<< HEAD
-  hours     Int
-=======
-  hours   Int
->>>>>>> 6c38dd24f4979397c4ef8d32a79beb0eaddea28d
-  timestamp DateTime? @default(now()) @db.Timestamp(0)
-  vehicle_type String @db.VarChar(45)
-  day  Boolean
-  weather   String    @db.VarChar(45)
-  from      String    @db.VarChar(45)
-  to        String    @db.VarChar(45)
-  practiced String    @db.VarChar(45)
-<<<<<<< HEAD
-
-  @@index([userId], map: "stats_userId_fkey")
-}
-
-model parents {
-  id        Int    @id @default(autoincrement())
-  FirstName String @db.VarChar(45)
-  LastName  String @db.VarChar(45)
-  email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
-  Password  String @db.VarChar(255)
-=======
-  user      users     @relation(fields: [userId], references: [id])
+  id           Int       @id @default(autoincrement())
+  userId       Int
+  hours        Int
+  timestamp    DateTime? @default(now()) @db.Timestamp(0)
+  vehicle_type String    @db.VarChar(45)
+  day          Boolean
+  weather      String    @db.VarChar(45)
+  from         String    @db.VarChar(45)
+  to           String    @db.VarChar(45)
+  practiced    String    @db.VarChar(45)
+  user         users     @relation(fields: [userId], references: [id])
   // referenced users' id
 
-
   @@index([parentId], map: "users_parentId_fkey")
->>>>>>> 6c38dd24f4979397c4ef8d32a79beb0eaddea28d
 }
-
 
 model parents {
   id        Int    @id @default(autoincrement())
@@ -70,15 +44,13 @@ model parents {
   LastName  String @db.VarChar(45)
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password  String @db.VarChar(255)
-
 }
 
-
 model parents {
-  id        Int    @id @default(autoincrement())
-  FirstName String @db.VarChar(45)
-  LastName  String @db.VarChar(45)
-  email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
-  Password  String @db.VarChar(255)
+  id           Int     @id @default(autoincrement())
+  FirstName    String  @db.VarChar(45)
+  LastName     String  @db.VarChar(45)
+  email        String  @unique(map: "email_UNIQUE") @db.VarChar(100)
+  Password     String  @db.VarChar(255)
   ManagedUsers users[]
 }

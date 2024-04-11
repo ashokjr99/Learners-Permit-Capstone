@@ -60,7 +60,7 @@ function App() {
     <>
       {!sessionToken && !childToken && (
         <>
-          <Home />
+          <Dashboard />
           <Auth
             updateToken={updateToken}
             updateChildToken={updateChildToken}
