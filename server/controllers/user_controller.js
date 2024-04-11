@@ -10,14 +10,12 @@ const bcrypt = require("bcryptjs");
 //? Importing jsonwebtoken
 const jwt = require("jsonwebtoken");
 
-//? signing up new user
+//? signing up new parent user
 //! add validation to routes through using a library or manually
 router.post("/signup", async (req, res) => {
   try {
     const user = await prisma.parents.create({
       data: {
-        parentId: 1,
-        //! change later
         FirstName: req.body.first,
         LastName: req.body.last,
         email: req.body.email,
@@ -42,7 +40,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-//? Logging in a user
+//? Logging in a parent user
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
