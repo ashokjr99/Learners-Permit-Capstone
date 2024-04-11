@@ -34,6 +34,7 @@ console.log(userId)
         await fetch("http://localhost:8081/user/signup_child", {
           method: "POST",
           headers: {
+            "Authorization": "Bearer " + localStorage.getItem("MyToken"),
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
