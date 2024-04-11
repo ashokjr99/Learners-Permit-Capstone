@@ -38,7 +38,7 @@ const Signup_Child = ({ userId }) => {
         await fetch("http://localhost:8081/user/signup_child", {
           method: "POST",
           headers: {
-            Authorization: `Bearer  ${localStorage.getItem("MyToken")}`,
+            Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
           },
           body: JSON.stringify({
             parentId: userId,
