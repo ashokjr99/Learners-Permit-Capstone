@@ -31,6 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //? Using the controllers
 app.use("/user", userController);
+app.use("/parent", parentController)
 app.use(validateSession);
 app.use("/stats", statsController);
 

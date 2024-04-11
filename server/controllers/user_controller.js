@@ -11,72 +11,71 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 //? signing up new user
-//! add validation to routes through using a library or manually
-router.post("/signup", async (req, res) => {
-  try {
-    const user = await prisma.parents.create({
-      data: {
-        parentId: 1,
-        //! change later
-        FirstName: req.body.first,
-        LastName: req.body.last,
-        email: req.body.email,
-        Password: bcrypt.hashSync(req.body.password, 12),
-      },
-    });
+// router.post("/signup", async (req, res) => {
+//   try {
+//     const parentUser = await prisma.parents.create({
+//       data: {
+//         FirstName: req.body.first,
+//         LastName: req.body.last,
+//         email: req.body.email,
+//         Password: bcrypt.hashSync(req.body.password, 12),
+//       },
+//     });
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-      expiresIn: 60 * 60 * 24,
-    });
+//     const token = jwt.sign({ id: parentUser.id }, process.env.JWT_SECRET, {
+//       expiresIn: 60 * 60 * 24,
+//     });
 
-    res.status(200).json({
-      Mgs: "Success! User created!",
-      User: user,
-      Token: token,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      Error: err,
-    });
-  }
-});
+//     res.status(200).json({
+//       Mgs: "Success! User created!",
+//       User: parentUser,
+//       Token: token,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json({
+//       Error: err,
+//     });
+//   }
+// });
 
-//? Logging in a user
-router.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
+// //? Logging in a user
+// router.post("/login", async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
 
-    const user = await prisma.parents.findUnique({
-      where: {
-        email: email,
-      },
-    });
+//     const parentUser = await prisma.parents.findUnique({
+//       where: {
+//         email: email,
+//       },
+//     });
 
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
+//     if (!user) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
 
-    const passwordMatch = await bcrypt.compare(password, user.Password);
+//     const passwordMatch = await bcrypt.compare(password, parentUser.Password);
 
-    if (!passwordMatch) {
-      return res.status(401).json({ error: "Invalid credentials" });
-    }
+//     if (!passwordMatch) {
+//       return res.status(401).json({ error: "Invalid credentials" });
+//     }
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-      expiresIn: 60 * 60 * 24, // Token expires in 24 hours
-    });
+//     const token = jwt.sign({ id: parentUser.id }, process.env.JWT_SECRET, {
+//       expiresIn: 60 * 60 * 24, // Token expires in 24 hours
+//     });
 
-    res.status(200).json({
-      message: "User logged in successfully",
-      user: user,
-      token: token,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
+//     res.status(200).json({
+//       message: "User logged in successfully",
+//       user: parentUser,
+//       token: token,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// });
+
+module.exports = router;
 
 router.post("/signup_child", async (req, res) => {
   try {

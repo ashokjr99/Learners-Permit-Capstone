@@ -9,10 +9,10 @@ const Nav = () => {
   let backgroundColor = "darkblue";
 
   return (
-    <div className="w3-sidebar w3-light-grey w3-bar-block" style={{width:"20%"}}>
+    <div >
       <img
         src={HeaderImage}
-        style={{ height: "8em", position: "fixed", left: "1em" }}
+        style={{ height: "8em", left: "1em" }}
       />
       <Link to="/home2">
         <button

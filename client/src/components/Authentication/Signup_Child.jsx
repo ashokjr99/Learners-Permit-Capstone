@@ -59,7 +59,7 @@ console.log(userId)
     <>
       {!parentId ? (
         <>
-          <div>
+          <div style={{display:"flex", flex:"column", justifyContent:"center"}}>
             <form style={{ display: "flex", flexDirection: "column" }}>
               <h2>Sign Up!</h2>
               <label>First Name</label>
