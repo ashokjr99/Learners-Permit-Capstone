@@ -87,6 +87,7 @@ const CreatePDF = ({ results, hours }) => {
                 {/* grabs us date of posting */}
                 <TD>{obj.vehicle_type}</TD>
                 <TD>{obj.weather}</TD>
+                //! do a day or night also
                 <TD>{obj.from}</TD>
                 <TD>{obj.to}</TD>
               </TR>
