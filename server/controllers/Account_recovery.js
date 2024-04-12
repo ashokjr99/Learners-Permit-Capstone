@@ -41,7 +41,7 @@ router.post(
 
       // Configure the email options
       const mailOptions = {
-        from: "drivetimetracker@gmail.com",
+        from: "drivingtimetracker@gmail.com",
         to: parentUser.email, // Use user.email to send the email to the user's email address
         subject: "Password Reset",
         text: "This is a test email from Nodemailer.",
