@@ -22,8 +22,8 @@ import "./App.css";
 
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
-  const [childToken, setChildToken] = useState(false);
   const [userId, setUserId] = useState("");
+  const [userType, setUserType] = useState("")
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,51 +33,44 @@ function App() {
   }, []);
 
   // Sets the Token for the user session in the localstorage of the website.
-  const updateToken = (token) => {
+  const updateToken = (token, userType) => {
     console.log("Token Updated", token);
+    console.log("User Type", userType);
     localStorage.setItem("MyToken", token);
+    localStorage.setItem("User Type", userType);
     setSessionToken(token);
-  };
-
-  const updateChildToken = (token) => {
-    console.log("Token Updated", token);
-    localStorage.setItem("ChildToken", token);
-    setChildToken(token);
+    setUserType(userType);
   };
 
   // Clears the Token in the local storage so a new user can sign on.
   const clearToken = () => {
     console.log("Token Cleared");
-    localStorage.removeItem("MyToken");
+    // localStorage.removeItem("MyToken");
+    // localStorage.removeItem("")
+    localStorage.clear()
     setSessionToken("");
-    navigate("/");
-  };
-
-  const clearChildToken = () => {
-    console.log("Token Cleared");
-    localStorage.removeItem("ChildToken");
-    setChildToken("");
+    setUserType("");
     navigate("/");
   };
 
   return (
     // <Check_Stats />
     <>
-      {!sessionToken && !childToken && (
+      {!sessionToken && !userType && (
         <>
           <Home />
           <Auth
             updateToken={updateToken}
-            updateChildToken={updateChildToken}
             userId={userId}
             setUserId={setUserId}
+            setUserType={setUserType}
           />
           <footer>
             <Footer />
           </footer>
         </>
       )}
-      {sessionToken && !childToken && (
+      {sessionToken && userType("parent") && (
         <>
           <div>
             <Nav />
@@ -109,7 +102,7 @@ function App() {
           </footer>
         </>
       )}
-      {childToken && !sessionToken && (
+      {sessionToken && userType("child") && (
         <>
           <div>
             <Child_Nav userId={userId} />
@@ -134,7 +127,7 @@ function App() {
             </Routes>
           </header>
           <div>
-            <button onClick={clearChildToken}>Logout!</button>
+            <button onClick={clearToken}>Logout!</button>
           </div>
           <footer>
             <Footer />
