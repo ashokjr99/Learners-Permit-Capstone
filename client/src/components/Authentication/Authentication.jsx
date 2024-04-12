@@ -71,6 +71,7 @@ const Auth = (props) => {
         console.log("Parent account login successful:", parentData);
         props.updateToken(parentData.token);
         props.setUserId(parentData.user.id);
+        props.setUserType(parentData.user.type);
         console.log("UPDATED USER ID" + parentData.user.id);
         return; // Exit the function if parent login was successful
       }
@@ -94,8 +95,9 @@ const Auth = (props) => {
       if (childResponse.ok) {
         const childData = await childResponse.json();
         console.log("Child account login successful:", childData);
-        props.updateChildToken(childData.token);
+        props.updateToken(childData.token);
         props.setUserId(childData.user.id);
+        props.setUserType(childData.user.type);
         return; // Exit the function if child login was successful
       }
 
