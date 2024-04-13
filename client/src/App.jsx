@@ -62,6 +62,7 @@ function App() {
           <Auth
             updateToken={updateToken}
             userId={userId}
+            userType={userType}
             setUserId={setUserId}
             setUserType={setUserType}
           />
@@ -70,7 +71,7 @@ function App() {
           </footer>
         </>
       )}
-      {sessionToken && userType("parent") && (
+      {sessionToken && {userType:"parent"} && (
         <>
           <div>
             <Nav />
@@ -102,7 +103,7 @@ function App() {
           </footer>
         </>
       )}
-      {sessionToken && userType("child") && (
+      {sessionToken && {userType:"child"} && (
         <>
           <div>
             <Child_Nav userId={userId} />
