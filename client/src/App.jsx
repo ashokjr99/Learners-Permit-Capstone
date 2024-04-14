@@ -54,7 +54,6 @@ function App() {
   };
 
   return (
-    // <Check_Stats />
     <>
       {!sessionToken && !userType && (
         <>
@@ -71,7 +70,7 @@ function App() {
           </footer>
         </>
       )}
-      {sessionToken && {userType:"parent"} && (
+      {sessionToken && userType === "parent" && (
         <>
           <div>
             <Nav />
@@ -103,7 +102,7 @@ function App() {
           </footer>
         </>
       )}
-      {sessionToken && {userType:"child"} && (
+      {sessionToken && userType === "child" && (
         <>
           <div>
             <Child_Nav userId={userId} />
