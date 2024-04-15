@@ -59,7 +59,8 @@ console.log(userId)
     <>
       {!parentId ? (
         <>
-          <div>
+           <div className="w3-panel w3-card-4 margin-l-p margin-r-p"  style={{marginLeft:"25%"}} >
+            <div className="w3-container">
             <form style={{ display: "flex", flexDirection: "column" }}>
               <h2>Sign Up!</h2>
               <label>First Name</label>
@@ -80,6 +81,7 @@ console.log(userId)
                 Sign Up!
               </button>
             </form>
+          </div>
           </div>
         </>
       ) : (

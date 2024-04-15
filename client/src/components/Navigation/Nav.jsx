@@ -3,17 +3,16 @@ import { Link, useLocation } from "react-router-dom";
 import HeaderImage from "../assets/DriveTime.png";
 
 
-const Nav = () => {
+const Nav = ( props ) => {
   let location = useLocation();
   console.log(location);
   let backgroundColor = "darkblue";
 
   return (
-    <div style={{ display: "flex", gap: "1em", justifyContent: "center" }}>
-      <img
-        src={HeaderImage}
-        style={{ height: "8em", position: "fixed", left: "1em" }}
-      />
+    <div>
+    <div className="w3-sidebar w3-bar-block w3-card-4" style={{width:"20%", backgroundColor: "#242424"}}>
+         <img className="w3-bar-item" src={HeaderImage} style={{ height: "8em", left: "1em" }}/>
+        <input type="text" placeholder="Search.."/>
       <Link to="/home2">
         <button
           style={{
@@ -50,6 +49,11 @@ const Nav = () => {
           Create Child Account
         </button>
       </Link>
+      
+      <button className="w3-display-bottomleft" onClick={props.clearToken}>Logout</button>  
+      
+
+    </div>
     </div>
   );
 };

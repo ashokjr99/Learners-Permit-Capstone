@@ -6,7 +6,7 @@ const Signup_Parent = ({ handleChange, handleSignup }) => {
   return (
     <div className='parent-signup' style={{padding: "2em"}}>
       <button>
-      <Collapsible trigger={'Singup'} triggerWhenOpen={'Close'}>
+      <Collapsible trigger={'Signup'} triggerWhenOpen={'Close'}>
       <form style={{ display: "flex", flexDirection: "column" }}>
         <h2>Sign Up!</h2>
         <label>First Name</label>

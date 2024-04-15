@@ -7,6 +7,7 @@ import {
   Signup_Child,
   Signup_Parent,
   Dashboard,
+  Home,
   Home2,
   Home3,
   Enter_Stats,
@@ -21,7 +22,7 @@ import "./App.css";
 
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
-  const [childToken, setChildToken] = useState(false);
+  const [childToken, setChildToken] = useState(true);
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
@@ -75,11 +76,12 @@ function App() {
       {sessionToken && !childToken && (
         <>
           <div>
-            <Nav />
+            <Nav clearToken={clearToken} />
           </div>
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/home2" />} />
+              <Route path="/home" element={<Navigate to="/home2" />} />
               <Route path="/home2" element={<Home2 />} />
 
               <Route path="/login" element={<Login />} />
@@ -87,7 +89,6 @@ function App() {
                 path="/signup_child"
                 element={<Signup_Child userId={userId} />}
               />
-
 
               <Route path="/enter_stats" element={<Enter_Stats />} />
 
@@ -97,9 +98,7 @@ function App() {
               <Route path="/contact_us" element={<Contact />} />
             </Routes>
           </header>
-          <div>
-            <button onClick={clearToken}>Logout!</button>
-          </div>
+
           <footer>
             <Footer />
           </footer>
@@ -107,12 +106,14 @@ function App() {
       )}
       {childToken && !sessionToken && (
         <>
-          <div>
-            <Child_Nav userId={userId} />
+         <div>
+            <Child_Nav userId={userId} clearToken={clearToken} />
           </div>
+          
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/home3" />} />
+              <Route path="/home" element={<Navigate to="/home3" />} />
               <Route path="/home3" element={<Home3 />} />
 
               <Route path="/login" element={<Login />} />
@@ -123,17 +124,12 @@ function App() {
                 element={<Signup_Child userId={userId} />}
               />
 
-
-
               <Route path="/stats" element={<Check_Stats />} />
 
               <Route path="/about" element={<About />} />
               <Route path="/contact_us" element={<Contact />} />
             </Routes>
           </header>
-          <div>
-            <button onClick={clearChildToken}>Logout!</button>
-          </div>
           <footer>
             <Footer />
           </footer>
