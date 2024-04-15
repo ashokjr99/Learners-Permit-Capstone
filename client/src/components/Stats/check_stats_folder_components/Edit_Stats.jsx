@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const Edit_Stats = () => {
+const Edit_Stats = ({ results }) => {
   const [hoursResults, setHoursResults] = useState("");
   const [timestamp, setTimestamp] = useState("");
   const [vehicle, setVehicle] = useState("");
@@ -10,8 +10,8 @@ const Edit_Stats = () => {
   const [to, setTo] = useState("");
   const [day, setDay] = useState("");
 
-  useEffect(() => {
-    const editPost = async ({ results, setResults }) => {
+  onclick(() => {
+    const editPost = async () => {
       const { id } = useParams();
 
       try {

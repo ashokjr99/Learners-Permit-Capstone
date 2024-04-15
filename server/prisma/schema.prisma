@@ -15,6 +15,7 @@ model users {
   LastName  String @db.VarChar(45)
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password  String @db.VarChar(255)
+  //type String @db.VarChar(45)
 
   stats stats[]
   parent   parents  @relation(fields: [parentId], references: [id])
@@ -42,6 +43,7 @@ model parents {
   LastName  String @db.VarChar(45)
   email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password  String @db.VarChar(255)
+  //type String @db.VarChar(45)
   ManagedUsers  users[]
 
 }

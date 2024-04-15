@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ParentDashboard = () => {
+const Parent_Dashboard = () => {
   return (
     <div style={{ marginLeft: "20%" }}>
-      <div className="w3-container w3-teal">
+      <div className="w3-container w3-purple">
         <h1>Drivetime</h1>
       </div>
 
@@ -18,4 +18,4 @@ const ParentDashboard = () => {
   );
 }
 
-export default ParentDashboard
+export default Parent_Dashboard

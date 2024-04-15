@@ -34,8 +34,7 @@ const Check_Stats = () => {
           `http://localhost:8081/stats/all?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
           {
             headers: {
-              Authorization: "Bearer " + localStorage.getItem("MyToken"),
-              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
             },
           }
         );

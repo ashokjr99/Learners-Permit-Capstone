@@ -52,7 +52,7 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
       const response = await fetch("http://localhost:8081/stats/post", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("ChildToken")}`,
+          Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(statsData),
@@ -67,7 +67,7 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
           console.error("Unauthorized access. Please log in again.");
           // Handle unauthorized access (e.g., redirect to login page)
         } else {
-          console.error("Failed to post stats");
+          console.error("Failed to post stats" + response);
           // Handle other errors if needed
         }
       }

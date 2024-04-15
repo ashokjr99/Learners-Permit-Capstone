@@ -55,6 +55,7 @@ const validateSession = async (req, res, next) => {
 
     return next();
   } catch (err) {
+    console.log(err);
     res.status(401).json({ Error: err.message });
   }
 };
