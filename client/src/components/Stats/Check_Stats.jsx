@@ -33,11 +33,8 @@ const Check_Stats = () => {
           `http://localhost:8081/stats/all?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
           {
             headers: {
-              Authorization: `Bearer  ${localStorage.getItem("ChildToken")}`,
+              Authorization: `Bearer  ${localStorage.getItem("MyToken")}`,
             },
-            // headers: {
-            //   Authorization: `Bearer  ${localStorage.getItem("MyToken")}`,
-            // },
           }
         );
         const json = await response.json();
