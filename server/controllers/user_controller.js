@@ -10,8 +10,9 @@ const bcrypt = require("bcryptjs");
 //? Importing jsonwebtoken
 const jwt = require("jsonwebtoken");
 
-router.post("/signup_child", async (req, res) => {
-  console.log(req.user);
+const validateSession = require("../middleware/validate-session");
+
+router.post("/signup_child", validateSession, async (req, res) => {
   try {
     // checks for parent, as they are the only ones who can sign up children
     if (req.user.type === "parent") {
@@ -46,6 +47,41 @@ router.post("/signup_child", async (req, res) => {
     res.status(500).json({
       Error: err,
     });
+  }
+});
+
+router.post("/login_child", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await prisma.users.findUnique({
+      where: {
+        email: email,
+      },
+    });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.Password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: 60 * 60 * 24, // Token expires in 24 hours
+    });
+
+    res.status(200).json({
+      message: "User logged in successfully",
+      user: user,
+      token: token,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 

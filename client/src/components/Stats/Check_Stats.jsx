@@ -5,6 +5,7 @@ import {
   StatsFilter,
   FilterHolder,
   CreatePDF,
+  Edit_Stats,
 } from "./check_stats_folder_components";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
@@ -33,11 +34,9 @@ const Check_Stats = () => {
           `http://localhost:8081/stats/all?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
           {
             headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2MzE1NDEwLTgyZmMtNGU1Mi1hYzYzLThhYjk1NTcyMWU3YSIsImlhdCI6MTcxMjg3NjMxMCwiZXhwIjoxNzEyOTYyNzEwfQ.ItGI_mfV8TJuvxJZUQoKKIo69D773J9usfWhnx8J88Q`,
+              Authorization: "Bearer " + localStorage.getItem("MyToken"),
+              "Content-Type": "application/json",
             },
-            // headers: {
-            //   Authorization: `Bearer  ${localStorage.getItem("MyToken")}`,
-            // },
           }
         );
         const json = await response.json();

@@ -74,39 +74,4 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/login_child", async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    const user = await prisma.users.findUnique({
-      where: {
-        email: email,
-      },
-    });
-
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
-    const passwordMatch = await bcrypt.compare(password, user.Password);
-
-    if (!passwordMatch) {
-      return res.status(401).json({ error: "Invalid credentials" });
-    }
-
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-      expiresIn: 60 * 60 * 24, // Token expires in 24 hours
-    });
-
-    res.status(200).json({
-      message: "User logged in successfully",
-      user: user,
-      token: token,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
 module.exports = router;
