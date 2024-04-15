@@ -22,12 +22,15 @@ import "./App.css";
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
   const [userId, setUserId] = useState("");
-  const [userType, setUserType] = useState("")
+  const [userType, setUserType] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("MyToken")) {
       setSessionToken(localStorage.getItem("MyToken"));
+    }
+    if (localStorage.getItem("User Type")) {
+      setUserType(localStorage.getItem("User Type"));
     }
   }, []);
 
@@ -46,7 +49,7 @@ function App() {
     console.log("Token Cleared");
     // localStorage.removeItem("MyToken");
     // localStorage.removeItem("")
-    localStorage.clear()
+    localStorage.clear();
     setSessionToken("");
     setUserType("");
     navigate("/");
@@ -64,6 +67,7 @@ function App() {
             setUserId={setUserId}
             setUserType={setUserType}
           />
+
           <footer>
             <Footer />
           </footer>

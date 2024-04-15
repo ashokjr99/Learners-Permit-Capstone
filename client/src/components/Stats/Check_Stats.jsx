@@ -5,6 +5,7 @@ import {
   StatsFilter,
   FilterHolder,
   CreatePDF,
+  Edit_Stats,
 } from "./check_stats_folder_components";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
@@ -33,7 +34,7 @@ const Check_Stats = () => {
           `http://localhost:8081/stats/all?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
           {
             headers: {
-              Authorization: `Bearer  ${localStorage.getItem("MyToken")}`,
+              Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
             },
           }
         );

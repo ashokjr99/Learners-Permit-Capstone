@@ -10,7 +10,7 @@ const bcrypt = require("bcryptjs");
 //? Importing jsonwebtoken
 const jwt = require("jsonwebtoken");
 
-const validateSession = require("../middleware/validate-session")
+const validateSession = require("../middleware/validate-session");
 
 router.post("/signup_child", validateSession, async (req, res) => {
   try {
