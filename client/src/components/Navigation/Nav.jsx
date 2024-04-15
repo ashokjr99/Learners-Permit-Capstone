@@ -8,10 +8,10 @@ const Nav = () => {
   let backgroundColor = "darkblue";
 
   return (
-    <div style={{ display: "flex", gap: "1em", justifyContent: "center" }}>
+    <div >
       <img
         src={HeaderImage}
-        style={{ height: "8em", position: "fixed", left: "1em" }}
+        style={{ height: "8em", left: "1em" }}
       />
       <Link to="/home2">
         <button

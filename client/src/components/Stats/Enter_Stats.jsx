@@ -25,7 +25,15 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
     "Freezing Rain",
   ];
 
-  const vehicleTypes = ["Sedan", "Truck", "Van", "SUV", "Motorcycle"];
+  const vehicleTypes = [
+    "Sedan",
+    "Truck",
+    "Van",
+    "SUV",
+    "Motorcycle",
+  ];
+  
+  const parentApproval = false;
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -46,22 +54,13 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
         from,
         to,
         practiced,
-      };
-  
-  const sendNotification = async (e) => {
-    e.preventDefault();
-    try {
-      console.log(first)
-    } catch (err) {
-      console.log("There appears to have been an error sending a notification." + err)
-    }
-  }    
+      };  
 
       const response = await fetch("http://localhost:8081/stats/post", {
         method: "POST",
         headers: {
+          "Authorization": `Bearer ${localStorage.getItem("ChildToken")}`,
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("ChildToken")}`,
         },
         body: JSON.stringify(statsData),
       });
@@ -75,7 +74,7 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
           console.error("Unauthorized access. Please log in again.");
           // Handle unauthorized access (e.g., redirect to login page)
         } else {
-          console.error("Failed to post stats");
+          console.error("Failed to post stats" + response);
           // Handle other errors if needed
         }
       }

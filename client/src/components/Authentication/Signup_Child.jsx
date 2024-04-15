@@ -6,7 +6,6 @@ const Signup_Child = ({ userId }) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [parentId, setParentId] = useState("");
 
   console.log(userId);
 
@@ -24,9 +23,6 @@ const Signup_Child = ({ userId }) => {
       case "password":
         setPassword(value);
         break;
-      case "parentId":
-        setParentId(props.id);
-        break;
       default:
         console.log("Something went wrong");
     }
@@ -38,6 +34,7 @@ const Signup_Child = ({ userId }) => {
         await fetch("http://localhost:8081/user/signup_child", {
           method: "POST",
           headers: {
+            "Authorization": "Bearer " + localStorage.getItem("MyToken"),
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -56,10 +53,8 @@ const Signup_Child = ({ userId }) => {
   };
 
   return (
-    <>
-      {!parentId ? (
         <>
-          <div>
+          <div style={{display:"flex", flex:"column", justifyContent:"center"}}>
             <form style={{ display: "flex", flexDirection: "column" }}>
               <h2>Sign Up!</h2>
               <label>First Name</label>
@@ -82,14 +77,6 @@ const Signup_Child = ({ userId }) => {
             </form>
           </div>
         </>
-      ) : (
-        <>
-          <div>
-            <p>Child Account Created!</p>
-          </div>
-        </>
-      )}
-    </>
   );
 };
 

@@ -31,9 +31,9 @@ app.use(express.urlencoded({ extended: true }));
 
 //? Using the controllers
 app.use("/parent", parentController);
-app.use(validateSession);
 // user needs token from the parent signup
 app.use("/user", userController);
+app.use(validateSession);
 app.use("/stats", statsController);
 app.use("/recovery", recoveryController);
 
