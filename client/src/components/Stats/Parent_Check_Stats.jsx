@@ -10,7 +10,7 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 
 //? Houses the overall look of Checking Stats and Seeing Summaries
 
-const Check_Stats = () => {
+const Parent_Check_Stats = () => {
   const [results, setResults] = useState([]);
   const [startDate, setStartDate] = useState("2000-01-01");
   const [endDate, setEndDate] = useState("2099-01-01");
@@ -92,4 +92,5 @@ const Check_Stats = () => {
   );
 };
 
-export default Check_Stats;
+
+export default Parent_Check_Stats
