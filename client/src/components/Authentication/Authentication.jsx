@@ -46,7 +46,7 @@ const Auth = (props) => {
       ).json();
       console.log(response);
       props.updateToken(response.Token);
-      props.setUserType("parent")
+      props.setUserType("parent");
     } catch (err) {
       console.log(err);
     }
@@ -113,7 +113,12 @@ const Auth = (props) => {
     <>
       <div
         className="authentication"
-        style={{ display: "flex", flexDirection: "row", padding: "2em", justifyContent: "center" }}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "2em",
+          justifyContent: "center",
+        }}
       >
         <Signup_Parent
           handleSignup={handleSignup}
