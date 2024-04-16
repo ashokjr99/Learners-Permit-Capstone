@@ -8,43 +8,40 @@ datasource db {
 }
 
 model users {
-  // one to many relationship
-  id   String @id @default(uuid())
-  parentId  String
-  FirstName String @db.VarChar(45)
-  LastName  String @db.VarChar(45)
-  email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
-  Password  String @db.VarChar(255)
-  //type String @db.VarChar(45)
+  id               String   @id @default(uuid())
+  parentId         String
+  FirstName        String   @db.VarChar(45)
+  LastName         String   @db.VarChar(45)
+  email            String   @unique(map: "email_UNIQUE") @db.VarChar(100)
+  Password         String   @db.VarChar(255)
+  resetToken       String
+  resetTokenExpiry DateTime
 
-  stats stats[]
-  parent   parents  @relation(fields: [parentId], references: [id])
+  @@index([parentId], map: "users_parentId_fkey")
 }
 
 model stats {
-  id        Int       @id @default(autoincrement())
-  userId    String
-  hours     Int
-  timestamp DateTime? @default(now()) @db.Timestamp(0)
-  vehicle_type String @db.VarChar(45)
-  day  Boolean
-  weather   String    @db.VarChar(45)
-  from      String    @db.VarChar(45)
-  to        String    @db.VarChar(45)
-  practiced String    @db.VarChar(45)
-  user users @relation(fields: [userId], references: [id])
-  parent_approval   Boolean
+  id              Int       @id @default(autoincrement())
+  userId          String
+  hours           Int
+  timestamp       DateTime? @default(now()) @db.Timestamp(0)
+  vehicle_type    String    @db.VarChar(45)
+  day             Boolean
+  weather         String    @db.VarChar(45)
+  from            String    @db.VarChar(45)
+  to              String    @db.VarChar(45)
+  practiced       String    @db.VarChar(45)
+  parent_approval Boolean
+
   @@index([userId], map: "stats_userId_fkey")
 }
 
 model parents {
-  id   String @id @default(uuid())
-  FirstName String @db.VarChar(45)
-  LastName  String @db.VarChar(45)
-  email     String @unique(map: "email_UNIQUE") @db.VarChar(100)
-  Password  String @db.VarChar(255)
-  //type String @db.VarChar(45)
-  ManagedUsers  users[]
-
+  id               String   @id @default(uuid())
+  FirstName        String   @db.VarChar(45)
+  LastName         String   @db.VarChar(45)
+  email            String   @unique(map: "email_UNIQUE") @db.VarChar(100)
+  Password         String   @db.VarChar(255)
+  resetToken       String
+  resetTokenExpiry DateTime
 }
-
