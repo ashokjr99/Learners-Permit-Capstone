@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   ChartsHolder,
   SummaryHeader,
-  StatsFilter,
+  StatsChartHolder,
   FilterHolder,
   CreatePDF,
   Edit_Stats,
@@ -82,7 +82,7 @@ const Check_Stats = () => {
         }
       </PDFDownloadLink>
 
-      <StatsFilter results={results} />
+      <StatsChartHolder results={results} />
       {/* stats_filter houses all of the data that is filtered through */}
       <SummaryHeader hours={hours} drives={drives} />
       <ChartsHolder

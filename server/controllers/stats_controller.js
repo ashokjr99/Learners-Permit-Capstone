@@ -140,16 +140,17 @@ router.get("/all", async (req, res) => {
 });
 
 //? edit stats
-router.put("/edit", async (req, res) => {
+router.put("/edit/:id", async (req, res) => {
   try {
     const updateStat = await prisma.stats.update({
       where: {
-        id: req.stats.id,
+        id: parseInt(req.params.id),
         userId: req.user.id,
       },
       data: {
         hours: req.body.hours,
         vehicle_type: req.body.vehicle_type,
+        day: req.body.day,
         weather: req.body.weather,
         from: req.body.from,
         to: req.body.to,
