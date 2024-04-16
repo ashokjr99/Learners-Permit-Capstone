@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  // previewFeatures = ["relationJoins"]
 }
 
 datasource db {
@@ -14,8 +15,8 @@ model users {
   LastName         String   @db.VarChar(45)
   email            String   @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password         String   @db.VarChar(255)
-  resetToken       String
-  resetTokenExpiry DateTime
+  resetToken       String 
+  resetTokenExpiry DateTime  @default(now())
 
   @@index([parentId], map: "users_parentId_fkey")
 }
@@ -43,5 +44,5 @@ model parents {
   email            String   @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password         String   @db.VarChar(255)
   resetToken       String
-  resetTokenExpiry DateTime
+  resetTokenExpiry DateTime @default(now())
 }
