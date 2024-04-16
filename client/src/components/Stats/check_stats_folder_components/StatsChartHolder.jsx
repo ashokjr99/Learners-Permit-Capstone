@@ -11,7 +11,7 @@ import Paper from "@mui/material/Paper";
 import Edit_Stats from "./Edit_Stats";
 import Delete_Stats from "./Delete_Stats";
 
-const StatsList = ({ results }) => {
+const StatsList = ({ results, setReFetch }) => {
   // prop results passed from check_stats
 
   const [showEdit, setShowEdit] = useState(false);
@@ -20,7 +20,11 @@ const StatsList = ({ results }) => {
   return (
     <div style={{ position: "relative" }}>
       {showEdit ? (
-        <Edit_Stats stats={statsObj} setShowEdit={setShowEdit} />
+        <Edit_Stats
+          stats={statsObj}
+          setShowEdit={setShowEdit}
+          setReFetch={setReFetch}
+        />
       ) : null}
 
       <TableContainer component={Paper}>
