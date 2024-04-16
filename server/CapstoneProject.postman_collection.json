@@ -10,13 +10,13 @@
       "name": "users",
       "item": [
         {
-          "name": "create new user",
+          "name": "create new child user",
           "request": {
             "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\"first\": \"Benny\",\r\n\"last\": \"John\",\r\n\"email\": \"bj6933367679932434334@gmail.com\",\r\n\"password\": \"sdsddssdsdsd\"\r\n\r\n\r\n\r\n}\r\n",
+              "raw": "{\r\n\"first\": \"Benny\",\r\n\"last\": \"John\",\r\n\"email\": \"test3dddfffdfd31@gmail.com\",\r\n\"password\": \"test1\"\r\n\r\n\r\n\r\n}\r\n",
               "options": {
                 "raw": {
                   "language": "json"
@@ -24,22 +24,22 @@
               }
             },
             "url": {
-              "raw": "localhost:8081/user/signup",
+              "raw": "localhost:8081/user/signup_child",
               "host": ["localhost"],
               "port": "8081",
-              "path": ["user", "signup"]
+              "path": ["user", "signup_child"]
             }
           },
           "response": []
         },
         {
-          "name": "logging in as a current user",
+          "name": "logging in as a child user",
           "request": {
             "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\"email\": \"bj6933367679932434334@gmail.com\",\r\n\"password\": \"sdsddssdsdsd\"\r\n\r\n\r\n\r\n}\r\n\r\n",
+              "raw": "{\r\n\"email\": \"test3dddfffdfd31@gmail.com\",\r\n\"password\": \"test1\"\r\n\r\n\r\n}\r\n\r\n",
               "options": {
                 "raw": {
                   "language": "json"
@@ -47,10 +47,10 @@
               }
             },
             "url": {
-              "raw": "localhost:8081/user/login",
+              "raw": "localhost:8081/user/login_child",
               "host": ["localhost"],
               "port": "8081",
-              "path": ["user", "login"]
+              "path": ["user", "login_child"]
             }
           },
           "response": []
@@ -67,7 +67,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\"mileage\": 100,\r\n\"weather\": \"rainy\",\r\n\"from\": \"LA\",\r\n\"to\":  \"San Fran\",     \r\n\"practiced\": \"parking and interstate driving\"\r\n\r\n}\r\n",
+              "raw": "{\r\n\"hours\": 80,\r\n\"vehicle_type\": \"Sedan\",\r\n\"weather\": \"Snowy\",\r\n\"day\": false,\r\n\"from\": \"LA\",\r\n\"to\":  \"San Fran\",     \r\n\"practiced\": \"parking and interstate driving\"\r\n\r\n}\r\n",
               "options": {
                 "raw": {
                   "language": "json"
@@ -86,11 +86,11 @@
         {
           "name": "edit a stat",
           "request": {
-            "method": "PATCH",
+            "method": "PUT",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\"mileage\": 100,\r\n\"weather\": \"rainy\",\r\n\"from\": \"LA\",\r\n\"to\":  \"San Fran\",     \r\n\"practiced\": \"parking and interstate driving\"\r\n\r\n}\r\n",
+              "raw": "{\r\n\"hours\": 80,\r\n\"vehicle_type\": \"Sedan\",\r\n\"weather\": \"Snowy\",\r\n\"day\": true,\r\n\"from\": \"LA\",\r\n\"to\":  \"San Fran\",     \r\n\"practiced\": \"parking and interstate d\"\r\n\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -98,10 +98,10 @@
               }
             },
             "url": {
-              "raw": "localhost:8081/stats/edit",
+              "raw": "localhost:8081/stats/edit/7",
               "host": ["localhost"],
               "port": "8081",
-              "path": ["stats", "edit"]
+              "path": ["stats", "edit", "7"]
             }
           },
           "response": []
@@ -124,10 +124,87 @@
               }
             },
             "url": {
-              "raw": "localhost:8081/stats/all/10",
+              "raw": "localhost:8081/stats/all",
               "host": ["localhost"],
               "port": "8081",
-              "path": ["stats", "all", "10"]
+              "path": ["stats", "all"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete a stat",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8081/stats/delete/14",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["stats", "delete", "14"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "parent",
+      "item": [
+        {
+          "name": "create new parent user",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"first\": \"Benny\",\r\n\"last\": \"John\",\r\n\"email\": \"bj4444@gmail.com\",\r\n\"password\": \"sdsddssdsdsd\"\r\n\r\n\r\n\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8081/parent/signup",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["parent", "signup"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logging in as a parent user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"email\": \"bj4444@gmail.com\",\r\n\"password\": \"sdsddssdsdsd\"\r\n\r\n\r\n\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8081/parent/login",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["parent", "login"]
             }
           },
           "response": []
@@ -140,7 +217,7 @@
     "bearer": [
       {
         "key": "token",
-        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcxMTU3NzYwMywiZXhwIjoxNzExNjY0MDAzfQ.lrt1MEQPgKjDHCxyacnhmYfK6Xq_4HlXWcsDM26UDBc",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBkNGVkNTU2LWMyNTctNGNlYS04NmQxLTI1Yjc1ZDU3MWEzYSIsImlhdCI6MTcxMzIyNjQxMCwiZXhwIjoxNzEzMzEyODEwfQ.Jb2FAwBls_6oBDacAHqUk3QPx1Hl_M4ag4O6SpT9wtk",
         "type": "string"
       }
     ]
