@@ -27,13 +27,13 @@ router.post("/post", async (req, res) => {
         userId: req.user.id,
         hours: req.body.hours,
         day: req.body.day,
-        vehicle_type: req.body.vehicle_type,
-
         weather: req.body.weather,
         from: req.body.from,
         to: req.body.to,
         practiced: req.body.practiced,
         vehicle_type: req.body.vehicle_type,
+
+        parent_approval: false,
       },
     });
 
@@ -50,7 +50,7 @@ router.post("/post", async (req, res) => {
 
 //? get all stats
 router.get("/all", async (req, res) => {
-  const userId = parseInt(req.user.id);
+  const userId = req.user.id;
 
   try {
     //? logic for filtering out the endDate and startDate
@@ -142,7 +142,6 @@ router.get("/all", async (req, res) => {
 //? edit stats
 router.put("/edit", async (req, res) => {
   try {
-
     const updateStat = await prisma.stats.update({
       where: {
         id: req.stats.id,
@@ -188,40 +187,5 @@ router.delete("/delete/:statId", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
-
-<<<<<<< HEAD
-//// function mySelect ( searchKey, searchValue, replaceKey, replaceValue ) {
-////   var objStr = "{ \"where\": { \"" + searchKey + "\": \"" + searchValue + "\" },";  // Creates the string to update the database 
-////   objStr = objStr + " \"data\": { \"" + replaceKey + "\": \"" + replaceValue + "\" }}"; 
-////   var newObj = JSON.parse( objStr );  // Converts string into json.obj
-////   return newObj
-
-//// }
-
-router.put('/edit/:id', async (req, res) => {
-  try {
-    const updateStat = await prisma.user.update({
-      where: {
-        id: req.params.id,
-      },
-      data: {
-        mileage: req.body.mileage,  
-        weather: req.body.weather,  
-        from: req.body.from,     
-        to: req.body.to,       
-        practiced: req.body.practiced,
-      },
-    })
-
-    res.status(200).json({
-      Updated: updateStat,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
-=======
-
->>>>>>> 6c38dd24f4979397c4ef8d32a79beb0eaddea28d
 
 module.exports = router;

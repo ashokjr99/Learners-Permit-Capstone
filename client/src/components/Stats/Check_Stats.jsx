@@ -5,6 +5,7 @@ import {
   StatsFilter,
   FilterHolder,
   CreatePDF,
+  Edit_Stats,
 } from "./check_stats_folder_components";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
@@ -33,11 +34,8 @@ const Check_Stats = () => {
           `http://localhost:8081/stats/all?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
           {
             headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEyNjE2MzIwLCJleHAiOjE3MTI3MDI3MjB9.vSemwbl9TuhJZowh4I3YFcwqELFSw-001EDHFQaBong`,
+              Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
             },
-            // headers: {
-            //   Authorization: `Bearer  ${localStorage.getItem("MyToken")}`,
-            // },
           }
         );
         const json = await response.json();
@@ -86,6 +84,7 @@ const Check_Stats = () => {
       </PDFDownloadLink>
 
       <StatsFilter results={results} />
+      {/* stats_filter houses all of the data that is filtered through */}
       <SummaryHeader hours={hours} drives={drives} />
       <ChartsHolder
         weatherDrivesTotalForEach={weatherDrivesTotalForEach}

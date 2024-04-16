@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react'
 
-import "./Dashboard.css";
-
-const Dashboard = () => {
+const Parent_Dashboard = () => {
   return (
     <div style={{ marginLeft: "20%" }}>
-      <div className="w3-container w3-teal">
+      <div className="w3-container w3-purple">
         <h1>Drivetime</h1>
       </div>
 
@@ -18,6 +16,6 @@ const Dashboard = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Dashboard;
+export default Parent_Dashboard

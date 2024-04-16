@@ -13,25 +13,9 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
   const [practiced, setPracticed] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const weatherOptions = [
-    "Rain",
-    "Snow",
-    "Ice",
-    "Fog",
-    "Wind",
-    "Hail",
-    "Thunderstorms",
-    "Blizzards",
-    "Freezing Rain",
-  ];
+  const weatherOptions = ["Rainy", "Snowy", "Clear"];
 
-  const vehicleTypes = [
-    "Sedan",
-    "Truck",
-    "Van",
-    "SUV",
-    "Motorcycle",
-  ];
+  const vehicleTypes = ["Sedan", "Truck", "Van", "SUV", "Motorcycle"];
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -43,7 +27,7 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-        try {
+    try {
       const statsData = {
         hours: parseInt(hours),
         day: true,
@@ -53,21 +37,23 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
         to,
         practiced,
       };
-  
-  const sendNotification = async (e) => {
-    e.preventDefault();
-    try {
-      console.log(first)
-    } catch (err) {
-      console.log("There appears to have been an error sending a notification." + err)
-    }
-  }    
+
+      const sendNotification = async (e) => {
+        e.preventDefault();
+        try {
+          console.log(first);
+        } catch (err) {
+          console.log(
+            "There appears to have been an error sending a notification." + err
+          );
+        }
+      };
 
       const response = await fetch("http://localhost:8081/stats/post", {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("ChildToken")}`,
         },
         body: JSON.stringify(statsData),
       });
@@ -81,7 +67,7 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
           console.error("Unauthorized access. Please log in again.");
           // Handle unauthorized access (e.g., redirect to login page)
         } else {
-          console.error("Failed to post stats");
+          console.error("Failed to post stats" + response);
           // Handle other errors if needed
         }
       }

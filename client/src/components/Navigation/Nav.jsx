@@ -13,10 +13,10 @@ const Nav = ( props ) => {
     <div className="w3-sidebar w3-bar-block w3-card-4" style={{width:"20%", backgroundColor: "#242424"}}>
          <img className="w3-bar-item" src={HeaderImage} style={{ height: "8em", left: "1em" }}/>
         <input type="text" placeholder="Search.."/>
-      <Link to="/home2">
+      <Link to="/home2"> //change to ParentDashboard
         <button
           style={{
-            background: location.pathname.includes("/home2") && backgroundColor,
+            background: location.pathname.includes("/ParentDashboard") && backgroundColor,
           }}
         >
           Home

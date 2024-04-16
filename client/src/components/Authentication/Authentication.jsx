@@ -31,7 +31,7 @@ const Auth = (props) => {
   const handleSignup = async () => {
     try {
       const response = await (
-        await fetch("http://localhost:8081/user/signup", {
+        await fetch("http://localhost:8081/parent/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -46,6 +46,7 @@ const Auth = (props) => {
       ).json();
       console.log(response);
       props.updateToken(response.Token);
+      props.setUserType("parent");
     } catch (err) {
       console.log(err);
     }
@@ -54,7 +55,7 @@ const Auth = (props) => {
   const handleLogin = async () => {
     try {
       // Fetch from the parent account login route
-      const parentResponse = await fetch("http://localhost:8081/user/login", {
+      const parentResponse = await fetch("http://localhost:8081/parent/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,8 +70,9 @@ const Auth = (props) => {
       if (parentResponse.ok) {
         const parentData = await parentResponse.json();
         console.log("Parent account login successful:", parentData);
-        props.updateToken(parentData.token);
+        props.updateToken(parentData.token, "parent");
         props.setUserId(parentData.user.id);
+        // props.setUserType("parent");
         console.log("UPDATED USER ID" + parentData.user.id);
         return; // Exit the function if parent login was successful
       }
@@ -94,8 +96,9 @@ const Auth = (props) => {
       if (childResponse.ok) {
         const childData = await childResponse.json();
         console.log("Child account login successful:", childData);
-        props.updateChildToken(childData.token);
+        props.updateToken(childData.token, "child");
         props.setUserId(childData.user.id);
+        // props.setUserType("child");
         return; // Exit the function if child login was successful
       }
 
@@ -110,7 +113,12 @@ const Auth = (props) => {
     <>
       <div
         className="authentication"
-        style={{ display: "flex", flexDirection: "row", padding: "2em", justifyContent: "center" }}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "2em",
+          justifyContent: "center",
+        }}
       >
         <Signup_Parent
           handleSignup={handleSignup}
