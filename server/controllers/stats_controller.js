@@ -189,7 +189,6 @@ router.delete("/delete/:statId", async (req, res) => {
 });
 
 router.get("/child_stats", async (req, res) => {
-  const userId = parseInt(req.user.id);
 
   try {
     //? logic for filtering out the endDate and startDate

@@ -5,7 +5,6 @@ import Collapsible from "react-collapsible";
 const Signup_Parent = ({ handleChange, handleSignup }) => {
   return (
     <div className="parent-signup" style={{ padding: "2em" }}>
-      {/* <button> */}
       <Collapsible trigger={"Singup"} triggerWhenOpen={"Close"}>
         <form style={{ display: "flex", flexDirection: "column" }}>
           <h2>Sign Up!</h2>
@@ -14,8 +13,8 @@ const Signup_Parent = ({ handleChange, handleSignup }) => {
           <label>Last Name</label>
           <input onChange={(e) => handleChange("last", e.target.value)} />
           <label>Email</label>
-          //! SOMEONE PLEASE FIGURE OUT WHY WE MUST PRESS BUTTON MULTIPLE //!
-          //! TIMES TO LOGIN/SIGNUP
+          {/* //! SOMEONE PLEASE FIGURE OUT WHY WE MUST PRESS BUTTON MULTIPLE //!
+          //! TIMES TO LOGIN/SIGNUP */}
           <input onChange={(e) => handleChange("email", e.target.value)} />
           <label>Password</label>
           <input onChange={(e) => handleChange("password", e.target.value)} />
@@ -28,7 +27,6 @@ const Signup_Parent = ({ handleChange, handleSignup }) => {
           </button>
         </form>
       </Collapsible>
-      {/* </button> */}
     </div>
   );
 };

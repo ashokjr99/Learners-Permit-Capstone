@@ -14,10 +14,10 @@ const Nav = () => {
         src={HeaderImage}
         style={{ height: "8em", left: "1em" }}
       />
-      <Link to="/ParentDashboard">
+      <Link to="/Parent_Dashboard">
         <button
           style={{
-            background: location.pathname.includes("/ParentDashboard") && backgroundColor,
+            background: location.pathname.includes("/Parent_Dashboard") && backgroundColor,
           }}
         >
           Home

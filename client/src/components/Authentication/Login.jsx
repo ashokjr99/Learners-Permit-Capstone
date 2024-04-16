@@ -13,8 +13,8 @@ const Login = ({ handleChange, handleLogin }) => {
           <input onChange={(e) => handleChange("email", e.target.value)} />
           <label>Password</label>
           <input onChange={(e) => handleChange("password", e.target.value)} />
-          //! SOMEONE PLEASE FIGURE OUT WHY WE MUST PRESS BUTTON MULTIPLE //!
-          TIMES TO LOGIN/SIGNUP
+          {/* //! SOMEONE PLEASE FIGURE OUT WHY WE MUST PRESS BUTTON MULTIPLE //!
+          TIMES TO LOGIN/SIGNUP */}
           <button
             style={{ margin: "1em", width: "9em" }}
             type="button"
