@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Edit_Stats = ({ stats, setShowEdit }) => {
+const Edit_Stats = ({ stats, setShowEdit, setReFetch }) => {
   const [hoursResults, setHoursResults] = useState(stats.hours);
   const [vehicle, setVehicle] = useState(stats.vehicle_type);
   const [weatherResults, setWeatherResults] = useState(stats.weather);
@@ -34,6 +34,8 @@ const Edit_Stats = ({ stats, setShowEdit }) => {
 
       const json = await response.json();
 
+      setReFetch((prev) => !prev);
+
       console.log(json);
     } catch (err) {
       console.log(err);
@@ -59,11 +61,20 @@ const Edit_Stats = ({ stats, setShowEdit }) => {
           value={hoursResults}
           onChange={(e) => setHoursResults(e.target.value)}
         ></input>
-        <input value={day === false ? "Night" : "Day"}></input>
-        <input value={vehicle}></input>
-        <input value={weatherResults}></input>
-        <input value={from}></input>
-        <input value={to}></input>
+        <input
+          value={day === false ? "Night" : "Day"}
+          onChange={(e) => setDay(e.target.value)}
+        ></input>
+        <input
+          value={vehicle}
+          onChange={(e) => setVehicle(e.target.value)}
+        ></input>
+        <input
+          value={weatherResults}
+          onChange={(e) => setWeatherResults(e.target.value)}
+        ></input>
+        <input value={from} onChange={(e) => setFrom(e.target.value)}></input>
+        <input value={to} onChange={(e) => setTo(e.target.value)}></input>
         <input value="practiced"></input>
         <button>Edit</button>
         <button onClick={() => setShowEdit(false)} type="button">
