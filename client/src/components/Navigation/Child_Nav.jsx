@@ -9,7 +9,7 @@ const Child_Nav = ( props ) => {
 
   
     return (
-      <div className="w3-sidebar w3-light-grey w3-bar-block" style={{width:"20%"}}>
+      <div className="w3-sidebar w3-light-grey w3-bar-block w3-display-left" style={{width:"20%"}}>
         <img
           src={HeaderImage}
           style={{ height: "8em", left: "1em" }}
@@ -23,7 +23,7 @@ const Child_Nav = ( props ) => {
             Home
           </button>
         </Link>
-        <Link to="/about">
+        {/* <Link to="/about">
           <button
             style={{
               background: location.pathname.includes("/about") && backgroundColor,
@@ -31,7 +31,7 @@ const Child_Nav = ( props ) => {
           >
             About
           </button>
-        </Link>
+        </Link> */}
         <Link to="/stats">
           <button
             style={{
@@ -47,7 +47,7 @@ const Child_Nav = ( props ) => {
               background: location.pathname.includes("/enter_stats") && backgroundColor,
             }}
           >
-            Enter Stats
+            Submit Drive
           </button>
         </Link>
       </div>

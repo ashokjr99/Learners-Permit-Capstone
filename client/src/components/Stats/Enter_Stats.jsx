@@ -79,10 +79,11 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
 
   return (
     <div>
-      <button onClick={openModal}>Enter Drive</button>
+      {/* <button onClick={openModal}>Enter Drive</button> */}
       <Modal
         className="modal"
-        isOpen={modalIsOpen}
+        // isOpen={modalIsOpen}
+        isOpen={true}
         onRequestClose={closeModal}
         contentLabel="Enter Stats Modal"
         appElement={document.getElementById("root")}
