@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import "./ToggleSwitch.css";
 Modal.setAppElement("#root");
 
-const Enter_Stats = ({ isOpen, onRequestClose }) => {
+const Enter_Stats = () => {
   const [hours, setHours] = useState("");
   const [day, setDay] = useState(false);
   const [vehicle_type, setVehicleType] = useState("");
@@ -104,7 +104,10 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
             </div>
 
             <div className="mb-4">
-              <label className="block mb-1">Day</label>
+              <label className="block mb-1">
+                {" "}
+                {day === false ? "Night" : "Day"}
+              </label>
               <label className="switch">
                 <input
                   type="checkbox"
