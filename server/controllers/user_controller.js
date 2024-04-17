@@ -25,6 +25,7 @@ router.post("/signup_child", validateSession, async (req, res) => {
           // Need to work on figuring out the parentId and how to grab it from the logged in parent
           parentId: req.user.id,
           // from validate session
+          resetToken: "L",
         },
       });
 
