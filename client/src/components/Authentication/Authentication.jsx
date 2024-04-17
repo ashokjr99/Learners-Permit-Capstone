@@ -111,7 +111,7 @@ const Auth = (props) => {
     }
   };
 
-  const HandleRecovery = async () => {
+  const handleRecovery = async () => {
     try {
       const response = await (
         await fetch("http://localhost:8081/recovery/forgot-password", {
@@ -147,7 +147,7 @@ const Auth = (props) => {
           handleChange={handleChange}
         />
         <Login handleLogin={handleLogin} handleChange={handleChange} />
-        <Recovery HandleRecovery={HandleRecovery} handleChange={handleChange} />
+        <Recovery handleRecovery={handleRecovery} handleChange={handleChange} />
 
       </div>
     </>

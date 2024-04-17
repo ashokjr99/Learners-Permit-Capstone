@@ -6,6 +6,7 @@ import {
   Login,
   Signup_Child,
   Signup_Parent,
+  ResetPassword,
   Dashboard,
   Parent_Dashboard,
   Home,
@@ -57,9 +58,13 @@ function App() {
 
   return (
     <>
+        
       {!sessionToken && !userType && (
         <>
-          <Dashboard />
+        <Routes>
+        <Route path="/resetpassword" element={<ResetPassword />} />
+        </Routes>
+          <Home />
           <Auth
             updateToken={updateToken}
             userId={userId}
@@ -73,7 +78,7 @@ function App() {
           </footer>
         </>
       )}
-      {sessionToken && userType === "parent" && (
+      {/* {sessionToken && userType === "parent" && (
         <>
           <div>
             <Nav />
@@ -95,6 +100,8 @@ function App() {
 
               <Route path="/about" element={<About />} />
               <Route path="/contact_us" element={<Contact />} />
+
+              <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
           <div>
@@ -104,8 +111,8 @@ function App() {
             <Footer />
           </footer>
         </>
-      )}
-      {sessionToken && userType === "child" && (
+      )} */}
+      {/* {sessionToken && userType === "child" && (
         <>
           <div>
             <Child_Nav userId={userId} />
@@ -126,6 +133,8 @@ function App() {
 
               <Route path="/about" element={<About />} />
               <Route path="/contact_us" element={<Contact />} />
+
+              <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
           <div>
@@ -135,7 +144,7 @@ function App() {
             <Footer />
           </footer>
         </>
-      )}
+      )} */}
     </>
   );
 }
