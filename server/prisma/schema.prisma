@@ -15,7 +15,7 @@ model users {
   email            String    @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password         String    @db.VarChar(255)
   resetToken       String?
-  resetTokenExpiry DateTime?
+  resetTokenExpiry DateTime? @default(now())
 
   @@index([parentId], map: "users_parentId_fkey")
 }
@@ -43,5 +43,5 @@ model parents {
   email            String    @unique(map: "email_UNIQUE") @db.VarChar(100)
   Password         String    @db.VarChar(255)
   resetToken       String?
-  resetTokenExpiry DateTime?
+  resetTokenExpiry DateTime? @default(now())
 }

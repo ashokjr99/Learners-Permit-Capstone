@@ -14,7 +14,6 @@ require("dotenv").config();
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  // service: "gmail",
   port: 465, // or 587 for STARTTLS
   secure: true, // true for 465, false for other ports
   auth: {
@@ -87,9 +86,6 @@ router.post("/reset-password", async (req, res) => {
     const user = await prisma.parents.findFirst({
       where: {
         resetToken: token,
-        resetTokenExpiry: {
-          gt: new Date(1713228380664),
-        },
       },
     });
 
@@ -105,7 +101,6 @@ router.post("/reset-password", async (req, res) => {
       data: {
         Password: bcrypt.hashSync(newPassword, 12),
         resetToken: null,
-        resetTokenExpiry: null,
       },
     });
 

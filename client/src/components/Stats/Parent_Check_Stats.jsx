@@ -2,18 +2,16 @@ import React, { useState, useEffect } from "react";
 import {
   ChartsHolder,
   SummaryHeader,
-  StatsChartHolder,
+  StatsFilter,
   FilterHolder,
   CreatePDF,
-  Edit_Stats,
 } from "./check_stats_folder_components";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
 //? Houses the overall look of Checking Stats and Seeing Summaries
 
-const Check_Stats = ({}) => {
+const Parent_Check_Stats = () => {
   const [results, setResults] = useState([]);
-  const [reFetch, setReFetch] = useState(false);
   const [startDate, setStartDate] = useState("2000-01-01");
   const [endDate, setEndDate] = useState("2099-01-01");
   const [weather, setWeather] = useState(false);
@@ -57,7 +55,7 @@ const Check_Stats = ({}) => {
     };
 
     getFilter();
-  }, [startDate, endDate, weather, time, reFetch]);
+  }, [startDate, endDate, weather, time]);
 
   return (
     <div>
@@ -83,7 +81,7 @@ const Check_Stats = ({}) => {
         }
       </PDFDownloadLink>
 
-      <StatsChartHolder results={results} setReFetch={setReFetch} />
+      <StatsFilter results={results} />
       {/* stats_filter houses all of the data that is filtered through */}
       <SummaryHeader hours={hours} drives={drives} />
       <ChartsHolder
@@ -94,4 +92,5 @@ const Check_Stats = ({}) => {
   );
 };
 
-export default Check_Stats;
+
+export default Parent_Check_Stats

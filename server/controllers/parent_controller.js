@@ -18,7 +18,8 @@ router.post("/signup", async (req, res) => {
         LastName: req.body.last,
         email: req.body.email,
         Password: bcrypt.hashSync(req.body.password, 12),
-        resetTokenExpiry: new Date(),
+        resetTokenExpiry: new Date().toISOString(),
+        resetToken: "L",
       },
     });
 

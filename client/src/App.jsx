@@ -7,9 +7,8 @@ import {
   Signup_Child,
   Signup_Parent,
   Dashboard,
+  Parent_Dashboard,
   Home,
-  Home2,
-  Home3,
   Enter_Stats,
   Check_Stats,
   About,
@@ -23,12 +22,15 @@ import "./App.css";
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
   const [userId, setUserId] = useState("");
-  const [userType, setUserType] = useState("")
+  const [userType, setUserType] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("MyToken")) {
       setSessionToken(localStorage.getItem("MyToken"));
+    }
+    if (localStorage.getItem("User Type")) {
+      setUserType(localStorage.getItem("User Type"));
     }
   }, []);
 
@@ -47,14 +49,13 @@ function App() {
     console.log("Token Cleared");
     // localStorage.removeItem("MyToken");
     // localStorage.removeItem("")
-    localStorage.clear()
+    localStorage.clear();
     setSessionToken("");
     setUserType("");
     navigate("/");
   };
 
   return (
-    // <Check_Stats />
     <>
       {!sessionToken && !userType && (
         <>
@@ -62,23 +63,25 @@ function App() {
           <Auth
             updateToken={updateToken}
             userId={userId}
+            userType={userType}
             setUserId={setUserId}
             setUserType={setUserType}
           />
+
           <footer>
             <Footer />
           </footer>
         </>
       )}
-      {sessionToken && userType("parent") && (
+      {sessionToken && userType === "parent" && (
         <>
           <div>
             <Nav />
           </div>
           <header className="App-header">
             <Routes>
-              <Route path="/" element={<Navigate to="/home2" />} />
-              <Route path="/home2" element={<Home2 />} />
+              <Route path="/" element={<Navigate to="/Parent_Dashboard" />} />
+              <Route path="/Parent_Dashboard" element={<Parent_Dashboard />} />
 
               <Route path="/login" element={<Login />} />
               <Route
@@ -102,11 +105,10 @@ function App() {
           </footer>
         </>
       )}
-      {sessionToken && userType("child") && (
+      {sessionToken && userType === "child" && (
         <>
           <div>
             <Child_Nav userId={userId} />
-            <Dashboard />
           </div>
           <header className="App-header">
             <Routes>

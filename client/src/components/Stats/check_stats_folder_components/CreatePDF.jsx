@@ -62,7 +62,11 @@ const CreatePDF = ({ results, hours }) => {
             DriveTime Official Summary Report
           </Text>
           <Image style={styles.Image} src={DriveTimeLogo} />
+        </View>
+      </Page>
 
+      <Page>
+        <View>
           <Table
             tdStyle={{
               padding: "4px",
@@ -79,6 +83,7 @@ const CreatePDF = ({ results, hours }) => {
               <TD>Weather</TD>
               <TD>From</TD>
               <TD>To</TD>
+              <TD>Day/Night</TD>
             </TH>
             {results.map((obj, index) => (
               <TR key={index}>
@@ -87,9 +92,10 @@ const CreatePDF = ({ results, hours }) => {
                 {/* grabs us date of posting */}
                 <TD>{obj.vehicle_type}</TD>
                 <TD>{obj.weather}</TD>
-                //! do a day or night also
+
                 <TD>{obj.from}</TD>
                 <TD>{obj.to}</TD>
+                <TD>{obj.day === false ? "Night" : "Day"}</TD>
               </TR>
             ))}
           </Table>

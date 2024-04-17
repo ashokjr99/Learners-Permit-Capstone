@@ -13,27 +13,9 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
   const [practiced, setPracticed] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const weatherOptions = [
-    "Rain",
-    "Snow",
-    "Ice",
-    "Fog",
-    "Wind",
-    "Hail",
-    "Thunderstorms",
-    "Blizzards",
-    "Freezing Rain",
-  ];
+  const weatherOptions = ["Rainy", "Snowy", "Clear"];
 
-  const vehicleTypes = [
-    "Sedan",
-    "Truck",
-    "Van",
-    "SUV",
-    "Motorcycle",
-  ];
-  
-  const parentApproval = false;
+  const vehicleTypes = ["Sedan", "Truck", "Van", "SUV", "Motorcycle"];
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -54,12 +36,23 @@ const Enter_Stats = ({ isOpen, onRequestClose }) => {
         from,
         to,
         practiced,
-      };  
+      };
+
+      const sendNotification = async (e) => {
+        e.preventDefault();
+        try {
+          console.log(first);
+        } catch (err) {
+          console.log(
+            "There appears to have been an error sending a notification." + err
+          );
+        }
+      };
 
       const response = await fetch("http://localhost:8081/stats/post", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${localStorage.getItem("ChildToken")}`,
+          Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(statsData),
