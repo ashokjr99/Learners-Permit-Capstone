@@ -30,7 +30,7 @@ const Parent_Check_Stats = () => {
     const getFilter = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8081/stats/all?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
+          `http://localhost:8081/stats/child_stats?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
@@ -83,11 +83,11 @@ const Parent_Check_Stats = () => {
 
       <StatsFilter results={results} />
       {/* stats_filter houses all of the data that is filtered through */}
-      <SummaryHeader hours={hours} drives={drives} />
+      {/* <SummaryHeader hours={hours} drives={drives} />
       <ChartsHolder
         weatherDrivesTotalForEach={weatherDrivesTotalForEach}
         results={results}
-      />
+      /> */}
     </div>
   );
 };

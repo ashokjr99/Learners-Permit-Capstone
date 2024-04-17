@@ -8,6 +8,7 @@ import Parent_Dashboard from "./Dashboard/ParentDashboard";
 import Home from "./Home/Home";
 import Enter_Stats from "./Stats/Enter_Stats";
 import Check_Stats from "./Stats/Check_Stats";
+import Parent_Check_Stats from "./Stats/Parent_Check_Stats";
 import About from "./Brochure/About";
 import Contact from "./Brochure/Contact";
 import Footer from "./Navigation/Footer";
@@ -24,6 +25,7 @@ export {
   Home,   
   Enter_Stats,
   Check_Stats,
+  Parent_Check_Stats,
   About,
   Contact,
   Footer,

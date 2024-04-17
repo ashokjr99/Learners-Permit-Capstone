@@ -189,7 +189,6 @@ router.delete("/delete/:statId", async (req, res) => {
 });
 
 router.get("/child_stats", async (req, res) => {
-
   try {
     //? logic for filtering out the endDate and startDate
     const filters = {};
@@ -242,7 +241,7 @@ router.get("/child_stats", async (req, res) => {
     if (!userStats) {
       return res.status(404).json({ error: "User not found" });
     }
-     console.log(JSON.stringify(userStats));
+    console.log(JSON.stringify(userStats));
 
     let totalHours = 0;
     let totalDrives = userStats.length;
