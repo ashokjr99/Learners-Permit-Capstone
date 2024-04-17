@@ -11,87 +11,89 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 //? Houses the overall look of Checking Stats and Seeing Summaries
 
 const Parent_Check_Stats = () => {
-  const [results, setResults] = useState([]);
-  const [reFetch, setReFetch] = useState(false);
-  const [startDate, setStartDate] = useState("2000-01-01");
-  const [endDate, setEndDate] = useState("2099-01-01");
-  const [weather, setWeather] = useState(false);
-  const [time, setTime] = useState(false);
-  const [drives, setDrives] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [weatherDrivesTotalForEach, setWeatherDrivesTotalForEach] =
-    useState(null);
-  // null so nothing displays while page loads at first
-
-  //? usestate for the user setting their custom range as to when the drive was posted and under what conditions
-
-  //? these are passed as props to the appropriate jsx files in the return below, so that the weather,date, and day can be changes and set on the frontend
-
-  useEffect(() => {
-    const getFilter = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:8081/stats/child_stats?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
-            },
-          }
-        );
-        const json = await response.json();
-
-        // console.log(json, "herrrrree");
-
-        console.log(json);
-
-        setResults(json.userStats);
-        // we used "setResults" to change the state/values that go into the variable "results". we then return "results" in the jsx below.
-
-        setDrives(json.summaryData.totalDrives);
-        setHours(json.summaryData.totalHours);
-        setWeatherDrivesTotalForEach(json.pieChartData);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    getFilter();
-  }, [startDate, endDate, weather, time]);
-
-  return (
-    <div>
-      <h1>Summaries</h1>
-      <p>See your drive history in totality</p>
-
-      <FilterHolder
-        setStartDate={setStartDate}
-        setEndDate={setEndDate}
-        setTime={setTime}
-        setWeather={setWeather}
-      />
-      <PDFDownloadLink
-        document={<CreatePDF results={results} hours={hours} />}
-        fileName="FORM"
-      >
-        {({ loading }) =>
-          loading ? (
-            <button>Loading Document...</button>
-          ) : (
-            <button>Download</button>
-          )
+    const [results, setResults] = useState([]);
+    const [reFetch, setReFetch] = useState(false);
+    const [startDate, setStartDate] = useState("2000-01-01");
+    const [endDate, setEndDate] = useState("2099-01-01");
+    const [weather, setWeather] = useState(false);
+    const [time, setTime] = useState(false);
+    const [drives, setDrives] = useState(0);
+    const [hours, setHours] = useState(0);
+    const [approval, setApproval] = useState(false);
+    const [weatherDrivesTotalForEach, setWeatherDrivesTotalForEach] =
+      useState(null);
+    // null so nothing displays while page loads at first
+  
+    //? usestate for the user setting their custom range as to when the drive was posted and under what conditions
+  
+    //? these are passed as props to the appropriate jsx files in the return below, so that the weather,date, and day can be changes and set on the frontend
+  
+    useEffect(() => {
+      const getFilter = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:8081/stats/child_stats?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}&approval=${approval}`,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
+              },
+            }
+          );
+          const json = await response.json();
+  
+          // console.log(json, "herrrrree");
+  
+          console.log(json);
+  
+          setResults(json.userStats);
+          // we used "setResults" to change the state/values that go into the variable "results". we then return "results" in the jsx below.
+  
+          setDrives(json.summaryData.totalDrives);
+          setHours(json.summaryData.totalHours);
+          setWeatherDrivesTotalForEach(json.pieChartData);
+          setApproval(json.approval)
+        } catch (err) {
+          console.log(err);
         }
-      </PDFDownloadLink>
-
-      <StatsChartHolder results={results} setReFetch={setReFetch} />
-      {/* stats_filter houses all of the data that is filtered through */}
-      {/* <SummaryHeader hours={hours} drives={drives} />
-      <ChartsHolder
-        weatherDrivesTotalForEach={weatherDrivesTotalForEach}
-        results={results}
-      /> */}
-    </div>
-  );
-};
+      };
+  
+      getFilter();
+    }, [startDate, endDate, weather, time, approval, reFetch]);
+  
+    return (
+      <div>
+        <h1>Summaries</h1>
+        <p>See your drive history in totality</p>
+  
+        <FilterHolder
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          setTime={setTime}
+          setWeather={setWeather}
+        />
+        <PDFDownloadLink
+          document={<CreatePDF results={results} hours={hours} />}
+          fileName="FORM"
+        >
+          {({ loading }) =>
+            loading ? (
+              <button>Loading Document...</button>
+            ) : (
+              <button>Download</button>
+            )
+          }
+        </PDFDownloadLink>
+  
+        <StatsChartHolder results={results} setReFetch={setReFetch} />
+        {/* stats_filter houses all of the data that is filtered through */}
+        <SummaryHeader hours={hours} drives={drives} />
+        {/* <ChartsHolder
+          weatherDrivesTotalForEach={weatherDrivesTotalForEach}
+          results={results}
+        /> */}
+      </div>
+    );
+  };
 
 
 export default Parent_Check_Stats
