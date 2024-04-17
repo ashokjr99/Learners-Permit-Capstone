@@ -23,6 +23,7 @@ const StatsList = ({ results, setReFetch }) => {
         <Edit_Stats
           stats={statsObj}
           setShowEdit={setShowEdit}
+          showEdit={showEdit}
           setReFetch={setReFetch}
         />
       ) : null}
@@ -72,7 +73,6 @@ const StatsList = ({ results, setReFetch }) => {
                     >
                       Edit
                     </TableCell>
-                    //! pass props to return edit button from edit_stats
                     <TableCell align="center">Delete</TableCell>
                   </TableRow>
                 </>
