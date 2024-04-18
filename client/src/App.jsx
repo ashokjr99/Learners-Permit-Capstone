@@ -62,7 +62,7 @@ function App() {
       {!sessionToken && !userType && (
         <>
         <Routes>
-        <Route path="/resetpassword" element={<ResetPassword />} />
+        <Route path="/ResetPassword/*" element={<ResetPassword />} />
         </Routes>
           <Home />
           <Auth
@@ -78,7 +78,7 @@ function App() {
           </footer>
         </>
       )}
-      {/* {sessionToken && userType === "parent" && (
+      {sessionToken && userType === "parent" && (
         <>
           <div>
             <Nav />
@@ -111,8 +111,8 @@ function App() {
             <Footer />
           </footer>
         </>
-      )} */}
-      {/* {sessionToken && userType === "child" && (
+      )}
+      {sessionToken && userType === "child" && (
         <>
           <div>
             <Child_Nav userId={userId} />
@@ -144,7 +144,7 @@ function App() {
             <Footer />
           </footer>
         </>
-      )} */}
+      )}
     </>
   );
 }

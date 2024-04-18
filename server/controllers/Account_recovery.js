@@ -58,7 +58,7 @@ router.post("/forgot-password", async (req, res) => {
       from: "drivingtimetracker@gmail.com",
       to: parentUser.email,
       subject: "Password Reset",
-      text: `Click the following link to reset your password: http://localhost:5173/ResetPassword/${token}`,
+      text: `Click the following link to reset your password: http://localhost:5173/#/ResetPassword/${token}`,
     };
 
     // Send the email
