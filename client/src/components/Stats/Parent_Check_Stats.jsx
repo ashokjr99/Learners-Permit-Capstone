@@ -30,7 +30,7 @@ const Parent_Check_Stats = () => {
     const getFilter = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8081/stats/all?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
+          `http://localhost:8081/stats/child_stats?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
@@ -92,5 +92,4 @@ const Parent_Check_Stats = () => {
   );
 };
 
-
-export default Parent_Check_Stats
+export default Parent_Check_Stats;

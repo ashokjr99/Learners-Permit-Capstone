@@ -105,10 +105,10 @@ function App() {
       )}
       {sessionToken && userType === "child" && (
         <>
-         {/* <div>
+          <div>
             <Child_Nav userId={userId} clearToken={clearToken} />
-          </div> */}
-          
+          </div>
+
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
@@ -119,6 +119,7 @@ function App() {
               <Route
                 path="/enter_stats"
                 element={<Enter_Stats userId={userId} />}
+                //! look into why we made into dashboard with Travis
               />
 
               <Route path="/stats" element={<Check_Stats />} />
