@@ -76,7 +76,7 @@ function App() {
       {sessionToken && userType === "parent" && (
         <>
           <div>
-            <Nav />
+            <Nav clearToken={clearToken} />
           </div>
           <header className="App-header">
             <Routes>
@@ -97,9 +97,7 @@ function App() {
               <Route path="/contact_us" element={<Contact />} />
             </Routes>
           </header>
-          <div>
-            <button onClick={clearToken}>Logout!</button>
-          </div>
+
           <footer>
             <Footer />
           </footer>
@@ -107,13 +105,14 @@ function App() {
       )}
       {sessionToken && userType === "child" && (
         <>
-          <div>
-            <Child_Nav userId={userId} />
-          </div>
+         {/* <div>
+            <Child_Nav userId={userId} clearToken={clearToken} />
+          </div> */}
+          
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Child_Nav />} />
 
               <Route path="/login" element={<Login />} />
 
