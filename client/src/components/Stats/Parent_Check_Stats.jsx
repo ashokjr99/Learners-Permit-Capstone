@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   ChartsHolder,
   SummaryHeader,
-  StatsFilter,
+  StatsChartHolder,
   FilterHolder,
   CreatePDF,
 } from "./check_stats_folder_components";
@@ -12,14 +12,14 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const Parent_Check_Stats = () => {
   const [results, setResults] = useState([]);
+  const [reFetch, setReFetch] = useState(false);
   const [startDate, setStartDate] = useState("2000-01-01");
   const [endDate, setEndDate] = useState("2099-01-01");
   const [weather, setWeather] = useState(false);
   const [time, setTime] = useState(false);
   const [drives, setDrives] = useState(0);
   const [hours, setHours] = useState(0);
-  const [weatherDrivesTotalForEach, setWeatherDrivesTotalForEach] =
-    useState(null);
+  const [approval, setApproval] = useState(false);
   // null so nothing displays while page loads at first
 
   //? usestate for the user setting their custom range as to when the drive was posted and under what conditions
@@ -30,7 +30,7 @@ const Parent_Check_Stats = () => {
     const getFilter = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8081/stats/child_stats?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
+          `http://localhost:8081/stats/child_stats?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}&approval=${approval}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
@@ -38,8 +38,6 @@ const Parent_Check_Stats = () => {
           }
         );
         const json = await response.json();
-
-        // console.log(json, "herrrrree");
 
         console.log(json);
 
@@ -55,39 +53,44 @@ const Parent_Check_Stats = () => {
     };
 
     getFilter();
-  }, [startDate, endDate, weather, time]);
+  }, [startDate, endDate, weather, time, approval, reFetch]);
 
   return (
-    <div>
-      <h1>Summaries</h1>
-      <p>See your drive history in totality</p>
+    <div
+      className="w3-panel w3-card-4 margin-l-p margin-r-p"
+      style={{ marginLeft: "25%" }}
+    >
+      <div className="w3-container">
+        <h1>Summaries</h1>
+        <p>See your drive history in totality</p>
 
-      <FilterHolder
-        setStartDate={setStartDate}
-        setEndDate={setEndDate}
-        setTime={setTime}
-        setWeather={setWeather}
-      />
-      <PDFDownloadLink
-        document={<CreatePDF results={results} hours={hours} />}
-        fileName="FORM"
-      >
-        {({ loading }) =>
-          loading ? (
-            <button>Loading Document...</button>
-          ) : (
-            <button>Download</button>
-          )
-        }
-      </PDFDownloadLink>
+        <FilterHolder
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          setTime={setTime}
+          setWeather={setWeather}
+        />
+        <PDFDownloadLink
+          document={<CreatePDF results={results} hours={hours} />}
+          fileName="FORM"
+        >
+          {({ loading }) =>
+            loading ? (
+              <button>Loading Document...</button>
+            ) : (
+              <button>Download</button>
+            )
+          }
+        </PDFDownloadLink>
 
-      <StatsFilter results={results} />
-      {/* stats_filter houses all of the data that is filtered through */}
-      <SummaryHeader hours={hours} drives={drives} />
-      <ChartsHolder
-        weatherDrivesTotalForEach={weatherDrivesTotalForEach}
-        results={results}
-      />
+        <StatsChartHolder results={results} setReFetch={setReFetch} />
+        {/* stats_filter houses all of the data that is filtered through */}
+        <SummaryHeader hours={hours} drives={drives} />
+        {/* <ChartsHolder
+          weatherDrivesTotalForEach={weatherDrivesTotalForEach}
+          results={results}
+        /> */}
+      </div>
     </div>
   );
 };

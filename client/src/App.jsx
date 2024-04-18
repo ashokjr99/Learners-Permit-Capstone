@@ -6,11 +6,13 @@ import {
   Login,
   Signup_Child,
   Signup_Parent,
+  ResetPassword,
   Dashboard,
   Parent_Dashboard,
   Home,
   Enter_Stats,
   Check_Stats,
+  Parent_Check_Stats,
   About,
   Contact,
   Footer,
@@ -59,6 +61,9 @@ function App() {
     <>
       {!sessionToken && !userType && (
         <>
+          <Routes>
+            <Route path="/ResetPassword/*" element={<ResetPassword />} />
+          </Routes>
           <Home />
           <Auth
             updateToken={updateToken}
@@ -91,10 +96,12 @@ function App() {
 
               <Route path="/enter_stats" element={<Enter_Stats />} />
 
-              <Route path="/stats" element={<Check_Stats />} />
+              <Route path="/stats" element={<Parent_Check_Stats />} />
 
               <Route path="/about" element={<About />} />
               <Route path="/contact_us" element={<Contact />} />
+
+              <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
 
@@ -112,7 +119,7 @@ function App() {
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
-              <Route path="/dashboard" element={<Child_Nav />} />
+              <Route path="/dashboard" element={<Dashboard />} />
 
               <Route path="/login" element={<Login />} />
 
@@ -126,6 +133,8 @@ function App() {
 
               <Route path="/about" element={<About />} />
               <Route path="/contact_us" element={<Contact />} />
+
+              <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
           <div>
