@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
 }
 
 datasource db {
@@ -10,14 +11,13 @@ datasource db {
 model users {
   id               String    @id @default(uuid())
   parentId         String
-  FirstName        String    @db.VarChar(45)
-  LastName         String    @db.VarChar(45)
-  email            String    @unique(map: "email_UNIQUE") @db.VarChar(100)
-  Password         String    @db.VarChar(255)
-  resetToken       String?
-  resetTokenExpiry DateTime? @default(now())
-
-
+  FirstName        String   @db.VarChar(45)
+  LastName         String   @db.VarChar(45)
+  email            String   @unique(map: "email_UNIQUE") @db.VarChar(100)
+  Password         String   @db.VarChar(255)
+  resetToken       String? 
+  resetTokenExpiry DateTime?  @default(now())
+  stats stats[]
   @@index([parentId], map: "users_parentId_fkey")
 }
 
@@ -34,7 +34,7 @@ model stats {
   practiced       String    @db.VarChar(255)
   parent_approval Boolean
   notes     String          @default("") @db.Text()
-
+  users users @relation(fields: [userId], references: [id])
   @@index([userId], map: "stats_userId_fkey")
 }
 

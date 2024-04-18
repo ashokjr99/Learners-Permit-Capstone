@@ -192,8 +192,6 @@ router.delete("/delete/:statId", async (req, res) => {
 });
 
 router.get("/child_stats", async (req, res) => {
-  const userId = parseInt(req.user.id);
-
   try {
     //? logic for filtering out the endDate and startDate
     const filters = {};
@@ -251,33 +249,9 @@ router.get("/child_stats", async (req, res) => {
     let totalHours = 0;
     let totalDrives = userStats.length;
 
-    // capturing total amounts of each weather
-    let pieChartData = {
-      snowy: 0,
-      rainy: 0,
-      clear: 0,
-    };
-
-    // add 1 to each post for the specific weather
-    userStats.forEach((obj) => {
-      totalHours += obj.hours;
-      if (obj.weather.toLowerCase() === "snowy") {
-        pieChartData.snowy++;
-      }
-      if (obj.weather.toLowerCase() === "rainy") {
-        pieChartData.rainy++;
-      } else if (obj.weather.toLowerCase() === "clear") {
-        pieChartData.clear++;
-      }
-    });
-
-    // console.log(totalDrives, "drives");
-    // console.log(totalHours, "hours");
-
     res.status(200).json({
       userStats,
       summaryData: { totalDrives, totalHours },
-      pieChartData,
     });
   } catch (error) {
     console.log("Error fetching stats:", error);

@@ -12,6 +12,7 @@ import {
   Home,
   Enter_Stats,
   Check_Stats,
+  Parent_Check_Stats,
   About,
   Contact,
   Footer,
@@ -96,7 +97,7 @@ function App() {
 
               <Route path="/enter_stats" element={<Enter_Stats />} />
 
-              <Route path="/stats" element={<Check_Stats />} />
+              <Route path="/stats" element={<Parent_Check_Stats />} />
 
               <Route path="/about" element={<About />} />
               <Route path="/contact_us" element={<Contact />} />
@@ -112,14 +113,14 @@ function App() {
       )}
       {sessionToken && userType === "child" && (
         <>
-         {/* <div>
+         <div>
             <Child_Nav userId={userId} clearToken={clearToken} />
-          </div> */}
+          </div>
           
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
-              <Route path="/dashboard" element={<Child_Nav />} />
+              <Route path="/dashboard" element={<Dashboard />} />
 
               <Route path="/login" element={<Login />} />
 
