@@ -119,7 +119,7 @@ router.post("/forgot-password", async (req, res) => {
     const { email } = req.body;
 
     // Find the user by email
-    const parentUser = await prisma.user.findUnique({
+    const parentUser = await prisma.users.findUnique({
       where: {
         email: email,
       },
@@ -134,7 +134,7 @@ router.post("/forgot-password", async (req, res) => {
     resetTokenExpiry.setHours(resetTokenExpiry.getHours() + 1); // Set expiry to 1 hour from now
 
     // Store the token and its expiry date in the database for the user
-    await prisma.user.update({
+    await prisma.users.update({
       where: {
         id: parentUser.id,
       },
@@ -174,7 +174,7 @@ router.post("/reset-password", async (req, res) => {
     const { token, newPassword } = req.body;
 
     // Find user by token
-    const user = await prisma.user.findFirst({
+    const user = await prisma.users.findFirst({
       where: {
         resetToken: token,
       },
@@ -185,7 +185,7 @@ router.post("/reset-password", async (req, res) => {
     }
 
     // Update user's password and reset token
-    const updatedUser = await prisma.user.update({
+    const updatedUser = await prisma.users.update({
       where: {
         id: user.id,
       },
