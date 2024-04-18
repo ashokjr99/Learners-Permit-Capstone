@@ -23,6 +23,7 @@ const StatsList = ({ results, setReFetch }) => {
         <Edit_Stats
           stats={statsObj}
           setShowEdit={setShowEdit}
+          showEdit={showEdit}
           setReFetch={setReFetch}
         />
       ) : null}
@@ -38,6 +39,8 @@ const StatsList = ({ results, setReFetch }) => {
               <TableCell align="center">From</TableCell>
               <TableCell align="center">To</TableCell>
               <TableCell align="center">Day/Night</TableCell>
+              <TableCell align="center">Practiced</TableCell>
+              <TableCell align="center">Notes</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -63,6 +66,8 @@ const StatsList = ({ results, setReFetch }) => {
                     <TableCell align="center">
                       {obj.day === false ? "Night" : "Day"}
                     </TableCell>
+                    <TableCell align="center">{obj.practiced}</TableCell>
+                    <TableCell align="center">{obj.notes}</TableCell>
                     <TableCell
                       align="center"
                       onClick={() => {
@@ -72,7 +77,6 @@ const StatsList = ({ results, setReFetch }) => {
                     >
                       Edit
                     </TableCell>
-                    //! pass props to return edit button from edit_stats
                     <TableCell align="center">Delete</TableCell>
                   </TableRow>
                 </>

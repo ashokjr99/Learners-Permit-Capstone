@@ -31,6 +31,7 @@ router.post("/post", async (req, res) => {
         from: req.body.from,
         to: req.body.to,
         practiced: req.body.practiced,
+        notes: req.body.notes,
         vehicle_type: req.body.vehicle_type,
 
         parent_approval: false,
@@ -154,6 +155,7 @@ router.put("/edit/:id", async (req, res) => {
         weather: req.body.weather,
         from: req.body.from,
         to: req.body.to,
+        notes: req.body.notes,
         practiced: req.body.practiced,
       },
     });

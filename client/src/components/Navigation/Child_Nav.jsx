@@ -2,13 +2,14 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import HeaderImage from "../assets/DriveTime.png";
 
-const Child_Nav = () => {
+const Child_Nav = ( props ) => {
     let location = useLocation();
     console.log(location);
     let backgroundColor = "darkblue";
+
   
     return (
-      <div className="w3-sidebar w3-light-grey w3-bar-block" style={{width:"20%"}}>
+      <div className="w3-sidebar w3-light-grey w3-bar-block w3-display-left" style={{width:"20%"}}>
         <img
           src={HeaderImage}
           style={{ height: "8em", left: "1em" }}
@@ -22,7 +23,7 @@ const Child_Nav = () => {
             Home
           </button>
         </Link>
-        <Link to="/about">
+        {/* <Link to="/about">
           <button
             style={{
               background: location.pathname.includes("/about") && backgroundColor,
@@ -30,7 +31,7 @@ const Child_Nav = () => {
           >
             About
           </button>
-        </Link>
+        </Link> */}
         <Link to="/stats">
           <button
             style={{
@@ -46,7 +47,7 @@ const Child_Nav = () => {
               background: location.pathname.includes("/enter_stats") && backgroundColor,
             }}
           >
-            Enter Stats
+            Submit Drive
           </button>
         </Link>
       </div>
