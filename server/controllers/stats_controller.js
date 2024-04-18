@@ -31,6 +31,7 @@ router.post("/post", async (req, res) => {
         from: req.body.from,
         to: req.body.to,
         practiced: req.body.practiced,
+        notes: req.body.notes,
         vehicle_type: req.body.vehicle_type,
 
         parent_approval: false,
@@ -154,6 +155,7 @@ router.put("/edit/:id", async (req, res) => {
         weather: req.body.weather,
         from: req.body.from,
         to: req.body.to,
+        notes: req.body.notes,
         practiced: req.body.practiced,
       },
     });
@@ -244,7 +246,7 @@ router.get("/child_stats", async (req, res) => {
     if (!userStats) {
       return res.status(404).json({ error: "User not found" });
     }
-     console.log(JSON.stringify(userStats));
+    console.log(JSON.stringify(userStats));
 
     let totalHours = 0;
     let totalDrives = userStats.length;

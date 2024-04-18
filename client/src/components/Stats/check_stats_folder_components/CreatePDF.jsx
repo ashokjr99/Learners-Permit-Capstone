@@ -84,6 +84,8 @@ const CreatePDF = ({ results, hours }) => {
               <TD>From</TD>
               <TD>To</TD>
               <TD>Day/Night</TD>
+              <TD>Practiced</TD>
+              <TD>Notes</TD>
             </TH>
             {results.map((obj, index) => (
               <TR key={index}>
@@ -96,6 +98,8 @@ const CreatePDF = ({ results, hours }) => {
                 <TD>{obj.from}</TD>
                 <TD>{obj.to}</TD>
                 <TD>{obj.day === false ? "Night" : "Day"}</TD>
+                <TD>{obj.practiced}</TD>
+                <TD>{obj.notes}</TD>
               </TR>
             ))}
           </Table>
