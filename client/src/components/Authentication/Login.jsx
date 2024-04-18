@@ -1,12 +1,29 @@
-import React from "react";
-
-import Collapsible from "react-collapsible";
+import React, {useState} from "react";
+import Modal from "react-modal"
+Modal.setAppElement("#root");
 
 const Login = ({ handleChange, handleLogin }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <div className="login" style={{ padding: "2em" }}>
-      {/* <button> */}
-      <Collapsible trigger={"Login"} triggerWhenOpen={"Close"}>
+       <button onClick={openModal}>
+        Login
+      <Modal
+      className={"modal"}
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+        contentLabel="Login"
+        appElement={document.getElementById("root")}>
+      {/* <Collapsible trigger={"Login"} triggerWhenOpen={"Close"}> */}
         <form style={{ display: "flex", flexDirection: "column" }}>
           <h2>Login</h2>
           <label>Email</label>
@@ -23,8 +40,8 @@ const Login = ({ handleChange, handleLogin }) => {
             Log In!
           </button>
         </form>
-      </Collapsible>
-      {/* </button> */}
+        </Modal>
+      </button>
     </div>
   );
 };

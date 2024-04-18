@@ -81,7 +81,7 @@ const Enter_Stats = () => {
 
   return (
     <div>
-      {/* <button onClick={openModal}>Enter Drive</button> */}
+      <button onClick={openModal}>Enter Drive</button>
       <Modal
         className="modal"
         // isOpen={modalIsOpen}
