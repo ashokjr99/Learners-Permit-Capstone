@@ -2,22 +2,22 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import HeaderImage from "../assets/DriveTime.png";
 
-
 const Nav = () => {
   let location = useLocation();
   console.log(location);
   let backgroundColor = "darkblue";
 
   return (
-    <div className="w3-sidebar w3-light-grey w3-bar-block" style={{width:"20%"}}>
-      <img
-        src={HeaderImage}
-        style={{ height: "8em", left: "1em" }}
-      />
+    <div
+      className="w3-sidebar w3-light-grey w3-bar-block"
+      style={{ width: "20%" }}
+    >
+      <img src={HeaderImage} style={{ height: "8em", left: "1em" }} />
       <Link to="/ParentDashboard">
         <button
           style={{
-            background: location.pathname.includes("/ParentDashboard") && backgroundColor,
+            background:
+              location.pathname.includes("/ParentDashboard") && backgroundColor,
           }}
         >
           Home
@@ -38,13 +38,14 @@ const Nav = () => {
             background: location.pathname.includes("/stats") && backgroundColor,
           }}
         >
-          View Stats
+          View Drives
         </button>
       </Link>
       <Link to="/signup_child">
         <button
           style={{
-            background: location.pathname.includes("/signup_child") && backgroundColor,
+            background:
+              location.pathname.includes("/signup_child") && backgroundColor,
           }}
         >
           Create Child Account

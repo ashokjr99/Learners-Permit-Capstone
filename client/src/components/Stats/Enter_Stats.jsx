@@ -12,6 +12,7 @@ const Enter_Stats = () => {
   const [to, setTo] = useState("");
   const [practiced, setPracticed] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [notes, setNotes] = useState("");
 
   const weatherOptions = ["Rainy", "Snowy", "Clear"];
 
@@ -36,6 +37,7 @@ const Enter_Stats = () => {
         from,
         to,
         practiced,
+        notes,
       };
 
       const sendNotification = async (e) => {
@@ -88,7 +90,7 @@ const Enter_Stats = () => {
         appElement={document.getElementById("root")}
       >
         <div>
-          <h2 className="text-center mb-4">Enter Your Stats</h2>
+          <h2 className="text-center mb-4">Enter Your Drive</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="hours" className="block mb-1">
@@ -194,11 +196,22 @@ const Enter_Stats = () => {
                 onChange={(e) => setPracticed(e.target.value)}
               />
             </div>
+            <div className="mb-4">
+              <label htmlFor="practiced" className="block mb-1">
+                Notes
+              </label>
+              <input
+                type="text"
+                id="notes"
+                className="w-full border-gray-200 rounded-md p-2"
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+              />
+            </div>
 
             <button
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded-md"
-              // onClick={closeModal}
             >
               Submit
             </button>
