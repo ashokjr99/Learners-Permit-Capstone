@@ -17,7 +17,7 @@ model users {
   Password         String   @db.VarChar(255)
   resetToken       String? 
   resetTokenExpiry DateTime?  @default(now())
-
+  stats stats[]
   @@index([parentId], map: "users_parentId_fkey")
 }
 
@@ -31,9 +31,10 @@ model stats {
   weather         String    @db.VarChar(45)
   from            String    @db.VarChar(45)
   to              String    @db.VarChar(45)
-  practiced       String    @db.VarChar(45)
+  practiced       String    @db.VarChar(255)
   parent_approval Boolean
-
+  notes     String          @default("") @db.Text()
+  users users @relation(fields: [userId], references: [id])
   @@index([userId], map: "stats_userId_fkey")
 }
 

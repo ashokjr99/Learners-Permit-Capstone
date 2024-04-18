@@ -23,6 +23,7 @@ const StatsList = ({ results, setReFetch }) => {
         <Edit_Stats
           stats={statsObj}
           setShowEdit={setShowEdit}
+          showEdit={showEdit}
           setReFetch={setReFetch}
         />
       ) : null}
@@ -43,11 +44,12 @@ const StatsList = ({ results, setReFetch }) => {
           <TableBody>
             {results.map((obj, index) => {
               return (
-                <>
+                
                   <TableRow
+                  key={obj.id}
                     style={{ backgroundColor: index % 2 == 0 ? "red" : "blue" }}
                     // if row is even, color background red, if odd, color background blue
-                    key={index}
+                    
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
@@ -72,10 +74,9 @@ const StatsList = ({ results, setReFetch }) => {
                     >
                       Edit
                     </TableCell>
-                    //! pass props to return edit button from edit_stats
                     <TableCell align="center">Delete</TableCell>
                   </TableRow>
-                </>
+                
               );
             })}
           </TableBody>

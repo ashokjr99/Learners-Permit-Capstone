@@ -41,8 +41,6 @@ const Parent_Check_Stats = () => {
           );
           const json = await response.json();
   
-          // console.log(json, "herrrrree");
-  
           console.log(json);
   
           setResults(json.userStats);
