@@ -9,7 +9,7 @@ datasource db {
 }
 
 model users {
-  id               String   @id @default(uuid())
+  id               String    @id @default(uuid())
   parentId         String
   FirstName        String   @db.VarChar(45)
   LastName         String   @db.VarChar(45)
@@ -39,11 +39,11 @@ model stats {
 }
 
 model parents {
-  id               String   @id @default(uuid())
-  FirstName        String   @db.VarChar(45)
-  LastName         String   @db.VarChar(45)
-  email            String   @unique(map: "email_UNIQUE") @db.VarChar(100)
-  Password         String   @db.VarChar(255)
+  id               String    @id @default(uuid())
+  FirstName        String    @db.VarChar(45)
+  LastName         String    @db.VarChar(45)
+  email            String    @unique(map: "email_UNIQUE") @db.VarChar(100)
+  Password         String    @db.VarChar(255)
   resetToken       String?
   resetTokenExpiry DateTime? @default(now())
 }

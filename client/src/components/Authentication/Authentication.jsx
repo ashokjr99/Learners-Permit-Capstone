@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Login from "./Login";
 import Signup_Parent from "./Signup_Parent";
+import Recovery from "./Recovery";
 
 const Auth = (props) => {
   const [firstName, setFirstName] = useState("");
@@ -109,6 +110,27 @@ const Auth = (props) => {
       // Handle error, show error message to the user, etc.
     }
   };
+
+  const handleRecovery = async () => {
+    try {
+      const response = await (
+        await fetch("http://localhost:8081/recovery/forgot-password", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+          }),
+        })
+      ).json();
+      console.log(response);
+    
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <div
@@ -125,6 +147,8 @@ const Auth = (props) => {
           handleChange={handleChange}
         />
         <Login handleLogin={handleLogin} handleChange={handleChange} />
+        <Recovery handleRecovery={handleRecovery} handleChange={handleChange} />
+
       </div>
     </>
   );
