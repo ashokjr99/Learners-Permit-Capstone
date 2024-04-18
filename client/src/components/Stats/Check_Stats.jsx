@@ -5,7 +5,6 @@ import {
   StatsChartHolder,
   FilterHolder,
   CreatePDF,
-  Edit_Stats,
 } from "./check_stats_folder_components";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 

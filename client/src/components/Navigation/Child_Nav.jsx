@@ -54,4 +54,4 @@ const Child_Nav = ( props ) => {
     );
   };
 
-export default Child_Nav
+export default Child_Nav;

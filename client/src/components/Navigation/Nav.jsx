@@ -16,7 +16,8 @@ const Nav = ( props ) => {
       <Link to="/home2"> //change to ParentDashboard
         <button
           style={{
-            background: location.pathname.includes("/ParentDashboard") && backgroundColor,
+            background:
+              location.pathname.includes("/ParentDashboard") && backgroundColor,
           }}
         >
           Home
@@ -37,13 +38,14 @@ const Nav = ( props ) => {
             background: location.pathname.includes("/stats") && backgroundColor,
           }}
         >
-          View Stats
+          View Drives
         </button>
       </Link>
       <Link to="/signup_child">
         <button
           style={{
-            background: location.pathname.includes("/signup_child") && backgroundColor,
+            background:
+              location.pathname.includes("/signup_child") && backgroundColor,
           }}
         >
           Create Child Account

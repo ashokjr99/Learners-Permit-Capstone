@@ -10,6 +10,8 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
   const [from, setFrom] = useState(stats.from);
   const [to, setTo] = useState(stats.to);
   const [day, setDay] = useState(stats.day);
+  const [notes, setNotes] = useState(stats.notes);
+  const [practiced, setPracticed] = useState(stats.practiced);
 
   const weatherOptions = ["Rainy", "Snowy", "Clear"];
 
@@ -42,7 +44,8 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             day: day,
             from: from,
             to: to,
-            practiced: "practiced",
+            practiced: practiced,
+            notes: notes,
           }),
         }
       );
@@ -108,7 +111,17 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
           </select>
           <input value={from} onChange={(e) => setFrom(e.target.value)}></input>
           <input value={to} onChange={(e) => setTo(e.target.value)}></input>
-          <input value="practiced"></input>
+
+          <input
+            value={practiced}
+            onChange={(e) => setPracticed(e.target.value)}
+          ></input>
+
+          <input
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+          ></input>
+
           <button>Edit</button>
           <button onClick={() => setShowEdit(false)} type="button">
             Close
