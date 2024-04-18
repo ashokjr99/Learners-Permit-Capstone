@@ -16,7 +16,7 @@ const StatsList = ({ results, setReFetch }) => {
 
   const [showEdit, setShowEdit] = useState(false);
   const [statsObj, setStatsObj] = useState({});
-  const userType = localStorage.getItem('userType')
+  const userType = localStorage.getItem('User Type')
 
   return (
     <div style={{ position: "relative" }}>
@@ -33,6 +33,7 @@ const StatsList = ({ results, setReFetch }) => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
+              {userType === 'parent' && <TableCell align="center">Child</TableCell>}
               <TableCell>Hours</TableCell>
               <TableCell align="center">Date Posted</TableCell>
               <TableCell align="center">Vehicle</TableCell>
@@ -56,6 +57,7 @@ const StatsList = ({ results, setReFetch }) => {
                     
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
+                    {userType === 'parent' && <TableCell align="center">{obj.FirstName}</TableCell>}
                     <TableCell component="th" scope="row">
                       {obj.hours}
                     </TableCell>

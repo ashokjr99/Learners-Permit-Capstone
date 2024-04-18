@@ -12,6 +12,9 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
   const [day, setDay] = useState(stats.day);
   const [notes, setNotes] = useState(stats.notes);
   const [practiced, setPracticed] = useState(stats.practiced);
+  const [approval, setApproval] = useState(stats.parent_approval);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const userType = localStorage.getItem(`User Type`);
 
   const weatherOptions = ["Rainy", "Snowy", "Clear"];
 
@@ -46,6 +49,7 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             to: to,
             practiced: practiced,
             notes: notes,
+            parent_approval: approval,
           }),
         }
       );
@@ -122,7 +126,15 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             onChange={(e) => setNotes(e.target.value)}
           ></input>
 
-          <button>Edit</button>
+          {userType === "parent" && (
+            <input
+            type="checkbox"
+              value={stats.parent_approval}
+              onChange={(e) => setApproval(e.target.checked)}
+            ></input>
+          )}
+
+          <button onClick={(e) => editPost(e)}>Edit</button>
           <button onClick={() => setShowEdit(false)} type="button">
             Close
           </button>
