@@ -12,6 +12,7 @@ import About from "./Brochure/About";
 import Contact from "./Brochure/Contact";
 import Footer from "./Navigation/Footer";
 import Auth from "./Authentication/Authentication";
+import ResetPassword from "./Authentication/ResetPassword";
 
 export {
   Nav,
@@ -19,9 +20,10 @@ export {
   Login,
   Signup_Child,
   Signup_Parent,
+  ResetPassword,
   Dashboard,
   Parent_Dashboard,
-  Home,   
+  Home,
   Enter_Stats,
   Check_Stats,
   About,

@@ -6,6 +6,7 @@ import {
   Login,
   Signup_Child,
   Signup_Parent,
+  ResetPassword,
   Dashboard,
   Parent_Dashboard,
   Home,
@@ -57,8 +58,12 @@ function App() {
 
   return (
     <>
+        
       {!sessionToken && !userType && (
         <>
+        <Routes>
+        <Route path="/ResetPassword/*" element={<ResetPassword />} />
+        </Routes>
           <Home />
           <Auth
             updateToken={updateToken}
@@ -95,6 +100,8 @@ function App() {
 
               <Route path="/about" element={<About />} />
               <Route path="/contact_us" element={<Contact />} />
+
+              <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
 
@@ -125,6 +132,8 @@ function App() {
 
               <Route path="/about" element={<About />} />
               <Route path="/contact_us" element={<Contact />} />
+
+              <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
           <div>
