@@ -71,17 +71,20 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
     >
       <div>
         <form onSubmit={(e) => editPost(e)}>
+          <label htmlFor="hoursInput">Hours</label>
           <input
+            id="hoursInput"
             value={hoursResults}
             onChange={(e) => setHoursResults(e.target.value)}
           ></input>
 
           <div className="mb-4">
-            <label className="block mb-1">
+            <label className="block mb-1" htmlFor="daySlider">
               {day === false ? "Night" : "Day"}
             </label>
             <label className="switch">
               <input
+                id="daySlider"
                 type="checkbox"
                 checked={day}
                 onChange={(e) => setDay(e.target.checked)}
@@ -90,7 +93,12 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             </label>
           </div>
 
-          <select value={vehicle} onChange={(e) => setVehicle(e.target.value)}>
+          <label htmlFor="vehicleSlider">Vehicle Type</label>
+          <select
+            id="vehicleSlider"
+            value={vehicle}
+            onChange={(e) => setVehicle(e.target.value)}
+          >
             <option value="">Select Vehicle Type</option>
             {vehicleTypes.map((type) => (
               <option key={type} value={type}>
@@ -98,7 +106,10 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
               </option>
             ))}
           </select>
+
+          <label htmlFor="weatherSlider">Weather</label>
           <select
+            id="weatherSlider"
             value={weatherResults}
             onChange={(e) => setWeatherResults(e.target.value)}
           >
@@ -109,23 +120,34 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
               </option>
             ))}
           </select>
+
+          <label htmlFor="fromInput">From</label>
           <input value={from} onChange={(e) => setFrom(e.target.value)}></input>
+
+          <label htmlFor="toInput">To</label>
           <input value={to} onChange={(e) => setTo(e.target.value)}></input>
 
+          <label htmlFor="practicedInput">Practiced</label>
           <input
             value={practiced}
             onChange={(e) => setPracticed(e.target.value)}
           ></input>
 
+          <label htmlFor="notesInput">Notes</label>
           <input
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
           ></input>
 
-          <button>Edit</button>
-          <button onClick={() => setShowEdit(false)} type="button">
-            Close
-          </button>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button>Edit</button>
+          </div>
+
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button onClick={() => setShowEdit(false)} type="button">
+              Close
+            </button>
+          </div>
         </form>
       </div>
     </Modal>

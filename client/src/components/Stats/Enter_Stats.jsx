@@ -210,12 +210,14 @@ const Enter_Stats = () => {
               />
             </div>
 
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md"
-            >
-              Submit
-            </button>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded-md"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </Modal>

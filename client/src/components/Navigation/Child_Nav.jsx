@@ -38,7 +38,7 @@ const Child_Nav = (props) => {
             background: location.pathname.includes("/stats") && backgroundColor,
           }}
         >
-          View Stats
+          View Drives
         </button>
       </Link>
       <Link to="/enter_stats">

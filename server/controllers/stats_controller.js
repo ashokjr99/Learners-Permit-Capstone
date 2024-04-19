@@ -115,7 +115,9 @@ router.get("/all", async (req, res) => {
 
     // add 1 to each post for the specific weather
     userStats.forEach((obj) => {
-      totalHours += obj.hours;
+      console.log(obj.hours);
+      totalHours += parseFloat(obj.hours);
+
       if (obj.weather.toLowerCase() === "snowy") {
         pieChartData.snowy++;
       }
