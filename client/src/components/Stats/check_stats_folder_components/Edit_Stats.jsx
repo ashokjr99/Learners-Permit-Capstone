@@ -38,7 +38,7 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            hours: parseInt(hoursResults),
+            hours: parseFloat(hoursResults),
             vehicle_type: vehicle,
             weather: weatherResults,
             day: day,

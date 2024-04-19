@@ -30,7 +30,7 @@ const Enter_Stats = () => {
     e.preventDefault();
     try {
       const statsData = {
-        hours: parseInt(hours),
+        hours: parseFloat(hours),
         day: true,
         vehicle_type: vehicle_type,
         weather,
