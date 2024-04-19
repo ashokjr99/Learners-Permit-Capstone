@@ -157,6 +157,7 @@ router.put("/edit/:id", async (req, res) => {
         to: req.body.to,
         notes: req.body.notes,
         practiced: req.body.practiced,
+        parent_approval: req.body.parent_approval,
       },
     });
 
