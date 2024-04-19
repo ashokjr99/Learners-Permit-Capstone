@@ -5,7 +5,7 @@ const SummaryHeader = ({ hours, drives }) => {
 
   return (
     <div>
-      <h1>Summary</h1>
+      <h1>Totals</h1>
       <h2>Drives: {drives}</h2>
       <h2>Hours: {hours}</h2>
     </div>

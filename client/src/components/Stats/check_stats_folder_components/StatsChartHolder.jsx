@@ -15,6 +15,7 @@ const StatsList = ({ results, setReFetch }) => {
   // prop results passed from check_stats
 
   const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [statsObj, setStatsObj] = useState({});
   const userType = localStorage.getItem("User Type");
 
@@ -88,10 +89,43 @@ const StatsList = ({ results, setReFetch }) => {
                       setStatsObj(obj);
                     }}
                   >
+<<<<<<< HEAD
                     Edit
                   </TableCell>
                   <TableCell align="center">Delete</TableCell>
                 </TableRow>
+=======
+                    <TableCell component="th" scope="row">
+                      {obj.hours}
+                    </TableCell>
+                    <TableCell align="center">
+                      {new Date(obj.timestamp).toDateString()}
+                    </TableCell>
+                    <TableCell align="center">{obj.vehicle_type}</TableCell>
+                    <TableCell align="center">{obj.weather}</TableCell>
+                    <TableCell align="center">{obj.from}</TableCell>
+                    <TableCell align="center">{obj.to}</TableCell>
+                    <TableCell align="center">
+                      {obj.day === false ? "Night" : "Day"}
+                    </TableCell>
+                    <TableCell align="center">{obj.practiced}</TableCell>
+                    <TableCell align="center">{obj.notes}</TableCell>
+                    {userType === 'parent' && <TableCell align="center">{obj.parent_approval}</TableCell>}
+                    <TableCell
+                      align="center"
+                      onClick={() => {
+                        setShowEdit((p) => !p);
+                        setStatsObj(obj);
+                      }}
+                    >
+                      <button> Edit </button>
+                    </TableCell>
+                    <TableCell align="center">
+                      <Delete_Stats stats={obj} setReFetch={setReFetch} />
+                    </TableCell>
+                  </TableRow>
+                
+>>>>>>> 8f1d5addf2cec00b543f36d86cbbc55d03b5de0f
               );
             })}
           </TableBody>

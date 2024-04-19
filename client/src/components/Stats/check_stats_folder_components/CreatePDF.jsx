@@ -6,11 +6,19 @@ import {
   Document,
   StyleSheet,
   View,
+  Font,
 } from "@react-pdf/renderer";
+
 import DriveTimeLogo from "../../assets/Black_and_White.png";
 
 import { Table, TR, TH, TD } from "@ag-media/react-pdf-table";
 //table view on pdf
+
+// Register font
+Font.register({
+  family: "Roboto",
+  src: "http://fonts.gstatic.com/s/roboto/v16/zN7GBFwfMP4uA6AR0HCoLQ.ttf",
+});
 
 const styles = StyleSheet.create({
   body: {
@@ -21,24 +29,24 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     textAlign: "center",
-    // fontFamily: "AntonFamily",
+    fontFamily: "Roboto",
   },
   text: {
     margin: 12,
     fontSize: 14,
     textAlign: "justify",
-    // fontFamily: "AntonFamily",
+    fontFamily: "Roboto",
   },
   image: {
-    marginVertical: 15,
-    marginHorizontal: 100,
+    marginVertical: 50,
+    marginHorizontal: 50,
   },
   header: {
     fontSize: 12,
     marginBottom: 20,
     textAlign: "center",
     color: "grey",
-    // fontFamily: "AntonFamily",
+    fontFamily: "Roboto",
   },
   pageNumber: {
     position: "absolute",
@@ -47,8 +55,8 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     textAlign: "center",
-    color: "grey",
-    // fontFamily: "AntonFamily",
+    color: "gray",
+    fontFamily: "Roboto",
   },
 });
 
@@ -61,12 +69,12 @@ const CreatePDF = ({ results, hours }) => {
           <Text style={styles.header} fixed>
             DriveTime Official Summary Report
           </Text>
-          <Image style={styles.Image} src={DriveTimeLogo} />
+          <Image style={styles.image} src={DriveTimeLogo} />
         </View>
       </Page>
 
       <Page>
-        <View>
+        <View style={{ margin: "15px" }}>
           <Table
             tdStyle={{
               padding: "4px",
@@ -74,7 +82,7 @@ const CreatePDF = ({ results, hours }) => {
           >
             <TH
               style={{
-                fontSize: 14,
+                fontSize: 10,
               }}
             >
               <TD>Hours</TD>
@@ -88,7 +96,12 @@ const CreatePDF = ({ results, hours }) => {
               <TD>Notes</TD>
             </TH>
             {results.map((obj, index) => (
-              <TR key={index}>
+              <TR
+                key={index}
+                style={{
+                  fontSize: 10,
+                }}
+              >
                 <TD>{obj.hours}</TD>
                 <TD>{new Date(obj.timestamp).toDateString()}</TD>
                 {/* grabs us date of posting */}
@@ -106,7 +119,13 @@ const CreatePDF = ({ results, hours }) => {
 
           <Table>
             <TH>
-              <TD>TOTAL HOURS: {hours}</TD>
+              <TD
+                style={{
+                  fontSize: 10,
+                }}
+              >
+                TOTAL HOURS: {hours}
+              </TD>
             </TH>
           </Table>
 
