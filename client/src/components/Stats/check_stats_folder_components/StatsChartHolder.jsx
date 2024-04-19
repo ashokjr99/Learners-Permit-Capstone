@@ -16,6 +16,7 @@ const StatsList = ({ results, setReFetch }) => {
 
   const [showEdit, setShowEdit] = useState(false);
   const [statsObj, setStatsObj] = useState({});
+  const userType = localStorage.getItem('userType')
 
   return (
     <div style={{ position: "relative" }}>
@@ -41,16 +42,18 @@ const StatsList = ({ results, setReFetch }) => {
               <TableCell align="center">Day/Night</TableCell>
               <TableCell align="center">Practiced</TableCell>
               <TableCell align="center">Notes</TableCell>
+              {userType === 'parent' && <TableCell align="center">Approved</TableCell>}
             </TableRow>
           </TableHead>
           <TableBody>
             {results.map((obj, index) => {
               return (
-                <>
+                
                   <TableRow
+                  key={obj.id}
                     style={{ backgroundColor: index % 2 == 0 ? "red" : "blue" }}
                     // if row is even, color background red, if odd, color background blue
-                    key={index}
+                    
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
@@ -68,6 +71,7 @@ const StatsList = ({ results, setReFetch }) => {
                     </TableCell>
                     <TableCell align="center">{obj.practiced}</TableCell>
                     <TableCell align="center">{obj.notes}</TableCell>
+                    {userType === 'parent' && <TableCell align="center">{obj.parent_approval}</TableCell>}
                     <TableCell
                       align="center"
                       onClick={() => {
@@ -79,7 +83,7 @@ const StatsList = ({ results, setReFetch }) => {
                     </TableCell>
                     <TableCell align="center">Delete</TableCell>
                   </TableRow>
-                </>
+                
               );
             })}
           </TableBody>
