@@ -143,7 +143,6 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             onChange={(e) => setNotes(e.target.value)}
           ></input>
 
-<<<<<<< HEAD
           {userType === "parent" && (
             <input
             type="checkbox"
@@ -156,17 +155,6 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
           <button onClick={() => setShowEdit(false)} type="button">
             Close
           </button>
-=======
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <button>Edit</button>
-          </div>
-
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <button onClick={() => setShowEdit(false)} type="button">
-              Close
-            </button>
-          </div>
->>>>>>> 8f1d5addf2cec00b543f36d86cbbc55d03b5de0f
         </form>
       </div>
     </Modal>

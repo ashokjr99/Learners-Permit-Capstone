@@ -128,9 +128,6 @@ router.get("/all", async (req, res) => {
       }
     });
 
-    // console.log(totalDrives, "drives");
-    // console.log(totalHours, "hours");
-
     res.status(200).json({
       userStats,
       summaryData: { totalDrives, totalHours },
@@ -259,7 +256,12 @@ router.get("/child_stats", async (req, res) => {
     console.log(JSON.stringify(userStats));
 
     let totalHours = 0;
-    let totalDrives = userStats.length;
+    let totalDrives = results.length;
+
+    results.forEach((obj) => {
+      console.log(obj.hours);
+      totalHours += parseFloat(obj.hours);
+    })
 
     res.status(200).json({
       userStats: results,
