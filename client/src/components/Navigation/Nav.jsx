@@ -2,20 +2,28 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import HeaderImage from "../assets/DriveTime.png";
 
-
-const Nav = ( props ) => {
+const Nav = (props) => {
   let location = useLocation();
   console.log(location);
   let backgroundColor = "darkblue";
 
   return (
-    <div className="w3-sidebar w3-bar-block w3-card-4" style={{width:"20%", backgroundColor: "#242424"}}>
-         <img className="w3-bar-item" src={HeaderImage} style={{ height: "8em", left: "1em" }}/>
-        <input type="text" placeholder="Search.."/>
-        <Link to="/Parent_Dashboard">
+    <div
+      className="w3-sidebar w3-bar-block w3-card-4"
+      style={{ width: "20%", backgroundColor: "#242424" }}
+    >
+      <img
+        className="w3-bar-item"
+        src={HeaderImage}
+        style={{ height: "8em", left: "1em" }}
+      />
+      <input type="text" placeholder="Search.." />
+      <Link to="/Parent_Dashboard">
         <button
           style={{
-            background: location.pathname.includes("/Parent_Dashboard") && backgroundColor,
+            background:
+              location.pathname.includes("/Parent_Dashboard") &&
+              backgroundColor,
           }}
         >
           Home
@@ -49,10 +57,14 @@ const Nav = ( props ) => {
           Create Child Account
         </button>
       </Link>
-      
-      <button className="w3-display-bottomleft" onClick={props.clearToken}>Logout</button>  
-      
 
+      <button
+        className="w3-display-bottomleft"
+        onClick={props.clearToken}
+        style={{ marginBottom: "2em", marginLeft:"2.25em" }}
+      >
+        Logout
+      </button>
     </div>
   );
 };
