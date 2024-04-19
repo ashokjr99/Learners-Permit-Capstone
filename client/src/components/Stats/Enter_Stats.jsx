@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import "./ToggleSwitch.css";
 Modal.setAppElement("#root");
 
-const Enter_Stats = () => {
+const Enter_Stats = ({ toggleStatsView, modalIsOpen, setModalIsOpen}) => {
   const [hours, setHours] = useState("");
   const [day, setDay] = useState(false);
   const [vehicle_type, setVehicleType] = useState("");
@@ -11,20 +11,16 @@ const Enter_Stats = () => {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [practiced, setPracticed] = useState("");
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [notes, setNotes] = useState("");
 
   const weatherOptions = ["Rainy", "Snowy", "Clear"];
 
   const vehicleTypes = ["Sedan", "Truck", "Van", "SUV", "Motorcycle"];
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+  // const toggleStatsView = ( setterFunc ) => {
+  //   setModalIsOpen((prev)=> !prev)
+  // };
+  // toggleStatsView(setModalIsOpen);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,7 +59,7 @@ const Enter_Stats = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("Stats posted successfully:", data);
-        closeModal(); // Close the modal after successful submission
+        setModalIsOpen(false); // Close the modal after successful submission
       } else {
         if (response.status === 401) {
           console.error("Unauthorized access. Please log in again.");
@@ -81,12 +77,11 @@ const Enter_Stats = () => {
 
   return (
     <div>
-      <button onClick={openModal}>Enter Drive</button>
+      <button onClick={toggleStatsView}>Enter Drive</button>
       <Modal
         className="modal"
-        // isOpen={modalIsOpen}
-        isOpen={true}
-        onRequestClose={closeModal}
+        isOpen={modalIsOpen}
+        // onRequestClose={closeModal}
         contentLabel="Enter Stats Modal"
         appElement={document.getElementById("root")}
       >

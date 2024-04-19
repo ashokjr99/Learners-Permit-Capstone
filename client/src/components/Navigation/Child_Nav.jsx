@@ -2,10 +2,12 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import HeaderImage from "../assets/DriveTime.png";
 
-const Child_Nav = (props) => {
-  let location = useLocation();
-  console.log(location);
-  let backgroundColor = "darkblue";
+
+
+const Child_Nav = ( props ) => {
+    let location = useLocation();
+    console.log(location);
+    let backgroundColor = "darkblue";
 
   return (
     <div
@@ -32,27 +34,31 @@ const Child_Nav = (props) => {
             About
           </button>
         </Link> */}
-      <Link to="/stats">
-        <button
-          style={{
-            background: location.pathname.includes("/stats") && backgroundColor,
-          }}
-        >
-          View Drives
-        </button>
-      </Link>
-      <Link to="/enter_stats">
-        <button
-          style={{
-            background:
-              location.pathname.includes("/enter_stats") && backgroundColor,
-          }}
-        >
-          Submit Drive
-        </button>
-      </Link>
-    </div>
-  );
-};
+
+        <Link to="/stats">
+          <button
+            style={{
+              background: location.pathname.includes("/stats") && backgroundColor,
+            }}
+          >
+            View Stats
+          </button>
+        </Link>
+        <Link to="/enter_stats">
+          <button
+            style={{
+              background: location.pathname.includes("/enter_stats") && backgroundColor,
+            }}
+            onClick={() => {
+              console.log(props.setModalIsOpen);
+              props.setModalIsOpen(true);
+            }}
+            >
+            Submit Drive
+          </button>
+        </Link>
+      </div>
+    );
+  };
 
 export default Child_Nav;

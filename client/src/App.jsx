@@ -21,11 +21,18 @@ import {
 
 import "./App.css";
 
+
+
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
   const [userId, setUserId] = useState("");
   const [userType, setUserType] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
+
+  const toggleStatsView = ( setterFunc ) => {
+    setterFunc((prev)=> !prev)
+  };
 
   useEffect(() => {
     if (localStorage.getItem("MyToken")) {
@@ -94,7 +101,7 @@ function App() {
                 element={<Signup_Child userId={userId} />}
               />
 
-              <Route path="/enter_stats" element={<Enter_Stats />} />
+              <Route path="/enter_stats" element={ <Enter_Stats modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}/>} />
 
               <Route path="/stats" element={<Parent_Check_Stats />} />
 
@@ -112,21 +119,23 @@ function App() {
       )}
       {sessionToken && userType === "child" && (
         <>
-          <div>
-            <Child_Nav userId={userId} clearToken={clearToken} />
+         <div>
+            <Child_Nav userId={userId} clearToken={clearToken} setModalIsOpen={setModalIsOpen}/>
+
           </div>
 
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
 
               <Route path="/login" element={<Login />} />
 
               <Route
                 path="/enter_stats"
-                element={<Enter_Stats userId={userId} />}
-                //! look into why we made into dashboard with Travis
+
+                element={<Enter_Stats userId={userId} modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />}
               />
 
               <Route path="/stats" element={<Check_Stats />} />
