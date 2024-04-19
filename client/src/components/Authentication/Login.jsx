@@ -23,15 +23,12 @@ const Login = ({ handleChange, handleLogin }) => {
       onRequestClose={closeModal}
         contentLabel="Login"
         appElement={document.getElementById("root")}>
-      {/* <Collapsible trigger={"Login"} triggerWhenOpen={"Close"}> */}
         <form style={{ display: "flex", flexDirection: "column" }}>
           <h2>Login</h2>
           <label>Email</label>
           <input onChange={(e) => handleChange("email", e.target.value)} />
           <label>Password</label>
           <input onChange={(e) => handleChange("password", e.target.value)} />
-          {/* //! SOMEONE PLEASE FIGURE OUT WHY WE MUST PRESS BUTTON MULTIPLE //!
-          TIMES TO LOGIN/SIGNUP */}
           <button
             style={{ margin: "1em", width: "9em" }}
             type="button"

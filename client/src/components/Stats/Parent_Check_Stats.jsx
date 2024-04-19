@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  ChartsHolder,
   SummaryHeader,
   StatsChartHolder,
   FilterHolder,
@@ -40,13 +39,12 @@ const Parent_Check_Stats = () => {
         const json = await response.json();
 
         console.log(json);
-
+        console.log(json.userStats);
         setResults(json.userStats);
         // we used "setResults" to change the state/values that go into the variable "results". we then return "results" in the jsx below.
 
         setDrives(json.summaryData.totalDrives);
         setHours(json.summaryData.totalHours);
-        setWeatherDrivesTotalForEach(json.pieChartData);
       } catch (err) {
         console.log(err);
       }

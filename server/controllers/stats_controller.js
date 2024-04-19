@@ -128,9 +128,6 @@ router.get("/all", async (req, res) => {
       }
     });
 
-    // console.log(totalDrives, "drives");
-    // console.log(totalHours, "hours");
-
     res.status(200).json({
       userStats,
       summaryData: { totalDrives, totalHours },
@@ -159,6 +156,7 @@ router.put("/edit/:id", async (req, res) => {
         to: req.body.to,
         notes: req.body.notes,
         practiced: req.body.practiced,
+        parent_approval: req.body.parent_approval,
       },
     });
 
@@ -246,13 +244,27 @@ router.get("/child_stats", async (req, res) => {
     if (!userStats) {
       return res.status(404).json({ error: "User not found" });
     }
+
+    const results = []
+
+    for (let user of userStats) {
+      user.stats.forEach(stat => {
+        results.push({...stat, FirstName:user.FirstName})
+      })
+    }
+    
     console.log(JSON.stringify(userStats));
 
     let totalHours = 0;
-    let totalDrives = userStats.length;
+    let totalDrives = results.length;
+
+    results.forEach((obj) => {
+      console.log(obj.hours);
+      totalHours += parseFloat(obj.hours);
+    })
 
     res.status(200).json({
-      userStats,
+      userStats: results,
       summaryData: { totalDrives, totalHours },
     });
   } catch (error) {

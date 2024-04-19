@@ -58,7 +58,11 @@ const Nav = (props) => {
         </button>
       </Link>
 
-      <button className="w3-display-bottomleft" onClick={props.clearToken}>
+      <button
+        className="w3-display-bottomleft"
+        onClick={props.clearToken}
+        style={{ marginBottom: "2em", marginLeft:"2.25em" }}
+      >
         Logout
       </button>
     </div>
