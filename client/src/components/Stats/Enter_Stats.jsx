@@ -26,7 +26,7 @@ const Enter_Stats = ({ toggleStatsView, modalIsOpen, setModalIsOpen}) => {
     e.preventDefault();
     try {
       const statsData = {
-        hours: parseInt(hours),
+        hours: parseFloat(hours),
         day: true,
         vehicle_type: vehicle_type,
         weather,
@@ -205,12 +205,14 @@ const Enter_Stats = ({ toggleStatsView, modalIsOpen, setModalIsOpen}) => {
               />
             </div>
 
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md"
-            >
-              Submit
-            </button>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded-md"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </Modal>

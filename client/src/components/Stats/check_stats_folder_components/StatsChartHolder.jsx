@@ -15,6 +15,7 @@ const StatsList = ({ results, setReFetch }) => {
   // prop results passed from check_stats
 
   const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [statsObj, setStatsObj] = useState({});
   const userType = localStorage.getItem('userType')
 
@@ -79,9 +80,11 @@ const StatsList = ({ results, setReFetch }) => {
                         setStatsObj(obj);
                       }}
                     >
-                      Edit
+                      <button> Edit </button>
                     </TableCell>
-                    <TableCell align="center">Delete</TableCell>
+                    <TableCell align="center">
+                      <Delete_Stats stats={obj} setReFetch={setReFetch} />
+                    </TableCell>
                   </TableRow>
                 
               );

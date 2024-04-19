@@ -34,7 +34,7 @@ model users {
 model stats {
   id              Int       @id @default(autoincrement())
   userId          String
-  hours           Int
+  hours           Decimal   @db.Decimal(4,2)
   timestamp       DateTime? @default(now()) @db.Timestamp(0)
   vehicle_type    String    @db.VarChar(45)
   day             Boolean

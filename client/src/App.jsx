@@ -66,12 +66,11 @@ function App() {
 
   return (
     <>
-        
       {!sessionToken && !userType && (
         <>
-        <Routes>
-        <Route path="/ResetPassword/*" element={<ResetPassword />} />
-        </Routes>
+          <Routes>
+            <Route path="/ResetPassword/*" element={<ResetPassword />} />
+          </Routes>
           <Home />
           <Auth
             updateToken={updateToken}
@@ -122,8 +121,9 @@ function App() {
         <>
          <div>
             <Child_Nav userId={userId} clearToken={clearToken} setModalIsOpen={setModalIsOpen}/>
+
           </div>
-          
+
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
@@ -134,6 +134,7 @@ function App() {
 
               <Route
                 path="/enter_stats"
+
                 element={<Enter_Stats userId={userId} modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />}
               />
 
