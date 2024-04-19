@@ -17,7 +17,6 @@ model users {
   resetToken       String?
   resetTokenExpiry DateTime? @default(now())
 
-
   @@index([parentId], map: "users_parentId_fkey")
 }
 
@@ -33,7 +32,7 @@ model stats {
   to              String    @db.VarChar(45)
   practiced       String    @db.VarChar(255)
   parent_approval Boolean
-  notes     String          @default("") @db.Text()
+  notes           String    @db.Text
 
   @@index([userId], map: "stats_userId_fkey")
 }

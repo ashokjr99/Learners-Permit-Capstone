@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import HeaderImage from "../assets/DriveTime.png";
 
+
 const Child_Nav = ( props ) => {
     let location = useLocation();
     console.log(location);
@@ -46,7 +47,11 @@ const Child_Nav = ( props ) => {
             style={{
               background: location.pathname.includes("/enter_stats") && backgroundColor,
             }}
-          >
+            onClick={() => {
+              console.log(props.setModalIsOpen);
+              props.setModalIsOpen(true);
+            }}
+            >
             Submit Drive
           </button>
         </Link>

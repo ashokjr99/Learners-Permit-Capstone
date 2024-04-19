@@ -1,8 +1,9 @@
 // Import necessary modules and setup Express router
-const express = require("express");
-const router = express.Router();
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+const router = require("express").Router();
+
+const prisma = require("../db");
+
+// const prisma = new PrismaClient();
 
 // PUT endpoint for updating user profile (first name, last name, email)
 router.put("/api/settings/profile", async (req, res) => {
