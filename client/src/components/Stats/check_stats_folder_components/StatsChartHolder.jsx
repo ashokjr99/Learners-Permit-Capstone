@@ -79,7 +79,7 @@ const StatsList = ({ results, setReFetch }) => {
                   <TableCell align="center">{obj.practiced}</TableCell>
                   <TableCell align="center">{obj.notes}</TableCell>
                   {userType === "parent" && (
-                    <TableCell align="center">{obj.parent_approval}</TableCell>
+                    <TableCell align="center">{obj.parent_approval === false ? "Deny" : "Approved"}</TableCell>
                   )}
                   <TableCell
                     align="center"

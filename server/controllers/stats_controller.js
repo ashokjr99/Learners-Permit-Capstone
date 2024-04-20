@@ -145,7 +145,7 @@ router.put("/edit/:id", async (req, res) => {
     const updateStat = await prisma.stats.update({
       where: {
         id: parseInt(req.params.id),
-        userId: req.user.id,
+        //userId: req.user.id,
       },
       data: {
         hours: req.body.hours,
@@ -245,14 +245,14 @@ router.get("/child_stats", async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    const results = []
+    const results = [];
 
     for (let user of userStats) {
-      user.stats.forEach(stat => {
-        results.push({...stat, FirstName:user.FirstName})
-      })
+      user.stats.forEach((stat) => {
+        results.push({ ...stat, FirstName: user.FirstName });
+      });
     }
-    
+
     console.log(JSON.stringify(userStats));
 
     let totalHours = 0;
@@ -261,7 +261,7 @@ router.get("/child_stats", async (req, res) => {
     results.forEach((obj) => {
       console.log(obj.hours);
       totalHours += parseFloat(obj.hours);
-    })
+    });
 
     res.status(200).json({
       userStats: results,
