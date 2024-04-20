@@ -51,7 +51,8 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             notes: notes,
             parent_approval: approval,
           }),
-        }
+        },
+        console.log(stats.id)
       );
 
       const json = await response.json();
