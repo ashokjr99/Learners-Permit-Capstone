@@ -51,7 +51,9 @@ const StatsList = ({ results, setReFetch }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {results.map((obj, index) => {
+            {results
+            .filter((obj) => userType === "child" ? obj.parent_approval === true : true)
+            .map((obj, index) => {
               return (
                 <TableRow
                   key={obj.id}
