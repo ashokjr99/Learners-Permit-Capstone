@@ -145,7 +145,6 @@ router.put("/edit/:id", async (req, res) => {
     const updateStat = await prisma.stats.update({
       where: {
         id: parseInt(req.params.id),
-        //userId: req.user.id,
       },
       data: {
         hours: req.body.hours,
