@@ -47,7 +47,7 @@ const Check_Stats = ({}) => {
         console.log(json);
         setResults(json.userStats);
         // we used "setResults" to change the state/values that go into the variable "results". we then return "results" in the jsx below.
-        setApproved(json.summaryData.approved);
+        setApproved(json.summaryData.totalApprovals);
         setDrives(json.summaryData.totalDrives);
         setHours(json.summaryData.totalHours);
         setWeatherDrivesTotalForEach(json.pieChartData);
@@ -57,7 +57,7 @@ const Check_Stats = ({}) => {
     };
 
     getFilter();
-  }, [startDate, endDate, weather, time, reFetch]);
+  }, [startDate, endDate, weather, time, reFetch, approved]);
 
   return (
     <div

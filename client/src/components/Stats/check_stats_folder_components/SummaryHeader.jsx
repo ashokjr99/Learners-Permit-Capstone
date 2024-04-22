@@ -8,7 +8,9 @@ const SummaryHeader = ({ hours, drives, approved }) => {
       <h1>Totals</h1>
       <h2>Drives: {drives}</h2>
       <h2>Hours: {hours}</h2>
-      <h2>Approved: {approved}/{drives}</h2>
+      <h2>
+        Approved: {parseInt(approved)}/{drives}
+      </h2>
     </div>
   );
 };
