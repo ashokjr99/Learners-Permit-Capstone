@@ -47,7 +47,7 @@ const Check_Stats = ({}) => {
         console.log(json);
         setResults(json.userStats);
         // we used "setResults" to change the state/values that go into the variable "results". we then return "results" in the jsx below.
-        setApproved(json.summaryData.approved);
+        setApproved(json.summaryData.totalApprovals);
         setDrives(json.summaryData.totalDrives);
         setHours(json.summaryData.totalHours);
         setWeatherDrivesTotalForEach(json.pieChartData);
@@ -57,40 +57,46 @@ const Check_Stats = ({}) => {
     };
 
     getFilter();
-  }, [startDate, endDate, weather, time, reFetch]);
+  }, [startDate, endDate, weather, time, reFetch, approved]);
 
   return (
-    <div className="w3-container"  style={{marginLeft:"25%", marginRight:"4%", marginBottom:"25%"}}>
-    <div className="w3-panel w3-card-4" style={{overflow:"scroll", height:"60em"}} >
-      <h1>Summaries</h1>
-      <p>See your drive history in totality</p>
-
-      <FilterHolder
-        setStartDate={setStartDate}
-        setEndDate={setEndDate}
-        setTime={setTime}
-        setWeather={setWeather}
-      />
-      <PDFDownloadLink
-        document={<CreatePDF results={results} hours={hours} />}
-        fileName="FORM"
+    <div
+      className="w3-container"
+      style={{ marginLeft: "25%", marginRight: "4%", marginBottom: "25%" }}
+    >
+      <div
+        className="w3-panel w3-card-4"
+        style={{ overflow: "scroll", height: "60em" }}
       >
-        {({ loading }) =>
-          loading ? (
-            <button>Loading Document...</button>
-          ) : (
-            <button>Download</button>
-          )
-        }
-      </PDFDownloadLink>
+        <h1>Summaries</h1>
+        <p>See your drive history in totality</p>
 
-      <ChartsHolder
-        weatherDrivesTotalForEach={weatherDrivesTotalForEach}
-        results={results}
-      />
-      <SummaryHeader hours={hours} drives={drives} approved={approved} />
-      <StatsChartHolder results={results} setReFetch={setReFetch} />
-      {/* stats_filter houses all of the data that is filtered through */}
+        <FilterHolder
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          setTime={setTime}
+          setWeather={setWeather}
+        />
+        <PDFDownloadLink
+          document={<CreatePDF results={results} hours={hours} />}
+          fileName="FORM"
+        >
+          {({ loading }) =>
+            loading ? (
+              <button>Loading Document...</button>
+            ) : (
+              <button>Download</button>
+            )
+          }
+        </PDFDownloadLink>
+
+        <ChartsHolder
+          weatherDrivesTotalForEach={weatherDrivesTotalForEach}
+          results={results}
+        />
+        <SummaryHeader hours={hours} drives={drives} approved={approved} />
+        <StatsChartHolder results={results} setReFetch={setReFetch} />
+        {/* stats_filter houses all of the data that is filtered through */}
       </div>
     </div>
   );
