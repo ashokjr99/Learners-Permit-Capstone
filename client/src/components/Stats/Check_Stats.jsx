@@ -59,8 +59,8 @@ const Check_Stats = ({}) => {
   }, [startDate, endDate, weather, time, reFetch]);
 
   return (
-    <div className="w3-panel w3-card-4 margin-l-p margin-r-p"  style={{marginLeft:"25%"}} >
-      <div className="w3-container">
+    <div className="w3-container"  style={{marginLeft:"25%", marginRight:"4%", marginBottom:"25%"}}>
+    <div className="w3-panel w3-card-4" style={{overflow:"scroll", height:"60em"}} >
       <h1>Summaries</h1>
       <p>See your drive history in totality</p>
 

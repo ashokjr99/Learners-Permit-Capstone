@@ -39,7 +39,9 @@ function App() {
       setSessionToken(localStorage.getItem("MyToken"));
     }
     if (localStorage.getItem("User Type")) {
-      setUserType(localStorage.getItem("User Type"));
+      // setUserType(localStorage.getItem("User Type"));
+      setUserType( "parent" )
+      // setUserType( "child" )
     }
   }, []);
 
@@ -128,7 +130,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/dashboard" element={<Dashboard />} />
 
               <Route path="/login" element={<Login />} />
 
@@ -146,9 +147,9 @@ function App() {
               <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
-          <div>
+          {/* <div>
             <button onClick={clearToken}>Logout!</button>
-          </div>
+          </div> */}
           <footer>
             <Footer />
           </footer>
