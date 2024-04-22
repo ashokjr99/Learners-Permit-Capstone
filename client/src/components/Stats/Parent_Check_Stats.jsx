@@ -83,7 +83,7 @@ const Parent_Check_Stats = () => {
 
         <StatsChartHolder results={results} setReFetch={setReFetch} />
         {/* stats_filter houses all of the data that is filtered through */}
-        <SummaryHeader hours={hours} drives={drives} />
+        {/* <SummaryHeader hours={hours} drives={drives} /> */}
         {/* <ChartsHolder
           weatherDrivesTotalForEach={weatherDrivesTotalForEach}
           results={results}
