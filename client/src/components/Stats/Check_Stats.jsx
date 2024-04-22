@@ -59,37 +59,43 @@ const Check_Stats = ({}) => {
   }, [startDate, endDate, weather, time, reFetch]);
 
   return (
-    <div className="w3-container"  style={{marginLeft:"25%", marginRight:"4%", marginBottom:"25%"}}>
-    <div className="w3-panel w3-card-4" style={{overflow:"scroll", height:"60em"}} >
-      <h1>Summaries</h1>
-      <p>See your drive history in totality</p>
-
-      <FilterHolder
-        setStartDate={setStartDate}
-        setEndDate={setEndDate}
-        setTime={setTime}
-        setWeather={setWeather}
-      />
-      <PDFDownloadLink
-        document={<CreatePDF results={results} hours={hours} />}
-        fileName="FORM"
+    <div
+      className="w3-container"
+      style={{ marginLeft: "25%", marginRight: "4%", marginBottom: "25%" }}
+    >
+      <div
+        className="w3-panel w3-card-4"
+        style={{ overflow: "scroll", height: "60em" }}
       >
-        {({ loading }) =>
-          loading ? (
-            <button>Loading Document...</button>
-          ) : (
-            <button>Download</button>
-          )
-        }
-      </PDFDownloadLink>
+        <h1>Summaries</h1>
+        <p>See your drive history in totality</p>
 
-      <StatsChartHolder results={results} setReFetch={setReFetch} />
-      {/* stats_filter houses all of the data that is filtered through */}
-      <SummaryHeader hours={hours} drives={drives} />
-      <ChartsHolder
-        weatherDrivesTotalForEach={weatherDrivesTotalForEach}
-        results={results}
-      />
+        <FilterHolder
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          setTime={setTime}
+          setWeather={setWeather}
+        />
+        <PDFDownloadLink
+          document={<CreatePDF results={results} hours={hours} />}
+          fileName="FORM"
+        >
+          {({ loading }) =>
+            loading ? (
+              <button>Loading Document...</button>
+            ) : (
+              <button>Download</button>
+            )
+          }
+        </PDFDownloadLink>
+
+        <StatsChartHolder results={results} setReFetch={setReFetch} />
+        {/* stats_filter houses all of the data that is filtered through */}
+        <SummaryHeader hours={hours} drives={drives} />
+        <ChartsHolder
+          weatherDrivesTotalForEach={weatherDrivesTotalForEach}
+          results={results}
+        />
       </div>
     </div>
   );
