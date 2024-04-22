@@ -76,14 +76,16 @@ const Enter_Stats = ({ toggleStatsView, modalIsOpen, setModalIsOpen}) => {
   };
 
   return (
-    <div>
-      <button onClick={toggleStatsView}>Enter Drive</button>
+    <div style={{marginLeft:"25%", marginRight:"4%", marginBottom:"25%"}}>
+      {/* <button onClick={toggleStatsView}>Enter Drive</button> */}
       <Modal
         className="modal"
         isOpen={modalIsOpen}
         // onRequestClose={closeModal}
         contentLabel="Enter Stats Modal"
         appElement={document.getElementById("root")}
+        style={{ content: {left: "60%" }}}
+        
       >
         <div>
           <h2 className="text-center mb-4">Enter Your Drive</h2>
