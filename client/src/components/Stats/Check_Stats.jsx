@@ -19,6 +19,8 @@ const Check_Stats = ({}) => {
   const [time, setTime] = useState(false);
   const [drives, setDrives] = useState(0);
   const [hours, setHours] = useState(0);
+  const [approved, setApproved] = useState(0);
+  const [awaiting, setAwaiting] = useState(0);
   const [weatherDrivesTotalForEach, setWeatherDrivesTotalForEach] =
     useState(null);
   // null so nothing displays while page loads at first
@@ -43,10 +45,9 @@ const Check_Stats = ({}) => {
         // console.log(json, "herrrrree");
 
         console.log(json);
-
         setResults(json.userStats);
         // we used "setResults" to change the state/values that go into the variable "results". we then return "results" in the jsx below.
-
+        setApproved(json.summaryData.approved);
         setDrives(json.summaryData.totalDrives);
         setHours(json.summaryData.totalHours);
         setWeatherDrivesTotalForEach(json.pieChartData);
@@ -89,13 +90,13 @@ const Check_Stats = ({}) => {
           }
         </PDFDownloadLink>
 
-        <StatsChartHolder results={results} setReFetch={setReFetch} />
-        {/* stats_filter houses all of the data that is filtered through */}
-        <SummaryHeader hours={hours} drives={drives} />
         <ChartsHolder
           weatherDrivesTotalForEach={weatherDrivesTotalForEach}
           results={results}
         />
+        <SummaryHeader hours={hours} drives={drives} approved={approved} />
+        <StatsChartHolder results={results} setReFetch={setReFetch} />
+        {/* stats_filter houses all of the data that is filtered through */}
       </div>
     </div>
   );
