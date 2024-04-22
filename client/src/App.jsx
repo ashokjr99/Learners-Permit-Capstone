@@ -21,8 +21,6 @@ import {
 
 import "./App.css";
 
-
-
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
   const [userId, setUserId] = useState("");
@@ -37,8 +35,7 @@ function App() {
     }
     if (localStorage.getItem("User Type")) {
       // setUserType(localStorage.getItem("User Type"));
-      setUserType(localStorage.getItem("User Type"))
-  
+      setUserType(localStorage.getItem("User Type"));
     }
   }, []);
 
@@ -101,7 +98,15 @@ function App() {
                 element={<Signup_Child userId={userId} />}
               />
 
-              <Route path="/enter_stats" element={ <Enter_Stats modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}/>} />
+              <Route
+                path="/enter_stats"
+                element={
+                  <Enter_Stats
+                    modalIsOpen={modalIsOpen}
+                    setModalIsOpen={setModalIsOpen}
+                  />
+                }
+              />
 
               <Route path="/stats" element={<Parent_Check_Stats />} />
 
@@ -119,9 +124,12 @@ function App() {
       )}
       {sessionToken && userType === "child" && (
         <>
-         <div>
-            <Child_Nav userId={userId} clearToken={clearToken} setModalIsOpen={setModalIsOpen}/>
-
+          <div>
+            <Child_Nav
+              userId={userId}
+              clearToken={clearToken}
+              setModalIsOpen={setModalIsOpen}
+            />
           </div>
 
           <header className="App-header">
@@ -133,8 +141,13 @@ function App() {
 
               <Route
                 path="/enter_stats"
-
-                element={<Enter_Stats userId={userId} modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />}
+                element={
+                  <Enter_Stats
+                    userId={userId}
+                    modalIsOpen={modalIsOpen}
+                    setModalIsOpen={setModalIsOpen}
+                  />
+                }
               />
 
               <Route path="/stats" element={<Check_Stats />} />

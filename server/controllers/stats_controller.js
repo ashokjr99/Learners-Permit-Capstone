@@ -105,6 +105,7 @@ router.get("/all", async (req, res) => {
 
     let totalHours = 0;
     let totalDrives = userStats.length;
+    let totalApprovals = 0;
 
     // capturing total amounts of each weather
     let pieChartData = {
@@ -113,10 +114,19 @@ router.get("/all", async (req, res) => {
       clear: 0,
     };
 
+    let parentApprovalCounter = [];
+
     // add 1 to each post for the specific weather
     userStats.forEach((obj) => {
+      console.log(obj.parent_approval);
       console.log(obj.hours);
       totalHours += parseFloat(obj.hours);
+
+      if (obj.parent_approval === true) {
+        parentApprovalCounter.push("counter");
+      }
+
+      totalApprovals = parentApprovalCounter.length;
 
       if (obj.weather.toLowerCase() === "snowy") {
         pieChartData.snowy++;
@@ -130,7 +140,7 @@ router.get("/all", async (req, res) => {
 
     res.status(200).json({
       userStats,
-      summaryData: { totalDrives, totalHours },
+      summaryData: { totalDrives, totalHours, totalApprovals },
       pieChartData,
     });
   } catch (error) {

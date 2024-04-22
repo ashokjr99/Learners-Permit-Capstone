@@ -43,8 +43,8 @@ const Delete_Stats = ({ stats, setReFetch }) => {
         <div>
           <form>
             <p>
-              Are you sure you want to delete your drive? The request will be
-              sent to the parent.
+              Are you sure you want to delete your drive? You will lose access
+              to this drive's data permanently.
             </p>
 
             <button onClick={() => deleteStat()}>Yes</button>
