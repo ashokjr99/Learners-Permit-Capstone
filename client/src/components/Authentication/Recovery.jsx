@@ -14,8 +14,8 @@ const Recovery = ({ handleChange, handleRecovery }) => {
   };
 
   return (
-    <div className='parent-signup' style={{ padding: '2em' }}>
-      <button onClick={openModal}>
+    <div className='recovery' style={{ padding: '2em' }}>
+      <button style={{width: "11em"}} onClick={openModal}>
         Forgot Password
       </button>
       <Modal

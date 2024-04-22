@@ -6,6 +6,7 @@ const Signup_Child = ({ userId }) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [signupSuccess, setSignupSuccess] = useState(false);
 
   console.log(userId);
 
@@ -48,6 +49,12 @@ const Signup_Child = ({ userId }) => {
       ).json();
       console.log(response);
       alert("User Created Successfully");
+      setSignupSuccess(true);
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
     } catch (err) {
       console.log(err);
     }
@@ -76,6 +83,7 @@ const Signup_Child = ({ userId }) => {
           </button>
         </form>
       </div>
+      {signupSuccess && <p style={{ textAlign: "center" }}>User created successfully!</p>}
       </div>
     </>
   );

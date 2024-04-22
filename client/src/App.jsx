@@ -5,7 +5,7 @@ import {
   Child_Nav,
   Login,
   Signup_Child,
-  Signup_Parent,
+  
   ResetPassword,
   Dashboard,
   Parent_Dashboard,
@@ -30,9 +30,6 @@ function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  const toggleStatsView = ( setterFunc ) => {
-    setterFunc((prev)=> !prev)
-  };
 
   useEffect(() => {
     if (localStorage.getItem("MyToken")) {
@@ -70,6 +67,7 @@ function App() {
     <>
       {!sessionToken && !userType && (
         <>
+        <div>
           <Routes>
             <Route path="/ResetPassword/*" element={<ResetPassword />} />
           </Routes>
@@ -82,9 +80,9 @@ function App() {
             setUserType={setUserType}
           />
 
-          <footer>
+          
             <Footer />
-          </footer>
+            </div>
         </>
       )}
       {sessionToken && userType === "parent" && (
