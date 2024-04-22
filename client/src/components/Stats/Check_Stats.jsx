@@ -20,7 +20,6 @@ const Check_Stats = ({}) => {
   const [drives, setDrives] = useState(0);
   const [hours, setHours] = useState(0);
   const [approved, setApproved] = useState(0);
-  const [awaiting, setAwaiting] = useState(0);
   const [weatherDrivesTotalForEach, setWeatherDrivesTotalForEach] =
     useState(null);
   // null so nothing displays while page loads at first

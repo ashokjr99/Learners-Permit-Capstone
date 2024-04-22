@@ -47,6 +47,7 @@ const Signup_Child = ({ userId }) => {
         })
       ).json();
       console.log(response);
+      alert("User Created Successfully");
     } catch (err) {
       console.log(err);
     }
@@ -54,12 +55,9 @@ const Signup_Child = ({ userId }) => {
 
   return (
     <>
-      {/* <div
-        style={{ display: "flex", flex: "column", justifyContent: "center" }}
-      > */}
-    <div className="w3-container"  style={{marginLeft:"35%", marginRight:"14%", marginBottom:"25%"}}>
+    <div className="w3-container"  style={{marginLeft:"15%", marginRight:"15%", marginBottom:"25%"}}>
       <div className="w3-panel w3-card-4" >
-        <form style={{ display: "flex", flexDirection: "column" }}>
+        <form style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <h2>Sign Up!</h2>
           <label>First Name</label>
           <input onChange={(e) => handleChange("first", e.target.value)} />

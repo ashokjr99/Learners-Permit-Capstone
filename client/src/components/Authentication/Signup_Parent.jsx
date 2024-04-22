@@ -31,8 +31,6 @@ const Signup_Parent = ({ handleChange, handleSignup }) => {
           <label>Last Name</label>
           <input onChange={(e) => handleChange("last", e.target.value)} />
           <label>Email</label>
-          {/* //! SOMEONE PLEASE FIGURE OUT WHY WE MUST PRESS BUTTON MULTIPLE //!
-          //! TIMES TO LOGIN/SIGNUP */}
           <input onChange={(e) => handleChange("email", e.target.value)} />
           <label>Password</label>
           <input onChange={(e) => handleChange("password", e.target.value)} />

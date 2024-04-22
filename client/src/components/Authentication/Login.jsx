@@ -1,5 +1,6 @@
-import React, {useState} from "react";
-import Modal from "react-modal"
+import React, { useState } from "react";
+import Modal from "react-modal";
+
 Modal.setAppElement("#root");
 
 const Login = ({ handleChange, handleLogin }) => {
@@ -15,14 +16,13 @@ const Login = ({ handleChange, handleLogin }) => {
 
   return (
     <div className="login" style={{ padding: "2em" }}>
-       <button onClick={openModal}>
-        Login
+      <button onClick={openModal}>Login</button>
       <Modal
-      className={"modal"}
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
+        className="modal"
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
         contentLabel="Login"
-        appElement={document.getElementById("root")}>
+      >
         <form style={{ display: "flex", flexDirection: "column" }}>
           <h2>Login</h2>
           <label>Email</label>
@@ -37,8 +37,7 @@ const Login = ({ handleChange, handleLogin }) => {
             Log In!
           </button>
         </form>
-        </Modal>
-      </button>
+      </Modal>
     </div>
   );
 };
