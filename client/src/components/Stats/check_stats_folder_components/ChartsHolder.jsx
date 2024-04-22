@@ -49,8 +49,8 @@ const Charts = ({ weatherDrivesTotalForEach, results }) => {
               ],
             },
           ]}
-          width={800}
-          height={400}
+          width={400}
+          height={250}
         />
       ) : null}
 
@@ -70,8 +70,8 @@ const Charts = ({ weatherDrivesTotalForEach, results }) => {
               // yAxis,
             },
           ]}
-          width={500}
-          height={300}
+          width={650}
+          height={400}
         />
       </div>
     </div>
@@ -79,8 +79,3 @@ const Charts = ({ weatherDrivesTotalForEach, results }) => {
 };
 
 export default Charts;
-
-// [
-//   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-//   19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-// ],

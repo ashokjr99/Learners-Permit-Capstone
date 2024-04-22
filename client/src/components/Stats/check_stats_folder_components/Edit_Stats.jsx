@@ -12,6 +12,9 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
   const [day, setDay] = useState(stats.day);
   const [notes, setNotes] = useState(stats.notes);
   const [practiced, setPracticed] = useState(stats.practiced);
+  const [approval, setApproval] = useState(stats.parent_approval);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const userType = localStorage.getItem(`User Type`);
 
   const weatherOptions = ["Rainy", "Snowy", "Clear"];
 
@@ -38,7 +41,7 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            hours: parseInt(hoursResults),
+            hours: parseFloat(hoursResults),
             vehicle_type: vehicle,
             weather: weatherResults,
             day: day,
@@ -46,8 +49,10 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             to: to,
             practiced: practiced,
             notes: notes,
+            parent_approval: approval,
           }),
-        }
+        },
+        console.log(stats.id)
       );
 
       const json = await response.json();
@@ -71,17 +76,20 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
     >
       <div>
         <form onSubmit={(e) => editPost(e)}>
+          <label htmlFor="hoursInput">Hours</label>
           <input
+            id="hoursInput"
             value={hoursResults}
             onChange={(e) => setHoursResults(e.target.value)}
           ></input>
 
           <div className="mb-4">
-            <label className="block mb-1">
+            <label className="block mb-1" htmlFor="daySlider">
               {day === false ? "Night" : "Day"}
             </label>
             <label className="switch">
               <input
+                id="daySlider"
                 type="checkbox"
                 checked={day}
                 onChange={(e) => setDay(e.target.checked)}
@@ -90,7 +98,12 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             </label>
           </div>
 
-          <select value={vehicle} onChange={(e) => setVehicle(e.target.value)}>
+          <label htmlFor="vehicleSlider">Vehicle Type</label>
+          <select
+            id="vehicleSlider"
+            value={vehicle}
+            onChange={(e) => setVehicle(e.target.value)}
+          >
             <option value="">Select Vehicle Type</option>
             {vehicleTypes.map((type) => (
               <option key={type} value={type}>
@@ -98,7 +111,10 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
               </option>
             ))}
           </select>
+
+          <label htmlFor="weatherSlider">Weather</label>
           <select
+            id="weatherSlider"
             value={weatherResults}
             onChange={(e) => setWeatherResults(e.target.value)}
           >
@@ -109,20 +125,34 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
               </option>
             ))}
           </select>
+
+          <label htmlFor="fromInput">From</label>
           <input value={from} onChange={(e) => setFrom(e.target.value)}></input>
+
+          <label htmlFor="toInput">To</label>
           <input value={to} onChange={(e) => setTo(e.target.value)}></input>
 
+          <label htmlFor="practicedInput">Practiced</label>
           <input
             value={practiced}
             onChange={(e) => setPracticed(e.target.value)}
           ></input>
 
+          <label htmlFor="notesInput">Notes</label>
           <input
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
           ></input>
 
-          <button>Edit</button>
+          {userType === "parent" && (
+            <input
+            type="checkbox"
+              value={stats.parent_approval}
+              onChange={(e) => setApproval(e.target.checked)}
+            ></input>
+          )}
+
+          <button onClick={(e) => editPost(e)}>Edit</button>
           <button onClick={() => setShowEdit(false)} type="button">
             Close
           </button>

@@ -39,7 +39,9 @@ function App() {
       setSessionToken(localStorage.getItem("MyToken"));
     }
     if (localStorage.getItem("User Type")) {
-      setUserType(localStorage.getItem("User Type"));
+      // setUserType(localStorage.getItem("User Type"));
+      setUserType( "parent" )
+      // setUserType( "child" )
     }
   }, []);
 
@@ -66,12 +68,11 @@ function App() {
 
   return (
     <>
-        
       {!sessionToken && !userType && (
         <>
-        <Routes>
-        <Route path="/ResetPassword/*" element={<ResetPassword />} />
-        </Routes>
+          <Routes>
+            <Route path="/ResetPassword/*" element={<ResetPassword />} />
+          </Routes>
           <Home />
           <Auth
             updateToken={updateToken}
@@ -122,18 +123,19 @@ function App() {
         <>
          <div>
             <Child_Nav userId={userId} clearToken={clearToken} setModalIsOpen={setModalIsOpen}/>
+
           </div>
-          
+
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
-              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
 
               <Route path="/login" element={<Login />} />
 
               <Route
                 path="/enter_stats"
+
                 element={<Enter_Stats userId={userId} modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />}
               />
 
@@ -145,9 +147,9 @@ function App() {
               <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
-          <div>
+          {/* <div>
             <button onClick={clearToken}>Logout!</button>
-          </div>
+          </div> */}
           <footer>
             <Footer />
           </footer>

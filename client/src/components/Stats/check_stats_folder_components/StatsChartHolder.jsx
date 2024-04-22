@@ -16,7 +16,7 @@ const StatsList = ({ results, setReFetch }) => {
 
   const [showEdit, setShowEdit] = useState(false);
   const [statsObj, setStatsObj] = useState({});
-  const userType = localStorage.getItem('userType')
+  const userType = localStorage.getItem("User Type");
 
   return (
     <div style={{ position: "relative" }}>
@@ -33,6 +33,9 @@ const StatsList = ({ results, setReFetch }) => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
+              {userType === "parent" && (
+                <TableCell align="center">Child</TableCell>
+              )}
               <TableCell>Hours</TableCell>
               <TableCell align="center">Date Posted</TableCell>
               <TableCell align="center">Vehicle</TableCell>
@@ -42,48 +45,57 @@ const StatsList = ({ results, setReFetch }) => {
               <TableCell align="center">Day/Night</TableCell>
               <TableCell align="center">Practiced</TableCell>
               <TableCell align="center">Notes</TableCell>
-              {userType === 'parent' && <TableCell align="center">Approved</TableCell>}
+              {userType === "parent" && (
+                <TableCell align="center">Approved</TableCell>
+              )}
             </TableRow>
           </TableHead>
           <TableBody>
-            {results.map((obj, index) => {
+            {results
+            .filter((obj) => userType === "child" ? obj.parent_approval === true : true)
+            .map((obj, index) => {
               return (
-                
-                  <TableRow
+                <TableRow
                   key={obj.id}
-                    style={{ backgroundColor: index % 2 == 0 ? "red" : "blue" }}
-                    // if row is even, color background red, if odd, color background blue
-                    
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  style={{ backgroundColor: index % 2 == 0 ? "red" : "blue" }}
+                  // if row is even, color background red, if odd, color background blue
+
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  {userType === "parent" && (
+                    <TableCell align="center">{obj.FirstName}</TableCell>
+                  )}
+                  <TableCell component="th" scope="row">
+                    {obj.hours}
+                  </TableCell>
+                  <TableCell align="center">
+                    {new Date(obj.timestamp).toDateString()}
+                  </TableCell>
+                  <TableCell align="center">{obj.vehicle_type}</TableCell>
+                  <TableCell align="center">{obj.weather}</TableCell>
+                  <TableCell align="center">{obj.from}</TableCell>
+                  <TableCell align="center">{obj.to}</TableCell>
+                  <TableCell align="center">
+                    {obj.day === false ? "Night" : "Day"}
+                  </TableCell>
+                  <TableCell align="center">{obj.practiced}</TableCell>
+                  <TableCell align="center">{obj.notes}</TableCell>
+                  {userType === "parent" && (
+                    <TableCell align="center">{obj.parent_approval === false ? "Deny" : "Approved"}</TableCell>
+                  )}
+                  <TableCell
+                    align="center"
+                    onClick={() => {
+                      setShowEdit((p) => !p);
+                      setStatsObj(obj);
+                    }}
                   >
-                    <TableCell component="th" scope="row">
-                      {obj.hours}
-                    </TableCell>
-                    <TableCell align="center">
-                      {new Date(obj.timestamp).toDateString()}
-                    </TableCell>
-                    <TableCell align="center">{obj.vehicle_type}</TableCell>
-                    <TableCell align="center">{obj.weather}</TableCell>
-                    <TableCell align="center">{obj.from}</TableCell>
-                    <TableCell align="center">{obj.to}</TableCell>
-                    <TableCell align="center">
-                      {obj.day === false ? "Night" : "Day"}
-                    </TableCell>
-                    <TableCell align="center">{obj.practiced}</TableCell>
-                    <TableCell align="center">{obj.notes}</TableCell>
-                    {userType === 'parent' && <TableCell align="center">{obj.parent_approval}</TableCell>}
-                    <TableCell
-                      align="center"
-                      onClick={() => {
-                        setShowEdit((p) => !p);
-                        setStatsObj(obj);
-                      }}
-                    >
-                      Edit
-                    </TableCell>
-                    <TableCell align="center">Delete</TableCell>
-                  </TableRow>
-                
+                    <button> Edit </button>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Delete_Stats stats={obj} setReFetch={setReFetch} />
+                  </TableCell>
+                </TableRow>
               );
             })}
           </TableBody>

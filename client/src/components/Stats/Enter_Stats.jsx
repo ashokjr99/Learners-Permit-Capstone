@@ -26,7 +26,7 @@ const Enter_Stats = ({ toggleStatsView, modalIsOpen, setModalIsOpen}) => {
     e.preventDefault();
     try {
       const statsData = {
-        hours: parseInt(hours),
+        hours: parseFloat(hours),
         day: true,
         vehicle_type: vehicle_type,
         weather,
@@ -76,14 +76,16 @@ const Enter_Stats = ({ toggleStatsView, modalIsOpen, setModalIsOpen}) => {
   };
 
   return (
-    <div>
-      <button onClick={toggleStatsView}>Enter Drive</button>
+    <div style={{marginLeft:"25%", marginRight:"4%", marginBottom:"25%"}}>
+      {/* <button onClick={toggleStatsView}>Enter Drive</button> */}
       <Modal
         className="modal"
         isOpen={modalIsOpen}
         // onRequestClose={closeModal}
         contentLabel="Enter Stats Modal"
         appElement={document.getElementById("root")}
+        style={{ content: {left: "60%" }}}
+        
       >
         <div>
           <h2 className="text-center mb-4">Enter Your Drive</h2>
@@ -205,12 +207,14 @@ const Enter_Stats = ({ toggleStatsView, modalIsOpen, setModalIsOpen}) => {
               />
             </div>
 
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md"
-            >
-              Submit
-            </button>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded-md"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </Modal>
