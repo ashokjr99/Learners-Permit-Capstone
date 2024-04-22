@@ -40,8 +40,8 @@ function App() {
     }
     if (localStorage.getItem("User Type")) {
       // setUserType(localStorage.getItem("User Type"));
-      setUserType( "parent" )
-      // setUserType( "child" )
+      setUserType(localStorage.getItem("User Type"))
+  
     }
   }, []);
 
@@ -147,9 +147,6 @@ function App() {
               <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
-          {/* <div>
-            <button onClick={clearToken}>Logout!</button>
-          </div> */}
           <footer>
             <Footer />
           </footer>

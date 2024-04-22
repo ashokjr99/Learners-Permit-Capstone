@@ -1,5 +1,6 @@
 import React from "react";
 import HeroImage from "../assets/rainbow-drive-time 2.png";
+import Footer from "../Navigation/Footer";
 
 const Home = () => {
   return (
