@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Modal from "react-modal"
+import React, { useState } from "react";
+import Modal from "react-modal";
 Modal.setAppElement("#root");
 
 const Recovery = ({ handleChange, handleRecovery }) => {
@@ -14,8 +14,8 @@ const Recovery = ({ handleChange, handleRecovery }) => {
   };
 
   return (
-    <div className='recovery' style={{ padding: '2em' }}>
-      <button style={{width: "11em"}} onClick={openModal}>
+    <div className="recovery" style={{ padding: "2em" }}>
+      <button style={{ width: "11em" }} onClick={openModal}>
         Forgot Password
       </button>
       <Modal
@@ -24,17 +24,33 @@ const Recovery = ({ handleChange, handleRecovery }) => {
         onRequestClose={closeModal}
         contentLabel="Forgot Password"
       >
-        <form style={{ display: 'flex', flexDirection: 'column', alignItems: "center" }}>
+        <form
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <h2>Forgot Password</h2>
           <label>Email</label>
-          <input onChange={(e) => handleChange('email', e.target.value)} style={{width: "30em"}}/>
-          <button
-            style={{ margin: '1em', width: '9em' }}
-            type='button'
-            onClick={handleRecovery}
-          >
-            Send Recovery Email
-          </button>
+          <input
+            onChange={(e) => handleChange("email", e.target.value)}
+            style={{ width: "30em" }}
+          />
+          <div>
+            <button
+              style={{
+                margin: "1em",
+                width: "auto",
+                display: "flex",
+                flexDirection: "row",
+              }}
+              type="button"
+              onClick={handleRecovery}
+            >
+              Send Recovery Email
+            </button>
+          </div>
         </form>
       </Modal>
     </div>
