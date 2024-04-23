@@ -28,7 +28,10 @@ const Login = ({ handleChange, handleLogin }) => {
           <label>Email</label>
           <input onChange={(e) => handleChange("email", e.target.value)} />
           <label>Password</label>
-          <input onChange={(e) => handleChange("password", e.target.value)} />
+          <input
+            onChange={(e) => handleChange("password", e.target.value)}
+            type="password"
+          />
           <button
             style={{ margin: "1em", width: "9em" }}
             type="button"

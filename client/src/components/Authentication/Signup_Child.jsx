@@ -70,19 +70,32 @@ const Signup_Child = ({ userId }) => {
           <form style={{ display: "flex", flexDirection: "column" }}>
             <h2>Sign Up Your Child</h2>
             <label>First Name</label>
-            <input onChange={(e) => handleChange("first", e.target.value)} />
+            <input
+              onChange={(e) => handleChange("first", e.target.value)}
+              value={firstName}
+            />
             <label>Last Name</label>
-            <input onChange={(e) => handleChange("last", e.target.value)} />
+            <input
+              onChange={(e) => handleChange("last", e.target.value)}
+              value={lastName}
+            />
             <label>Email</label>
-            <input onChange={(e) => handleChange("email", e.target.value)} />
+            <input
+              onChange={(e) => handleChange("email", e.target.value)}
+              value={email}
+            />
             <label>Password</label>
-            <input onChange={(e) => handleChange("password", e.target.value)} />
+            <input
+              onChange={(e) => handleChange("password", e.target.value)}
+              type="password"
+              value={password}
+            />
             <button
               style={{
                 margin: "auto",
               }}
               type="button"
-              onClick={() => handleChildSignup}
+              onClick={handleChildSignup}
             >
               Sign Up!
             </button>
