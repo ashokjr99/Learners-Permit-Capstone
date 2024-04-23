@@ -30,15 +30,6 @@ const Nav = (props) => {
           Home
         </button>
       </Link>
-      {/* <Link to="/about">
-        <button
-          style={{
-            background: location.pathname.includes("/about") && backgroundColor,
-          }}
-        >
-          About
-        </button>
-      </Link> */}
       <Link to="/stats">
         <button
           style={{

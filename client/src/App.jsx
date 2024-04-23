@@ -5,7 +5,6 @@ import {
   Child_Nav,
   Login,
   Signup_Child,
-  
   ResetPassword,
   Dashboard,
   Parent_Dashboard,
@@ -27,7 +26,6 @@ function App() {
   const [userType, setUserType] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
-
 
   useEffect(() => {
     if (localStorage.getItem("MyToken")) {
@@ -64,22 +62,20 @@ function App() {
     <>
       {!sessionToken && !userType && (
         <>
-        <div>
-          <Routes>
-            <Route path="/ResetPassword/*" element={<ResetPassword />} />
-          </Routes>
-          <Home />
-          <Auth
-            updateToken={updateToken}
-            userId={userId}
-            userType={userType}
-            setUserId={setUserId}
-            setUserType={setUserType}
-          />
-
-          
+          <div>
+            <Routes>
+              <Route path="/ResetPassword/*" element={<ResetPassword />} />
+            </Routes>
+            <Home />
+            <Auth
+              updateToken={updateToken}
+              userId={userId}
+              userType={userType}
+              setUserId={setUserId}
+              setUserType={setUserType}
+            />
             <Footer />
-            </div>
+          </div>
         </>
       )}
       {sessionToken && userType === "parent" && (

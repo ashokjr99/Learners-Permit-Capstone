@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import "./ToggleSwitch.css";
 Modal.setAppElement("#root");
 
-const Enter_Stats = ({ toggleStatsView, modalIsOpen, setModalIsOpen}) => {
+const Enter_Stats = ({modalIsOpen, setModalIsOpen}) => {
   const [hours, setHours] = useState("");
   const [day, setDay] = useState(false);
   const [vehicle_type, setVehicleType] = useState("");
@@ -17,10 +17,13 @@ const Enter_Stats = ({ toggleStatsView, modalIsOpen, setModalIsOpen}) => {
 
   const vehicleTypes = ["Sedan", "Truck", "Van", "SUV", "Motorcycle"];
 
-  // const toggleStatsView = ( setterFunc ) => {
-  //   setModalIsOpen((prev)=> !prev)
-  // };
-  // toggleStatsView(setModalIsOpen);
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -76,16 +79,16 @@ const Enter_Stats = ({ toggleStatsView, modalIsOpen, setModalIsOpen}) => {
   };
 
   return (
-    <div style={{marginLeft:"25%", marginRight:"4%", marginBottom:"25%"}}>
-      {/* <button onClick={toggleStatsView}>Enter Drive</button> */}
+    <div style={{ marginLeft: "25%", marginRight: "4%", marginBottom: "25%" }}>
+      {/* <button onClick={openModal}>Enter Drive</button> */}
+
       <Modal
         className="modal"
         isOpen={modalIsOpen}
-        // onRequestClose={closeModal}
+        onRequestClose={() => setModalIsOpen(false)}
         contentLabel="Enter Stats Modal"
         appElement={document.getElementById("root")}
-        style={{ content: {left: "60%" }}}
-        
+        style={{ content: { left: "60%" } }}
       >
         <div>
           <h2 className="text-center mb-4">Enter Your Drive</h2>
