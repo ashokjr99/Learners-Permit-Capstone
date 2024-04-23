@@ -41,7 +41,7 @@ const Charts = ({ weatherDrivesTotalForEach, results }) => {
                   id: 1,
                   value: weatherDrivesTotalForEach.snowy,
                   label: "Snowy",
-                  color: '#874f41',
+                  color: '#c1c8e4',
                 },
                 {
                   id: 2,

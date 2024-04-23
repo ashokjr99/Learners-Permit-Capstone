@@ -61,9 +61,9 @@ const Check_Stats = ({}) => {
   return (
     <div
       className="w3-container"
-      style={{ marginLeft: "15%", marginRight: "15%", marginBottom: "25%" }}
+      style={{ marginLeft: "25%", marginRight: "15%", marginBottom: "25%" }}
     >
-      <div className="w3-panel" style={{ overflow: "scroll", height: "60em" }}>
+      <div className="w3-panel" style={{ height: "80em" }}>
         <h1>Summaries</h1>
         <p>See your drive history in totality</p>
 
