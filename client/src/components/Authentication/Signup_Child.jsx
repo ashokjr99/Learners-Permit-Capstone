@@ -60,7 +60,7 @@ const Signup_Child = ({ userId }) => {
       >
         <div className="w3-panel w3-card-4">
           <form style={{ display: "flex", flexDirection: "column" }}>
-            <h2>Sign Up!</h2>
+            <h2>Sign Up Your Child</h2>
             <label>First Name</label>
             <input onChange={(e) => handleChange("first", e.target.value)} />
             <label>Last Name</label>
@@ -74,7 +74,7 @@ const Signup_Child = ({ userId }) => {
                 margin: "auto",
               }}
               type="button"
-              onClick={handleChildSignup}
+              onClick={() => handleChildSignup}
             >
               Sign Up!
             </button>
