@@ -5,8 +5,15 @@ const Home = () => {
   return (
     <>
       <div>
-        <h1>Welcome to</h1>
-        <img src={HeroImage} style={{ backgroundColor: "#242424", border: "1em solid #FBE9D0", borderRadius: "100px" }} />
+        <h1>Welcome To</h1>
+        <img
+          src={HeroImage}
+          style={{
+            backgroundColor: "#242424",
+            border: "1em solid #FBE9D0",
+            borderRadius: "100px",
+          }}
+        />
       </div>
       <div>
         <p style={{ marginBottom: "5em" }}>

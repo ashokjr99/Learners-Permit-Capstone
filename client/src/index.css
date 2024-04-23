@@ -12,9 +12,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
-
 
 a {
   font-weight: 500;
@@ -29,7 +27,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #FBE9D0;
+  background-color: #fbe9d0;
 }
 
 h1 {
@@ -49,7 +47,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #C1C8e4;;
+  border-color: #c1c8e4;
 }
 button:focus,
 button:focus-visible {
@@ -62,10 +60,9 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #C1C8e4;
+    color: #c1c8e4;
   }
   button {
     background-color: #f9f9f9;
   }
-
 }

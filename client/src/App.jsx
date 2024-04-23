@@ -74,7 +74,6 @@ function App() {
               setUserId={setUserId}
               setUserType={setUserType}
             />
-            <Footer />
           </div>
         </>
       )}
@@ -112,10 +111,6 @@ function App() {
               <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
-
-          <footer>
-            <Footer />
-          </footer>
         </>
       )}
       {sessionToken && userType === "child" && (
@@ -127,7 +122,6 @@ function App() {
               setModalIsOpen={setModalIsOpen}
             />
           </div>
-
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
@@ -154,11 +148,11 @@ function App() {
               <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
-          <footer>
-            <Footer />
-          </footer>
         </>
       )}
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
