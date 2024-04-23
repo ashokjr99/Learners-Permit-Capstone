@@ -1,5 +1,5 @@
 import React from "react";
-import HeroImage from "../assets/rainbow-drive-time 2.png";
+import HeroImage from "../assets/rainbow-drive-time 3.png";
 
 const Home = () => {
   return (
