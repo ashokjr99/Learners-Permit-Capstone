@@ -20,7 +20,6 @@ const Check_Stats = ({}) => {
   const [drives, setDrives] = useState(0);
   const [hours, setHours] = useState(0);
   const [approved, setApproved] = useState(0);
-  const [awaiting, setAwaiting] = useState(0);
   const [weatherDrivesTotalForEach, setWeatherDrivesTotalForEach] =
     useState(null);
   // null so nothing displays while page loads at first
@@ -62,12 +61,9 @@ const Check_Stats = ({}) => {
   return (
     <div
       className="w3-container"
-      style={{ marginLeft: "25%", marginRight: "4%", marginBottom: "25%" }}
+      style={{ marginLeft: "15%", marginRight: "15%", marginBottom: "25%" }}
     >
-      <div
-        className="w3-panel w3-card-4"
-        style={{ overflow: "scroll", height: "60em" }}
-      >
+      <div className="w3-panel" style={{ overflow: "scroll", height: "60em" }}>
         <h1>Summaries</h1>
         <p>See your drive history in totality</p>
 

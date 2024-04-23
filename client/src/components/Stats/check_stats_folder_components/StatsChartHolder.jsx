@@ -57,7 +57,7 @@ const StatsList = ({ results, setReFetch }) => {
               return (
                 <TableRow
                   key={obj.id}
-                  style={{ backgroundColor: index % 2 == 0 ? "red" : "blue" }}
+                  style={{ backgroundColor: index % 2 == 0 ? "#84CEEB" : "#C1C8E4" }}
                   // if row is even, color background red, if odd, color background blue
 
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
