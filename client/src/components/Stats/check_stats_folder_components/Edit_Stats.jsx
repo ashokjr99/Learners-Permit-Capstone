@@ -144,10 +144,17 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             onChange={(e) => setNotes(e.target.value)}
           ></input>
 
+          <label
+            htmlFor="approvedInput"
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            Approved
+          </label>
           {userType === "parent" && (
             <input
-            type="checkbox"
-              value={stats.parent_approval}
+              id="approvedInput"
+              type="checkbox"
+              defaultChecked={stats.parent_approval}
               onChange={(e) => setApproval(e.target.checked)}
             ></input>
           )}

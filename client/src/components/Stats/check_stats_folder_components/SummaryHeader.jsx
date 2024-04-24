@@ -1,6 +1,6 @@
 import React from "react";
 
-const SummaryHeader = ({ hours, drives }) => {
+const SummaryHeader = ({ hours, drives, approved }) => {
   //? rendering the total drives and total hours
 
   return (
@@ -8,6 +8,9 @@ const SummaryHeader = ({ hours, drives }) => {
       <h1>Totals</h1>
       <h2>Drives: {drives}</h2>
       <h2>Hours: {hours}</h2>
+      <h2>
+        Approved: {parseInt(approved)}/{drives}
+      </h2>
     </div>
   );
 };

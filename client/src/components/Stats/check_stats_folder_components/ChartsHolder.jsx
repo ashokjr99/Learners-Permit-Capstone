@@ -35,16 +35,19 @@ const Charts = ({ weatherDrivesTotalForEach, results }) => {
                   id: 0,
                   value: weatherDrivesTotalForEach.rainy,
                   label: "Rainy",
+                  color: '#244855',
                 },
                 {
                   id: 1,
                   value: weatherDrivesTotalForEach.snowy,
                   label: "Snowy",
+                  color: '#c1c8e4',
                 },
                 {
                   id: 2,
                   value: weatherDrivesTotalForEach.clear,
                   label: "Clear",
+                  color: '#e64833',
                 },
               ],
             },
@@ -67,6 +70,7 @@ const Charts = ({ weatherDrivesTotalForEach, results }) => {
           series={[
             {
               data: hoursArray,
+              color: '#244855',
               // yAxis,
             },
           ]}

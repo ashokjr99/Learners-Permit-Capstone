@@ -5,7 +5,6 @@ import {
   Child_Nav,
   Login,
   Signup_Child,
-  Signup_Parent,
   ResetPassword,
   Dashboard,
   Parent_Dashboard,
@@ -21,8 +20,6 @@ import {
 
 import "./App.css";
 
-
-
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
   const [userId, setUserId] = useState("");
@@ -30,18 +27,13 @@ function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  const toggleStatsView = ( setterFunc ) => {
-    setterFunc((prev)=> !prev)
-  };
-
   useEffect(() => {
     if (localStorage.getItem("MyToken")) {
       setSessionToken(localStorage.getItem("MyToken"));
     }
     if (localStorage.getItem("User Type")) {
       // setUserType(localStorage.getItem("User Type"));
-      setUserType( "parent" )
-      // setUserType( "child" )
+      setUserType(localStorage.getItem("User Type"));
     }
   }, []);
 
@@ -70,21 +62,19 @@ function App() {
     <>
       {!sessionToken && !userType && (
         <>
-          <Routes>
-            <Route path="/ResetPassword/*" element={<ResetPassword />} />
-          </Routes>
-          <Home />
-          <Auth
-            updateToken={updateToken}
-            userId={userId}
-            userType={userType}
-            setUserId={setUserId}
-            setUserType={setUserType}
-          />
-
-          <footer>
-            <Footer />
-          </footer>
+          <div>
+            <Routes>
+              <Route path="/ResetPassword/*" element={<ResetPassword />} />
+            </Routes>
+            <Home />
+            <Auth
+              updateToken={updateToken}
+              userId={userId}
+              userType={userType}
+              setUserId={setUserId}
+              setUserType={setUserType}
+            />
+          </div>
         </>
       )}
       {sessionToken && userType === "parent" && (
@@ -103,7 +93,15 @@ function App() {
                 element={<Signup_Child userId={userId} />}
               />
 
-              <Route path="/enter_stats" element={ <Enter_Stats modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}/>} />
+              <Route
+                path="/enter_stats"
+                element={
+                  <Enter_Stats
+                    modalIsOpen={modalIsOpen}
+                    setModalIsOpen={setModalIsOpen}
+                  />
+                }
+              />
 
               <Route path="/stats" element={<Parent_Check_Stats />} />
 
@@ -113,19 +111,17 @@ function App() {
               <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
-
-          <footer>
-            <Footer />
-          </footer>
         </>
       )}
       {sessionToken && userType === "child" && (
         <>
-         <div>
-            <Child_Nav userId={userId} clearToken={clearToken} setModalIsOpen={setModalIsOpen}/>
-
+          <div>
+            <Child_Nav
+              userId={userId}
+              clearToken={clearToken}
+              setModalIsOpen={setModalIsOpen}
+            />
           </div>
-
           <header className="App-header">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
@@ -135,8 +131,13 @@ function App() {
 
               <Route
                 path="/enter_stats"
-
-                element={<Enter_Stats userId={userId} modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />}
+                element={
+                  <Enter_Stats
+                    userId={userId}
+                    modalIsOpen={modalIsOpen}
+                    setModalIsOpen={setModalIsOpen}
+                  />
+                }
               />
 
               <Route path="/stats" element={<Check_Stats />} />
@@ -147,14 +148,11 @@ function App() {
               <Route path="/ResetPassword" element={<ResetPassword />} />
             </Routes>
           </header>
-          {/* <div>
-            <button onClick={clearToken}>Logout!</button>
-          </div> */}
-          <footer>
-            <Footer />
-          </footer>
         </>
       )}
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }

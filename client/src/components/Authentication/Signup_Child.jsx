@@ -6,6 +6,7 @@ const Signup_Child = ({ userId }) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [signupSuccess, setSignupSuccess] = useState(false);
 
   console.log(userId);
 
@@ -47,6 +48,13 @@ const Signup_Child = ({ userId }) => {
         })
       ).json();
       console.log(response);
+      alert("User Created Successfully");
+      setSignupSuccess(true);
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
     } catch (err) {
       console.log(err);
     }
@@ -54,30 +62,45 @@ const Signup_Child = ({ userId }) => {
 
   return (
     <>
-      {/* <div
-        style={{ display: "flex", flex: "column", justifyContent: "center" }}
-      > */}
-    <div className="w3-container"  style={{marginLeft:"35%", marginRight:"14%", marginBottom:"25%"}}>
-      <div className="w3-panel w3-card-4" >
-        <form style={{ display: "flex", flexDirection: "column" }}>
-          <h2>Sign Up!</h2>
-          <label>First Name</label>
-          <input onChange={(e) => handleChange("first", e.target.value)} />
-          <label>Last Name</label>
-          <input onChange={(e) => handleChange("last", e.target.value)} />
-          <label>Email</label>
-          <input onChange={(e) => handleChange("email", e.target.value)} />
-          <label>Password</label>
-          <input onChange={(e) => handleChange("password", e.target.value)} />
-          <button
-            style={{ margin: "1em" }}
-            type="button"
-            onClick={handleChildSignup}
-          >
-            Sign Up!
-          </button>
-        </form>
-      </div>
+      <div
+        className="w3-container"
+        style={{ marginLeft: "35%", marginRight: "14%", marginBottom: "25%" }}
+      >
+        <div className="w3-panel w3-card-4">
+          <form style={{ display: "flex", flexDirection: "column" }}>
+            <h2>Sign Up Your Child</h2>
+            <label>First Name</label>
+            <input
+              onChange={(e) => handleChange("first", e.target.value)}
+              value={firstName}
+            />
+            <label>Last Name</label>
+            <input
+              onChange={(e) => handleChange("last", e.target.value)}
+              value={lastName}
+            />
+            <label>Email</label>
+            <input
+              onChange={(e) => handleChange("email", e.target.value)}
+              value={email}
+            />
+            <label>Password</label>
+            <input
+              onChange={(e) => handleChange("password", e.target.value)}
+              type="password"
+              value={password}
+            />
+            <button
+              style={{
+                margin: "auto",
+              }}
+              type="button"
+              onClick={handleChildSignup}
+            >
+              Sign Up!
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );
