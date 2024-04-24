@@ -46,20 +46,20 @@ const Child_Nav = (props) => {
           View Drives
         </button>
       </Link>
-      <Link to="/enter_stats">
-        <button
-          style={{
-            background:
-              location.pathname.includes("/enter_stats") && backgroundColor,
-          }}
-          onClick={() => {
-            console.log(props.setModalIsOpen);
-            props.setModalIsOpen(true);
-          }}
-        >
-          Submit Drive
-        </button>
-      </Link>
+
+      <button
+        // style={{
+        //   backgroundColor,
+        // }}
+        onClick={() => {
+          console.log(props.setModalIsOpen);
+          props.setModalIsOpen(true);
+        }}
+        className="enterStats"
+      >
+        Submit Drive
+      </button>
+
       <button
         className="w3-display-bottomleft"
         onClick={props.clearToken}

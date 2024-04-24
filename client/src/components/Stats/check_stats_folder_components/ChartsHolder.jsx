@@ -35,19 +35,19 @@ const Charts = ({ weatherDrivesTotalForEach, results }) => {
                   id: 0,
                   value: weatherDrivesTotalForEach.rainy,
                   label: "Rainy",
-                  color: '#244855',
+                  color: "#244855",
                 },
                 {
                   id: 1,
                   value: weatherDrivesTotalForEach.snowy,
                   label: "Snowy",
-                  color: '#c1c8e4',
+                  color: "#c1c8e4",
                 },
                 {
                   id: 2,
                   value: weatherDrivesTotalForEach.clear,
                   label: "Clear",
-                  color: '#e64833',
+                  color: "#e64833",
                 },
               ],
             },
@@ -58,19 +58,19 @@ const Charts = ({ weatherDrivesTotalForEach, results }) => {
       ) : null}
 
       <div>
-        <h1>Drives and Hours Chart</h1>
+        <h1>Drives/Hours Graph</h1>
         <LineChart
           xAxis={[
             {
               data: hoursArrayCount,
-              label: "Days",
+              label: "Drives",
             },
           ]}
           yAxis={[{ label: "Hours" }]}
           series={[
             {
               data: hoursArray,
-              color: '#244855',
+              color: "#244855",
               // yAxis,
             },
           ]}

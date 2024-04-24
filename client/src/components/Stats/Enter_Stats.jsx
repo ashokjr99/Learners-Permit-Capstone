@@ -3,9 +3,9 @@ import Modal from "react-modal";
 import "./ToggleSwitch.css";
 Modal.setAppElement("#root");
 
-const Enter_Stats = ({modalIsOpen, setModalIsOpen}) => {
+const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
   const [hours, setHours] = useState("");
-  const [day, setDay] = useState(false);
+  const [day, setDay] = useState(true);
   const [vehicle_type, setVehicleType] = useState("");
   const [weather, setWeather] = useState("");
   const [from, setFrom] = useState("");
@@ -115,6 +115,7 @@ const Enter_Stats = ({modalIsOpen, setModalIsOpen}) => {
                 <input
                   type="checkbox"
                   checked={day}
+                  defaultChecked={day}
                   onChange={(e) => setDay(e.target.checked)}
                 />
                 <span className="slider round"></span>

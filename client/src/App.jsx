@@ -129,7 +129,7 @@ function App() {
 
               <Route path="/login" element={<Login />} />
 
-              <Route
+              {/* <Route
                 path="/enter_stats"
                 element={
                   <Enter_Stats
@@ -138,9 +138,22 @@ function App() {
                     setModalIsOpen={setModalIsOpen}
                   />
                 }
-              />
+              /> */}
 
-              <Route path="/stats" element={<Check_Stats />} />
+              <Route
+                path="/stats"
+                element={
+                  <>
+                    <Check_Stats />
+
+                    <Enter_Stats
+                      userId={userId}
+                      modalIsOpen={modalIsOpen}
+                      setModalIsOpen={setModalIsOpen}
+                    />
+                  </>
+                }
+              />
 
               <Route path="/about" element={<About />} />
               <Route path="/contact_us" element={<Contact />} />
