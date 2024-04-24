@@ -52,7 +52,7 @@ const StatsList = ({ results, setReFetch }) => {
           </TableHead>
           <TableBody>
             {results
-            .filter((obj) => userType === "child" ? obj.parent_approval === true : true)
+            .filter((obj) => obj.parent_approval === true)
             .map((obj, index) => {
               return (
                 <TableRow
@@ -83,18 +83,6 @@ const StatsList = ({ results, setReFetch }) => {
                   {userType === "parent" && (
                     <TableCell align="center">{obj.parent_approval === false ? "Awaiting" : "Approved"}</TableCell>
                   )}
-                  {/* <TableCell
-                    align="center"
-                    onClick={() => {
-                      setShowEdit((p) => !p);
-                      setStatsObj(obj);
-                    }}
-                  >
-                    <button> Edit </button>
-                  </TableCell>
-                  <TableCell align="center">
-                    <Delete_Stats stats={obj} setReFetch={setReFetch} />
-                  </TableCell> */}
                 </TableRow>
               );
             })}

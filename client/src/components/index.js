@@ -14,6 +14,7 @@ import Contact from "./Brochure/Contact";
 import Footer from "./Navigation/Footer";
 import Auth from "./Authentication/Authentication";
 import ResetPassword from "./Authentication/ResetPassword";
+import Child_Card from "./Stats/Child_Card";
 
 export {
   Nav,
@@ -32,4 +33,5 @@ export {
   Contact,
   Footer,
   Auth,
+  Child_Card,
 };

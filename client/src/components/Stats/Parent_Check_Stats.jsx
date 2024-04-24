@@ -4,6 +4,7 @@ import {
   StatsChartHolder,
   FilterHolder,
   CreatePDF,
+  Awaiting_Stats,
 } from "./check_stats_folder_components";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
@@ -55,10 +56,10 @@ const Parent_Check_Stats = () => {
 
   return (
     <div
-      className="w3-panel w3-card-4 margin-l-p margin-r-p"
-      style={{ marginLeft: "25%" }}
+      className="w3-panel"
+      style={{ marginLeft: "25%", marginBottom: "25%" }}
     >
-      <div className="w3-container">
+      <div className="w3-container" style={{height: "80em"}}>
         <h1>Summaries</h1>
         <p>See your drive history in totality</p>
 
@@ -82,12 +83,9 @@ const Parent_Check_Stats = () => {
         </PDFDownloadLink>
 
         <StatsChartHolder results={results} setReFetch={setReFetch} />
+        <br></br>
+        <Awaiting_Stats results={results} setReFetch={setReFetch} />
         {/* stats_filter houses all of the data that is filtered through */}
-        {/* <SummaryHeader hours={hours} drives={drives} /> */}
-        {/* <ChartsHolder
-          weatherDrivesTotalForEach={weatherDrivesTotalForEach}
-          results={results}
-        /> */}
       </div>
     </div>
   );
