@@ -5,7 +5,7 @@ import "./Dashboard.css";
 const Dashboard = () => {
   return (
     <>
-      <div className="w3-container" style={{marginLeft:"25%", marginRight:"4%"}}>
+      <div className="w3-container" style={{marginLeft:"15%"}}>
            <h1>Welcome to DriveTime</h1>
        </div>
     </>

@@ -5,7 +5,7 @@ Modal.setAppElement("#root");
 
 const Enter_Stats = ({modalIsOpen, setModalIsOpen}) => {
   const [hours, setHours] = useState("");
-  const [day, setDay] = useState(false);
+  const [day, setDay] = useState(true);
   const [vehicle_type, setVehicleType] = useState("");
   const [weather, setWeather] = useState("");
   const [from, setFrom] = useState("");
@@ -109,7 +109,7 @@ const Enter_Stats = ({modalIsOpen, setModalIsOpen}) => {
             <div className="mb-4">
               <label className="block mb-1">
                 {" "}
-                {day === false ? "Night" : "Day"}
+                {day === false ? "Day" : "Night"}
               </label>
               <label className="switch">
                 <input

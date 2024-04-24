@@ -5,6 +5,7 @@ import {
   StatsChartHolder,
   FilterHolder,
   CreatePDF,
+  Awaiting_Stats,
 } from "./check_stats_folder_components";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
@@ -41,7 +42,7 @@ const Check_Stats = ({}) => {
         );
         const json = await response.json();
 
-        // console.log(json, "herrrrree");
+
 
         console.log(json);
         setResults(json.userStats);
@@ -61,7 +62,7 @@ const Check_Stats = ({}) => {
   return (
     <div
       className="w3-container"
-      style={{ marginLeft: "25%", marginRight: "15%", marginBottom: "25%" }}
+      style={{ marginLeft: "25%",  marginBottom: "25%" }}
     >
       <div className="w3-panel" style={{ height: "80em" }}>
         <h1>Summaries</h1>
@@ -92,6 +93,8 @@ const Check_Stats = ({}) => {
         />
         <SummaryHeader hours={hours} drives={drives} approved={approved} />
         <StatsChartHolder results={results} setReFetch={setReFetch} />
+        <br></br>
+        <Awaiting_Stats results={results} setReFetch={setReFetch} />
         {/* stats_filter houses all of the data that is filtered through */}
       </div>
     </div>
