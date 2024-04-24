@@ -57,6 +57,38 @@ const Charts = ({ weatherDrivesTotalForEach, results }) => {
         />
       ) : null}
 
+      {weatherDrivesTotalForEach != null ? (
+        <PieChart
+          series={[
+            {
+              data: [
+                {
+                  id: 0,
+                  value: weatherDrivesTotalForEach.rainy,
+                  label: "Rainy",
+                  color: "#244855",
+                },
+                {
+                  id: 1,
+                  value: weatherDrivesTotalForEach.snowy,
+                  label: "Snowy",
+                  color: "#c1c8e4",
+                },
+                {
+                  id: 2,
+                  value: weatherDrivesTotalForEach.clear,
+                  label: "Clear",
+                  color: "#e64833",
+                },
+              ],
+              highlightScope: { faded: "global", highlighted: "item" },
+              faded: { innerRadius: 30, additionalRadius: -30, color: "gray" },
+            },
+          ]}
+          height={200}
+        />
+      ) : null}
+
       <div>
         <h1>Drives/Hours Graph</h1>
         <LineChart
