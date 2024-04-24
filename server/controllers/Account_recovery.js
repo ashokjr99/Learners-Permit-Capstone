@@ -22,6 +22,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Route for handling password reset request
 router.post("/forgot-password", async (req, res) => {
   try {
     const { email } = req.body;
@@ -114,31 +115,36 @@ router.post("/reset-password", async (req, res) => {
       });
     }
 
+    console.log("User found:", user); // Log user information
+
     if (!user) {
       return res.status(400).json({ error: "Invalid or expired token" });
     }
 
     // Update user's password and reset token
-    await prisma.$transaction([
-      prisma.parents.update({
-        where: {
-          id: user.id,
-        },
-        data: {
-          Password: bcrypt.hashSync(newPassword, 12),
-          resetToken: null,
-        },
-      }),
-      prisma.users.update({
-        where: {
-          id: user.id,
-        },
-        data: {
-          Password: bcrypt.hashSync(newPassword, 12),
-          resetToken: null,
-        },
-      }),
-    ]);
+    const updatePromise = user.parents
+      ? prisma.parents.update({
+          where: {
+            id: user.id,
+          },
+          data: {
+            Password: bcrypt.hashSync(newPassword, 12),
+            resetToken: null,
+          },
+        })
+      : prisma.users.update({
+          where: {
+            id: user.id,
+          },
+          data: {
+            Password: bcrypt.hashSync(newPassword, 12),
+            resetToken: null,
+          },
+        });
+
+    console.log("Update promise:", updatePromise); // Log update promise
+
+    await prisma.$transaction([updatePromise]);
 
     res
       .status(200)
