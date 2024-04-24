@@ -5,6 +5,7 @@ import FilterHolder from "./FilterHolder";
 import CreatePDF from "./CreatePDF";
 import Edit_Stats from "./Edit_Stats";
 import Delete_Stats from "./Delete_Stats";
+import Awaiting_Stats from "./AwaitingStats";
 
 export {
   ChartsHolder,
@@ -14,4 +15,5 @@ export {
   CreatePDF,
   Edit_Stats,
   Delete_Stats,
+  Awaiting_Stats,
 };

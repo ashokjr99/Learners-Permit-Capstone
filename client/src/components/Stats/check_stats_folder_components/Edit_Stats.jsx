@@ -85,7 +85,7 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
 
           <div className="mb-4">
             <label className="block mb-1" htmlFor="daySlider">
-              {day === false ? "Night" : "Day"}
+              {day === false ? "Day" : "Night"}
             </label>
             <label className="switch">
               <input
@@ -159,7 +159,7 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
             ></input>
           )}
 
-          <button onClick={(e) => editPost(e)}>Edit</button>
+          {userType === "child" ? (<button onClick={(e) => editPost(e)}>Edit</button>) : (<button onClick={(e) => editPost(e)}>Save</button>)}
           <button onClick={() => setShowEdit(false)} type="button">
             Close
           </button>
