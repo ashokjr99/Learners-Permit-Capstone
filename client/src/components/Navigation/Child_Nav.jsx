@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import HeaderImage from "../assets/DriveTime.png";
+import Modal from "react-modal";
+import Enter_Stats from "../Stats/Enter_Stats";
+Modal.setAppElement("#root");
 
 const Child_Nav = (props) => {
   let location = useLocation();
   console.log(location);
   let backgroundColor = "#244855";
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -46,20 +50,21 @@ const Child_Nav = (props) => {
           View Drives
         </button>
       </Link>
-      <Link to="/enter_stats">
-        <button
-          style={{
-            background:
-              location.pathname.includes("/enter_stats") && backgroundColor,
-          }}
-          onClick={() => {
-            console.log(props.setModalIsOpen);
-            props.setModalIsOpen(true);
-          }}
+
+      <button onClick={openModal}>
+        Enter Drive
+        <Modal
+          className="modal"
+          isOpen={modalIsOpen}
+          onRequestClose={() => setModalIsOpen(false)}
+          contentLabel="Enter Stats Modal"
+          appElement={document.getElementById("root")}
+          style={{ content: { left: "60%" } }}
         >
-          Submit Drive
-        </button>
-      </Link>
+          <Enter_Stats closeModal={closeModal}/>
+        </Modal>
+      </button>
+
       <button
         className="w3-display-bottomleft"
         onClick={props.clearToken}
