@@ -114,6 +114,11 @@ router.get("/all", async (req, res) => {
       clear: 0,
     };
 
+    let pieChartDayOrNightData = {
+      day: 0,
+      night: 0,
+    };
+
     let parentApprovalCounter = [];
 
     // add 1 to each post for the specific weather
@@ -136,12 +141,19 @@ router.get("/all", async (req, res) => {
       } else if (obj.weather.toLowerCase() === "clear") {
         pieChartData.clear++;
       }
+
+      if (obj.day === true) {
+        pieChartDayOrNightData.day++;
+      } else {
+        pieChartDayOrNightData.night++;
+      }
     });
 
     res.status(200).json({
       userStats,
       summaryData: { totalDrives, totalHours, totalApprovals },
       pieChartData,
+      pieChartDayOrNightData,
     });
   } catch (error) {
     console.log("Error fetching stats:", error);
@@ -281,6 +293,33 @@ router.get("/child_stats", async (req, res) => {
   } catch (error) {
     console.log("Error fetching stats:", error);
     res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+router.get("/child_target_hours", async (req, res) => {
+  try {
+    console.log(req.user.targetHours);
+
+    let userId = req.user.id;
+
+    const userStats = await prisma.stats.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+
+    let totalHours = 0;
+
+    userStats.forEach((obj) => {
+      totalHours += parseFloat(obj.hours);
+    });
+
+    res.status(200).json({
+      summaryData: { totalHours },
+      targetHours: req.user.targetHours,
+    });
+  } catch (err) {
+    console.log(err);
   }
 });
 

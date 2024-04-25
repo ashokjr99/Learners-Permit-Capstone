@@ -21,6 +21,7 @@ router.post("/signup_child", validateSession, async (req, res) => {
           FirstName: req.body.first,
           LastName: req.body.last,
           email: req.body.email,
+          targetHours: req.body.targetHours,
           Password: bcrypt.hashSync(req.body.password, 12),
           // Need to work on figuring out the parentId and how to grab it from the logged in parent
           parentId: req.user.id,

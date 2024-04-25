@@ -21,6 +21,7 @@ const Check_Stats = ({}) => {
   const [drives, setDrives] = useState(0);
   const [hours, setHours] = useState(0);
   const [approved, setApproved] = useState(0);
+  const [dayOrNight, setDayOrNight] = useState(null);
   const [weatherDrivesTotalForEach, setWeatherDrivesTotalForEach] =
     useState(null);
   // null so nothing displays while page loads at first
@@ -42,8 +43,6 @@ const Check_Stats = ({}) => {
         );
         const json = await response.json();
 
-
-
         console.log(json);
         setResults(json.userStats);
         // we used "setResults" to change the state/values that go into the variable "results". we then return "results" in the jsx below.
@@ -51,6 +50,7 @@ const Check_Stats = ({}) => {
         setDrives(json.summaryData.totalDrives);
         setHours(json.summaryData.totalHours);
         setWeatherDrivesTotalForEach(json.pieChartData);
+        setDayOrNight(json.pieChartDayOrNightData);
       } catch (err) {
         console.log(err);
       }
@@ -62,7 +62,7 @@ const Check_Stats = ({}) => {
   return (
     <div
       className="w3-container"
-      style={{ marginLeft: "25%",  marginBottom: "25%" }}
+      style={{ marginLeft: "25%", marginBottom: "25%" }}
     >
       <div className="w3-panel" style={{ height: "80em" }}>
         <h1>Summaries</h1>
@@ -89,11 +89,14 @@ const Check_Stats = ({}) => {
 
         <ChartsHolder
           weatherDrivesTotalForEach={weatherDrivesTotalForEach}
+          dayOrNight={dayOrNight}
           results={results}
         />
         <SummaryHeader hours={hours} drives={drives} approved={approved} />
+        <h1>Approved</h1>
         <StatsChartHolder results={results} setReFetch={setReFetch} />
         <br></br>
+        <h1>Pending Approval</h1>
         <Awaiting_Stats results={results} setReFetch={setReFetch} />
         {/* stats_filter houses all of the data that is filtered through */}
       </div>

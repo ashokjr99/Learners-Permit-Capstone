@@ -51,18 +51,17 @@ const Child_Nav = (props) => {
         </button>
       </Link>
 
-      <button onClick={openModal}>
-        Enter Drive
-        <Modal
-          className="modal"
-          isOpen={modalIsOpen}
-          onRequestClose={() => setModalIsOpen(false)}
-          contentLabel="Enter Stats Modal"
-          appElement={document.getElementById("root")}
-          style={{ content: { left: "60%" } }}
-        >
-          <Enter_Stats closeModal={closeModal}/>
-        </Modal>
+      <button
+        // style={{
+        //   backgroundColor,
+        // }}
+        onClick={() => {
+          console.log(props.setModalIsOpen);
+          props.setModalIsOpen(true);
+        }}
+        className="enterStats"
+      >
+        Submit Drive
       </button>
 
       <button
