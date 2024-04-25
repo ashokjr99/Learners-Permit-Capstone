@@ -4,6 +4,7 @@ import { useState } from "react";
 const Signup_Child = ({ userId }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [targetHours, setTargetHours] = useState(0);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signupSuccess, setSignupSuccess] = useState(false);
@@ -17,6 +18,9 @@ const Signup_Child = ({ userId }) => {
         break;
       case "last":
         setLastName(value);
+        break;
+      case "targetHours":
+        setTargetHours(value);
         break;
       case "email":
         setEmail(value);
@@ -42,6 +46,7 @@ const Signup_Child = ({ userId }) => {
             parentId: userId,
             first: firstName,
             last: lastName,
+            targetHours: targetHours,
             email: email,
             password: password,
           }),
@@ -53,6 +58,7 @@ const Signup_Child = ({ userId }) => {
 
       setFirstName("");
       setLastName("");
+      setTargetHours(0);
       setEmail("");
       setPassword("");
     } catch (err) {
@@ -78,6 +84,14 @@ const Signup_Child = ({ userId }) => {
             <input
               onChange={(e) => handleChange("last", e.target.value)}
               value={lastName}
+            />
+            <label>Target hours for your child</label>
+            <input
+              onChange={(e) =>
+                handleChange("targetHours", parseFloat(e.target.value))
+              }
+              type="number"
+              value={targetHours}
             />
             <label>Email</label>
             <input
