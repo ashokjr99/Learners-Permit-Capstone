@@ -58,6 +58,10 @@ function App() {
     navigate("/");
   };
 
+  const goHome = () => {
+    navigate("/");
+  };
+
   return (
     <>
       {!sessionToken && !userType && (
@@ -65,8 +69,12 @@ function App() {
           <div>
             <Routes>
               <Route path="/ResetPassword/*" element={<ResetPassword />} />
+
+              <Route path="/" element={<Home />} />
+
+              <Route path="/about" element={<About goHome={goHome} />} />
+              <Route path="/contact_us" element={<Contact goHome={goHome} />} />
             </Routes>
-            <Home />
             <Auth
               updateToken={updateToken}
               userId={userId}
