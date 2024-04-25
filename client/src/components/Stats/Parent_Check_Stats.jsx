@@ -59,9 +59,9 @@ const Parent_Check_Stats = () => {
       className="w3-panel"
       style={{ marginLeft: "25%", marginBottom: "25%" }}
     >
-      <div className="w3-container" style={{height: "80em"}}>
-        <h1>Summaries</h1>
-        <p>See your drive history in totality</p>
+      <div className="w3-container" style={{ height: "80em" }}>
+        <h1>Drives</h1>
+        <p>See your child's drive history in totality</p>
 
         <FilterHolder
           setStartDate={setStartDate}
@@ -82,8 +82,10 @@ const Parent_Check_Stats = () => {
           }
         </PDFDownloadLink>
 
+        <h1>Approved</h1>
         <StatsChartHolder results={results} setReFetch={setReFetch} />
         <br></br>
+        <h1>Pending Approval</h1>
         <Awaiting_Stats results={results} setReFetch={setReFetch} />
         {/* stats_filter houses all of the data that is filtered through */}
       </div>
