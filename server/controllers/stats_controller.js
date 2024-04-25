@@ -266,6 +266,8 @@ router.get("/child_stats", async (req, res) => {
 
     let totalHours = 0;
     let totalDrives = results.length;
+    let totalDayHours = 0;
+    let totalNightHours = 0;
 
     results.forEach((obj) => {
       console.log(obj.hours);
