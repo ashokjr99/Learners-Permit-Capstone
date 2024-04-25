@@ -280,15 +280,34 @@ router.get("/child_stats", async (req, res) => {
     let totalDrives = results.length;
     let totalDayHours = 0;
     let totalNightHours = 0;
+    let firstName;
 
     results.forEach((obj) => {
       console.log(obj.hours);
       totalHours += parseFloat(obj.hours);
     });
+    results.forEach((obj) => {
+      console.log(obj.FirstName);
+      firstName = (obj.FirstName);
+    });
+
+    results.forEach((obj) => {
+      if (obj.day === true) {
+        console.log(obj.day);
+        totalDayHours += parseFloat(obj.hours);
+      }
+    });
+
+    results.forEach((obj) => {
+      if (obj.day === false) {
+        console.log(obj.day);
+        totalNightHours += parseFloat(obj.hours);
+      }
+    });
 
     res.status(200).json({
       userStats: results,
-      summaryData: { totalDrives, totalHours },
+      summaryData: { totalDrives, totalHours, totalDayHours, totalNightHours, firstName },
     });
   } catch (error) {
     console.log("Error fetching stats:", error);
