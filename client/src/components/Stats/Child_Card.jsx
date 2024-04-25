@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Card, CardContent, Typography} from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 
 const Child_Card = () => {
   const [results, setResults] = useState([]);
@@ -39,23 +39,9 @@ const Child_Card = () => {
     if (!groupedResults[result.userId]) {
       groupedResults[result.userId] = [];
     }
-    console.log(groupedResults)
+    console.log(groupedResults);
     groupedResults[result.userId].push(result);
   });
-
-//   result.forEach((obj) => {
-//     if (obj.day === true) {
-//       console.log(obj.day);
-//       totalDayHours += parseFloat(obj.hours);
-//     }
-//   });
-
-//   result.forEach((obj) => {
-//     if (obj.day === false) {
-//       console.log(obj.day);
-//       totalNightHours += parseFloat(obj.hours);
-//     }
-//   });
 
   return (
     <div>
@@ -65,6 +51,9 @@ const Child_Card = () => {
         const totalHours = group.reduce((acc, cur) => acc + cur.hours, 0);
         const totalDayHours = group.reduce((acc, cur) => acc + cur.dayHours, 0);
         const totalNightHours = group.reduce((acc, cur) => acc + cur.nightHours, 0);
+        console.log(totalHours)
+        console.log(totalDayHours)
+        console.log(totalNightHours)
 
         return (
           <Card key={userId} style={{ width: "40em", margin: "1em" }}>
