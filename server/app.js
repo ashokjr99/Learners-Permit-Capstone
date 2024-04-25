@@ -11,7 +11,13 @@ const app = express();
 const cors = require("cors");
 
 //? Import controller/s
-const { userController, statsController, parentController, recoveryController } = require("./controllers/index");
+const {
+  userController,
+  statsController,
+  parentController,
+  recoveryController,
+  settingController,
+} = require("./controllers/index");
 
 //? Import validation middleware
 const validateSession = require("./middleware/validate-session");
@@ -35,8 +41,8 @@ app.use("/parent", parentController);
 app.use("/user", userController);
 app.use("/recovery", recoveryController);
 app.use(validateSession);
+app.use("/settings", settingController);
 app.use("/stats", statsController);
-
 
 //? Initial spin up of the Express server
 app.listen(PORT, () => {
