@@ -7,11 +7,11 @@ const router = express.Router();
 // PUT endpoint for updating user profile (first name, last name, email)
 router.put("/profile", async (req, res) => {
   const { type, id } = req.user;
-  const { firstName, lastName, email } = req.body;
+  const { firstName, lastName, email, targetHours } = req.body;
   console.log(req.user);
   try {
     // Check if the user type is either "parent" or "user"
-    if (type !== "parent" && type !== "user") {
+    if (type !== "parent" && type !== "child") {
       return res.status(403).json({ error: "Unauthorized access." });
     }
 
@@ -25,7 +25,7 @@ router.put("/profile", async (req, res) => {
     } else {
       updatedUser = await prisma.users.update({
         where: { id: id },
-        data: { FirstName: firstName, LastName: lastName, email },
+        data: { FirstName: firstName, LastName: lastName, email, targetHours },
       });
     }
 
