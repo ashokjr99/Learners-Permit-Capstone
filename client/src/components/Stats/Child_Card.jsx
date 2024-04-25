@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import {Card, CardContent, Typography} from "@mui/material";
 
 const Child_Card = () => {
   const [results, setResults] = useState([]);
@@ -37,27 +34,38 @@ const Child_Card = () => {
     getStats();
   }, []);
 
+  const groupedResults = {};
+  results.forEach((result) => {
+    if (!groupedResults[result.userId]) {
+      groupedResults[result.userId] = [];
+    }
+    console.log(groupedResults)
+    groupedResults[result.userId].push(result);
+  });
+
   return (
     <div>
-      {results.map((result) => {
-        console.log("Babaloo", result);
+      {Object.values(groupedResults).map((group) => {
+        const { userId, FirstName } = group[0]; // Assuming userId and firstName are available in the group
+
+        const totalHours = group.reduce((acc, cur) => acc + cur.hours, 0);
+        const totalDayHours = group.reduce((acc, cur) => acc + cur.dayHours, 0);
+        const totalNightHours = group.reduce((acc, cur) => acc + cur.nightHours, 0);
+
         return (
-          <Card
-            key={result.id}
-            style={{ width: "40em", margin:"1em" }}
-          >
+          <Card key={userId} style={{ width: "40em", margin: "1em" }}>
             <CardContent>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                {result.FirstName}
+                {FirstName}
               </Typography>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Hours Drive: {result.hours}
+                Total Hours Drive: {totalHours}
               </Typography>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Day Hours Driven: {result.dayHours}
+                Total Day Hours Driven: {totalDayHours}
               </Typography>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Night Hours Driven: {result.nightHours}
+                Total Night Hours Driven: {totalNightHours}
               </Typography>
             </CardContent>
           </Card>
@@ -66,5 +74,34 @@ const Child_Card = () => {
     </div>
   );
 };
+//   return (
+//     <div>
+//       {results.map((result, index) => {
+//         console.log("Babaloo", result);
+//         return (
+//           <Card
+//             key={result.id}
+//             style={{ width: "40em", margin:"1em" }}
+//           >
+//             <CardContent>
+//               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+//                 {result.FirstName}
+//               </Typography>
+//               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+//                 Total Hours Drive: {hours}
+//               </Typography>
+//               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+//                 Total Day Hours Driven: {dayHours}
+//               </Typography>
+//               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+//                 Total Night Hours Driven: {nightHours}
+//               </Typography>
+//             </CardContent>
+//           </Card>
+//         );
+//       })}
+//     </div>
+//   );
+// };
 
 export default Child_Card;
