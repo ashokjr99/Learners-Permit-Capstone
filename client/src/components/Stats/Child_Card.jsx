@@ -43,6 +43,20 @@ const Child_Card = () => {
     groupedResults[result.userId].push(result);
   });
 
+//   result.forEach((obj) => {
+//     if (obj.day === true) {
+//       console.log(obj.day);
+//       totalDayHours += parseFloat(obj.hours);
+//     }
+//   });
+
+//   result.forEach((obj) => {
+//     if (obj.day === false) {
+//       console.log(obj.day);
+//       totalNightHours += parseFloat(obj.hours);
+//     }
+//   });
+
   return (
     <div>
       {Object.values(groupedResults).map((group) => {
