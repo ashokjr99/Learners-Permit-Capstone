@@ -16,6 +16,7 @@ import {
   Contact,
   Footer,
   Auth,
+  Settings,
 } from "./components/";
 
 import "./App.css";
@@ -86,6 +87,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/Parent_Dashboard" />} />
               <Route path="/Parent_Dashboard" element={<Parent_Dashboard />} />
+              <Route path="/settings" element={<Navigate to="/settings" />} />
 
               <Route path="/login" element={<Login />} />
               <Route
@@ -126,6 +128,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/settings" element={<Navigate to="/settings" />} />
 
               <Route path="/login" element={<Login />} />
 

@@ -15,6 +15,7 @@ import Footer from "./Navigation/Footer";
 import Auth from "./Authentication/Authentication";
 import ResetPassword from "./Authentication/ResetPassword";
 import Child_Card from "./Stats/Child_Card";
+import Settings from "./Settings/settings";
 
 export {
   Nav,
@@ -34,4 +35,5 @@ export {
   Footer,
   Auth,
   Child_Card,
+  Settings,
 };
