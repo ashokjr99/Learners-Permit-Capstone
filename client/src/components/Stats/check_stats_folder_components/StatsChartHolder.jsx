@@ -52,52 +52,46 @@ const StatsList = ({ results, setReFetch }) => {
           </TableHead>
           <TableBody>
             {results
-            .filter((obj) => userType === "child" ? obj.parent_approval === true : true)
-            .map((obj, index) => {
-              return (
-                <TableRow
-                  key={obj.id}
-                  style={{ backgroundColor: index % 2 == 0 ? "#84CEEB" : "#C1C8E4" }}
-                  // if row is even, color background red, if odd, color background blue
-
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  {userType === "parent" && (
-                    <TableCell align="center">{obj.FirstName}</TableCell>
-                  )}
-                  <TableCell component="th" scope="row">
-                    {obj.hours}
-                  </TableCell>
-                  <TableCell align="center">
-                    {new Date(obj.timestamp).toDateString()}
-                  </TableCell>
-                  <TableCell align="center">{obj.vehicle_type}</TableCell>
-                  <TableCell align="center">{obj.weather}</TableCell>
-                  <TableCell align="center">{obj.from}</TableCell>
-                  <TableCell align="center">{obj.to}</TableCell>
-                  <TableCell align="center">
-                    {obj.day === false ? "Night" : "Day"}
-                  </TableCell>
-                  <TableCell align="center">{obj.practiced}</TableCell>
-                  <TableCell align="center">{obj.notes}</TableCell>
-                  {userType === "parent" && (
-                    <TableCell align="center">{obj.parent_approval === false ? "Awaiting" : "Approved"}</TableCell>
-                  )}
-                  {/* <TableCell
-                    align="center"
-                    onClick={() => {
-                      setShowEdit((p) => !p);
-                      setStatsObj(obj);
+              .filter((obj) => obj.parent_approval === true)
+              .map((obj, index) => {
+                return (
+                  <TableRow
+                    key={obj.id}
+                    style={{
+                      backgroundColor: index % 2 == 0 ? "#84CEEB" : "#C1C8E4",
                     }}
+                    // if row is even, color background red, if odd, color background blue
+
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <button> Edit </button>
-                  </TableCell>
-                  <TableCell align="center">
-                    <Delete_Stats stats={obj} setReFetch={setReFetch} />
-                  </TableCell> */}
-                </TableRow>
-              );
-            })}
+                    {userType === "parent" && (
+                      <TableCell align="center">{obj.FirstName}</TableCell>
+                    )}
+                    <TableCell component="th" scope="row">
+                      {obj.hours}
+                    </TableCell>
+                    <TableCell align="center">
+                      {new Date(obj.timestamp).toDateString()}
+                    </TableCell>
+                    <TableCell align="center">{obj.vehicle_type}</TableCell>
+                    <TableCell align="center">{obj.weather}</TableCell>
+                    <TableCell align="center">{obj.from}</TableCell>
+                    <TableCell align="center">{obj.to}</TableCell>
+                    <TableCell align="center">
+                      {obj.day === false ? "Night" : "Day"}
+                    </TableCell>
+                    <TableCell align="center">{obj.practiced}</TableCell>
+                    <TableCell align="center">{obj.notes}</TableCell>
+                    {userType === "parent" && (
+                      <TableCell align="center">
+                        {obj.parent_approval === false
+                          ? "Awaiting"
+                          : "Approved"}
+                      </TableCell>
+                    )}
+                  </TableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </TableContainer>

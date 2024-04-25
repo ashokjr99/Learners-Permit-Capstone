@@ -21,6 +21,7 @@ const Check_Stats = ({}) => {
   const [drives, setDrives] = useState(0);
   const [hours, setHours] = useState(0);
   const [approved, setApproved] = useState(0);
+  const [dayOrNight, setDayOrNight] = useState(null);
   const [weatherDrivesTotalForEach, setWeatherDrivesTotalForEach] =
     useState(null);
   // null so nothing displays while page loads at first
@@ -49,6 +50,7 @@ const Check_Stats = ({}) => {
         setDrives(json.summaryData.totalDrives);
         setHours(json.summaryData.totalHours);
         setWeatherDrivesTotalForEach(json.pieChartData);
+        setDayOrNight(json.pieChartDayOrNightData);
       } catch (err) {
         console.log(err);
       }
@@ -87,6 +89,7 @@ const Check_Stats = ({}) => {
 
         <ChartsHolder
           weatherDrivesTotalForEach={weatherDrivesTotalForEach}
+          dayOrNight={dayOrNight}
           results={results}
         />
         <SummaryHeader hours={hours} drives={drives} approved={approved} />
