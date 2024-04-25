@@ -1,30 +1,31 @@
-// Import necessary modules and setup Express router
-const router = require("express").Router();
+const express = require("express");
 const bcrypt = require("bcryptjs");
 const prisma = require("../db");
 
-// PUT endpoint for updating user profile (first name, last name, email)
-router.put("/settings/profile", async (req, res) => {
-  const { userType, userId } = req.user; // Assuming you have middleware to extract user type and ID from the request
-  const { firstName, lastName, email } = req.body;
+const router = express.Router();
 
+// PUT endpoint for updating user profile (first name, last name, email)
+router.put("/profile", async (req, res) => {
+  const { type, id } = req.user;
+  const { firstName, lastName, email } = req.body;
+  console.log(req.user);
   try {
     // Check if the user type is either "parent" or "user"
-    if (userType !== "parent" && userType !== "user") {
+    if (type !== "parent" && type !== "user") {
       return res.status(403).json({ error: "Unauthorized access." });
     }
 
     // Update user profile based on user type
     let updatedUser;
-    if (userType === "parent") {
+    if (type === "parent") {
       updatedUser = await prisma.parents.update({
-        where: { id: userId },
-        data: { firstName, lastName, email },
+        where: { id: id },
+        data: { FirstName: firstName, LastName: lastName, email },
       });
     } else {
       updatedUser = await prisma.users.update({
-        where: { id: userId },
-        data: { firstName, lastName, email },
+        where: { id: id },
+        data: { FirstName: firstName, LastName: lastName, email },
       });
     }
 
@@ -38,30 +39,34 @@ router.put("/settings/profile", async (req, res) => {
 });
 
 // PUT endpoint for updating user password
-router.put("/settings/password", async (req, res) => {
-  const { userType, userId } = req.user; // Assuming you have middleware to extract user type and ID from the request
+router.put("/password", async (req, res) => {
+  const { type, id } = req.user;
   const { currentPassword, newPassword } = req.body;
 
   try {
     // Check if the user type is either "parent" or "user"
-    if (userType !== "parent" && userType !== "user") {
+    if (type !== "parent" && type !== "user") {
       return res.status(403).json({ error: "Unauthorized access." });
     }
 
     // Retrieve user from the database based on user type
-    const user =
-      userType === "parent"
-        ? await prisma.parents.findUnique({ where: { id: userId } })
-        : await prisma.users.findUnique({ where: { id: userId } });
+    let user;
+    if (type === "parent") {
+      user = await prisma.parents.findUnique({ where: { id: id } });
+    } else {
+      user = await prisma.users.findUnique({ where: { id: id } });
+    }
 
     if (!user) {
       return res.status(404).json({ error: "User not found." });
     }
 
-    // Verify current password - Implement this function based on your requirements
-    const isPasswordValid = await verifyPassword(
+    // Verify current password
+    console.log("Current Password:", currentPassword);
+    console.log("User Password:", user.Password); // Ensure 'Password' matches your actual database field name
+    const isPasswordValid = await bcrypt.compare(
       currentPassword,
-      user.password
+      user.Password // Use the correct database field name for the password
     );
 
     if (!isPasswordValid) {
@@ -69,16 +74,17 @@ router.put("/settings/password", async (req, res) => {
     }
 
     // Update user password based on user type
-    const updatedUser =
-      userType === "parent"
-        ? await prisma.parents.update({
-            where: { id: userId },
-            data: { password: await hashPassword(newPassword) },
-          })
-        : await prisma.users.update({
-            where: { id: userId },
-            data: { password: await hashPassword(newPassword) },
-          });
+    if (type === "parent") {
+      await prisma.parents.update({
+        where: { id: id },
+        data: { Password: await bcrypt.hash(newPassword, 12) }, // Use the correct database field name for the password
+      });
+    } else {
+      await prisma.users.update({
+        where: { id: id },
+        data: { Password: await bcrypt.hash(newPassword, 12) }, // Use the correct database field name for the password
+      });
+    }
 
     res.status(200).json({ message: "Password updated successfully." });
   } catch (error) {
@@ -89,5 +95,4 @@ router.put("/settings/password", async (req, res) => {
   }
 });
 
-// Export the router
 module.exports = router;
