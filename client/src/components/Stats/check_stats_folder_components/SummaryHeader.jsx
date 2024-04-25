@@ -5,12 +5,14 @@ const SummaryHeader = ({ hours, drives, approved }) => {
 
   return (
     <div>
-      <h1>Totals</h1>
-      <h2>Drives: {drives}</h2>
-      <h2>Hours: {hours}</h2>
-      <h2>
-        Approved: {parseInt(approved)}/{drives}
-      </h2>
+      <h1>Summaries</h1>
+      <div style={{ display: "flex", flexDirection: "row", gap: "30%" }}>
+        <h2>Drives: {drives}</h2>
+        <h2>Hours: {hours}</h2>
+        <h2>
+          Approved: {parseInt(approved)}/{drives}
+        </h2>
+      </div>
     </div>
   );
 };
