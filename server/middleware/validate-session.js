@@ -51,7 +51,7 @@ const validateSession = async (req, res, next) => {
       req.user.type = "child";
     }
 
-    console.log(req.user);
+    console.log("found user", req.user);
 
     return next();
   } catch (err) {
