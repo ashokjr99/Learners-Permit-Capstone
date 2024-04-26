@@ -91,10 +91,10 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
         style={{ content: { left: "60%" } }}
       >
         <div>
-          <h2 className="text-center mb-4">Enter Your Drive</h2>
+          <h2 className="text-center mb-4 roboto-regular">Enter Your Drive</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label htmlFor="hours" className="block mb-1">
+              <label htmlFor="hours" className="block mb-1 roboto-regular">
                 Hours
               </label>
               <input
@@ -107,7 +107,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
             </div>
 
             <div className="mb-4">
-              <label className="block mb-1">
+              <label className="block mb-1 roboto-regular">
                 {" "}
                 {day === false ? "Day" : "Night"}
               </label>
@@ -123,7 +123,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="vehicleType" className="block mb-1">
+              <label htmlFor="vehicleType" className="block mb-1 roboto-regular">
                 Vehicle Type
               </label>
               <select
@@ -142,7 +142,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="weather" className="block mb-1">
+              <label htmlFor="weather" className="block mb-1 roboto-regular">
                 Weather
               </label>
               <select
@@ -161,7 +161,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="from" className="block mb-1">
+              <label htmlFor="from" className="block mb-1 roboto-regular">
                 From
               </label>
               <input
@@ -174,7 +174,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="to" className="block mb-1">
+              <label htmlFor="to" className="block mb-1 roboto-regular">
                 To
               </label>
               <input
@@ -187,7 +187,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="practiced" className="block mb-1">
+              <label htmlFor="practiced" className="block mb-1 roboto-regular">
                 Practiced
               </label>
               <input
@@ -199,7 +199,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="practiced" className="block mb-1">
+              <label htmlFor="practiced" className="block mb-1 roboto-regular">
                 Notes
               </label>
               <input
@@ -214,7 +214,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                className="bg-blue-500 text-white px-4 py-2 rounded-md roboto-regular"
               >
                 Submit
               </button>
