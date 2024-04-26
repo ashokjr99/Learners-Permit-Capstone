@@ -76,4 +76,37 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Endpoint to delete a child account
+router.delete("/delete-child/:childId", async (req, res) => {
+  try {
+    const parentId = req.user.id; // Assuming the parent's ID is extracted from the token
+
+    // Check if the child account exists and is associated with the parent
+    const childUser = await prisma.users.findUnique({
+      where: {
+        id: req.params.Id,
+        parentId: parentId,
+      },
+    });
+
+    if (!childUser) {
+      return res.status(404).json({
+        error: "Child account not found or not associated with the parent.",
+      });
+    }
+
+    // Delete the child account
+    await prisma.users.delete({
+      where: { id: req.params.childId },
+    });
+
+    res.status(200).json({ message: "Child account deleted successfully." });
+  } catch (error) {
+    console.error("Error deleting child account:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while deleting the child account." });
+  }
+});
+
 module.exports = router;

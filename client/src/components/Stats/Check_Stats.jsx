@@ -62,6 +62,7 @@ const Check_Stats = ({}) => {
   return (
     <div
       className="w3-container"
+
       style={{ marginLeft: "25%", marginBottom: "25%" }}
     >
       <div className="w3-panel" style={{ height: "80em" }}>
