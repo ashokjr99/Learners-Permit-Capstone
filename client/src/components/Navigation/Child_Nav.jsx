@@ -64,10 +64,10 @@ const Child_Nav = (props) => {
           <Enter_Stats closeModal={closeModal}/>
         </Modal>
       </button>
-      <Link to="/Settings">
+      <Link to="/settings">
         <button
           style={{
-            background: location.pathname.includes("/Settings") && backgroundColor,
+            background: location.pathname.includes("/settings") && backgroundColor,
           }}
         >
           Settings
