@@ -29,8 +29,8 @@ const StatsList = ({ results, setReFetch }) => {
         />
       ) : null}
 
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650}} aria-label="simple table">
+      <TableContainer component={Paper} style={{boxShadow: "4px 4px 4px black"}}>
+        <Table sx={{ minWidth: 650, boxShadow: "4px 4px 4px black"}} aria-label="simple table">
           <TableHead>
             <TableRow>
               {userType === "parent" && (

@@ -9,7 +9,6 @@ const Child_Card = () => {
     const getStats = async () => {
       try {
         const response = await fetch(
-
           "http://localhost:8081/stats/child_card_stats",
           {
             headers: {
@@ -30,12 +29,32 @@ const Child_Card = () => {
   }, []);
 
   return (
-    <div>
+    <div
+      className="roboto-regular"
+      style={{ display: "flex", flexDirection: "row" }}
+    >
       {results.map((obj) => {
         return (
-          <Card key={obj.id} style={{ width: "40em", margin: "1em" }}>
+          <Card
+            key={obj.id}
+            style={{
+              width: "40em",
+              margin: "1em",
+              boxShadow: "4px 4px 4px #000000",
+              borderRadius: "1em",
+              backgroundColor: "#90AEAD",
+            }}
+          >
             <CardContent>
-              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+              <Typography
+                sx={{
+                  fontSize: 32,
+                  textDecoration: "underline 2px",
+                  fontWeight: "700",
+                }}
+                color="#244855"
+                gutterBottom
+              >
                 {obj.FirstName}
               </Typography>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>

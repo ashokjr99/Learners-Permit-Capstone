@@ -61,14 +61,20 @@ const Check_Stats = ({}) => {
 
   return (
     <div
-      className="w3-container"
+      className="w3-container roboto-regular"
 
       style={{ marginLeft: "25%", marginBottom: "25%" }}
     >
       <div className="w3-panel" style={{ height: "80em" }}>
-        <h1>Drives</h1>
+        <h1 className="roboto-regular">Drives</h1>
         <p>See your drive history in totality</p>
 
+
+        <ChartsHolder
+          weatherDrivesTotalForEach={weatherDrivesTotalForEach}
+          dayOrNight={dayOrNight}
+          results={results}
+        />
         <FilterHolder
           setStartDate={setStartDate}
           setEndDate={setEndDate}
@@ -87,12 +93,6 @@ const Check_Stats = ({}) => {
             )
           }
         </PDFDownloadLink>
-
-        <ChartsHolder
-          weatherDrivesTotalForEach={weatherDrivesTotalForEach}
-          dayOrNight={dayOrNight}
-          results={results}
-        />
         <SummaryHeader hours={hours} drives={drives} approved={approved} />
         <h1>Approved</h1>
         <StatsChartHolder results={results} setReFetch={setReFetch} />
