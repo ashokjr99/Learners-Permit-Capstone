@@ -18,14 +18,6 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
 
   const vehicleTypes = ["Sedan", "Truck", "Van", "SUV", "Motorcycle"];
 
-  // const openModal = () => {
-  //   setModalIsOpen(true);
-  // };
-
-  // const closeModal = () => {
-  //   setModalIsOpen(false);
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -81,7 +73,6 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
 
   return (
     <div style={{ marginLeft: "25%", marginRight: "4%", marginBottom: "25%" }}>
-      {/* <button onClick={openModal}>Enter Drive</button> */}
 
       <Modal
         className="modal"
