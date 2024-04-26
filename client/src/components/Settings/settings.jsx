@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/settings.css";
+import "./settings.css";
 
 const Settings = () => {
   const [firstName, setFirstName] = useState("");
