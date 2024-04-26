@@ -3,7 +3,6 @@ import Modal from "react-modal";
 import "./ToggleSwitch.css";
 Modal.setAppElement("#root");
 
-
 const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
   const [hours, setHours] = useState("");
   const [day, setDay] = useState(true);
@@ -217,13 +216,13 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
                 className="bg-blue-500 text-white px-4 py-2 rounded-md"
               >
                 Submit
-                </button>
+              </button>
             </div>
           </form>
         </div>
       </Modal>
     </div>
   );
-}
+};
 
 export default Enter_Stats;
