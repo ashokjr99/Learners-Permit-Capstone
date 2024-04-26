@@ -269,12 +269,16 @@ router.get("/child_stats", async (req, res) => {
     const results = [];
 
     for (let user of userStats) {
+      let totalHours = 0;
+
       user.stats.forEach((stat) => {
-        results.push({ ...stat, FirstName: user.FirstName });
+        totalHours += parseFloat(stat.hours);
+
+        results.push({ ...stat, FirstName: user.FirstName, totalHours });
       });
     }
 
-    console.log(JSON.stringify(userStats));
+    console.log("Results:", results);
 
     let totalHours = 0;
     let totalDrives = results.length;
@@ -288,7 +292,7 @@ router.get("/child_stats", async (req, res) => {
     });
     results.forEach((obj) => {
       console.log(obj.FirstName);
-      firstName = (obj.FirstName);
+      firstName = obj.FirstName;
     });
 
     results.forEach((obj) => {
@@ -307,7 +311,13 @@ router.get("/child_stats", async (req, res) => {
 
     res.status(200).json({
       userStats: results,
-      summaryData: { totalDrives, totalHours, totalDayHours, totalNightHours, firstName },
+      summaryData: {
+        totalDrives,
+        totalHours,
+        totalDayHours,
+        totalNightHours,
+        firstName,
+      },
     });
   } catch (error) {
     console.log("Error fetching stats:", error);
@@ -336,6 +346,52 @@ router.get("/child_target_hours", async (req, res) => {
     res.status(200).json({
       summaryData: { totalHours },
       targetHours: req.user.targetHours,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/child_card_stats", async (req, res) => {
+  try {
+    const userStats = await prisma.users.findMany({
+      where: {
+        parentId: req.user.id,
+      },
+      select: {
+        id: true,
+        FirstName: true,
+        stats: {
+          select: { hours: true, day: true },
+        },
+      },
+    });
+
+    let newUserStats = userStats.map((obj) => {
+      let result = { FirstName: obj.FirstName, id: obj.id };
+      let totalHours = 0;
+      let totalDayHours = 0;
+      let totalNightHours = 0;
+
+      obj.stats.forEach((statObj) => {
+        totalHours += parseFloat(statObj.hours);
+        let day = statObj.day;
+
+        if (day === true) {
+          totalDayHours += parseFloat(statObj.hours);
+        }
+        if (day === false) {
+          totalNightHours += parseFloat(statObj.hours);
+        }
+      });
+
+      result = { ...result, totalHours };
+
+      return result;
+    });
+    res.status(202).json({
+      newUserStats,
+      userStats,
     });
   } catch (err) {
     console.log(err);

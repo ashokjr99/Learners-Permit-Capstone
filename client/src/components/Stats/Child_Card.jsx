@@ -13,7 +13,7 @@ const Child_Card = () => {
     const getStats = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8081/stats/child_stats",
+          "http://localhost:8081/stats/child_card_stats",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
@@ -22,11 +22,11 @@ const Child_Card = () => {
         );
         const json = await response.json();
         console.log(json);
-        setResults(json.userStats);
-        setName(json.summaryData.firstName);
-        setHours(json.summaryData.totalHours);
-        setDayHours(json.summaryData.totalDayHours);
-        setNightHours(json.summaryData.totalNightHours);
+        setResults(json.newUserStats);
+        // setName(json.summaryData.firstName);
+        // setHours(json.summaryData.totalHours);
+        // setDayHours(json.summaryData.totalDayHours);
+        // setNightHours(json.summaryData.totalNightHours);
       } catch (err) {
         console.log(err);
       }
@@ -43,61 +43,32 @@ const Child_Card = () => {
     groupedResults[result.userId].push(result);
   });
 
-  return (
-    <div>
-      {Object.values(groupedResults).map((group) => {
-        const { userId, FirstName } = group[0]; // Assuming userId and firstName are available in the group
-
-        const totalHours = group.reduce((acc, cur) => acc + cur.hours, 0);
-        const totalDayHours = group.reduce((acc, cur) => acc + cur.dayHours, 0);
-        const totalNightHours = group.reduce((acc, cur) => acc + cur.nightHours, 0);
-        console.log(totalHours)
-        console.log(totalDayHours)
-        console.log(totalNightHours)
-
-        return (
-          <Card key={userId} style={{ width: "40em", margin: "1em" }}>
-            <CardContent>
-              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                {FirstName}
-              </Typography>
-              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Hours Drive: {totalHours}
-              </Typography>
-              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Day Hours Driven: {totalDayHours}
-              </Typography>
-              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Night Hours Driven: {totalNightHours}
-              </Typography>
-            </CardContent>
-          </Card>
-        );
-      })}
-    </div>
-  );
-};
 //   return (
 //     <div>
-//       {results.map((result, index) => {
-//         console.log("Babaloo", result);
+//       {Object.values(groupedResults).map((group) => {
+//         const { userId, FirstName } = group[0]; // Assuming userId and firstName are available in the group
+
+//         const totalHours = group.reduce((acc, cur) => acc + cur.hours, 0);
+//         const totalDayHours = group.reduce((acc, cur) => acc + cur.dayHours, 0);
+//         const totalNightHours = group.reduce((acc, cur) => acc + cur.nightHours, 0);
+//         console.log(totalHours)
+//         console.log(totalDayHours)
+//         console.log(totalNightHours)
+
 //         return (
-//           <Card
-//             key={result.id}
-//             style={{ width: "40em", margin:"1em" }}
-//           >
+//           <Card key={userId} style={{ width: "40em", margin: "1em", backgroundColor: "#90aead" }}>
 //             <CardContent>
 //               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-//                 {result.FirstName}
+//                 {FirstName}
 //               </Typography>
 //               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-//                 Total Hours Drive: {hours}
+//                 Total Hours Drive: {totalHours}
 //               </Typography>
 //               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-//                 Total Day Hours Driven: {dayHours}
+//                 Total Day Hours Driven: {totalDayHours}
 //               </Typography>
 //               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-//                 Total Night Hours Driven: {nightHours}
+//                 Total Night Hours Driven: {totalNightHours}
 //               </Typography>
 //             </CardContent>
 //           </Card>
@@ -106,5 +77,34 @@ const Child_Card = () => {
 //     </div>
 //   );
 // };
+  return (
+    <div>
+      {results.map((result, index) => {
+        console.log("Babaloo", result);
+        return (
+          <Card
+            key={result.id}
+            style={{ width: "40em", margin:"1em" }}
+          >
+            <CardContent>
+              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+                {FirstName}
+              </Typography>
+              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+                Total Hours Drive: {hours}
+              </Typography>
+              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+                Total Day Hours Driven: {dayHours}
+              </Typography>
+              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+                Total Night Hours Driven: {nightHours}
+              </Typography>
+            </CardContent>
+          </Card>
+        );
+      })}
+    </div>
+  );
+};
 
 export default Child_Card;
