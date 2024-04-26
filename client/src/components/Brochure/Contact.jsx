@@ -9,6 +9,7 @@ const Contact = ({ goHome }) => {
       <div className="w3-container">
         <button onClick={() => goHome()}>🏠</button>
         <h2>Contact</h2>
+        <h3>drivingtimetracker@gmail.com</h3>
       </div>
     </div>
   );
