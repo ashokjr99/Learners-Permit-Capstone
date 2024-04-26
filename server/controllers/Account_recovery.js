@@ -63,7 +63,7 @@ router.post("/forgot-password", async (req, res) => {
         from: "drivingtimetracker@gmail.com",
         to: user.email,
         subject: "Password Reset",
-        text: `Click the following link to reset your password: http://localhost:5173/#/ResetPassword/${token}`,
+        text: `Click the following link to reset your password: http://localhost:5173/#/ResetPassword/?token=${token}&userid=${user.id}`,
       };
 
       // Send the email
@@ -95,7 +95,7 @@ router.post("/forgot-password", async (req, res) => {
         from: "drivingtimetracker@gmail.com",
         to: parentUser.email,
         subject: "Password Reset",
-        text: `Click the following link to reset your password: http://localhost:5173/#/ResetPassword/${token}`,
+        text: `Click the following link to reset your password: http://localhost:5173/#/ResetPassword/?token=${token}&userid=${parentUser.id}`,
       };
 
       // Send the email
@@ -124,6 +124,7 @@ router.post("/reset-password", async (req, res) => {
     let user = await prisma.parents.findFirst({
       where: {
         resetToken: token,
+        AND: { id: req.body.userId },
       },
     });
 
@@ -132,6 +133,7 @@ router.post("/reset-password", async (req, res) => {
       user = await prisma.users.findFirst({
         where: {
           resetToken: token,
+          AND: { id: req.body.userId },
         },
       });
     }
@@ -140,8 +142,9 @@ router.post("/reset-password", async (req, res) => {
       return res.status(400).json({ error: "Invalid or expired token" });
     }
     console.log(user.id);
+    console.log("user", user);
     // Update user's password and reset token
-    const updatePromise = user.parents
+    const updatePromise = user.parentId
       ? prisma.users.update({
           where: {
             id: user.id,
