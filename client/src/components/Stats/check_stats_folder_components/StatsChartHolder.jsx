@@ -88,7 +88,20 @@ const StatsList = ({ results, setReFetch }) => {
                         {obj.parent_approval === false
                           ? "Awaiting"
                           : "Approved"}
-                      </TableCell>
+                      </TableCell>                      
+                    )}
+                    {userType === "parent" && (
+                      <TableCell align="center">
+                      <button onClick={() => {
+                        setShowEdit((p) => !p);
+                        setStatsObj(obj);
+                      }}>Edit</button>
+                    </TableCell>
+                    )}
+                    {userType === "parent" && (
+                      <TableCell align="center">
+                      <Delete_Stats stats={obj} setReFetch={setReFetch} />
+                    </TableCell>
                     )}
                   </TableRow>
                 );
