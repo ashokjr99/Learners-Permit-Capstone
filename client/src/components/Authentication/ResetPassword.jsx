@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [resetToken, setResetToken] = useState("");
-  
-  
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("token");
-    if (token) {
-      setResetToken(token);
-    }
-  }, []);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const navigate = useNavigate();
+
   const handleResetPassword = async (e) => {
     e.preventDefault();
 
@@ -23,17 +18,21 @@ const ResetPassword = () => {
     }
 
     try {
-      
-      const response = await fetch("http://localhost:8081/recovery/reset-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          newPassword: newPassword,
-          confirmPassword: confirmPassword,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:8081/recovery/reset-password",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            newPassword: newPassword,
+            confirmPassword: confirmPassword,
+            token: searchParams.get("token"),
+            userId: searchParams.get("userid"),
+          }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
@@ -42,6 +41,8 @@ const ResetPassword = () => {
         const errorData = await response.json();
         setMessage(errorData.error); // Display error message from the server
       }
+
+      navigate("/");
     } catch (error) {
       console.error("Error resetting password:", error);
       setMessage("An error occurred. Please try again later.");
