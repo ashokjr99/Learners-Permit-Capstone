@@ -64,6 +64,16 @@ const Child_Nav = (props) => {
       >
         Submit Drive
       </button>
+      <Link to="/settings">
+        <button
+          style={{
+            background:
+              location.pathname.includes("/settings") && backgroundColor,
+          }}
+        >
+          Settings
+        </button>
+      </Link>
 
       <button
         className="w3-display-bottomleft"
