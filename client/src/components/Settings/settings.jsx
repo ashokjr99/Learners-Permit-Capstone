@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/settings.css";
+import "./settings.css";
 
 const Settings = () => {
   const [firstName, setFirstName] = useState("");
@@ -104,48 +104,63 @@ const Settings = () => {
   };
 
   return (
-    <div className="container">
+    <div className="settings-container">
       <h2>Settings</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="firstName">First Name</label>
-          <input
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Save Changes</button>
+      <form onSubmit={handleUpdateProfile}>
+        <label>First Name:</label>
+        <input
+          type="text"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <label>Last Name:</label>
+        <input
+          type="text"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <label>Email:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label>Target Hours:</label>
+        <input
+          type="number"
+          value={targetHours}
+          onChange={(e) => setTargetHours(e.target.value)}
+        />
+        <button type="submit">Update Profile</button>
       </form>
+
+      <hr />
+
+      <form onSubmit={handleUpdatePassword}>
+        <label>Current Password:</label>
+        <input
+          type="password"
+          value={currentPassword}
+          onChange={(e) => setCurrentPassword(e.target.value)}
+        />
+        <label>New Password:</label>
+        <input
+          type="password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
+        <label>Confirm Password:</label>
+        <input
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <button type="submit">Update Password</button>
+      </form>
+
+      {message && <p>{message}</p>}
     </div>
   );
 };
+
 export default Settings;
