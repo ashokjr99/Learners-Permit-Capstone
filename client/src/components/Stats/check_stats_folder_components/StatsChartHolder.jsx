@@ -52,6 +52,7 @@ const StatsList = ({ results, setReFetch }) => {
           </TableHead>
           <TableBody>
             {results
+
               .filter((obj) => obj.parent_approval === true)
               .map((obj, index) => {
                 return (

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import { Card, CardContent, Typography } from "@mui/material";
 
 const Child_Card = () => {
@@ -8,6 +9,7 @@ const Child_Card = () => {
     const getStats = async () => {
       try {
         const response = await fetch(
+
           "http://localhost:8081/stats/child_card_stats",
           {
             headers: {
@@ -16,6 +18,7 @@ const Child_Card = () => {
           }
         );
         const json = await response.json();
+
         console.log("jsonn", json);
 
         setResults(json.newUserStats);

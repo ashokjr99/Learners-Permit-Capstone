@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import "./ToggleSwitch.css";
 Modal.setAppElement("#root");
 
+
 const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
   const [hours, setHours] = useState("");
   const [day, setDay] = useState(true);
@@ -17,13 +18,13 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
 
   const vehicleTypes = ["Sedan", "Truck", "Van", "SUV", "Motorcycle"];
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
+  // const openModal = () => {
+  //   setModalIsOpen(true);
+  // };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+  // const closeModal = () => {
+  //   setModalIsOpen(false);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -220,7 +221,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
             </div>
           </form>
         </div>
-      </Modal>
+      </form>
     </div>
   );
 };
