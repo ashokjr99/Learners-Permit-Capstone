@@ -3,11 +3,6 @@ import { Card, CardContent, Typography } from "@mui/material";
 
 const Child_Card = () => {
   const [results, setResults] = useState([]);
-  const [hours, setHours] = useState(0);
-  const [drives, setDrives] = useState(0);
-  const [dayHours, setDayHours] = useState(0);
-  const [nightHours, setNightHours] = useState(0);
-  const [name, setName] = useState("");
 
   useEffect(() => {
     const getStats = async () => {
@@ -21,12 +16,9 @@ const Child_Card = () => {
           }
         );
         const json = await response.json();
-        console.log(json);
+        console.log("jsonn", json);
+
         setResults(json.newUserStats);
-        // setName(json.summaryData.firstName);
-        // setHours(json.summaryData.totalHours);
-        // setDayHours(json.summaryData.totalDayHours);
-        // setNightHours(json.summaryData.totalNightHours);
       } catch (err) {
         console.log(err);
       }
@@ -34,70 +26,23 @@ const Child_Card = () => {
     getStats();
   }, []);
 
-  const groupedResults = {};
-  results.forEach((result) => {
-    if (!groupedResults[result.userId]) {
-      groupedResults[result.userId] = [];
-    }
-    console.log(groupedResults);
-    groupedResults[result.userId].push(result);
-  });
-
-//   return (
-//     <div>
-//       {Object.values(groupedResults).map((group) => {
-//         const { userId, FirstName } = group[0]; // Assuming userId and firstName are available in the group
-
-//         const totalHours = group.reduce((acc, cur) => acc + cur.hours, 0);
-//         const totalDayHours = group.reduce((acc, cur) => acc + cur.dayHours, 0);
-//         const totalNightHours = group.reduce((acc, cur) => acc + cur.nightHours, 0);
-//         console.log(totalHours)
-//         console.log(totalDayHours)
-//         console.log(totalNightHours)
-
-//         return (
-//           <Card key={userId} style={{ width: "40em", margin: "1em", backgroundColor: "#90aead" }}>
-//             <CardContent>
-//               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-//                 {FirstName}
-//               </Typography>
-//               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-//                 Total Hours Drive: {totalHours}
-//               </Typography>
-//               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-//                 Total Day Hours Driven: {totalDayHours}
-//               </Typography>
-//               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-//                 Total Night Hours Driven: {totalNightHours}
-//               </Typography>
-//             </CardContent>
-//           </Card>
-//         );
-//       })}
-//     </div>
-//   );
-// };
   return (
     <div>
-      {results.map((result, index) => {
-        console.log("Babaloo", result);
+      {results.map((obj) => {
         return (
-          <Card
-            key={result.id}
-            style={{ width: "40em", margin:"1em" }}
-          >
+          <Card key={obj.id} style={{ width: "40em", margin: "1em" }}>
             <CardContent>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                {FirstName}
+                {obj.FirstName}
               </Typography>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Hours Drive: {hours}
+                Total Hours Driven: {obj.totalHours}
               </Typography>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Day Hours Driven: {dayHours}
+                Total Day Hours Driven: {obj.totalDayHours}
               </Typography>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Night Hours Driven: {nightHours}
+                Total Night Hours Driven: {obj.totalNightHours}
               </Typography>
             </CardContent>
           </Card>

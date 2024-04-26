@@ -277,37 +277,28 @@ router.get("/child_stats", async (req, res) => {
         results.push({ ...stat, FirstName: user.FirstName, totalHours });
       });
     }
-
-    console.log("Results:", results);
-
+    // console.log("results", results);
     let totalHours = 0;
     let totalDrives = results.length;
     let totalDayHours = 0;
     let totalNightHours = 0;
     let firstName;
 
-    results.forEach((obj) => {
-      console.log(obj.hours);
-      totalHours += parseFloat(obj.hours);
-    });
-    results.forEach((obj) => {
-      console.log(obj.FirstName);
-      firstName = obj.FirstName;
-    });
+    // results.forEach((obj) => {
+    //   firstName = obj.FirstName;
+    //   totalHours += parseFloat(obj.hours);
 
-    results.forEach((obj) => {
-      if (obj.day === true) {
-        console.log(obj.day);
-        totalDayHours += parseFloat(obj.hours);
-      }
-    });
+    //   if (obj.day === true) {
+    //     totalDayHours += parseFloat(obj.hours);
+    //   }
 
-    results.forEach((obj) => {
-      if (obj.day === false) {
-        console.log(obj.day);
-        totalNightHours += parseFloat(obj.hours);
-      }
-    });
+    //   if (obj.day === false) {
+    //     totalNightHours += parseFloat(obj.hours);
+    //   }
+    // });
+    // console.log(totalNightHours, "nighttime");
+    // console.log(totalDayHours, "daytime");
+    // console.log(totalHours, "totalh");
 
     res.status(200).json({
       userStats: results,
@@ -362,7 +353,10 @@ router.get("/child_card_stats", async (req, res) => {
         id: true,
         FirstName: true,
         stats: {
-          select: { hours: true, day: true },
+          select: {
+            hours: true,
+            day: true,
+          },
         },
       },
     });
@@ -380,18 +374,19 @@ router.get("/child_card_stats", async (req, res) => {
         if (day === true) {
           totalDayHours += parseFloat(statObj.hours);
         }
+
         if (day === false) {
           totalNightHours += parseFloat(statObj.hours);
         }
       });
 
-      result = { ...result, totalHours };
+      result = { ...result, totalHours, totalDayHours, totalNightHours };
 
       return result;
     });
+
     res.status(202).json({
       newUserStats,
-      userStats,
     });
   } catch (err) {
     console.log(err);

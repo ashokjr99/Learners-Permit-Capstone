@@ -110,7 +110,7 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
             {
               data: hoursArray,
               color: "#244855",
-              // yAxis,
+              area: true,
             },
           ]}
           width={650}

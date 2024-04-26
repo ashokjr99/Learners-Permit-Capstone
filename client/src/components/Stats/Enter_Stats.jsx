@@ -108,8 +108,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
 
             <div className="mb-4">
               <label className="block mb-1">
-                {" "}
-                {day === false ? "Day" : "Night"}
+                {day === true ? "Day" : "Night"}
               </label>
               <label className="switch">
                 <input
