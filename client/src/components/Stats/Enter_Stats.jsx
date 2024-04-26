@@ -3,7 +3,6 @@ import Modal from "react-modal";
 import "./ToggleSwitch.css";
 Modal.setAppElement("#root");
 
-
 const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
   const [hours, setHours] = useState("");
   const [day, setDay] = useState(true);
@@ -17,6 +16,14 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
   const weatherOptions = ["Rainy", "Snowy", "Clear"];
 
   const vehicleTypes = ["Sedan", "Truck", "Van", "SUV", "Motorcycle"];
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -73,6 +80,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
 
   return (
     <div style={{ marginLeft: "25%", marginRight: "4%", marginBottom: "25%" }}>
+      {/* <button onClick={openModal}>Enter Drive</button> */}
 
       <Modal
         className="modal"
@@ -100,7 +108,8 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
 
             <div className="mb-4">
               <label className="block mb-1">
-                {day === true ? "Day" : "Night"}
+                {" "}
+                {day === false ? "Day" : "Night"}
               </label>
               <label className="switch">
                 <input
@@ -212,7 +221,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
             </div>
           </form>
         </div>
-      </form>
+      </Modal>
     </div>
   );
 };

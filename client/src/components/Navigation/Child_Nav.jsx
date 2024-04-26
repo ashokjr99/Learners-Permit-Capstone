@@ -21,7 +21,7 @@ const Child_Nav = (props) => {
 
   return (
     <div
-      className="w3-card-2 w3-sidebar w3-bar-block w3-display-left"
+      className="w3-card-2 w3-sidebar w3-bar-block w3-display-left roboto-regular"
       style={{ width: "15em", backgroundColor: "#90AEAD" }}
     >
       <img
@@ -35,6 +35,7 @@ const Child_Nav = (props) => {
           style={{
             background:
               location.pathname.includes("/dashboard") && backgroundColor,
+              className: "roboto-regular"
           }}
         >
           Home
@@ -51,30 +52,18 @@ const Child_Nav = (props) => {
         </button>
       </Link>
 
-
-      <button onClick={openModal}>
-        Enter Drive
-        <Modal
-          className="modal"
-          isOpen={modalIsOpen}
-          onRequestClose={() => setModalIsOpen(false)}
-          contentLabel="Enter Stats Modal"
-          appElement={document.getElementById("root")}
-          style={{ content: { left: "60%" } }}
-        >
-          <Enter_Stats closeModal={closeModal}/>
-        </Modal>
+      <button
+        // style={{
+        //   backgroundColor,
+        // }}
+        onClick={() => {
+          console.log(props.setModalIsOpen);
+          props.setModalIsOpen(true);
+        }}
+        className="enterStats"
+      >
+        Submit Drive
       </button>
-      <Link to="/settings">
-        <button
-          style={{
-            background: location.pathname.includes("/settings") && backgroundColor,
-          }}
-        >
-          Settings
-        </button>
-      </Link>
-
 
       <button
         className="w3-display-bottomleft"

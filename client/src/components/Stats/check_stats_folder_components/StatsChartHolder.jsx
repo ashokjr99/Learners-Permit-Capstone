@@ -30,7 +30,7 @@ const StatsList = ({ results, setReFetch }) => {
       ) : null}
 
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 650}} aria-label="simple table">
           <TableHead>
             <TableRow>
               {userType === "parent" && (
@@ -88,20 +88,24 @@ const StatsList = ({ results, setReFetch }) => {
                         {obj.parent_approval === false
                           ? "Awaiting"
                           : "Approved"}
-                      </TableCell>                      
+                      </TableCell>
                     )}
                     {userType === "parent" && (
                       <TableCell align="center">
-                      <button onClick={() => {
-                        setShowEdit((p) => !p);
-                        setStatsObj(obj);
-                      }}>Edit</button>
-                    </TableCell>
+                        <button
+                          onClick={() => {
+                            setShowEdit((p) => !p);
+                            setStatsObj(obj);
+                          }}
+                        >
+                          Edit
+                        </button>
+                      </TableCell>
                     )}
                     {userType === "parent" && (
                       <TableCell align="center">
-                      <Delete_Stats stats={obj} setReFetch={setReFetch} />
-                    </TableCell>
+                        <Delete_Stats stats={obj} setReFetch={setReFetch} />
+                      </TableCell>
                     )}
                   </TableRow>
                 );
