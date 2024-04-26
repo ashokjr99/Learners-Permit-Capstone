@@ -92,6 +92,11 @@ const Awaiting_Stats = ({ results, setReFetch }) => {
           <Table aria-label="parent-pending-table">
             <TableHead>
               <TableRow>
+
+              {userType === "parent" && (
+                <TableCell align="center">Child</TableCell>
+              )}
+
                 <TableCell>Hours</TableCell>
                 <TableCell align="center">Date Posted</TableCell>
                 <TableCell align="center">Vehicle</TableCell>
@@ -113,6 +118,10 @@ const Awaiting_Stats = ({ results, setReFetch }) => {
                     style={{ backgroundColor: index % 2 === 0 ? '#84CEEB' : '#C1C8E4' }}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
+
+                    {userType === "parent" && (
+                    <TableCell align="center">{obj.FirstName}</TableCell>
+                  )}
                     <TableCell component="th" scope="row">
                       {obj.hours}
                     </TableCell>

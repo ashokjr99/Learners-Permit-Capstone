@@ -59,6 +59,10 @@ function App() {
     navigate("/");
   };
 
+  const goHome = () => {
+    navigate("/");
+  };
+
   return (
     <>
       {!sessionToken && !userType && (
@@ -66,8 +70,12 @@ function App() {
           <div>
             <Routes>
               <Route path="/ResetPassword/*" element={<ResetPassword />} />
+
+              <Route path="/" element={<Home />} />
+
+              <Route path="/about" element={<About goHome={goHome} />} />
+              <Route path="/contact_us" element={<Contact goHome={goHome} />} />
             </Routes>
-            <Home />
             <Auth
               updateToken={updateToken}
               userId={userId}
@@ -132,7 +140,7 @@ function App() {
 
               <Route path="/login" element={<Login />} />
 
-              <Route
+              {/* <Route
                 path="/enter_stats"
                 element={
                   <Enter_Stats
@@ -141,9 +149,22 @@ function App() {
                     setModalIsOpen={setModalIsOpen}
                   />
                 }
-              />
+              /> */}
 
-              <Route path="/stats" element={<Check_Stats />} />
+              <Route
+                path="/stats"
+                element={
+                  <>
+                    <Check_Stats />
+
+                    <Enter_Stats
+                      userId={userId}
+                      modalIsOpen={modalIsOpen}
+                      setModalIsOpen={setModalIsOpen}
+                    />
+                  </>
+                }
+              />
 
               <Route path="/about" element={<About />} />
               <Route path="/contact_us" element={<Contact />} />

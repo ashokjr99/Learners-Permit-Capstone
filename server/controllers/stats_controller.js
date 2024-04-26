@@ -114,6 +114,11 @@ router.get("/all", async (req, res) => {
       clear: 0,
     };
 
+    let pieChartDayOrNightData = {
+      day: 0,
+      night: 0,
+    };
+
     let parentApprovalCounter = [];
 
     // add 1 to each post for the specific weather
@@ -136,12 +141,19 @@ router.get("/all", async (req, res) => {
       } else if (obj.weather.toLowerCase() === "clear") {
         pieChartData.clear++;
       }
+
+      if (obj.day === true) {
+        pieChartDayOrNightData.day++;
+      } else {
+        pieChartDayOrNightData.night++;
+      }
     });
 
     res.status(200).json({
       userStats,
       summaryData: { totalDrives, totalHours, totalApprovals },
       pieChartData,
+      pieChartDayOrNightData,
     });
   } catch (error) {
     console.log("Error fetching stats:", error);
@@ -257,30 +269,127 @@ router.get("/child_stats", async (req, res) => {
     const results = [];
 
     for (let user of userStats) {
+      let totalHours = 0;
+
       user.stats.forEach((stat) => {
-        results.push({ ...stat, FirstName: user.FirstName });
+        totalHours += parseFloat(stat.hours);
+
+        results.push({ ...stat, FirstName: user.FirstName, totalHours });
       });
     }
-
-    console.log(JSON.stringify(userStats));
-
+    // console.log("results", results);
     let totalHours = 0;
     let totalDrives = results.length;
     let totalDayHours = 0;
     let totalNightHours = 0;
+    let firstName;
 
-    results.forEach((obj) => {
-      console.log(obj.hours);
-      totalHours += parseFloat(obj.hours);
-    });
+    // results.forEach((obj) => {
+    //   firstName = obj.FirstName;
+    //   totalHours += parseFloat(obj.hours);
+
+    //   if (obj.day === true) {
+    //     totalDayHours += parseFloat(obj.hours);
+    //   }
+
+    //   if (obj.day === false) {
+    //     totalNightHours += parseFloat(obj.hours);
+    //   }
+    // });
+    // console.log(totalNightHours, "nighttime");
+    // console.log(totalDayHours, "daytime");
+    // console.log(totalHours, "totalh");
 
     res.status(200).json({
       userStats: results,
-      summaryData: { totalDrives, totalHours },
+      summaryData: {
+        totalDrives,
+        totalHours,
+        totalDayHours,
+        totalNightHours,
+        firstName,
+      },
     });
   } catch (error) {
     console.log("Error fetching stats:", error);
     res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+router.get("/child_target_hours", async (req, res) => {
+  try {
+    console.log(req.user.targetHours);
+
+    let userId = req.user.id;
+
+    const userStats = await prisma.stats.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+
+    let totalHours = 0;
+
+    userStats.forEach((obj) => {
+      totalHours += parseFloat(obj.hours);
+    });
+
+    res.status(200).json({
+      summaryData: { totalHours },
+      targetHours: req.user.targetHours,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/child_card_stats", async (req, res) => {
+  try {
+    const userStats = await prisma.users.findMany({
+      where: {
+        parentId: req.user.id,
+      },
+      select: {
+        id: true,
+        FirstName: true,
+        stats: {
+          select: {
+            hours: true,
+            day: true,
+          },
+        },
+      },
+    });
+
+    let newUserStats = userStats.map((obj) => {
+      let result = { FirstName: obj.FirstName, id: obj.id };
+      let totalHours = 0;
+      let totalDayHours = 0;
+      let totalNightHours = 0;
+
+      obj.stats.forEach((statObj) => {
+        totalHours += parseFloat(statObj.hours);
+        let day = statObj.day;
+
+        if (day === true) {
+          totalDayHours += parseFloat(statObj.hours);
+        }
+
+        if (day === false) {
+          totalNightHours += parseFloat(statObj.hours);
+        }
+      });
+
+      result = { ...result, totalHours, totalDayHours, totalNightHours };
+
+      return result;
+    });
+
+    res.status(202).json({
+      newUserStats,
+    });
+  } catch (err) {
+    console.log(err);
   }
 });
 

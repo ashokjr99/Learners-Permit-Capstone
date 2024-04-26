@@ -32,13 +32,15 @@ const Login = ({ handleChange, handleLogin }) => {
             onChange={(e) => handleChange("password", e.target.value)}
             type="password"
           />
-          <button
-            style={{ margin: "1em", width: "9em" }}
-            type="button"
-            onClick={handleLogin}
-          >
-            Log In!
-          </button>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button
+              style={{ margin: "1em", width: "9em" }}
+              type="button"
+              onClick={handleLogin}
+            >
+              Log In!
+            </button>
+          </div>
         </form>
       </Modal>
     </div>

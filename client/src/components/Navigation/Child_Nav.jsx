@@ -51,6 +51,7 @@ const Child_Nav = (props) => {
         </button>
       </Link>
 
+
       <button onClick={openModal}>
         Enter Drive
         <Modal
@@ -73,6 +74,7 @@ const Child_Nav = (props) => {
           Settings
         </button>
       </Link>
+
 
       <button
         className="w3-display-bottomleft"

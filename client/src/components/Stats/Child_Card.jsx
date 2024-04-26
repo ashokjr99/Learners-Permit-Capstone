@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+
+import { Card, CardContent, Typography } from "@mui/material";
 
 const Child_Card = () => {
   const [results, setResults] = useState([]);
-  const [hours, setHours] = useState(0);
-  const [drives, setDrives] = useState(0);
-  const [dayHours, setDayHours] = useState(0);
-  const [nightHours, setNightHours] = useState(0);
 
   useEffect(() => {
     const getStats = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8081/stats/child_stats`,
+
+          "http://localhost:8081/stats/child_card_stats",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
@@ -21,23 +18,39 @@ const Child_Card = () => {
           }
         );
         const json = await response.json();
-        console.log(json);
-        setResults(json.userStats);
-        setHours(json.summaryData.totalHours);
-        setDrives(json.summaryData.totalDrives);
-        setDayHours(json.summaryData.totalDayHours);
-        setNightHours(json.summaryData.totalNightHours);
+
+        console.log("jsonn", json);
+
+        setResults(json.newUserStats);
       } catch (err) {
         console.log(err);
       }
     };
     getStats();
-  });
-
+  }, []);
 
   return (
     <div>
-      <Card variant="outlined"></Card>
+      {results.map((obj) => {
+        return (
+          <Card key={obj.id} style={{ width: "40em", margin: "1em" }}>
+            <CardContent>
+              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+                {obj.FirstName}
+              </Typography>
+              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+                Total Hours Driven: {obj.totalHours}
+              </Typography>
+              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+                Total Day Hours Driven: {obj.totalDayHours}
+              </Typography>
+              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+                Total Night Hours Driven: {obj.totalNightHours}
+              </Typography>
+            </CardContent>
+          </Card>
+        );
+      })}
     </div>
   );
 };
