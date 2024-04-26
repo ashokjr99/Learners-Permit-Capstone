@@ -21,7 +21,7 @@ const Child_Nav = (props) => {
 
   return (
     <div
-      className="w3-card-2 w3-sidebar w3-bar-block w3-display-left"
+      className="w3-card-2 w3-sidebar w3-bar-block w3-display-left roboto-regular"
       style={{ width: "15em", backgroundColor: "#90AEAD" }}
     >
       <img
@@ -35,6 +35,7 @@ const Child_Nav = (props) => {
           style={{
             background:
               location.pathname.includes("/dashboard") && backgroundColor,
+              className: "roboto-regular"
           }}
         >
           Home
