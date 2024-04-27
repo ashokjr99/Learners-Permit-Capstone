@@ -109,7 +109,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
             <div className="mb-4">
               <label className="block mb-1 roboto-regular">
                 {" "}
-                {day === false ? "Day" : "Night"}
+                {day === true ? "Day" : "Night"}
               </label>
               <label className="switch">
                 <input
@@ -123,7 +123,10 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="vehicleType" className="block mb-1 roboto-regular">
+              <label
+                htmlFor="vehicleType"
+                className="block mb-1 roboto-regular"
+              >
                 Vehicle Type
               </label>
               <select
