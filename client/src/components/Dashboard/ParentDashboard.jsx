@@ -6,7 +6,7 @@ const Parent_Dashboard = () => {
 
     <>
     <div className="w3-container" style={{marginLeft:"25%"}}>
-         <h1>Welcome to DriveTime</h1>
+         <h1 style={{paddingBottom: "10em"}}>Welcome to DriveTime</h1>
          <Child_Card/>
      </div>
   </>
