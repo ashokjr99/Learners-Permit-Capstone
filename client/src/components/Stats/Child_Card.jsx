@@ -58,13 +58,13 @@ const Child_Card = () => {
                 {obj.FirstName}
               </Typography>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Hours Driven: {obj.totalHours}
+                Total Hours Driven: {obj.totalHours} hours
               </Typography>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Day Hours Driven: {obj.totalDayHours}
+                Total Day Hours Driven: {obj.totalDayHours} hours
               </Typography>
               <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Night Hours Driven: {obj.totalNightHours}
+                Total Night Hours Driven: {obj.totalNightHours} hours
               </Typography>
             </CardContent>
           </Card>
