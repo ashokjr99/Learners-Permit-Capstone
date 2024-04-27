@@ -23,9 +23,16 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "row" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        gap: "10em",
+      }}
+    >
       <div>
-        <h1> Graphs </h1>
+        <h1 style={{ textDecoration: "underline" }}> Graphs </h1>
         {/* if variable is not null, display the part chart  */}
         {weatherDrivesTotalForEach != null ? (
           <PieChart
@@ -97,7 +104,7 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
       </div>
 
       <div>
-        <h1>Drives/Hours Graph</h1>
+        <h1 style={{ textDecoration: "underline", marginBottom: "1em" }}>Drives/Hours Graph</h1>
         <LineChart
           xAxis={[
             {

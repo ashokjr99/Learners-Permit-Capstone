@@ -5,7 +5,6 @@ const Home = () => {
   return (
     <>
       <div>
-        <h1>Welcome To</h1>
         <div
           style={{
             width: "50%", // Set the width of the container to 100% of its parent
@@ -19,6 +18,8 @@ const Home = () => {
         </div>
       </div>
       <div>
+        <h3 style={{fontWeight:"700"}}>Welcome to DriveTime!</h3>
+        <h4>The best way to track your drives when learning to drive!</h4>
         <p>
           Parents please create your account here. Once you are signed up and
           logged in, you can create your child's account.
