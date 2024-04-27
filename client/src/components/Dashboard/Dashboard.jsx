@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
     <>
       <div
-        style={{ marginLeft: "20%", display: "flex", flexDirection: "column" }}
+        style={{ marginLeft: "15%", display: "flex", flexDirection: "column" }}
       >
         <h1>Welcome to DriveTime</h1>
         <div style={{ marginTop: "10%" }}>

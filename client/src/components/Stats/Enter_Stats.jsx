@@ -79,7 +79,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
   };
 
   return (
-    <div style={{ marginLeft: "25%", marginRight: "4%", marginBottom: "25%" }}>
+    <div style={{ marginLeft: "15%" }}>
       {/* <button onClick={openModal}>Enter Drive</button> */}
 
       <Modal
