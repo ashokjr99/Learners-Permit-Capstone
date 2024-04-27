@@ -32,7 +32,7 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
       }}
     >
       <div>
-        <h1 style={{ textDecoration: "underline" }}> Graphs </h1>
+        <h1 style={{ textDecoration: "underline" }}> Weather Charts </h1>
         {/* if variable is not null, display the part chart  */}
         {weatherDrivesTotalForEach != null ? (
           <PieChart
@@ -86,7 +86,7 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
                     id: 1,
                     value: dayOrNight.night,
                     label: "Night",
-                    color: "#c1c8e4",
+                    color: "#874F41",
                   },
                 ],
                 highlightScope: { faded: "global", highlighted: "item" },
@@ -104,15 +104,17 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
       </div>
 
       <div>
-        <h1 style={{ textDecoration: "underline", marginBottom: "1em" }}>Drives/Hours Graph</h1>
+        <h1 style={{ textDecoration: "underline", marginBottom: "1em" }}>
+          Drives/Hours Graph
+        </h1>
         <LineChart
           xAxis={[
             {
               data: hoursArrayCount,
-              label: "Drives",
+              label: "DRIVES",
             },
           ]}
-          yAxis={[{ label: "Hours" }]}
+          yAxis={[{ label: "HOURS" }]}
           series={[
             {
               data: hoursArray,

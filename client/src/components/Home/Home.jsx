@@ -12,13 +12,14 @@ const Home = () => {
             display: "inline-block", // Ensure the container only takes up the necessary width
             borderRadius: "100px",
             marginBottom: "1em",
+            marginTop: "2em",
           }}
         >
           <img src={HeroImage} style={{ padding: "1em" }} />
         </div>
       </div>
       <div>
-        <h3 style={{fontWeight:"700"}}>Welcome to DriveTime!</h3>
+        <h3 style={{ fontWeight: "700" }}>Welcome to DriveTime!</h3>
         <h4>The best way to track your drives when learning to drive!</h4>
         <p>
           Parents please create your account here. Once you are signed up and

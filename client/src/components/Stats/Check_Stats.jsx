@@ -8,6 +8,7 @@ import {
   Awaiting_Stats,
 } from "./check_stats_folder_components";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import { collapseClasses } from "@mui/material";
 
 //? Houses the overall look of Checking Stats and Seeing Summaries
 
@@ -62,44 +63,60 @@ const Check_Stats = ({}) => {
   return (
     <div
       className="w3-container roboto-regular"
-
-      style={{ marginLeft: "25%", marginBottom: "25%" }}
+      style={{ marginLeft: "15%", marginBottom: "30%", marginRight: "2%" }}
     >
-      <div className="w3-panel" style={{ height: "80em" }}>
+      <div>
         <h1 className="roboto-regular">Drives</h1>
         <p>See your drive history in totality</p>
-
-
+      </div>
+      <div
+        className="w3-panel"
+        style={{
+          height: "80em",
+          display: "flex",
+          flexDirection: "column",
+          gap: "5%",
+          marginBottom: "15%",
+        }}
+      >
         <ChartsHolder
           weatherDrivesTotalForEach={weatherDrivesTotalForEach}
           dayOrNight={dayOrNight}
           results={results}
         />
-        <FilterHolder
-          setStartDate={setStartDate}
-          setEndDate={setEndDate}
-          setTime={setTime}
-          setWeather={setWeather}
-        />
-        <PDFDownloadLink
-          document={<CreatePDF results={results} hours={hours} />}
-          fileName="FORM"
-        >
-          {({ loading }) =>
-            loading ? (
-              <button>Loading Document...</button>
-            ) : (
-              <button>Download</button>
-            )
-          }
-        </PDFDownloadLink>
+
         <SummaryHeader hours={hours} drives={drives} approved={approved} />
-        <h1>Approved</h1>
-        <StatsChartHolder results={results} setReFetch={setReFetch} />
-        <br></br>
-        <h1>Pending Approval</h1>
-        <Awaiting_Stats results={results} setReFetch={setReFetch} />
-        {/* stats_filter houses all of the data that is filtered through */}
+
+        <div style={{ display: "flex", flexDirection: "row", gap: "50%" }}>
+          <FilterHolder
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
+            setTime={setTime}
+            setWeather={setWeather}
+          />
+          <PDFDownloadLink
+            document={<CreatePDF results={results} hours={hours} />}
+            fileName="FORM"
+          >
+            {({ loading }) =>
+              loading ? (
+                <button>Loading Document...</button>
+              ) : (
+                <button>Download Drives</button>
+              )
+            }
+          </PDFDownloadLink>
+        </div>
+
+        <div>
+          <h1>Approved</h1>
+          <StatsChartHolder results={results} setReFetch={setReFetch} />
+        </div>
+        <div>
+          <h1>Pending Approval</h1>
+          <Awaiting_Stats results={results} setReFetch={setReFetch} />
+          {/* stats_filter houses all of the data that is filtered through */}
+        </div>
       </div>
     </div>
   );

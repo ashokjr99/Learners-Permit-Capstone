@@ -1,16 +1,16 @@
 #root {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 0 auto;
-  padding: 2rem;
+  /* justify-content: space-between; */
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
   text-align: center;
-  height: 95svh;
+  height: 100svh;
 }
 
 h1 {
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 .roboto-regular {
