@@ -19,7 +19,8 @@ const Footer = () => {
           color: "#213547",
           display: "flex",
           justifyContent: "center",
-          gap: "1em",
+          gap: "2em",
+          marginLeft: "15%",
         }}
       >
         <Link to="/about">About</Link>
