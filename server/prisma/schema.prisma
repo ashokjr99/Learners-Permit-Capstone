@@ -11,15 +11,15 @@ datasource db {
 model users {
   id               String    @id @default(uuid())
   parentId         String
-  FirstName        String   @db.VarChar(45)
-  LastName         String   @db.VarChar(45)
-  email            String   @unique(map: "email_UNIQUE") @db.VarChar(100)
-  Password         String   @db.VarChar(255)
-  resetToken       String? 
-  resetTokenExpiry DateTime?  @default(now())
-  stats stats []
-  targetHours      Decimal  @db.Decimal(5,2)
-  
+  FirstName        String    @db.VarChar(45)
+  LastName         String    @db.VarChar(45)
+  email            String    @unique(map: "email_UNIQUE") @db.VarChar(100)
+  Password         String    @db.VarChar(255)
+  resetToken       String?
+  resetTokenExpiry DateTime? @default(now())
+  stats            stats[]
+  targetHours      Decimal   @db.Decimal(5, 2)
+
   @@index([parentId], map: "users_parentId_fkey")
 }
 
@@ -36,6 +36,8 @@ model stats {
   practiced       String    @db.VarChar(255)
   parent_approval Boolean
   notes           String    @db.Text
+  users           users?    @relation(fields: [usersId], references: [id])
+  usersId         String?
 
   @@index([userId], map: "stats_userId_fkey")
 }
