@@ -12,7 +12,8 @@ const Parent_Dashboard = () => {
           marginLeft: "25%",
         }}
       >
-        <h1 style={{ paddingBottom: "10em" }}>Welcome to DriveTime</h1>
+        <h1 style={{ position: "fixed", top: "1em" }}>Welcome to DriveTime</h1>
+        <h3>Your Child's Stats at a Glance</h3>
         <Child_Card />
       </div>
     </>
