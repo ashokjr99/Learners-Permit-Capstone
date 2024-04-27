@@ -6,10 +6,17 @@ import TargetHoursProgress from "./TargetHoursProgess";
 const Dashboard = () => {
   return (
     <>
-      <div className="w3-container" style={{ marginLeft: "15%" }}>
+      <div
+        style={{ marginLeft: "20%", display: "flex", flexDirection: "column" }}
+      >
         <h1>Welcome to DriveTime</h1>
-
-        <TargetHoursProgress />
+        <div style={{ marginTop: "10%" }}>
+          <TargetHoursProgress></TargetHoursProgress>
+        </div>
+        <div style={{ marginTop: "-10%" }}>
+          <h3>Here is where you are in your journey!</h3>
+          <p>Current Hours & Target Goal</p>
+        </div>
       </div>
     </>
   );
