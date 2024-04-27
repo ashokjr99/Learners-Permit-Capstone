@@ -38,12 +38,14 @@ const TargetHoursProgess = () => {
       {targetHours != 0 ? (
         <ReactSpeedometer
           value={currentHours}
-          needleHeightRatio={0.5}
+          needleHeightRatio={1}
           labelFontSize={"15px"}
           valueTextFontSize={"23px"}
           textColor={textColor}
           maxValue={targetHours === 0 ? 100 : targetHours}
           minValue={0}
+          width={600}
+          height={600}
         />
       ) : null}
     </div>

@@ -17,7 +17,7 @@ model users {
   Password         String   @db.VarChar(255)
   resetToken       String? 
   resetTokenExpiry DateTime?  @default(now())
-  stats stats[]
+  stats stats []
   targetHours      Decimal  @db.Decimal(5,2)
   
   @@index([parentId], map: "users_parentId_fkey")
