@@ -80,7 +80,7 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
                     id: 0,
                     value: dayOrNight.day,
                     label: "Day",
-                    color: "#244855",
+                    color: "#c1c8e4",
                   },
                   {
                     id: 1,
