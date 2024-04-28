@@ -39,6 +39,7 @@ model stats {
   users           users?    @relation(fields: [userId], references: [id])
   // usersId         String?
 
+
   @@index([userId], map: "stats_userId_fkey")
 }
 
