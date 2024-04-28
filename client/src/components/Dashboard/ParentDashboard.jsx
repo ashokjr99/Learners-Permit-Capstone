@@ -9,12 +9,12 @@ const Parent_Dashboard = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginLeft: "25%",
+          marginLeft: "15%",
         }}
       >
-        <h1 style={{ position: "fixed", top: "1em" }}>Welcome to DriveTime</h1>
-        <h3>Your Child's Stats at a Glance</h3>
-        <Child_Card />
+        <h1>Welcome to DriveTime</h1>
+        <h3 style={{ marginBottom: "10%" }}>Your Child's Stats at a Glance</h3>
+        <Child_Card> </Child_Card>
       </div>
     </>
   );
