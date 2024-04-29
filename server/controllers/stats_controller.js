@@ -360,7 +360,7 @@ router.get("/child_card_stats", async (req, res) => {
         },
       },
     });
-
+    console.log("user statsss", userStats);
     let newUserStats = userStats.map((obj) => {
       let result = { FirstName: obj.FirstName, id: obj.id };
       let totalHours = 0;

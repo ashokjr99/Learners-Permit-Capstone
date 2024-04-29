@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <div
       style={{
-        backgroundColor: "#90AEAD",
+        backgroundColor: "#E5E2E3",
         width: "100vw",
         position: "fixed",
         bottom: "0",
@@ -19,7 +19,8 @@ const Footer = () => {
           color: "#213547",
           display: "flex",
           justifyContent: "center",
-          gap: "1em",
+          gap: "2em",
+          marginLeft: "15%",
         }}
       >
         <Link to="/about">About</Link>

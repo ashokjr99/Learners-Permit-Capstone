@@ -56,14 +56,21 @@ const Parent_Check_Stats = () => {
 
   return (
     <div
-      className="w3-panel"
-      style={{ marginLeft: "25%", marginBottom: "25%" }}
+      className="w3-panel roboto-regular"
+      style={{
+        marginLeft: "15%",
+        marginBottom: "5%",
+        marginRight: "3%",
+        display: "flex",
+        flexDirection: "column",
+      }}
     >
-
-      <div className="w3-container" style={{ height: "80em" }}>
+      <div>
         <h1>Drives</h1>
         <p>See your child's drive history in totality</p>
+      </div>
 
+      <div style={{ display: "flex", flexDirection: "row", gap: "50%" }}>
         <FilterHolder
           setStartDate={setStartDate}
           setEndDate={setEndDate}
@@ -82,11 +89,14 @@ const Parent_Check_Stats = () => {
             )
           }
         </PDFDownloadLink>
+      </div>
 
+      <div>
         <h1>Approved</h1>
         <StatsChartHolder results={results} setReFetch={setReFetch} />
-        <br></br>
+      </div>
 
+      <div>
         <h1>Pending Approval</h1>
         <Awaiting_Stats results={results} setReFetch={setReFetch} />
         {/* stats_filter houses all of the data that is filtered through */}

@@ -112,7 +112,7 @@ const Settings = () => {
   
 
   return (
-    <div className="settings-container">
+    <div className="settings-container" style={{marginLeft: "15%"}}>
       <h2>Settings</h2>
       <form onSubmit={handleUpdateProfile}>
         <label>First Name:</label>

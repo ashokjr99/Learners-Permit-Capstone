@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import { Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography, CardMedia } from "@mui/material";
+
+import Image from "../assets/DriveTime.png";
 
 const Child_Card = () => {
   const [results, setResults] = useState([]);
@@ -9,7 +11,6 @@ const Child_Card = () => {
     const getStats = async () => {
       try {
         const response = await fetch(
-
           "http://localhost:8081/stats/child_card_stats",
           {
             headers: {
@@ -30,24 +31,74 @@ const Child_Card = () => {
   }, []);
 
   return (
-    <div>
+    <div
+      className="roboto-regular"
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "center",
+      }}
+    >
       {results.map((obj) => {
         return (
-          <Card key={obj.id} style={{ width: "40em", margin: "1em" }}>
-            <CardContent>
-              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
+          <Card
+            key={obj.id}
+            style={{
+              width: "40em",
+              margin: "1em",
+              boxShadow: "4px 4px 4px #000000",
+              borderRadius: "1em",
+              backgroundColor: "#ECEAED",
+            }}
+          >
+            <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+            <CardContent sx={{ flex: '1 0 auto' }}>
+              <Box>
+              <Typography
+                sx={{
+                  fontSize: 32,
+                  textDecoration: "underline 2px",
+                  fontWeight: "700",
+                  textAlign: "left",
+                }}
+                color="#494888"
+                gutterBottom
+              >
                 {obj.FirstName}
               </Typography>
-              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Hours Driven: {obj.totalHours}
+              <Typography
+                sx={{ fontSize: 26, textAlign: "left" }}
+                color="#494888"
+                gutterBottom
+              >
+                Total Hours Driven: {obj.totalHours} hours
               </Typography>
-              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Day Hours Driven: {obj.totalDayHours}
+              <Typography
+                sx={{ fontSize: 26, textAlign: "left" }}
+                color="#494888"
+                gutterBottom
+              >
+                Total Day Hours Driven: {obj.totalDayHours} hours
               </Typography>
-              <Typography sx={{ fontSize: 26 }} color="#244855" gutterBottom>
-                Total Night Hours Driven: {obj.totalNightHours}
+              <Typography
+                sx={{ fontSize: 26, textAlign: "left" }}
+                color="#494888"
+                gutterBottom
+              >
+                Total Night Hours Driven: {obj.totalNightHours} hours
               </Typography>
+              </Box>
             </CardContent>
+            <Box> 
+            <CardMedia
+        component="img"
+        sx={{ width: 151 }}
+        image={Image}
+        alt="DriveTime"
+        />
+        </Box>
+        </Box>         
           </Card>
         );
       })}

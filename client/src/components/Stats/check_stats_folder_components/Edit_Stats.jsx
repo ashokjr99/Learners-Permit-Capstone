@@ -58,7 +58,8 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
       const json = await response.json();
 
       setReFetch((prev) => !prev);
-
+      alert("Stats Updated Successfully");
+      setModalIsOpen(false);
       console.log(json);
     } catch (err) {
       console.log(err);
@@ -85,7 +86,7 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
 
           <div className="mb-4">
             <label className="block mb-1" htmlFor="daySlider">
-              {day === false ? "Day" : "Night"}
+              {day === true ? "Day" : "Night"}
             </label>
             <label className="switch">
               <input
@@ -158,11 +159,28 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
               onChange={(e) => setApproval(e.target.checked)}
             ></input>
           )}
-
-          {userType === "child" ? (<button onClick={(e) => editPost(e)}>Edit</button>) : (<button onClick={(e) => editPost(e)}>Save</button>)}
-          <button onClick={() => setShowEdit(false)} type="button">
-            Close
-          </button>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              gap: "2em",
+            }}
+          >
+            {userType === "child" ? (
+              <button onClick={(e) => editPost(e)}>Edit</button>
+            ) : (
+              <button
+                onClick={(e) => editPost(e)}
+                style={{ display: "flex", flexDirection: "column" }}
+              >
+                Save
+              </button>
+            )}
+            <button onClick={() => setShowEdit(false)} type="button">
+              Close
+            </button>
+          </div>
         </form>
       </div>
     </Modal>
