@@ -19,10 +19,17 @@ const Settings = () => {
   const fetchUserData = async () => {
     try {
       const response = await fetch("http://localhost:8081/settings/profile", {
-        method: "GET",
+        method: "PUT",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          targetHours: targetHours
+      }),
       });
 
       if (response.ok) {
@@ -48,7 +55,7 @@ const Settings = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
         },
         body: JSON.stringify({
           firstName,
@@ -83,7 +90,7 @@ const Settings = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
         },
         body: JSON.stringify({
           currentPassword,
