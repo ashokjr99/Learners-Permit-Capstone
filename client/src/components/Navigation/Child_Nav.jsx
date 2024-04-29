@@ -28,13 +28,12 @@ const Child_Nav = (props) => {
         src={HeaderImage}
         style={{ height: "8em", left: "1em" }}
       />
-      <input type="text" placeholder="Search.." />
       <Link to="/dashboard">
         <button
           style={{
             background:
               location.pathname.includes("/dashboard") && backgroundColor,
-              className: "roboto-regular"
+            className: "roboto-regular",
           }}
         >
           Home
