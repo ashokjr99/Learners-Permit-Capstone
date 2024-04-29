@@ -20,7 +20,7 @@ h1 {
 }
 
 .modal {
-  background-color: #8C2C43;
+  background-color: #8c2c43;
 }
 
 .table {
@@ -31,4 +31,20 @@ div {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.MuiChartsAxis-label {
+  fill: white !important;
+}
+
+.MuiChartsAxis-tickLabel {
+  fill: white !important;
+}
+
+.MuiChartsAxis-line {
+  stroke: white !important;
+}
+
+.MuiChartsAxis-tick {
+  stroke: white !important;
 }
