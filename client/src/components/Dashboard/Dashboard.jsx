@@ -7,15 +7,15 @@ const Dashboard = () => {
   return (
     <>
       <div
-        style={{ marginLeft: "15%", display: "flex", flexDirection: "column" }}
+        style={{ marginLeft: "15em", display: "flex", flexDirection: "column" }}
       >
         <h1>Welcome to DriveTime</h1>
-        <div style={{ marginTop: "10%" }}>
-          <TargetHoursProgress></TargetHoursProgress>
-        </div>
-        <div style={{ marginTop: "-10%" }}>
+        <div style={{ paddingTop: "10em" }}>
           <h3>Here is where you are in your journey!</h3>
           <p>Current Hours & Target Goal</p>
+        </div>
+        <div>
+          <TargetHoursProgress></TargetHoursProgress>
         </div>
       </div>
     </>

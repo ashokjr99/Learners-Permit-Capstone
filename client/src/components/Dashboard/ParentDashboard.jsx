@@ -9,7 +9,8 @@ const Parent_Dashboard = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginLeft: "15%",
+          columnCount: "2",
+          marginLeft: "15em",
         }}
       >
         <h1>Welcome to DriveTime</h1>

@@ -8,7 +8,7 @@ const Home = () => {
         <div
           style={{
             width: "50%", // Set the width of the container to 100% of its parent
-            backgroundColor: "#242424", // Background color for the container
+            backgroundColor: "#000000", // Background color for the container
             display: "inline-block", // Ensure the container only takes up the necessary width
             borderRadius: "100px",
             marginBottom: "1em",
