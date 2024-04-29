@@ -6,7 +6,7 @@ const TargetHoursProgess = () => {
   const [currentHours, setCurrentHours] = useState(0);
   const [targetHours, setTargetHours] = useState(0);
 
-  const textColor = "black";
+  const textColor = "white";
 
   useEffect(() => {
     const getTargetHours = async () => {

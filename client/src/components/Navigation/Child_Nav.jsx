@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import HeaderImage from "../assets/DriveTime.png";
 import Modal from "react-modal";
-import Enter_Stats from "../Stats/Enter_Stats";
 Modal.setAppElement("#root");
 
 const Child_Nav = (props) => {
@@ -22,7 +21,7 @@ const Child_Nav = (props) => {
   return (
     <div
       className="w3-card-2 w3-sidebar w3-bar-block w3-display-left roboto-regular"
-      style={{ width: "15em", backgroundColor: "#90AEAD" }}
+      style={{ width: "15em", backgroundColor: "#569AA6" }}
     >
       <img
         className="w3-bar-item"
@@ -53,9 +52,6 @@ const Child_Nav = (props) => {
       </Link>
 
       <button
-        // style={{
-        //   backgroundColor,
-        // }}
         onClick={() => {
           console.log(props.setModalIsOpen);
           props.setModalIsOpen(true);

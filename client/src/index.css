@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: #213547;
+  color: #5EB6BD;
 
   padding: 0px;
 
@@ -27,7 +27,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #fbe9d0;
+  background-color: #242424;
 }
 
 h1 {
@@ -43,8 +43,9 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
+  background-color: #494888;
+  border: #eceaed solid 1px;
+  cursor: pointer;  
   transition: border-color 0.25s;
   box-shadow: 4px 4px 4px #000000;
 }
