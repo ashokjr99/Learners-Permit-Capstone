@@ -6,7 +6,14 @@ const SummaryHeader = ({ hours, drives, approved }) => {
   return (
     <div>
       <h1>Summaries</h1>
-      <div style={{ display: "flex", flexDirection: "row", gap: "30%" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "30%",
+          color: "#E5E2E3",
+        }}
+      >
         <h2>Drives: {drives}</h2>
         <h2>Hours: {hours}</h2>
         <h2>

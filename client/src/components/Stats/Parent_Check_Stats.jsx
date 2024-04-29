@@ -56,13 +56,14 @@ const Parent_Check_Stats = () => {
 
   return (
     <div
-      className="w3-panel roboto-regular"
+      className="roboto-regular"
       style={{
         marginLeft: "15%",
         marginBottom: "5%",
         marginRight: "3%",
         display: "flex",
         flexDirection: "column",
+        gap: "5em",
       }}
     >
       <div>

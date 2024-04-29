@@ -17,7 +17,6 @@ const Nav = (props) => {
         src={HeaderImage}
         style={{ height: "8em", left: "1em" }}
       />
-      <input type="text" placeholder="Search.." />
       <Link to="/Parent_Dashboard">
         <button
           style={{

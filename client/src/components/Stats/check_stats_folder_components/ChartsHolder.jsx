@@ -52,7 +52,7 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
                     value: weatherDrivesTotalForEach.rainy,
                     label: "Rainy",
 
-                    color: "#D7AD3F",
+                    color: "#494888",
                   },
                   {
                     id: 1,
@@ -65,7 +65,7 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
                     id: 2,
                     value: weatherDrivesTotalForEach.clear,
                     label: "Clear",
-                    color: "#5D744F",
+                    color: "#569AA6",
                   },
                 ],
                 highlightScope: { faded: "global", highlighted: "item" },
@@ -144,7 +144,7 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
           series={[
             {
               data: hoursArray,
-              color: "#8C2C43",
+              color: "#494888",
               area: true,
             },
           ]}
