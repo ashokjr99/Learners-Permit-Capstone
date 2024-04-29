@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./settings.css";
+// import "./settings.css";
 
 const Settings = () => {
   const [firstName, setFirstName] = useState("");
@@ -19,10 +19,17 @@ const Settings = () => {
   const fetchUserData = async () => {
     try {
       const response = await fetch("http://localhost:8081/settings/profile", {
-        method: "GET",
+        method: "PUT",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          targetHours: targetHours,
+        }),
       });
 
       if (response.ok) {
@@ -48,7 +55,7 @@ const Settings = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
         },
         body: JSON.stringify({
           firstName,
@@ -83,7 +90,7 @@ const Settings = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
         },
         body: JSON.stringify({
           currentPassword,
@@ -104,60 +111,64 @@ const Settings = () => {
   };
 
   return (
-    <div className="settings-container" style={{marginLeft: "15%"}}>
+    <div 
+      // className="settings-container"
+      style={{ marginLeft: "15em", display: "flex", flexDirection: "column", alignItems: "center", gap: "2em"}}
+    >
       <h2>Settings</h2>
-      <form onSubmit={handleUpdateProfile}>
-        <label>First Name:</label>
-        <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <label>Last Name:</label>
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label>Target Hours:</label>
-        <input
-          type="number"
-          value={targetHours}
-          onChange={(e) => setTargetHours(e.target.value)}
-        />
-        <button type="submit">Update Profile</button>
-      </form>
+      <div >
+        <form onSubmit={handleUpdateProfile} style={{display: "flex", flexDirection: "column"}} >
+          <label>First Name:</label>
+          <input style={{width:"15em"}}
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <label>Last Name:</label>
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label>Target Hours:</label>
+          <input
+            type="number"
+            value={targetHours}
+            onChange={(e) => setTargetHours(e.target.value)}
+          />
+          <button type="submit" style={{width:"15em", alignItems: "center"}}>Update Profile</button>
+        </form>
+      </div>
 
-      <hr />
-
-      <form onSubmit={handleUpdatePassword}>
-        <label>Current Password:</label>
-        <input
-          type="password"
-          value={currentPassword}
-          onChange={(e) => setCurrentPassword(e.target.value)}
-        />
-        <label>New Password:</label>
-        <input
-          type="password"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-        />
-        <label>Confirm Password:</label>
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <button type="submit">Update Password</button>
-      </form>
-
+      <div>
+        <form onSubmit={handleUpdatePassword} style={{display: "flex", flexDirection: "column"}}>
+          <label>Current Password:</label>
+          <input
+            type="password"
+            value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
+          />
+          <label>New Password:</label>
+          <input
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+          <label>Confirm Password:</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <button type="submit" style={{width:"15em", alignItems: "center"}}>Update Password</button>
+        </form>
+      </div>
       {message && <p>{message}</p>}
     </div>
   );
