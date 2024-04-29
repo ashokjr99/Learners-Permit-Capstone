@@ -26,7 +26,7 @@ const Child_Nav = (props) => {
       <img
         className="w3-bar-item"
         src={HeaderImage}
-        style={{ height: "8em", left: "1em" }}
+        style={{ height: "10em", left: "1em" }}
       />
       <input type="text" placeholder="Search.." />
       <Link to="/dashboard">

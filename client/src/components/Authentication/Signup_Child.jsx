@@ -69,11 +69,27 @@ const Signup_Child = ({ userId }) => {
   return (
     <>
       <div
-        className="w3-container"
-        style={{ marginLeft: "35%", marginRight: "14%", marginBottom: "25%" }}
+        style={{
+          marginLeft: "15em",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
       >
-        <div className="w3-panel w3-card-4">
-          <form style={{ display: "flex", flexDirection: "column" }}>
+        <div>
+          <form
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              width: "30em",
+              gap: ".5em",
+              margin: "10em",
+              borderRadius: "1em",
+              border: "#eceaed solid 1px",
+              padding: "1em",
+              boxShadow: "4px 4px 4px #000000",
+            }}
+          >
             <h2>Sign Up Your Child</h2>
             <label>First Name</label>
             <input
