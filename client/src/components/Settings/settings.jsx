@@ -79,12 +79,12 @@ const Settings = () => {
 
   const handleUpdatePassword = async (e) => {
     e.preventDefault();
-
+  
     if (newPassword !== confirmPassword) {
       setMessage("Passwords do not match");
       return;
     }
-
+  
     try {
       const response = await fetch("http://localhost:8081/settings/password", {
         method: "PUT",
@@ -97,7 +97,7 @@ const Settings = () => {
           newPassword,
         }),
       });
-
+  
       if (response.ok) {
         setMessage("Password updated successfully!");
       } else {
@@ -109,6 +109,7 @@ const Settings = () => {
       setMessage("An error occurred. Please try again later.");
     }
   };
+  
 
   return (
     <div className="settings-container">
