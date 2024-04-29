@@ -36,6 +36,14 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
         {/* if variable is not null, display the part chart  */}
         {weatherDrivesTotalForEach != null ? (
           <PieChart
+            slotProps={{
+              legend: {
+                labelStyle: {
+                  fontSize: 14,
+                  fill: "#E5E2E3",
+                },
+              },
+            }}
             series={[
               {
                 data: [
@@ -43,19 +51,21 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
                     id: 0,
                     value: weatherDrivesTotalForEach.rainy,
                     label: "Rainy",
-                    color: "#244855",
+
+                    color: "#494888",
                   },
                   {
                     id: 1,
                     value: weatherDrivesTotalForEach.snowy,
                     label: "Snowy",
-                    color: "#c1c8e4",
+
+                    color: "#E5E2E3",
                   },
                   {
                     id: 2,
                     value: weatherDrivesTotalForEach.clear,
                     label: "Clear",
-                    color: "#e64833",
+                    color: "#569AA6",
                   },
                 ],
                 highlightScope: { faded: "global", highlighted: "item" },
@@ -73,6 +83,14 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
 
         {dayOrNight != null ? (
           <PieChart
+            slotProps={{
+              legend: {
+                labelStyle: {
+                  fontSize: 14,
+                  fill: "#E5E2E3",
+                },
+              },
+            }}
             series={[
               {
                 data: [
@@ -80,13 +98,13 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
                     id: 0,
                     value: dayOrNight.day,
                     label: "Day",
-                    color: "#c1c8e4",
+                    color: "#E5E2E3",
                   },
                   {
                     id: 1,
                     value: dayOrNight.night,
                     label: "Night",
-                    color: "#874F41",
+                    color: "#569AA6",
                   },
                 ],
                 highlightScope: { faded: "global", highlighted: "item" },
@@ -108,6 +126,14 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
           Drives/Hours Graph
         </h1>
         <LineChart
+          slotProps={{
+            legend: {
+              labelStyle: {
+                fontSize: 14,
+                fill: "#E5E2E3",
+              },
+            },
+          }}
           xAxis={[
             {
               data: hoursArrayCount,
@@ -118,7 +144,7 @@ const Charts = ({ weatherDrivesTotalForEach, results, dayOrNight }) => {
           series={[
             {
               data: hoursArray,
-              color: "#244855",
+              color: "#494888",
               area: true,
             },
           ]}

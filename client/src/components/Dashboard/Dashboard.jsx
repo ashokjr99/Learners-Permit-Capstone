@@ -10,7 +10,7 @@ const Dashboard = () => {
         style={{ marginLeft: "15em", display: "flex", flexDirection: "column" }}
       >
         <h1>Welcome to DriveTime</h1>
-        <div style={{ paddingTop: "10em" }}>
+        <div style={{ paddingTop: "10em", color: "#E5E2E3" }}>
           <h3>Here is where you are in your journey!</h3>
           <p>Current Hours & Target Goal</p>
         </div>

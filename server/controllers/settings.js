@@ -45,7 +45,7 @@ router.put("/password", async (req, res) => {
 
   try {
     // Check if the user type is either "parent" or "user"
-    if (type !== "parent" && type !== "user") {
+    if (type !== "parent" && type !== "child") {
       return res.status(403).json({ error: "Unauthorized access." });
     }
 
