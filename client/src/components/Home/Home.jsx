@@ -8,7 +8,6 @@ const Home = () => {
         <div
           style={{
             width: "50%", // Set the width of the container to 100% of its parent
-            //backgroundColor: "#000000", // Background color for the container
             display: "inline-block", // Ensure the container only takes up the necessary width
             borderRadius: "100px",
             marginBottom: "1em",
@@ -17,7 +16,7 @@ const Home = () => {
         >
           <img src={HeroImage} style={{ padding: "1em", filter: "drop-shadow(2px 4px 6px black)" }} />
         </div>
-        <div style={{backgroundColor: "rgba(255, 99, 71, 0)", color: "white", textShadow: "(2px 4px 6px black)"}}>
+        <div style={{backgroundColor: "rgba(255, 99, 71, 0)", color: "white", filter: "text-shadow (2px 4px 6px black)"}}>
           <h3 style={{ fontWeight: "700" }}>Welcome to DriveTime!</h3>
           <h4>The best way to track your drives when learning to drive!</h4>
           <p>

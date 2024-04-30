@@ -9,8 +9,8 @@ const Nav = (props) => {
 
   return (
     <div
-      className="w3-card-2 w3-sidebar w3-bar-block w3-display-left roboto-regular"
-      style={{ width: "15em", backgroundColor: "#E5E2E3" }}
+      className="w3-card-2 w3-sidebar w3-bar-block w3-display-left roboto-regular gradient-vertical"
+      style={{ width: "15em" }}
     >
       <img
         className="w3-bar-item"

@@ -207,6 +207,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
               </label>
               <input
                 type="text"
+                rows="4"
                 id="notes"
                 className="w-full border-gray-200 rounded-md p-2"
                 value={notes}
