@@ -67,7 +67,7 @@ function App() {
     <>
       {!sessionToken && !userType && (
         <>
-          <div>
+          <div className="home-div">
             <Routes>
               <Route path="/ResetPassword/*" element={<ResetPassword />} />
 

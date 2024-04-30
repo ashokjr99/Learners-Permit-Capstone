@@ -38,7 +38,6 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -86,4 +85,11 @@ button:focus-visible {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-style: normal;
+}
+
+.home-div {
+  background-image: url(../src/components/assets/antonio-janeski-ANP0t4EGMBE-unsplash.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
 }
