@@ -21,7 +21,7 @@ const Footer = () => {
           justifyContent: "center",
           gap: "2em",
           marginLeft: localStorage.getItem("MyToken") ? "15%" : 0,
-          padding: "1em",
+          padding: ".5em",
         }}
       >
         <Link to="/about">About</Link>

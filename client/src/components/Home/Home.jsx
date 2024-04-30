@@ -12,16 +12,15 @@ const Home = () => {
             borderRadius: "100px",
             marginBottom: "1em",
             marginTop: "2em",
-            gap: "4em",
           }}
         >
           <img
             src={HeroImage}
             style={{
-              padding: "1em",
+              padding: "2em",
               filter: "drop-shadow(2px 4px 6px black)",
-              maxWidth: "60em",
-              minWidth: "60em",
+              maxWidth: "52em",
+              minWidth: "52em",
               marginInline: "auto",
             }}
           />
