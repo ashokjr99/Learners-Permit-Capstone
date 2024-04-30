@@ -7,16 +7,34 @@ const Home = () => {
       <div>
         <div
           style={{
-            width: "50%", // Set the width of the container to 100% of its parent
-            display: "inline-block", // Ensure the container only takes up the necessary width
+            display: "flex",
+            justifyContent: "center",
             borderRadius: "100px",
             marginBottom: "1em",
             marginTop: "2em",
+            gap: "4em",
           }}
         >
-          <img src={HeroImage} style={{ padding: "1em", filter: "drop-shadow(2px 4px 6px black)" }} />
+          <img
+            src={HeroImage}
+            style={{
+              padding: "1em",
+              filter: "drop-shadow(2px 4px 6px black)",
+              maxWidth: "52em",
+              minWidth: "52em",
+              marginInline: "auto",
+            }}
+          />
         </div>
-        <div style={{backgroundColor: "rgba(255, 99, 71, 0)", color: "white", filter: "text-shadow (2px 4px 6px black)"}}>
+        <div
+          style={{
+            background: "rgba(0, 0, 0, .6)",
+            color: "#E5E2E3",
+            padding: "1em",
+            maxWidth: "30em",
+            marginInline: "auto",
+          }}
+        >
           <h3 style={{ fontWeight: "700" }}>Welcome to DriveTime!</h3>
           <h4>The best way to track your drives when learning to drive!</h4>
           <p>
