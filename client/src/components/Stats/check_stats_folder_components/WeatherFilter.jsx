@@ -4,6 +4,7 @@ const WeatherFilter = ({ setWeather }) => {
       <select
         className="dayTimeFilter"
         onChange={(e) => setWeather(e.target.value)}
+        style={{boxShadow: "4px 4px 4px #000000"}}
       >
         <option>All</option>
         <option>Rainy</option>

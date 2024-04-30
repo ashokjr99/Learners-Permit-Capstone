@@ -69,58 +69,69 @@ const Signup_Child = ({ userId }) => {
   return (
     <>
       <div
-        style={{ marginLeft: "15%", display: "flex", justifyContent: "center" }}
+        style={{
+          marginLeft: "15em",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
       >
-        {/* <div className="w3-panel w3-card-4"> */}
-        <form
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignContent: "center",
-          }}
-        >
-          <h2>Sign Up Your Child</h2>
-          <label>First Name</label>
-          <input
-            onChange={(e) => handleChange("first", e.target.value)}
-            value={firstName}
-          />
-          <label>Last Name</label>
-          <input
-            onChange={(e) => handleChange("last", e.target.value)}
-            value={lastName}
-          />
-          <label>Target hours for your child</label>
-          <input
-            onChange={(e) =>
-              handleChange("targetHours", parseFloat(e.target.value))
-            }
-            type="number"
-            value={targetHours}
-          />
-          <label>Email</label>
-          <input
-            onChange={(e) => handleChange("email", e.target.value)}
-            value={email}
-          />
-          <label>Password</label>
-          <input
-            onChange={(e) => handleChange("password", e.target.value)}
-            type="password"
-            value={password}
-          />
-          <button
+        <div>
+          <form
             style={{
-              margin: "auto",
+              display: "flex",
+              flexDirection: "column",
+              width: "30em",
+              gap: ".5em",
+              margin: "10em",
+              borderRadius: "1em",
+              border: "#eceaed solid 1px",
+              padding: "1em",
+              boxShadow: "4px 4px 4px #000000",
             }}
-            type="button"
-            onClick={handleChildSignup}
           >
-            Sign Up!
-          </button>
-        </form>
+            <h2>Sign Up Your Child</h2>
+            <label>First Name</label>
+            <input
+              onChange={(e) => handleChange("first", e.target.value)}
+              value={firstName}
+            />
+            <label>Last Name</label>
+            <input
+              onChange={(e) => handleChange("last", e.target.value)}
+              value={lastName}
+            />
+            <label>Target hours for your child</label>
+            <input
+              onChange={(e) =>
+                handleChange("targetHours", parseFloat(e.target.value))
+              }
+              type="number"
+              value={targetHours}
+            />
+            <label>Email</label>
+            <input
+              onChange={(e) => handleChange("email", e.target.value)}
+              value={email}
+            />
+            <label>Password</label>
+            <input
+              onChange={(e) => handleChange("password", e.target.value)}
+              type="password"
+              value={password}
+            />
+            <button
+              style={{
+                margin: "auto",
+              }}
+              type="button"
+              onClick={handleChildSignup}
+            >
+              Sign Up!
+            </button>
+          </form>
+        </div>
       </div>
-      {/* </div> */}
     </>
   );
 };
