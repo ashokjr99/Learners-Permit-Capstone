@@ -20,8 +20,8 @@ const Home = () => {
             style={{
               padding: "1em",
               filter: "drop-shadow(2px 4px 6px black)",
-              maxWidth: "60em",
-              minWidth: "60em",
+              maxWidth: "52em",
+              minWidth: "52em",
               marginInline: "auto",
             }}
           />

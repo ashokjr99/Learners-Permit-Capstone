@@ -20,7 +20,7 @@ const Footer = () => {
           display: "flex",
           justifyContent: "center",
           gap: "2em",
-          marginLeft: localStorage.getItem("MyToken") ? "15%" : 0,
+          marginLeft: localStorage.getItem("MyToken") ? "15em" : 0,
           padding: "1em",
         }}
       >

@@ -6,7 +6,7 @@ import Image from "../assets/DriveTime.png";
 
 const Child_Card = () => {
   const [results, setResults] = useState([]);
-
+  // Fetches the Drive statistics for all children a parent has and creates a "Card" that houses the information for each child
   useEffect(() => {
     const getStats = async () => {
       try {
@@ -52,53 +52,53 @@ const Child_Card = () => {
               backgroundColor: "#ECEAED",
             }}
           >
-            <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-            <CardContent sx={{ flex: '1 0 auto' }}>
+            <Box sx={{ display: "flex", flexDirection: "row" }}>
+              <CardContent sx={{ flex: "1 0 auto" }}>
+                <Box>
+                  <Typography
+                    sx={{
+                      fontSize: 32,
+                      textDecoration: "underline 2px",
+                      fontWeight: "700",
+                      textAlign: "left",
+                    }}
+                    color="#494888"
+                    gutterBottom
+                  >
+                    {obj.FirstName}
+                  </Typography>
+                  <Typography
+                    sx={{ fontSize: 26, textAlign: "left" }}
+                    color="#494888"
+                    gutterBottom
+                  >
+                    Total Hours Driven: {obj.totalHours} hours
+                  </Typography>
+                  <Typography
+                    sx={{ fontSize: 26, textAlign: "left" }}
+                    color="#494888"
+                    gutterBottom
+                  >
+                    Total Day Hours Driven: {obj.totalDayHours} hours
+                  </Typography>
+                  <Typography
+                    sx={{ fontSize: 26, textAlign: "left" }}
+                    color="#494888"
+                    gutterBottom
+                  >
+                    Total Night Hours Driven: {obj.totalNightHours} hours
+                  </Typography>
+                </Box>
+              </CardContent>
               <Box>
-              <Typography
-                sx={{
-                  fontSize: 32,
-                  textDecoration: "underline 2px",
-                  fontWeight: "700",
-                  textAlign: "left",
-                }}
-                color="#494888"
-                gutterBottom
-              >
-                {obj.FirstName}
-              </Typography>
-              <Typography
-                sx={{ fontSize: 26, textAlign: "left" }}
-                color="#494888"
-                gutterBottom
-              >
-                Total Hours Driven: {obj.totalHours} hours
-              </Typography>
-              <Typography
-                sx={{ fontSize: 26, textAlign: "left" }}
-                color="#494888"
-                gutterBottom
-              >
-                Total Day Hours Driven: {obj.totalDayHours} hours
-              </Typography>
-              <Typography
-                sx={{ fontSize: 26, textAlign: "left" }}
-                color="#494888"
-                gutterBottom
-              >
-                Total Night Hours Driven: {obj.totalNightHours} hours
-              </Typography>
+                <CardMedia
+                  component="img"
+                  sx={{ width: 151 }}
+                  image={Image}
+                  alt="DriveTime"
+                />
               </Box>
-            </CardContent>
-            <Box> 
-            <CardMedia
-        component="img"
-        sx={{ width: 151 }}
-        image={Image}
-        alt="DriveTime"
-        />
-        </Box>
-        </Box>         
+            </Box>
           </Card>
         );
       })}
