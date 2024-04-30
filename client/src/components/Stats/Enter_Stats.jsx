@@ -205,9 +205,8 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
               <label htmlFor="practiced" className="block mb-1 roboto-regular">
                 Notes
               </label>
-              <input
-                type="text"
-                rows="4"
+              <textarea
+                rows={4}
                 id="notes"
                 className="w-full border-gray-200 rounded-md p-2"
                 value={notes}
