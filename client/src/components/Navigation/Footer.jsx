@@ -20,7 +20,8 @@ const Footer = () => {
           display: "flex",
           justifyContent: "center",
           gap: "2em",
-          marginLeft: "15%",
+          marginLeft: localStorage.getItem("MyToken") ? "15%" : 0,
+          padding: "1em",
         }}
       >
         <Link to="/about">About</Link>
