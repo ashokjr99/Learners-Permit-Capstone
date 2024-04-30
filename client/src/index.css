@@ -86,3 +86,10 @@ button:focus-visible {
   font-weight: 700;
   font-style: normal;
 }
+
+.home-div {
+  background-image: url(../src/components/assets/antonio-janeski-ANP0t4EGMBE-unsplash.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
