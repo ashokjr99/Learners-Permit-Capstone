@@ -140,10 +140,12 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
           ></input>
 
           <label htmlFor="notesInput">Notes</label>
-          <input
+          <textarea
+            rows={4}
+            id="notes"
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-          ></input>
+          />
 
           <label
             htmlFor="approvedInput"

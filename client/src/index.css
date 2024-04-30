@@ -93,3 +93,11 @@ button:focus-visible {
   background-size: cover;
   height: 100vh;
 }
+
+.gradient-vertical {
+  background: linear-gradient(to top, #569AA6, #E5E2E3);
+}
+
+.gradient-vertical-child {
+  background: linear-gradient(to top, #E5E2E3, #569AA6);
+}
