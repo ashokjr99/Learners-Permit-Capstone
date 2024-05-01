@@ -1,6 +1,8 @@
 import React from "react";
 import HeroImage from "../assets/rainbow-drive-time 3.png";
 
+// The Home component consists of a background image, logo, and the copy on the main landing page.
+
 const Home = () => {
   return (
     <>

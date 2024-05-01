@@ -3,6 +3,7 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
+// Login function checks the information stored in the input fields against the databse information and logs in a user if it is valid.
 const Login = ({ handleChange, handleLogin }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 

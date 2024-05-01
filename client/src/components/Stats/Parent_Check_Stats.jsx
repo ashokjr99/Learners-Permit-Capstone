@@ -43,7 +43,6 @@ const Parent_Check_Stats = () => {
         console.log(json.userStats);
         setResults(json.userStats);
         // we used "setResults" to change the state/values that go into the variable "results". we then return "results" in the jsx below.
-
         setDrives(json.summaryData.totalDrives);
         setHours(json.summaryData.totalHours);
       } catch (err) {
@@ -70,7 +69,7 @@ const Parent_Check_Stats = () => {
         <h1>Drives</h1>
         <p>See your child's drive history in totality</p>
       </div>
-
+      {/* The filterholder and pdfdownloadlink components hold the filtering object and the option to download the tables information into a pdf. */}
       <div style={{ display: "flex", flexDirection: "row", gap: "50%" }}>
         <FilterHolder
           setStartDate={setStartDate}
@@ -91,7 +90,7 @@ const Parent_Check_Stats = () => {
           }
         </PDFDownloadLink>
       </div>
-
+      {/* The two components below hold the tables for the parent view, so they can see their children's drives. */}
       <div>
         <h1>Approved</h1>
         <StatsChartHolder results={results} setReFetch={setReFetch} />
@@ -100,7 +99,6 @@ const Parent_Check_Stats = () => {
       <div>
         <h1>Pending Approval</h1>
         <Awaiting_Stats results={results} setReFetch={setReFetch} />
-        {/* stats_filter houses all of the data that is filtered through */}
       </div>
     </div>
   );

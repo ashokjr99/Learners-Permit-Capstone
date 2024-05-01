@@ -21,6 +21,8 @@ import {
 
 import "./App.css";
 
+// The App function holds the the variables that are used throughout the program.
+
 function App() {
   const [sessionToken, setSessionToken] = useState(false);
   const [userId, setUserId] = useState("");
@@ -65,6 +67,7 @@ function App() {
 
   return (
     <>
+    {/* App.jsx is broken up into three main component sections; One for before a user is logged in or the main landing page, one for when a parent is logged in, and one for when a child is logged in. */}
       {!sessionToken && !userType && (
         <>
           <div className="home-div">

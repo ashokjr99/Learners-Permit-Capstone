@@ -5,6 +5,7 @@ const Footer = () => {
   let location = useLocation();
   console.log(location);
 
+  // Holds the link to the about and contact pages.
   return (
     <div
       style={{
