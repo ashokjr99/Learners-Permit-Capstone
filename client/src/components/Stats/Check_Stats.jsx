@@ -63,7 +63,7 @@ const Check_Stats = ({}) => {
   return (
     <div
       className="w3-container roboto-regular"
-      style={{ marginLeft: "15%", marginBottom: "30%", marginRight: "2%" }}
+      style={{ marginLeft: "15%", marginBottom: "40%", marginRight: "2%" }}
     >
       <div>
         <h1 className="roboto-regular">Drives</h1>
