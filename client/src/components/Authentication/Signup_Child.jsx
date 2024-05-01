@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
+// Variables for creating a child account.
 const Signup_Child = ({ userId }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -11,6 +12,7 @@ const Signup_Child = ({ userId }) => {
 
   console.log(userId);
 
+  // the handleChange function is used to check when there is a change in the respective input fields .
   const handleChange = (state, value) => {
     switch (state) {
       case "first":
@@ -33,6 +35,7 @@ const Signup_Child = ({ userId }) => {
     }
   };
 
+  // The handlechildsignup function checks the information added into the signup child component to ensure it is valid and sends it to the server.
   const handleChildSignup = async () => {
     try {
       const response = await (

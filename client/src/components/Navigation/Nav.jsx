@@ -7,6 +7,7 @@ const Nav = (props) => {
   console.log(location);
   let backgroundColor = "#569AA6";
 
+  // The main nav bar is strictly for the parent view. The buttons change between parent and child accounts.
   return (
     <div
       className="w3-card-2 w3-sidebar w3-bar-block w3-display-left roboto-regular gradient-vertical"

@@ -50,22 +50,41 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="reset-password-container">
+    <div
+      className="reset-password-container"
+      style={{
+        background: "rgba(0, 0, 0, .6)",
+        color: "#E5E2E3",
+        padding: "1em",
+        maxWidth: "40em",
+        marginInline: "auto",
+        display: "flex",
+        flexDirection: "column",
+        marginTop: "18em"
+      }}
+    >
       <h2>Reset Password</h2>
-      <form onSubmit={handleResetPassword}>
-        <label>New Password</label>
-        <input
-          type="password"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-        />
-        <label>Confirm Password</label>
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <button type="submit">Reset Password</button>
+      <form onSubmit={handleResetPassword}
+      style={{display: "flex", flexDirection: "column", gap: "1em"}}>
+        <div>
+          <label style={{padding: "1em"}}>New Password</label>
+          <input
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <label style={{padding: "1em"}}>Confirm Password</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <button type="submit">Reset Password</button>
+        </div>
       </form>
       {message && <p>{message}</p>}
     </div>

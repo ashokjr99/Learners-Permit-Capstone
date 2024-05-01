@@ -112,7 +112,6 @@ const Settings = () => {
 
   return (
     <div 
-      // className="settings-container"
       style={{ marginLeft: "15em", display: "flex", flexDirection: "column", alignItems: "center", gap: "2em"}}
     >
       <h2>Settings</h2>
