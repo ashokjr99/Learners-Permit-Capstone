@@ -3,6 +3,7 @@ import "./Dashboard.css";
 
 import TargetHoursProgress from "./TargetHoursProgess";
 
+// The Dashboard component is the first view the child sees when they log in. It holds their target hours in a progress bar.
 const Dashboard = () => {
   return (
     <>

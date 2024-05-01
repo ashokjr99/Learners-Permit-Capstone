@@ -29,7 +29,7 @@ const Child_Card = () => {
     };
     getStats();
   }, []);
-
+// Holds the information fetched above and creates a card that shows the information on the parent dashboard.
   return (
     <div
       className="roboto-regular"

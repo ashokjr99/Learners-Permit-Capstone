@@ -18,6 +18,7 @@ const Child_Nav = (props) => {
     setModalIsOpen(false);
   };
 
+  // The Child Nav is strictly for when a child is logged in. The buttons change between parent and child accounts.
   return (
     <div
       className="w3-card-2 w3-sidebar w3-bar-block w3-display-left roboto-regular gradient-vertical-child"
