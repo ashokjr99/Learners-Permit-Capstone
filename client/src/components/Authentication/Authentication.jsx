@@ -3,7 +3,6 @@ import { useState } from "react";
 import Login from "./Login";
 import Signup_Parent from "./Signup_Parent";
 import Recovery from "./Recovery";
-import Footer from "../Navigation/Footer";
 
 const Auth = (props) => {
   const [firstName, setFirstName] = useState("");
