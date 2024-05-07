@@ -8,15 +8,6 @@ const Child_Nav = (props) => {
   let location = useLocation();
   console.log(location);
   let backgroundColor = "#244855";
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
 
   // The Child Nav is strictly for when a child is logged in. The buttons change between parent and child accounts.
   return (
