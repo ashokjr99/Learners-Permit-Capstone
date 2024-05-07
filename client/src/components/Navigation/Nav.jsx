@@ -16,7 +16,7 @@ const Nav = (props) => {
       <img
         className="w3-bar-item"
         src={HeaderImage}
-        style={{ height: "8em", left: "1em" }}
+        style={{ height: "8em", left: "1em", filter: "drop-shadow(2px 4px 6px black)"}}
       />
       <Link to="/Parent_Dashboard">
         <button

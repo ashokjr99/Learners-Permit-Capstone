@@ -8,15 +8,6 @@ const Child_Nav = (props) => {
   let location = useLocation();
   console.log(location);
   let backgroundColor = "#244855";
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
 
   // The Child Nav is strictly for when a child is logged in. The buttons change between parent and child accounts.
   return (
@@ -27,7 +18,7 @@ const Child_Nav = (props) => {
       <img
         className="w3-bar-item"
         src={HeaderImage}
-        style={{ height: "8em", left: "1em" }}
+        style={{ height: "8em", left: "1em", filter: "drop-shadow(2px 4px 6px black)" }}
       />
       <Link to="/dashboard">
         <button
