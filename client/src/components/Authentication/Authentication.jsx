@@ -3,6 +3,7 @@ import { useState } from "react";
 import Login from "./Login";
 import Signup_Parent from "./Signup_Parent";
 import Recovery from "./Recovery";
+import { API_URL } from "../../helpers/api";
 
 const Auth = (props) => {
   const [firstName, setFirstName] = useState("");
@@ -79,19 +80,16 @@ const Auth = (props) => {
       }
 
       // Fetch from the child account login route
-      const childResponse = await fetch(
-        "http://localhost:8081/user/login_child",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email,
-            password: password,
-          }),
-        }
-      );
+      const childResponse = await fetch(`${API_URL}/user/login_child`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
 
       // Check if the child account login was successful
       if (childResponse.ok) {
