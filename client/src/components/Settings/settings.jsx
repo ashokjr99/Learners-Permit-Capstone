@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import "./settings.css";
+import { API_URL } from "../../helpers/api";
 
 const Settings = () => {
   const [firstName, setFirstName] = useState("");
@@ -18,7 +19,7 @@ const Settings = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch("http://localhost:8081/settings/profile", {
+      const response = await fetch(`${API_URL}/settings/profile`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
@@ -51,7 +52,7 @@ const Settings = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8081/settings/profile", {
+      const response = await fetch(`${API_URL}/settings/profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +87,7 @@ const Settings = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8081/settings/password", {
+      const response = await fetch(`${API_URL}/settings/password`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -111,14 +112,24 @@ const Settings = () => {
   };
 
   return (
-    <div 
-      style={{ marginLeft: "15em", display: "flex", flexDirection: "column", alignItems: "center", gap: "2em"}}
+    <div
+      style={{
+        marginLeft: "15em",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "2em",
+      }}
     >
       <h2>Settings</h2>
-      <div >
-        <form onSubmit={handleUpdateProfile} style={{display: "flex", flexDirection: "column"}} >
+      <div>
+        <form
+          onSubmit={handleUpdateProfile}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
           <label>First Name:</label>
-          <input style={{width:"15em"}}
+          <input
+            style={{ width: "15em" }}
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -141,12 +152,17 @@ const Settings = () => {
             value={targetHours}
             onChange={(e) => setTargetHours(e.target.value)}
           />
-          <button type="submit" style={{width:"15em", alignItems: "center"}}>Update Profile</button>
+          <button type="submit" style={{ width: "15em", alignItems: "center" }}>
+            Update Profile
+          </button>
         </form>
       </div>
 
       <div>
-        <form onSubmit={handleUpdatePassword} style={{display: "flex", flexDirection: "column"}}>
+        <form
+          onSubmit={handleUpdatePassword}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
           <label>Current Password:</label>
           <input
             type="password"
@@ -165,7 +181,9 @@ const Settings = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          <button type="submit" style={{width:"15em", alignItems: "center"}}>Update Password</button>
+          <button type="submit" style={{ width: "15em", alignItems: "center" }}>
+            Update Password
+          </button>
         </form>
       </div>
       {message && <p>{message}</p>}

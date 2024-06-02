@@ -4,20 +4,19 @@ import { Box, Card, CardContent, Typography, CardMedia } from "@mui/material";
 
 import Image from "../assets/DriveTime.png";
 
+import { API_URL } from "../../helpers/api";
+
 const Child_Card = () => {
   const [results, setResults] = useState([]);
   // Fetches the Drive statistics for all children a parent has and creates a "Card" that houses the information for each child
   useEffect(() => {
     const getStats = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:8081/stats/child_card_stats",
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
-            },
-          }
-        );
+        const response = await fetch(`${API_URL}/stats/child_card_stats`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
+          },
+        });
         const json = await response.json();
 
         console.log("jsonn", json);
@@ -29,7 +28,7 @@ const Child_Card = () => {
     };
     getStats();
   }, []);
-// Holds the information fetched above and creates a card that shows the information on the parent dashboard.
+  // Holds the information fetched above and creates a card that shows the information on the parent dashboard.
   return (
     <div
       className="roboto-regular"

@@ -8,7 +8,7 @@ import {
   Awaiting_Stats,
 } from "./check_stats_folder_components";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import { collapseClasses } from "@mui/material";
+import { API_URL } from "../../helpers/api";
 
 //? Houses the overall look of Checking Stats and Seeing Summaries
 
@@ -35,7 +35,7 @@ const Check_Stats = ({}) => {
     const getFilter = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8081/stats/all?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
+          `${API_URL}/stats/all?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("MyToken")}`,

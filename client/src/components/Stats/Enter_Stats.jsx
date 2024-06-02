@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import "./ToggleSwitch.css";
 Modal.setAppElement("#root");
+import { API_URL } from "../../helpers/api";
 
 const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
   const [hours, setHours] = useState("");
@@ -50,7 +51,7 @@ const Enter_Stats = ({ modalIsOpen, setModalIsOpen }) => {
         }
       };
 
-      const response = await fetch("http://localhost:8081/stats/post", {
+      const response = await fetch(`${API_URL}/stats/post`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("MyToken")}`,

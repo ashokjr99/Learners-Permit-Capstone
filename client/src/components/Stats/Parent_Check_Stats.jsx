@@ -7,6 +7,7 @@ import {
   Awaiting_Stats,
 } from "./check_stats_folder_components";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import { API_URL } from "../../helpers/api";
 
 //? Houses the overall look of Checking Stats and Seeing Summaries
 
@@ -30,7 +31,7 @@ const Parent_Check_Stats = () => {
     const getFilter = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8081/stats/child_stats?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}&approval=${approval}`,
+          `${API_URL}/stats/child_stats?startDate=${startDate}&endDate=${endDate}&weather=${weather}&time=${time}&approval=${approval}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("MyToken")}`,

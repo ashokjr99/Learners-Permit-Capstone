@@ -1,6 +1,6 @@
-import { useScrollTrigger } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ReactSpeedometer from "react-d3-speedometer";
+import { API_URL } from "../../helpers/api";
 
 const TargetHoursProgess = () => {
   const [currentHours, setCurrentHours] = useState(0);
@@ -11,14 +11,11 @@ const TargetHoursProgess = () => {
   useEffect(() => {
     const getTargetHours = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:8081/stats/child_target_hours`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
-            },
-          }
-        );
+        const response = await fetch(`${API_URL}/stats/child_target_hours`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("MyToken")}`,
+          },
+        });
 
         const json = await response.json();
 

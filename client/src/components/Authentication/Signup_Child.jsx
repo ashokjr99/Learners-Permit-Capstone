@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { API_URL } from "../../helpers/api";
 
 // Variables for creating a child account.
 const Signup_Child = ({ userId }) => {
@@ -39,7 +40,7 @@ const Signup_Child = ({ userId }) => {
   const handleChildSignup = async () => {
     try {
       const response = await (
-        await fetch("http://localhost:8081/user/signup_child", {
+        await fetch(`${API_URL}/user/signup_child`, {
           method: "POST",
           headers: {
             Authorization: "Bearer " + localStorage.getItem("MyToken"),

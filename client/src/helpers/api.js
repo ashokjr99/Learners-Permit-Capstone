@@ -1,6 +1,6 @@
 export const SERVER_MODE = "prod";
 // change to "local" when using local
-export const API_URL = "";
+export let API_URL = "";
 
 switch (SERVER_MODE) {
   case "local":

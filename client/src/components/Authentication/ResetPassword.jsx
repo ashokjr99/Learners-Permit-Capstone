@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { API_URL } from "../../helpers/api";
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
@@ -18,21 +19,18 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await fetch(
-        "http://localhost:8081/recovery/reset-password",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            newPassword: newPassword,
-            confirmPassword: confirmPassword,
-            token: searchParams.get("token"),
-            userId: searchParams.get("userid"),
-          }),
-        }
-      );
+      const response = await fetch(`${API_URL}/recovery/reset-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          newPassword: newPassword,
+          confirmPassword: confirmPassword,
+          token: searchParams.get("token"),
+          userId: searchParams.get("userid"),
+        }),
+      });
 
       if (response.ok) {
         const data = await response.json();
@@ -60,14 +58,16 @@ const ResetPassword = () => {
         marginInline: "auto",
         display: "flex",
         flexDirection: "column",
-        marginTop: "18em"
+        marginTop: "18em",
       }}
     >
       <h2>Reset Password</h2>
-      <form onSubmit={handleResetPassword}
-      style={{display: "flex", flexDirection: "column", gap: "1em"}}>
+      <form
+        onSubmit={handleResetPassword}
+        style={{ display: "flex", flexDirection: "column", gap: "1em" }}
+      >
         <div>
-          <label style={{padding: "1em"}}>New Password</label>
+          <label style={{ padding: "1em" }}>New Password</label>
           <input
             type="password"
             value={newPassword}
@@ -75,7 +75,7 @@ const ResetPassword = () => {
           />
         </div>
         <div>
-          <label style={{padding: "1em"}}>Confirm Password</label>
+          <label style={{ padding: "1em" }}>Confirm Password</label>
           <input
             type="password"
             value={confirmPassword}

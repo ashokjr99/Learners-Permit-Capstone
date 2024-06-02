@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import Modal from "react-modal";
 import "../ToggleSwitch.css";
 Modal.setAppElement("#root");
+import { API_URL } from "../../../helpers/api";
 
 const Delete_Stats = ({ stats, setReFetch }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -9,7 +10,7 @@ const Delete_Stats = ({ stats, setReFetch }) => {
   const deleteStat = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8081/stats/delete/${stats.id}`,
+        `${API_URL}/stats/delete/${stats.id}`,
 
         {
           method: "DELETE",

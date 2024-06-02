@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import "../ToggleSwitch.css";
 Modal.setAppElement("#root");
+import { API_URL } from "../../../helpers/api";
 
 const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
   const [hoursResults, setHoursResults] = useState(stats.hours);
@@ -33,7 +34,7 @@ const Edit_Stats = ({ stats, setShowEdit, setReFetch, showEdit }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:8081/stats/edit/${stats.id}`,
+        `${API_URL}/stats/edit/${stats.id}`,
         {
           method: "PUT",
           headers: {
