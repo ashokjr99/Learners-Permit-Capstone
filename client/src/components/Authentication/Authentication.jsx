@@ -33,7 +33,7 @@ const Auth = (props) => {
   const handleSignup = async () => {
     try {
       const response = await (
-        await fetch("http://localhost:8081/parent/signup", {
+        await fetch(`${API_URL}/parent/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const Auth = (props) => {
   const handleLogin = async () => {
     try {
       // Fetch from the parent account login route
-      const parentResponse = await fetch("http://localhost:8081/parent/login", {
+      const parentResponse = await fetch(`${API_URL}/parent/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -112,7 +112,7 @@ const Auth = (props) => {
   const handleRecovery = async () => {
     try {
       const response = await (
-        await fetch("http://localhost:8081/recovery/forgot-password", {
+        await fetch(`${API_URL}/recovery/forgot-password`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
